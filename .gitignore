@@ -1,13 +1,7 @@
-node_moddules/*
+app/
+app/*
 node_modules/
-images/*
-images/
+node_modules/*
 package.json
 package-lock.json
-template.zip
-template/*
-template/
-compliescss.bat
-css/
-css/*
 gulpfile.js
