@@ -1,0 +1,14 @@
+.carousel{
+    &__home--img1{
+        background-image: url('../../../app/img/background.jpg');
+        @extend %carousel__background;
+    }
+    &__home--img2{
+        background-image:url('../../../app/img/background.jpg');
+        @extend %carousel__background;
+    }
+    &__home--img3{
+        background-image:url('../../../app/img/background.jpg');
+        @extend %carousel__background;
+    }
+}
