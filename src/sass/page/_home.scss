@@ -1,11 +1,19 @@
-html, body{
+html,
+body {
     background-color: $background_main;
 }
-.list_item{
-    margin-top: 16px;
-    margin-bottom: 16px;
-    &__img{
-        margin: auto;
-        text-align:center;
+
+.list_item {
+    .row{
+        margin:16px 0 16px 0;
+    }
+    &__card {
+        margin: 0;
+        &--img {
+        }
+        &--body{
+            padding: 10px;
+
+        }
     }
 }
