@@ -2,14 +2,6 @@ html, body{
     background-color: $background_main;
 }
 .list_item{
-    &__card{
-        margin: 0 !important;
-        border: 0px;
-        padding: 16px;
-        &--img{
-            width: 200px;
-            height: 200px;
-            text-align: center;
-        }
-    }
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
