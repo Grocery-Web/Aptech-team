@@ -4,4 +4,8 @@ html, body{
 .list_item{
     margin-top: 16px;
     margin-bottom: 16px;
+    &__img{
+        margin: auto;
+        text-align:center;
+    }
 }
