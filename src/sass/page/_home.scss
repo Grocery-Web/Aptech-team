@@ -17,3 +17,13 @@ body {
         }
     }
 }
+.hot_deal{
+    &__card{
+        &--img{
+            margin: auto;
+        }
+        &--body{
+            padding: 16px 5px 5px 16px;
+        }
+    }
+}
