@@ -1,13 +1,43 @@
-.home__carousel{
-    .embed-responsive{
+.home__carousel {
+    .embed-responsive {
         height: 100vh;
     }
-    &--img1{
+
+    position: relative;
+
+    &--img1 {
         background-image: url('../../../app/img/shop3_banner1.jpg');
         @extend %carousel__background;
     }
-    &--img2{
-        background-image:url('../../../app/img/shop3_banner2.jpg');
+
+    &--img2 {
+        background-image: url('../../../app/img/shop3_banner2.jpg');
         @extend %carousel__background;
+    }
+
+    &--title {
+        font-family: 'Oswald', sans-serif;
+        position   : absolute;
+        top        : 50%;
+        left       : 10vw;
+        transform  : translateY(-50%);
+        font-weight: 700;
+        font-size  : 70px;
+        color      : #000;
+        line-height: 1.2;
+
+        &--text {
+            color    : #666;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: normal;
+            margin-top: 3vh;
+        }
+        .btn.btn-dark{
+            margin-top: 3.2vh;
+            font-size: 14px;
+            letter-spacing: .2em;
+            padding: 1.4em 2.4em;
+        }
     }
 }
