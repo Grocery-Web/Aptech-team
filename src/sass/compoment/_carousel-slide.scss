@@ -1,14 +1,13 @@
-.carousel{
-    &__home--img1{
-        background-image: url('../../../app/img/background.jpg');
+.home__carousel{
+    .embed-responsive{
+        height: 100vh;
+    }
+    &--img1{
+        background-image: url('../../../app/img/shop3_banner1.jpg');
         @extend %carousel__background;
     }
-    &__home--img2{
-        background-image:url('../../../app/img/background.jpg');
-        @extend %carousel__background;
-    }
-    &__home--img3{
-        background-image:url('../../../app/img/background.jpg');
+    &--img2{
+        background-image:url('../../../app/img/shop3_banner2.jpg');
         @extend %carousel__background;
     }
 }
