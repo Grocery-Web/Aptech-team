@@ -1,41 +1,52 @@
 html,
 body {
     background-color: $background_main;
+    font-family: 'Open Sans',sans-serif;
 }
 
 .list_item {
-    .row{
-        margin:16px 0 16px 0;
+    .row {
+        margin: 16px 0 16px 0;
     }
+
     &__card {
         margin: 0;
-        &--body{
-            padding: 10px;
 
+        &--body {
+            padding: 10px;
         }
     }
 }
-.hot_deal{
-    &__card{
-        &--img{
+
+.hot_deal {
+    &__card {
+        &--img {
             margin: auto;
         }
-        &--body{
+
+        &--body {
             padding: 16px 5px 5px 16px;
         }
     }
 }
-.category{
-    &__img1, &__img2, &__img3{
+
+.category {
+
+    &__img1,
+    &__img2,
+    &__img3 {
         @extend %category__img;
     }
-    &__img1{
+
+    &__img1 {
         background-image: url('https://via.placeholder.com/500px*200px');
     }
-    &__img2{
+
+    &__img2 {
         background-image: url('https://via.placeholder.com/340px*200px');
     }
-    &__img3{
+
+    &__img3 {
         background-image: url('https://via.placeholder.com/340px*200px');
     }
 }
