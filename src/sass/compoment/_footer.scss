@@ -5,18 +5,22 @@ footer {
     font-family    : 'Roboto', sans-serif;
     justify-content: space-between;
     padding        : 0 0 40px 0;
+    background-color:rgb(255, 255, 255);
+
 
     .row {
         flex-wrap      : nowrap;
+        flex-direction: row;
         justify-content: space-between;
 
         .col-to {
-            width  : 290px;
+            width  : 268px;
             display: block;
         }
 
         .col-nho {
-            width: 220px;
+            width: 226px;
+            display: block;
         }
     }
 
@@ -47,6 +51,9 @@ footer {
 
         &__text:hover {
             text-decoration: none;
+        }
+        &__img{
+            
         }
     }
 

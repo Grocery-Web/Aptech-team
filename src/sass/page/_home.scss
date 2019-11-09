@@ -1,26 +1,17 @@
 html,
 body {
     background-color: $background_main;
-    font-family: 'Open Sans',sans-serif;
-}
-
-.list_item {
-    padding: 65px 0 30px 0;
-    .row {
-        margin: 0 0 26px 0;
-    }
-
-    &__card {
-        margin: 0;
-
-        &--body {
-            padding: 10px;
-        }
-    }
+    font-family     : 'Open Sans', sans-serif;
 }
 
 .hot_deal {
     padding: 65px 0 30px 0;
+
+    .row {
+        margin-right: 0;
+        margin-left : 0;
+    }
+
     &__card {
         &--img {
             margin: auto;
@@ -33,23 +24,56 @@ body {
 }
 
 .category {
-    padding: 65px 0 30px 0;
+    padding: 20px 0 30px 0;
 
-    &__img1,
-    &__img2,
-    &__img3 {
-        @extend %category__img;
+    .row {
+        margin-right: 0;
+        margin-left : 0;
+
+        img {
+            width : 340px;
+            height: 200px;
+        }
+    }
+}
+
+.list_item {
+    padding: 65px 0px 30px 0px;
+
+    .row {
+        margin: 0;
     }
 
-    &__img1 {
-        background-image: url('https://via.placeholder.com/500px*200px');
+    &__card {
+        margin: 0;
+        border: 0;
+
+        &--body {
+            padding: 10px;
+        }
+    }
+}
+
+.newsletter {
+    img {
+        width : 163px;
+        height: 99px;
     }
 
-    &__img2 {
-        background-image: url('https://via.placeholder.com/340px*200px');
+    color: rgb(78, 80, 82);
+
+    &__wrapper {
+        padding: 50px 0 0 0;
+       
+        &--title {
+            font-size  : 16px;
+            font-weight: 900;
+        }
+
+        &--text {
+            font-size: 13px;
+        }
     }
 
-    &__img3 {
-        background-image: url('https://via.placeholder.com/340px*200px');
-    }
+
 }
