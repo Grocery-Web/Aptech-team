@@ -3,6 +3,7 @@
     padding: 0;
     text-rendering: optimizeLegibility;
     box-sizing: border-box;
+    text-size-adjust: 100%;
 }
 
 .debug{
@@ -14,5 +15,5 @@
     font-weight: 700;
     font-size: 22px;
     line-height: normal;
-   
+    margin: 10px 0;
 }
