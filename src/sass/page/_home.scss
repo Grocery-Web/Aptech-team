@@ -5,8 +5,9 @@ body {
 }
 
 .list_item {
+    padding: 65px 0 30px 0;
     .row {
-        margin: 16px 0 16px 0;
+        margin: 0 0 26px 0;
     }
 
     &__card {
@@ -19,6 +20,7 @@ body {
 }
 
 .hot_deal {
+    padding: 65px 0 30px 0;
     &__card {
         &--img {
             margin: auto;
@@ -31,6 +33,7 @@ body {
 }
 
 .category {
+    padding: 65px 0 30px 0;
 
     &__img1,
     &__img2,

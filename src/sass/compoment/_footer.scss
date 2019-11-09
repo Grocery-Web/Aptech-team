@@ -1,3 +1,54 @@
-.test{
-    font-weight: 800;
+footer {
+    font-size      : 12px;
+    color          : $footer_text;
+    font-weight    : normal;
+    font-family    : 'Roboto', sans-serif;
+    justify-content: space-between;
+    padding        : 0 0 40px 0;
+
+    .row {
+        flex-wrap      : nowrap;
+        justify-content: space-between;
+
+        .col-to {
+            width  : 290px;
+            display: block;
+        }
+
+        .col-nho {
+            width: 220px;
+        }
+    }
+
+    .footer {
+        &__title {
+            color         : $footer_text;
+            font-size     : 13px;
+            font-weight   : 500;
+            font-stretch  : normal;
+            text-transform: uppercase;
+            margin        : 0px 0px 17px;
+        }
+
+        &__emphasis {
+            color      : $red_bold;
+            font-size  : 14px;
+            font-weight: 500;
+            line-height: 18px;
+        }
+
+        &__text {
+            margin-bottom: 10px;
+            display      : block;
+            color        : $footer_text;
+            font-size    : 12px;
+            font-weight  : normal;
+        }
+
+        &__text:hover {
+            text-decoration: none;
+        }
+    }
+
+
 }
