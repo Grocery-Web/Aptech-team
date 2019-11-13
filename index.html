@@ -42,13 +42,30 @@
                     </div>
                 </li>
             </ul>
-            <i class="material-icons nav__icon">
-                search
-            </i>
-            <i class="material-icons nav__icon">
-                person_outline
-            </i>
-            <i class="material-icons-outlined nav__icon">shop</i>
+            <form class="nav__search">
+                <i class="material-icons nav__icon ">
+                    search
+                </i>
+                <div class="form-group">
+                    <input type="text" class="form-control nav__search--form" name="form_search " id=""placeholder="Search...">
+                    <button type='submit'> 
+                        <i class="material-icons nav__search--btn">
+                            search
+                        </i>
+                        <div class="nav__search--arrow-up"></div>
+                    </button>
+                </div>
+            </form>
+            <div class="nav__loginbtn">
+                <i class="material-icons nav__icon">
+                    person_outline
+                </i>
+            </div>
+            <div class="nav__shopbtn">
+                <i class="material-icons-outlined nav__icon">shop</i>
+            </div>
+        </div>
+
         </div>
     </nav>
     <!-- End Navbar -->
@@ -276,7 +293,7 @@
             <div class="col-md-2">
                 <img src="./app/img/newsletter.png" alt="">
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class="newsletter__wrapper">
                     <div class="row">
                         <h3 class="newsletter__wrapper--title">
@@ -289,6 +306,21 @@
                         </h5>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-5">
+                <div class="newsletter__right">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="newsEmail"
+                                placeholder="Địa chỉ Email của bạn">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="btn btn-primary newsletter__right--btn">Đăng ký</div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
