@@ -1,5 +1,15 @@
-%carousel__background{
-    background-size: cover;
+%carousel__background {
+    background-size      : cover;
     background-attachment: fixed;
-    height: 100vh;
+    height               : 100vh;
+}
+
+%arrow-up {
+    position     : absolute;
+    top          : 0;
+    width        : 0;
+    height       : 0;
+    border-left  : 8px solid transparent;
+    border-right : 8px solid transparent;
+    border-bottom: 8px solid $btn_border;
 }
