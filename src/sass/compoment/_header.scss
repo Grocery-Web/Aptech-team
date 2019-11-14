@@ -27,6 +27,11 @@
             padding-left: 20px;
         }
 
+        &__icon:hover {
+            cursor: pointer;
+
+        }
+
         &__search {
             position: relative;
 
@@ -124,6 +129,64 @@
             &--arrow-up {
                 @extend %arrow-up;
                 transform: translate(170px, -12px);
+            }
+        }
+
+        &__shopcart {
+            position: relative;
+
+            &--wrapper {
+                position        : absolute;
+                display         : none;
+                width           : 330px;
+                height          : 250px;
+                background-color: $background_main;
+                box-shadow      : $btn_shadow;
+                border-radius   : 25px;
+                border          : 4px solid $btn_border;
+                transform       : translateX(-220px);
+
+            }
+
+            &--arrow-up {
+                @extend %arrow-up;
+                transform: translate(240px, -12px);
+            }
+
+            &--title {
+                width         : 40%;
+                margin        : 1rem auto;
+                text-align    : center;
+                text-transform: uppercase;
+                color         : $red_bold;
+                font-weight   : 700;
+            }
+
+            &--item {
+                width : 99%;
+                height: 90%;
+
+                &--left {
+                    color      : #000;
+                    font-weight: 700;
+                }
+
+                .row {
+                    margin: 16px -15px;
+                }
+            }
+
+            &--btn {
+                text-transform  : uppercase;
+                background-color: $red_bold;
+                outline         : none;
+                border          : none;
+                margin          : 0 auto;
+            }
+
+            &--btn:focus,
+            &--btn:active {
+                background-color: black !important;
             }
         }
 

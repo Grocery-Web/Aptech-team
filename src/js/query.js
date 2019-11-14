@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
     for (let i = 0; i < icon_length; i++) {
         count[i] = 0;
     }
-    console.log(btn[1].classList.contains("form__text"));
     for (let index = 0; index < icon_length; index++) {
         icon[index].addEventListener("click", function () {
 
