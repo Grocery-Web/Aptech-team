@@ -20,6 +20,10 @@ body {
         &--body {
             padding: 16px 5px 5px 16px;
         }
+        .card:hover{
+            box-shadow: $card_shadow;
+            opacity   : 0.95;
+        }
     }
 }
 
