@@ -32,6 +32,12 @@
 
         }
 
+        &__search .form__text,
+        &__shopcart--wrapper,
+        &__login .form__text {
+            animation: fadein 0.4s forwards;
+        }
+
         &__search {
             position: relative;
 
@@ -173,6 +179,9 @@
 
                 .row {
                     margin: 16px -15px;
+                    a{
+                        margin: 0 auto;
+                    }
                 }
             }
 
