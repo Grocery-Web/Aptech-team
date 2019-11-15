@@ -34,6 +34,11 @@ body {
             width : 340px;
             height: 200px;
         }
+
+        img:hover {
+            box-shadow: $card_shadow;
+            opacity   : 0.95;
+        }
     }
 }
 
@@ -45,12 +50,18 @@ body {
     }
 
     &__card {
-        margin: 0;
-        border: 0;
+        margin      : 0;
+        border      : 0;
+        margin-right: 5px;
 
         &--body {
             padding: 10px;
         }
+    }
+
+    &__card:hover {
+        box-shadow: $card_shadow;
+        opacity   : 0.95;
     }
 }
 
@@ -59,37 +70,40 @@ body {
         width : 163px;
         height: 99px;
     }
-    &__right{
-        padding: 50px 0 0;
-        text-align: center;
+
+    &__right {
+        padding       : 50px 0 0;
+        text-align    : center;
         vertical-align: middle;
-        .row{
-            .col-md-3{
-                padding-left: 0;
+
+        .row {
+            .col-md-3 {
+                padding-left : 0;
                 padding-right: 0;
             }
-        }                                                                                                                                                                                                                                                                                                                                                                                                    
+        }
+
         &--btn {
             background-color: $btn_color;
             font-size       : 14px;
             line-height     : 1.42857;
             padding         : 8px 12px;
         }
-    
+
         &--btn:hover {
-            opacity: 0.8;
+            opacity         : 0.8;
             background-color: $btn_color;
-            border-color: $btn_color;
+            border-color    : $btn_color;
         }
     }
 
-    
+
 
     color: rgb(78, 80, 82);
 
     &__wrapper {
         padding: 50px 0 0 0;
-       
+
         &--title {
             font-size  : 16px;
             font-weight: 900;
