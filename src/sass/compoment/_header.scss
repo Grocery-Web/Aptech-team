@@ -99,7 +99,7 @@
 
                 padding-top     : 10px;
                 width           : 300px;
-                height          : 270px;
+                height          : 300px;
                 background-color: $background_main;
                 box-shadow      : $btn_shadow;
                 border-radius   : 25px;
@@ -115,12 +115,16 @@
                     }
 
                     &__btn {
-                        margin     : 20px auto;
+                        margin     : 10px auto;
                         display    : block;
                         font-family: 'Oswald', sans-serif;
                         font-weight: 400;
+                    }
 
-
+                    .nav__signup--link {
+                        width  : 83%;
+                        margin : 10px auto;
+                        display: block;
                     }
                 }
 
@@ -137,6 +141,8 @@
                 transform: translate(170px, -12px);
             }
         }
+
+        &__signup {}
 
         &__shopcart {
             position: relative;
@@ -179,7 +185,8 @@
 
                 .row {
                     margin: 16px -15px;
-                    a{
+
+                    a {
                         margin: 0 auto;
                     }
                 }
