@@ -3,13 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let btn = [];
     icon = document.getElementsByClassName("nav__icon");
     btn = document.getElementsByClassName("form__text");
-    // function nav_login(index) {
-    //     console.log(index)
-    //     for (let item of btn) {
-    //         item.style.display = "none";
-    //     }
-    //     btn[index].style.display = "block";
-    // }
     let count = [];
     let icon_length = icon.length;
     for (let i = 0; i < icon_length; i++) {
@@ -47,5 +40,18 @@ document.addEventListener('DOMContentLoaded', function () {
             item.classList.remove("form__text--appear");
         }
     })
-
+    // End Navigation Button : Search, Login, Shopcart
+    // Show Signup Popup
+    let popup = document.querySelector('.popup');
+    let signupbtn = document.querySelector('.nav__signup--link');
+    let blackscreen = document.querySelector('.blackscreen');
+    console.log(blackscreen)
+    signupbtn.addEventListener('click', function(){
+        console.log('aa')
+        popup.classList.add('appeared');
+        btn[1].classList.remove('form__text--appear');
+    })
+    blackscreen.addEventListener('click', function(){
+        popup.classList.remove('appeared');
+    })
 })
