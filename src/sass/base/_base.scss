@@ -1,19 +1,19 @@
-*{
-    margin: 0;
-    padding: 0;
-    text-rendering: optimizeLegibility;
-    box-sizing: border-box;
+* {
+    margin          : 0;
+    padding         : 0;
+    text-rendering  : optimizeLegibility;
+    box-sizing      : border-box;
     text-size-adjust: 100%;
 }
 
-.debug{
+.debug {
     border: 2px solid green;
 }
 
-.heading__title{
+.heading__title {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
-    font-size: 22px;
+    font-size  : 22px;
     line-height: normal;
-    margin: 10px 0;
+    margin     : 10px 0;
 }
