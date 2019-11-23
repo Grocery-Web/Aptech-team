@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="src/product-styles.css">
     <title>Product</title>
 </head>
@@ -34,7 +35,7 @@
             </div>
             <div class="col-lg-7">
                 <h2>Glasses</h2>
-                <div class="rating">
+                <div class="product-rating">
                     <fieldset class="rating">
                         <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"
                             title="Awesome - 5 stars"></label>
@@ -58,6 +59,39 @@
                             for="starhalf" title="Sucks big time - 0.5 stars"></label>
                     </fieldset>
                 </div>
+                <div class="clearfix"></div>
+                <div class="price">
+                    <h2>$101.00 – $111.00</h2>
+                </div>
+                <div class="product-summary mt-4">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur. Excepteur sint occaecat cupidatat non. Duis aute irure dolor in reprehenderit in voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur.
+                </div>
+                <div class="sku mt-4">SKU: <b><a href="#" class="text-dark">PT0003-1</a></b></div>
+                <div class="categories mt-2">CATEGORIES: <b><a href="#" class="text-dark">WATCHES</a></b></div>
+                <div class="product-color mt-2">COLOR:
+                    <a href="" class="text-decoration-none">
+                        <div class="filter-color color_1 ml-3"></div>
+                    </a>
+                    <a href="" class="text-decoration-none">
+                        <div class="filter-color color_2"></div>
+                    </a>
+                </div>
+                <div class="product-size mt-2">SIZE:
+                    <a href="#" class="badge badge-light ml-2">Extra Large</a>
+                    <a href="#" class="badge badge-light ml-2">Large</a>
+                    <a href="#" class="badge badge-light ml-2">Medium</a>
+                    <a href="#" class="badge badge-light ml-2">Small</a>
+                </div>
+                <hr class="mt-4 mb-4">
+                <div class="purchase">
+                    <form>
+                        <button type="button" id="minus" onclick="decreaseValue()" value="-">-</button>
+                        <input type="number" id="quantity" min="0" step="1" value="0" />
+                        <button type="button" id="increase" onclick="increaseValue()" value="+">+</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -71,16 +105,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.carousel').slick({
-                dots: false,
-                arrows: false,
-                autoplay: true,
-                autoplaySpeed: 1500,
-            });
-        });
-    </script>
+    <script type="text/javascript" src="src/js/product.js"></script>
 </body>
 
 </html>
