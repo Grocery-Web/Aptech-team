@@ -20,7 +20,7 @@
 
         <div class="carousel-item embed-responsive-item home__carousel--img2">
             <div class="home__carousel--title">
-                New Campaign Sale <br> UP to 70%
+                New Campaign Sale <br> UP to 65%
                 <div class="home__carousel--title--text">
                     <p>Fashion for Women</p>
                 </div>
