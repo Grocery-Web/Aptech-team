@@ -49,12 +49,12 @@
                     <div class="form-group">
                         <label for="username" class="form-group__text">Tài khoản</label>
                         <input type="text" class="form-control" id="username" autocomplete="username"
-                            placeholder="Nhập tài khoản">
+                            placeholder="Nhập tài khoản" name="userlogin">
                     </div>
                     <div class="form-group">
                         <label for="userpassword" class="form-group__text">Mật khẩu</label>
                         <input type="password" class="form-control" autocomplete="current-password" id="userpassword"
-                            placeholder="Nhập mật khẩu">
+                            placeholder="Nhập mật khẩu" name="userpassword">
                     </div>
                     <div class="form-group form-check form-group__text">
                         <input type="checkbox" class="form-check-input" id="remember_check">
