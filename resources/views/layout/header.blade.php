@@ -125,7 +125,7 @@
                         Tạo tài khoản
                     </h2>
                     <p>Tạo tài khoản để theo dõi đơn hàng, lưu danh sách sản phẩm yêu thích, nhận nhiều ưu đãi hấp dẫn.</p>
-                    <img src="./app/img/graphic-map.png" alt="">
+                    <img src="{{URL::asset('img/graphic-map.png')}}" alt="">
                 </div>
                 <div class="nav__signup--right">
                     <form action="">
@@ -137,7 +137,12 @@
                         <div class="form__modal">
                             <label for="phone_number">SĐT</label>
                             <input type="text" id="phone_number" name="phone_number" class="form__text"
-                                placeholder="nhập SDT">
+                                placeholder="Nhập SDT">
+                        </div>
+                        <div class="form__modal">
+                            <label for="full_name">Địa chỉ</label>
+                            <input type="text" id="address" name="address" class="form__text"
+                                placeholder="Nhập địa chỉ">
                         </div>
                         <div class="form__modal">
                             <label for="">Email</label>

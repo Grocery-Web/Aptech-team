@@ -247,7 +247,7 @@
 <div class="container newsletter">
     <div class="row">
         <div class="col-md-2">
-            <img src="./app/img/newsletter.png" alt="">
+            <img src="{{URL::asset('img/newsletter.png')}}" alt="">
         </div>
         <div class="col-md-4">
             <div class="newsletter__wrapper">
