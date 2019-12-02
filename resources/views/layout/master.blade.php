@@ -83,6 +83,49 @@
                     <button type="submit" class="btn btn-dark form-group__btn">Đăng nhập</button>
                 </form>
             </div>
+            <div class="nav__shopcart">
+                <i class="material-icons-outlined nav__icon">shop</i>
+                <div class="form__text nav__shopcart--wrapper">
+                    <div class="nav__shopcart--arrow-up"></div>
+                    <div class="nav__shopcart--title">
+                        giỏ hàng
+                    </div>
+                    <div class="nav__shopcart--item">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 nav__shopcart--item--left">
+                                    Số lượng sản phẩm
+                                </div>
+                                <div class="col-md-4 nav__shopcart--item--right">
+                                    10.000.000
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 nav__shopcart--item--left">
+                                    Tổng tiền
+                                </div>
+                                <div class="col-md-4 nav__shopcart--item--right">
+                                    10.000.000
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 nav__shopcart--item--left">
+                                    Đơn vị tính
+                                </div>
+                                <div class="col-md-4 nav__shopcart--item--right">
+                                    VND
+                                </div>
+                            </div>
+                            <div class="row">
+                                <a href="">
+                                    <div class="btn btn-primary nav__shopcart--btn ">thanh toán</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
         </div>
