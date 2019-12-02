@@ -64,13 +64,13 @@
                             Phương thức thanh toán
                         </div>
                         <div class="footer__img">
-                            <img src="./app/img/visa.svg" alt="">
-                            <img src="./app/img/jcb.svg" alt="">
-                            <img src="./app/img/mastercard.svg" alt="">
+                            <img src="{{URL::asset('img/visa.svg')}}" alt="">
+                            <img src="{{URL::asset('img/jcb.svg')}}"alt="">
+                            <img src="{{URL::asset('img/mastercard.svg')}}" alt="">
                             <br>
-                            <img src="./app/img/internet-banking.svg" alt="">
-                            <img src="./app/img/cash.svg" alt="">
-                            <img src="./app/img/installment.svg" alt="">
+                            <img src="{{URL::asset('img/internet-banking.svg')}}"alt="">
+                            <img src="{{URL::asset('img/cash.svg')}}" alt="">
+                            <img src="{{URL::asset('img/installment.svg')}}" alt="">
                         </div>
                     </div>
                     <div class="col-nho">
