@@ -2,6 +2,21 @@
   outline: 1px solid red;
 } */
 
+/* --------------------------------------------------------- */
+
+/* Reset CSS */
+body, html {
+  background-color: white;
+}
+
+/* End: Reset CSS */
+
+/* --------------------------------------------------------- */
+
+.product {
+  margin-top: 6em;
+}
+
 /* Carousel Image */
 .carousel img {
   max-width: 60vw;
