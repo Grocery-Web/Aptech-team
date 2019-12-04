@@ -14,7 +14,7 @@
     <title>Title</title>
 </head>
 
-<body>
+<body class="homepage">
     @include ('layout.header')
     <!-- Content -->
     @yield('content')
