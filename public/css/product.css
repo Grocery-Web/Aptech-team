@@ -4,21 +4,13 @@
 
 /* --------------------------------------------------------- */
 
-/* Reset CSS */
-body, html {
+.product {
+  margin-top: 6em;
   background-color: white;
 }
 
-/* End: Reset CSS */
-
-/* --------------------------------------------------------- */
-
-.product {
-  margin-top: 6em;
-}
-
 /* Carousel Image */
-.carousel img {
+.product-carousel img {
   max-width: 60vw;
   width: 100%;
   height: auto;

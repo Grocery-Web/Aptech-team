@@ -4,7 +4,7 @@
 <div class="container-fluid product">
         <div class="row">
             <div class="col-lg-5">
-                <div class="carousel">
+                <div class="product-carousel">
                     <div><img
                             src="https://www.portotheme.com/wordpress/porto/shop3/wp-content/uploads/sites/22/2019/03/product-20-600x600.jpg">
                     </div>

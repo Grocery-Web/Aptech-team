@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.carousel').slick({
+    $('.product-carousel').slick({
         dots: false,
         arrows: false,
         autoplay: true,
