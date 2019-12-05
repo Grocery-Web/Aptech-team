@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let popup = document.querySelector('.popup');
     let signupbtn = document.querySelector('.nav__signup--link');
     let blackscreen = document.querySelector('.blackscreen');
-    console.log(blackscreen)
     signupbtn.addEventListener('click', function(){
         console.log('aa')
         popup.classList.add('appeared');
