@@ -1,7 +1,7 @@
 @extends('layout.master')
 @section('content')
 <!-- Product Information -->
-<div class="container-fluid product">
+<div class="container product">
         <div class="row">
             <div class="col-lg-5">
                 <div class="product-carousel">
@@ -57,8 +57,8 @@
                     <a href="#" class="badge badge-light ml-2">Medium</a>
                     <a href="#" class="badge badge-light ml-2">Small</a>
                 </div>
-                <hr class="mt-4 mb-4">
-                <div class="purchase d-flex flex-row flex-wrap mt-5">
+                <hr class="mt-4 mb-3">
+                <div class="purchase d-flex flex-row flex-wrap mt-4">
                     <form class="numberInput mb-3">
                         <button type="button" id="minus" onclick="decreaseValue()" value="-">-</button>
                         <input type="number" id="quantity" min="0" step="1" value="0" />
@@ -71,7 +71,7 @@
                         <button type="button" class="btn btn-danger"><i class="far fa-heart mr-2"></i>ADD TO WISHLIST</button>
                     </div>
                 </div>
-                <hr class="mt-4 mb-4">
+                <!-- <hr class="mt-4 mb-4"> -->
             </div>
         </div>
     </div>
