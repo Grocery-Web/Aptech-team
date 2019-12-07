@@ -1,23 +1,23 @@
 @extends('layout.master')
 @section('content')
 <!-- Product Information -->
-<div class="container-fluid product">
+<div class="container product">
         <div class="row">
             <div class="col-lg-5">
                 <div class="product-carousel">
                     <div><img
-                            src="https://www.portotheme.com/wordpress/porto/shop3/wp-content/uploads/sites/22/2019/03/product-20-600x600.jpg">
+                            src="https://images-na.ssl-images-amazon.com/images/I/91wFELT290L._SL1500_.jpg">
                     </div>
                     <div><img
-                            src="https://www.portotheme.com/wordpress/porto/shop3/wp-content/uploads/sites/22/2018/04/product-48-600x600.jpg">
+                            src="https://images-na.ssl-images-amazon.com/images/I/81zmAUCA5vL._SL1500_.jpg  ">
                     </div>
                     <div><img
-                            src="https://www.portotheme.com/wordpress/porto/shop3/wp-content/uploads/sites/22/2018/04/product-48-600x600.jpg">
+                            src="https://images-na.ssl-images-amazon.com/images/I/81Tq4at6PYL._SL1500_.jpg">
                     </div>
                 </div>
             </div>
             <div class="col-lg-7">
-                <h2>Glasses</h2>
+                <h2>Honeywell Comfort Control Oscillating Table Fan Adjustable Tilt Head With 3 Speeds & Removeable Grill</h2>
                 <div class="product-rating">
                     <div class="rate mb-2">
                         <input type="radio" id="star5" name="rate" value="5" />
@@ -34,15 +34,13 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="price">
-                    <h2>$101.00 – $111.00</h2>
+                    <h4>$101.00 – $111.00</h4>
                 </div>
                 <div class="product-summary mt-4">
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur.
+                Introducing the Honeywell Comfort ControlTM Table Fan: This fan delivers quiet, powerful, personal cooling in a compact modern design. It can be placed on a tabletop for focused cooling or used on the floor directing airflow where you need it. The convenient oscillation feature and adjustable tilting fan head allow for multiple ways to cool. Built with a robust metal grille that can be removed for easy cleaning, this fan is a great solution for your personal cooling needs.
                 </div>
-                <div class="sku mt-4">SKU: <b><a href="#" class="text-dark">PT0003-1</a></b></div>
-                <div class="categories mt-2">CATEGORIES: <b><a href="#" class="text-dark">WATCHES</a></b></div>
+                <div class="sku mt-4">SKU: <b><a href="#" class="text-dark">HTF1220B</a></b></div>
+                <div class="categories mt-2">CATEGORIES: <b><a href="#" class="text-dark">TABLE FANS</a></b></div>
                 <div class="product-color mt-2">COLOR:
                     <a href="#" class="text-decoration-none">
                         <div class="filter-color color_1 ml-3"></div>
@@ -57,8 +55,8 @@
                     <a href="#" class="badge badge-light ml-2">Medium</a>
                     <a href="#" class="badge badge-light ml-2">Small</a>
                 </div>
-                <hr class="mt-4 mb-4">
-                <div class="purchase d-flex flex-row flex-wrap mt-5">
+                <hr class="mt-4 mb-3">
+                <div class="purchase d-flex flex-row flex-wrap mt-4">
                     <form class="numberInput mb-3">
                         <button type="button" id="minus" onclick="decreaseValue()" value="-">-</button>
                         <input type="number" id="quantity" min="0" step="1" value="0" />
@@ -71,7 +69,48 @@
                         <button type="button" class="btn btn-danger"><i class="far fa-heart mr-2"></i>ADD TO WISHLIST</button>
                     </div>
                 </div>
-                <hr class="mt-4 mb-4">
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-lg-10 shop-utilities d-flex align-items-center">
+                <i class="fas fa-shipping-fast fa-2x mr-2"></i>
+                <div>FREE <br> SHIPPING</div>
+                <i class="fas fa-dollar-sign fa-2x ml-5 mr-2"></i>
+                <div>100% MONEY <br> BACK GUARANTEE</div>
+                <i class="fas fa-headset fa-2x ml-5 mr-2"></i>
+                <div>ONLINE <br> SUPPORT 24/7</div>
+            </div>
+            <div class="col-lg-2 social-icon d-flex align-items-center">
+                <a href="">
+                    <span class="fa-stack">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-facebook-f text-primary fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                <a href="">
+                    <span class="fa-stack">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-twitter text-info fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                <a href="">
+                    <span class="fa-stack">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-linkedin-in text-success fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                <a href="">
+                    <span class="fa-stack">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-google-plus-g text-danger fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                <a href="">
+                    <span class="fa-stack">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="far fa-envelope-open text-warning fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
             </div>
         </div>
     </div>
