@@ -1,4 +1,4 @@
-/** {
+/* * {
   outline: 1px solid red;
 } */
 
@@ -11,14 +11,13 @@
 
 /* Carousel Image */
 .product-carousel img {
-  max-width: 60vw;
+  max-width: 30vw;
   width: 100%;
   height: auto;
+  max-height: 70vh;
 }
 /* End: Carousel Image */
-
 /* --------------------------------------------------------- */
-
 /* Star Rating */
 .rate {
   float: left;
@@ -45,9 +44,13 @@
 .rate:not(:checked) > label:hover, .rate:not(:checked) > label:hover ~ label { color: #deb217; }
 .rate > input:checked + label:hover, .rate > input:checked + label:hover ~ label, .rate > input:checked ~ label:hover,.rate > input:checked ~ label:hover ~ label, .rate > label:hover ~ input:checked ~ label { color: #c59b08; }
 /* End: Star Rating */
-
 /* --------------------------------------------------------- */
-
+/* Product Price */
+.product .price {
+  color: #B12704;
+}
+/* End: Product Price */
+/* --------------------------------------------------------- */
 /* Product Color */
 
 .filter-color {
@@ -66,9 +69,7 @@
 }
 
 /* End: Product Color */
-
 /* --------------------------------------------------------- */
-
 /* Increase/Decrease Input */
 .numberInput button[type="button"] {
   cursor: pointer;
@@ -116,9 +117,7 @@ input[type=number]::-webkit-outer-spin-button {
   left: -5px;
 }
 /* End: Increase/Decrease Input */
-
 /* --------------------------------------------------------- */
-
 /* Add to cart button */
 .addtocart button {
   height: 3rem;
@@ -126,14 +125,23 @@ input[type=number]::-webkit-outer-spin-button {
   font-weight: 700;
 }
 /* End: Add to cart button */
-
 /* --------------------------------------------------------- */
-
 /* Add to wishlist button */
 .wishlist button {
   height: 3rem;
   font-size: 13.5px;
 }
 /* End: Add to wishlist button */
-
 /* --------------------------------------------------------- */
+/* Shop Utilities */
+.product .shop-utilities div {
+  display: inline-block;
+}
+/* End: Shop Utilities */
+/* --------------------------------------------------------- */
+/* Social Icon */
+.product .social-icon a {
+  text-decoration: none;
+  color: black;
+}
+/* End: Social Icon */
