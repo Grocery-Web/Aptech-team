@@ -1,0 +1,8 @@
+.gender__input, .registerbtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.gender__input--text{
+    margin: 1rem;
+}
