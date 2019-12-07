@@ -10,19 +10,20 @@
             <li class="nav-item">
                 <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">pages</a>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="category-menu" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">Categories</a>
                 <div class="dropdown-menu" aria-labelledby="category-menu">
-                    <a class="dropdown-item" href="#">Action 1</a>
-                    <a class="dropdown-item" href="#">Action 2</a>
+                    <a class="dropdown-item" href="#">Ceiling Fans</a>
+                    <a class="dropdown-item" href="#">Table Fans</a>
+                    <a class="dropdown-item" href="#">Exhaust Fans</a>
                 </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact Us</a>
             </li>
         </ul>
         <form class="nav__search">
@@ -40,32 +41,6 @@
                 </button>
             </div>
         </form>
-        <div class="nav__login">
-            <i class="material-icons nav__icon">
-                person_outline
-            </i>
-            <form class="form__text">
-                <div class="nav__login--arrow-up"></div>
-                <div class="form-group">
-                    <label for="username" class="form-group__text">Tài khoản</label>
-                    <input type="text" class="form-control" id="username" autocomplete="username"
-                        placeholder="Nhập tài khoản" name="userlogin">
-                </div>
-                <div class="form-group">
-                    <label for="userpassword" class="form-group__text">Mật khẩu</label>
-                    <input type="password" class="form-control" autocomplete="current-password" id="userpassword"
-                        placeholder="Nhập mật khẩu" name="userpassword">
-                </div>
-                <div class="form-group form-check form-group__text">
-                    <input type="checkbox" class="form-check-input" id="remember_check">
-                    <label class="form-check-label" for="remember_check">Nhớ tên đăng nhập</label>
-                </div>
-                <div class="form-group">
-                    <a href="#" class="nav__signup--link">Chưa có tài khoản. Đăng kí ngay</a>
-                </div>
-                <button type="submit" class="btn btn-dark form-group__btn">Đăng nhập</button>
-            </form>
-        </div>
         <div class="nav__shopcart">
             <i class="material-icons-outlined nav__icon">shop</i>
             <div class="form__text nav__shopcart--wrapper">
@@ -106,8 +81,40 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+        </div>
+        <div class="nav__login">
+            <a href=""> <i class="material-icons nav__icon" style="color: #212529">
+                person_outline
+            </i>
+        </a>
+             <!-- User Info -->
+            <!-- <div class="nav__userinfo">
+                        <div class="nav__userinfo--arrow-up"></div>
+                        <div class="nav__userinfo--title">
+                            Thông tin tài khoản
+                        </div>
+                        <div class="nav__userinfo--info">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    Tài khoản
+                                </div>
+                                <div class="col-md-7">
+                                    :Tên tài khoản
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    Ngày tham gia
+                                </div>
+                                <div class="col-md-7">
+                                    :xx/xx/xxxx
+                                </div>
+                            </div>
+                            <a href="#" class="logout">Đăng xuất</a>
+                        </div>
+                    </div> -->
+            <!-- End User Info -->
         </div>
     </div>
 
