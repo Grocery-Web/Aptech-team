@@ -279,12 +279,12 @@
                 <div class="newsletter__wrapper">
                     <div class="row">
                         <h3 class="newsletter__wrapper--title">
-                            Đăng ký nhận bản tin Tiki
+                            SUBSCRIBE NEWSLETTER
                         </h3>
                     </div>
                     <div class="row">
                         <h5 class="newsletter__wrapper--text">
-                            Đừng bỏ lỡ hàng ngàn sản phẩm và chương trình siêu hấp dẫn
+                            Get all the latest information on Events, Sales and Offers
                         </h5>
                     </div>
                 </div>
@@ -293,12 +293,11 @@
                 <div class="newsletter__right">
                     <div class="row">
                         <div class="col-md-8">
-                            <input class="form-control" type="text" name="newsEmail"
-                                placeholder="Địa chỉ Email của bạn">
+                            <input class="form-control" type="text" name="newsEmail" placeholder="Email address...">
                         </div>
                         <div class="col-md-3">
                             <a href="">
-                                <div class="btn btn-primary newsletter__right--btn">Đăng ký</div>
+                                <div class="btn btn-primary newsletter__right--btn">SUBSCRIBE</div>
                             </a>
                         </div>
                     </div>
