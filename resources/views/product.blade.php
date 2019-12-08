@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 @section('content')
 <!-- Product Summary + purchase zone -->
 <div class="container product">
