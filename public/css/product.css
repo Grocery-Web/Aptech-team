@@ -10,11 +10,16 @@
 }
 
 /* Carousel Image */
+.product-carousel {
+  overflow: hidden;
+  max-height: 90vh;
+}
+
 .product-carousel img {
-  max-width: 30vw;
+  max-width: 50vw;
   width: 100%;
   height: auto;
-  max-height: 70vh;
+  max-height: 90vh;
 }
 /* End: Carousel Image */
 /* --------------------------------------------------------- */
@@ -145,3 +150,25 @@ input[type=number]::-webkit-outer-spin-button {
   color: black;
 }
 /* End: Social Icon */
+/* --------------------------------------------------------- */
+/* Product Info Tab Navs */
+.spec .nav a {
+  text-decoration: none;
+}
+
+.spec ul .active {
+  border-bottom: 4px solid blue;
+}
+/* End: Product Info Tab Navs */
+
+/* Product Info Table */
+.spec td, .spec th {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-collapse: collagipse;
+}
+
+.spec th {
+  background-color: #f3f3f3;
+}
+/* End: Product Info Table */

@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('mainpage');
 });
 
-
-Route::get('/product', function () {
+/* This route is for product page development. */
+Route::get('/test', function () {
     return view('product');
 });
 Auth::routes();
