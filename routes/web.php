@@ -11,6 +11,7 @@
 |
 */
 
+// Index Mainpage
 Route::get('/', function () {
     return view('mainpage');
 });
@@ -19,6 +20,17 @@ Route::get('/', function () {
 Route::get('/product', function () {
     return view('product');
 });
+
+//User Authentication
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Admin Panel
+Route::get('admin/products', ["uses"=>"Admin\AdminProductsController@index","as"=>"adminDisplayProducts"]);
+
+//display edit product form
+Route::get('admin/editProductForm/{id}', ["uses"=>"Admin\AdminProductsController@editProductForm", "as"=> "adminEditProductForm"]);
+
+//display edit product image form
+Route::get('admin/editProductImageForm/{id}', ["uses"=>"Admin\AdminProductsController@editProductImageForm", "as"=> "adminEditProductImageForm"]);
