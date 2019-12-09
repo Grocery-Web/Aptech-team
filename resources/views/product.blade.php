@@ -157,7 +157,34 @@
         </table>
     </div>
     <div id="menu2" class="tab-pane">
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        <h4 class="mt-3">Create Review</h4>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                   <label for="inputFirstname">Name *</label>
+                   <input type="name" class="form-control" required>
+                </div>
+            </div>
+            <div class="form-row">
+               <div class="form-group col-md-6">
+                   <label for="inputEmail4">Email *</label>
+                   <input type="email" class="form-control" id="inputEmail4" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                   <label for="inputCity">Address</label>
+                   <input type="text" class="form-control" id="inputCity">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="Textarea1">Your review *</label>
+                    <textarea class="form-control" id="Textarea1" rows="3" placeholder="What did you like or dislike?" required ></textarea>
+                </div>
+            </div>      
+           <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
   </div>
 </div>
