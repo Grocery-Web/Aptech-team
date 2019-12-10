@@ -18,7 +18,7 @@
 
 
     <h3>Current Image</h3>
-    <div><img src="{{asset ('storage')}}/product_images/{{$product['image']}}" width="100" height="100" style="max-height:220px" ></div>
+    <div><img src="{{asset('storage/product_images/'.$product['image'])}}" width="100" height="100" style="max-height:220px" ></div>
 
     <form action="/admin/updateProductImage/{{$product->id}}" method="post" enctype="multipart/form-data">
 
