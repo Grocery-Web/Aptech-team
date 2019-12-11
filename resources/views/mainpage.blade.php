@@ -11,9 +11,9 @@
             <!-- Carousel items have `.embed-responsive-item` -->
             <div class="carousel-item embed-responsive-item home__carousel--img1 active ">
                 <div class="home__carousel--title">
-                    Winter Sale <br> Get 30% OFF <br> On JACKETS.
+                    Winter Sale - Get 30% OFF <br> On TABLE FANS.
                     <div class="home__carousel--title--text">
-                        <p>It's Time To Start Shopping Porto's Winter Sale</p>
+                        <p>It's Time To Start Shopping</p>
                     </div>
                     <button class="btn btn-dark">SHOP NOW</button>
                 </div>
@@ -22,7 +22,7 @@
                 <div class="home__carousel--title">
                     New Campaign Sale <br> UP to 65%
                     <div class="home__carousel--title--text">
-                        <p>Fashion for Women</p>
+                        <p>For CEILING FANS</p>
                     </div>
                     <button class="btn btn-dark">SHOP NOW</button>
                 </div>
