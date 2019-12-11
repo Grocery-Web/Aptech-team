@@ -34,3 +34,6 @@ Route::get('admin/editProductForm/{id}', ["uses"=>"Admin\AdminProductsController
 
 //display edit product image form
 Route::get('admin/editProductImageForm/{id}', ["uses"=>"Admin\AdminProductsController@editProductImageForm", "as"=> "adminEditProductImageForm"]);
+
+//Update product image from admin panel
+Route::post('admin/updateProductImage/{id}', ["uses"=>"Admin\AdminProductsController@updateProductImage", "as"=> "adminUpdateProductImage"]);
