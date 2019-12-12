@@ -1,0 +1,44 @@
+.contact-us-container {
+    margin-top: 6rem;
+    background-color: #f2f2f2;
+}
+
+.contact-us {
+    max-width: 1080px;
+    border: 1px solid #f2f2f2;
+}
+
+.contact-us .col-left {
+    background-image: url("https://colorlib.com/etc/cf/ContactFrom_v17/images/bg-01.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    z-index: 1;
+}
+
+.contact-us .col-left::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+}
+
+.contact-us .col-right {
+    padding-left: 50px;
+    background-color: #fff;
+}
+
+.contact-us .col-right h2 {
+    text-align: center;
+}
+
+.contact-us .col-right .btn {
+    position: relative;
+    left: 45%;
+}

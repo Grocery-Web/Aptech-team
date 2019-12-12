@@ -24,6 +24,10 @@ Route::get('/aboutus', function () {
     return view('aboutus');
 });
 
+Route::get('/contact', function () {
+    return view('contactus');
+});
+
 
 Auth::routes();
 
