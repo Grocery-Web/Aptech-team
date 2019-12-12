@@ -19,6 +19,12 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return view('product');
 });
+
+Route::get('/aboutus', function () {
+    return view('aboutus');
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
