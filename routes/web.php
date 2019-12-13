@@ -20,8 +20,14 @@ Route::get('/test', function () {
     return view('product');
 });
 
+/* This route is for About Us page */
 Route::get('/aboutus', function () {
     return view('aboutus');
+});
+
+/* This route is for Contact Us page */
+Route::get('/contact', function () {
+    return view('contactus');
 });
 
 
