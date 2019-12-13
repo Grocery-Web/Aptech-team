@@ -3,9 +3,29 @@
 <div class="contact-us-container">
 <div class="container contact-us">
     <div class="row">
-        <div class="col-md-6 col-left">
+        <div class="col-md-6 col-left d-flex justify-content-center align-items-center ">
             <div class="col-left-text">
-
+                <div class="d-flex flex-row">
+                    <i class="fas fa-map-marker-alt pr-21"></i>
+                    <div>
+                        <h4>Address</h4>
+                        <p>75-81 Stirling Rd, Acton, London 8DJ, United Kingdom</p>
+                    </div>
+                </div>
+                <div class="d-flex flex-row">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h4>Let's Talk</h4>
+                        <p>+44 20 8992 6923</p>
+                    </div>
+                </div>
+                <div class="d-flex flex-row">
+                    <i class="far fa-envelope"></i>
+                    <div>
+                        <h4>General Support</h4>
+                        <p>contact@example.com</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-6 col-right">

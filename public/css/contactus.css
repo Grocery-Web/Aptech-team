@@ -13,8 +13,12 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    text-align: center;
     z-index: 1;
+}
+
+.contact-us .col-left .col-left-text {
+    color: #fff;
+    z-index: 2;
 }
 
 .contact-us .col-left::before {
@@ -27,6 +31,19 @@
     top: 0;
     left: 0;
     background: rgba(0,0,0,0.8);
+}
+
+.contact-us i {
+    padding-top: 6px;
+    padding-right: 20px;
+}
+
+.contact-us .pr-21 {
+    padding-right: 24px;
+}
+
+.contact-us .col-left p {
+    color: #999999;
 }
 
 .contact-us .col-right {
