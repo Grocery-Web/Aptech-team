@@ -83,39 +83,28 @@
                 </div>
             </div>
         </div>
+        <!-- Login btn -->
+
+        @if(Auth::check())
         <div class="nav__login">
-            <a href=""> <i class="material-icons nav__icon" style="color: #212529">
-                person_outline
-            </i>
-        </a>
-             <!-- User Info -->
-            <!-- <div class="nav__userinfo">
-                        <div class="nav__userinfo--arrow-up"></div>
-                        <div class="nav__userinfo--title">
-                            Thông tin tài khoản
-                        </div>
-                        <div class="nav__userinfo--info">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    Tài khoản
-                                </div>
-                                <div class="col-md-7">
-                                    :Tên tài khoản
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    Ngày tham gia
-                                </div>
-                                <div class="col-md-7">
-                                    :xx/xx/xxxx
-                                </div>
-                            </div>
-                            <a href="#" class="logout">Đăng xuất</a>
-                        </div>
-                    </div> -->
-            <!-- End User Info -->
+            <a href="{{ route('login') }}"> <i class="material-icons nav__icon" style="color: #212529">
+                    person_outline
+                </i>
+            </a>
+            <p>{!! Auth::user()->name !!}</p>
+            <p>{!! Auth::user()->email !!}</p>
         </div>
+        @else
+        <div class="nav__login">
+            <a href="{{ route('login') }}"> <i class="material-icons nav__icon" style="color: #212529">
+                    person_outline
+                </i>
+            </a>
+        </div>
+        @endif
+
+        <!-- End Login btn -->
+    </div>
     </div>
 
     </div>
