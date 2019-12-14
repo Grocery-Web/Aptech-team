@@ -50,3 +50,12 @@ Route::post('admin/updateProductImage/{id}', ["uses"=>"Admin\AdminProductsContro
 
 //Update product infomation from admin panel
 Route::post('admin/updateProduct/{id}', ["uses"=>"Admin\AdminProductsController@updateProduct", "as"=> "adminUpdateProduct"]);
+
+//Update product infomation from admin panel
+Route::post('admin/updateProduct/{id}', ["uses"=>"Admin\AdminProductsController@updateProduct", "as"=> "adminUpdateProduct"]);
+
+// Display adding new product form
+Route::get('admin/createProductForm', ["uses"=>"Admin\AdminProductsController@createProductForm","as"=>"adminCreateProductForm"]);
+
+//Add new product from admin panel
+Route::post('admin/sendCreateProductForm', ["uses"=>"Admin\AdminProductsController@sendCreateProductForm", "as"=> "adminSendCreateProductForm"]);
