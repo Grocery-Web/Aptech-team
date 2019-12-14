@@ -36,5 +36,12 @@ class ProductsTableSeeder extends Seeder
             'type'        =>   'EXHAUST FANS',
             'image'       =>   'Luminous Buddy 230mm 55-Watt High Speed.jpg'
         ]);
+        DB::table('products')->insert([
+            'name'        =>   'Home Table Fans with Blue',
+            'description' =>   'As per the needs and requirements of our clients, we are involved in providing Home Table Fans.',
+            'price'       =>   '300',
+            'type'        =>   'TABLE FANS',
+            'image'       =>   '71vRtKjrHXL._SY679_.jpg'
+        ]);
     }
 }

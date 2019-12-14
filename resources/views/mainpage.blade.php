@@ -137,135 +137,42 @@
             Popular Products
         </h2>
         <div class="card-deck">
-            <div class="card list_item__card">
-                <img class="card-img-top list_item__card--img" src="https://via.placeholder.com/200px*200px" alt="">
-                <div class="card-body list_item__card--body">
-                    <h4 class="card-title list_item__card--title">Title</h4>
-                    <p class="card-text list_item__card--text">
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                </div>
-            </div>
-            <div class="card list_item__card">
-                <img class="card-img-top list_item__card--img" src="https://via.placeholder.com/200px*200px" alt="">
-                <div class="card-body list_item__card--body">
-                    <h4 class="card-title list_item__card--title">Title</h4>
-                    <p class="card-text list_item__card--text">
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                </div>
-            </div>
-            <div class="w-100 d-none d-sm-block d-md-none">
-                <!-- wrap every 2 on sm-->
-            </div>
-            <div class="card list_item__card">
-                <img class="card-img-top list_item__card--img" src="https://via.placeholder.com/200px*200px" alt="">
-                <div class="card-body list_item__card--body">
-                    <h4 class="card-title list_item__card--title">Title</h4>
-                    <p class="card-text list_item__card--text">
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                </div>
-            </div>
-            <div class="w-100 d-none d-md-block d-lg-none">
-                <!-- wrap every 3 on md-->
-            </div>
-            <div class="card list_item__card">
-                <img class="card-img-top list_item__card--img" src="https://via.placeholder.com/200px*200px" alt="">
-                <div class="card-body list_item__card--body">
-                    <h4 class="card-title list_item__card--title">Title</h4>
-                    <p class="card-text list_item__card--text">
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                </div>
-            </div>
-            <div class="w-100 d-none d-sm-block d-md-none">
-                <!-- wrap every 2 on sm-->
-            </div>
-            <div class="w-100 d-none d-lg-block d-xl-none">
-                <!-- wrap every 4 on lg-->
-            </div>
-            <div class="card list_item__card">
-                <img class="card-img-top list_item__card--img" src="https://via.placeholder.com/200px*200px" alt="">
-                <div class="card-body list_item__card--body">
-                    <h4 class="card-title list_item__card--title">Title</h4>
-                    <p class="card-text list_item__card--text">
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                </div>
-            </div>
-            <div class="card list_item__card">
-                <img class="card-img-top list_item__card--img" src="https://via.placeholder.com/200px*200px" alt="">
-                <div class="card-body list_item__card--body">
-                    <h4 class="card-title list_item__card--title">Title</h4>
-                    <p class="card-text list_item__card--text">
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                </div>
-            </div>
-            <div class="w-100 d-none d-md-block d-lg-none">
-                <!-- wrap every 3 on md-->
-            </div>
-            <div class="w-100 d-none d-sm-block d-md-none">
-                <!-- wrap every 2 on sm-->
-            </div>
-            <div class="w-100 d-none d-xl-block">
-                <!-- wrap every 6 on xl-->
-            </div>
-            <div class="card list_item__card">
-                <img class="card-img-top list_item__card--img" src="https://via.placeholder.com/200px*200px" alt="">
-                <div class="card-body list_item__card--body">
-                    <h4 class="card-title list_item__card--title">Title</h4>
-                    <p class="card-text list_item__card--text">
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                </div>
-            </div>
-            <div class="card list_item__card">
-                <img class="card-img-top list_item__card--img" src="https://via.placeholder.com/200px*200px" alt="">
-                <div class="card-body list_item__card--body">
-                    <h4 class="card-title list_item__card--title">Title</h4>
-                    <p class="card-text list_item__card--text">
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                </div>
-            </div>
-            <div class="w-100 d-none d-sm-block d-md-none">
-                <!-- wrap every 2 on sm-->
-            </div>
-            <div class="w-100 d-none d-lg-block d-xl-none">
-                <!-- wrap every 4 on lg-->
-            </div>
-            <div class="card list_item__card">
-                <img class="card-img-top list_item__card--img" src="https://via.placeholder.com/200px*200px" alt="">
-                <div class="card-body list_item__card--body">
-                    <h4 class="card-title list_item__card--title">Title</h4>
-                    <p class="card-text list_item__card--text">
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                </div>
-            </div>
-            <div class="w-100 d-none d-md-block d-lg-none">
-                <!-- wrap every 3 on md-->
-            </div>
-            <div class="card list_item__card">
-                <img class="card-img-top list_item__card--img" src="https://via.placeholder.com/200px*200px" alt="">
-                <div class="card-body list_item__card--body">
-                    <h4 class="card-title list_item__card--title">Title</h4>
-                    <p class="card-text list_item__card--text">
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                </div>
-            </div>
-            <div class="w-100 d-none d-sm-block d-md-none">
-                <!-- wrap every 2 on sm-->
-            </div>
-            <div class="card list_item__card">
-                <img class="card-img-top list_item__card--img" src="https://via.placeholder.com/200px*200px" alt="">
-                <div class="card-body list_item__card--body">
-                    <h4 class="card-title list_item__card--title">Title</h4>
-                    <p class="card-text list_item__card--text">
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                </div>
-            </div>
-            <div class="card list_item__card">
-                <img class="card-img-top list_item__card--img" src="https://via.placeholder.com/200px*200px" alt="">
-                <div class="card-body list_item__card--body">
-                    <h4 class="card-title list_item__card--title">Title</h4>
-                    <p class="card-text list_item__card--text">
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                </div>
-            </div>
+            <?php
+                $count =0;
+            ?>
+            @foreach ($products as $product)
+            <?php
+                $count++;
+            ?>
+                    <div class="card list_item__card">
+                        <img class="card-img-top list_item__card--img" src="{{asset ('storage')}}/product_images/{{$product['image']}}" alt="">
+                        <div class="card-body list_item__card--body">
+                            <h4 class="card-title list_item__card--title">{{$product->name}}</h4>
+                            <p class="card-text list_item__card--text">
+                                ${{$product->price}}</p>
+                        </div>
+                    </div>
+                    <?php
+                        if ($count % 2 == 0) {
+                            echo'<div class="w-100 d-none d-sm-block d-md-none"></div>';
+                            //wrap every 2 on sm
+                        };
+                        if ($count % 3 == 0){
+                            echo '<div class="w-100 d-none d-md-block d-lg-none">
+                        </div>';
+                        // <!-- wrap every 3 on md-->
+                        }
+                        if ($count % 4 == 0){
+                            echo '<div class="w-100 d-none d-lg-block d-xl-none"></div>';
+                        // <!-- wrap every 4 on lg-->
+                        }
+                        if ($count % 6 == 0){
+                            echo'<div class="w-100 d-none d-xl-block">
+                            </div>';
+                        // <!-- wrap every 6 on xl-->
+                        };
+                    ?>
+                @endforeach
         </div>
     </div>
     <!-- End Card List -->
