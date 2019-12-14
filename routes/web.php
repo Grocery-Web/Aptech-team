@@ -22,12 +22,12 @@ Route::get('/test', function () {
 
 /* This route is for About Us page */
 Route::get('/aboutus', function () {
-    return view('aboutus');
+    return view('aboutUs');
 });
 
 /* This route is for Contact Us page */
 Route::get('/contact', function () {
-    return view('contactus');
+    return view('contactUs');
 });
 
 
