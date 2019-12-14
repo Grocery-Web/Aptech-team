@@ -43,5 +43,19 @@ class ProductsTableSeeder extends Seeder
             'type'        =>   'TABLE FANS',
             'image'       =>   '71vRtKjrHXL._SY679_.jpg'
         ]);
+        DB::table('products')->insert([
+            'name'        =>   'Metro High Speed Fans',
+            'description' =>   'Metro brand is owned by M/s Samarth Impex which is a manufacturing and export based company from Hyderabad INDIA.',
+            'price'       =>   '320',
+            'type'        =>   'CEILING FANS',
+            'image'       =>   '24-inches-fans-500x500.jpg'
+        ]);
+        DB::table('products')->insert([
+            'name'        =>   'Metro High Speed Fans',
+            'description' =>   'Metro brand is owned by M/s Samarth Impex which is a manufacturing and export based company from Hyderabad INDIA.',
+            'price'       =>   '320',
+            'type'        =>   'CEILING FANS',
+            'image'       =>   '24-inches-fans-500x500.jpg'
+        ]);
     }
 }
