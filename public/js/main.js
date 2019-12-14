@@ -22,12 +22,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     let home_carousel;
-    home_carousel = document.querySelector(".home__carousel");
-    home_carousel.addEventListener("mouseover", function () {
-        for (let item of btn) {
-            item.classList.remove("form__text--appear");
-        }
-    })
+    // home_carousel = document.querySelector(".home__carousel");
+    // home_carousel.addEventListener("mouseover", function () {
+    //     for (let item of btn) {
+    //         item.classList.remove("form__text--appear");
+    //     }
+    // })
 
     let navbar;
     navbar = document.querySelector(".navbar-nav");
