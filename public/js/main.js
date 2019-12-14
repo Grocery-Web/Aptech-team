@@ -3,11 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let btn = [];
     icon = document.getElementsByClassName("nav__icon");
     btn = document.getElementsByClassName("form__text");
-    let count = [];
     let icon_length = icon.length;
-    for (let i = 0; i < icon_length; i++) {
-        count[i] = 0;
-    }
     for (let index = 0; index < icon_length; index++) {
         icon[index].addEventListener("mouseover", function () {
 
@@ -42,15 +38,15 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     // End Navigation Button : Search, Login, Shopcart
     // Show Signup Popup
-    let popup = document.querySelector('.popup');
-    let signupbtn = document.querySelector('.nav__signup--link');
-    let blackscreen = document.querySelector('.blackscreen');
-    signupbtn.addEventListener('click', function(){
-        console.log('aa')
-        popup.classList.add('appeared');
-        btn[1].classList.remove('form__text--appear');
-    })
-    blackscreen.addEventListener('click', function(){
-        popup.classList.remove('appeared');
-    })
+    // let popup = document.querySelector('.popup');
+    // let signupbtn = document.querySelector('.nav__signup--link');
+    // let blackscreen = document.querySelector('.blackscreen');
+    // signupbtn.addEventListener('click', function(){
+    //     console.log('aa')
+    //     popup.classList.add('appeared');
+    //     btn[1].classList.remove('form__text--appear');
+    // })
+    // blackscreen.addEventListener('click', function(){
+    //     popup.classList.remove('appeared');
+    // })
 })

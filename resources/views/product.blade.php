@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<!-- Product Information -->
+<!-- Product Summary + purchase zone -->
 <div class="container product">
         <div class="row">
             <div class="col-lg-5">
@@ -114,5 +114,80 @@
             </div>
         </div>
     </div>
-    <!-- End: Product Information -->
+    <!-- End: Product Summary + purchase zone -->
+<!-- Product Specification -->
+<div class="container spec mt-5 mb-5">
+  <ul class="nav nav-tabs d-flex justify-content-around">
+    <li><a data-toggle="tab" href="#home" class="active">DESCRIPTION</a></li>
+    <li><a data-toggle="tab" href="#menu1">PRODUCT INFORMATION</a></li>
+    <li><a data-toggle="tab" href="#menu2">CUSTOMER FEEDBACK</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane in active">
+        <img src="https://m.media-amazon.com/images/S/aplus-media/sota/72729dbf-31b1-4cfd-ab89-fc75eefb968f.__CR0,54,400,400_PT0_SX300_V1___.jpg">
+        <p class="mt-5">The Honeywell 12" Oscillating Table Fan can be implemented in a variety of settings to improve the overall quality of airflow. The inclusion of three speed settings and a round 12 in. head afford a wide customizable oscillation. An adjustable tilt fan head will provide owners the luxury of maneuvering the direction of their airflow at a moment's notice. Overall ease of use has been highlighted with the addition of quick touch button controls that simplify the process of selecting preferred settings. This table fan also comes equipped with a removable grille that will simplify the process of cleaning off accumulated dust and debris. The Honeywell 12" Oscillating Table Fan can provide instant relief in a personal setting (i.e. offices or small rooms).</p>
+    </div>
+    <div id="menu1" class="tab-pane">
+        <table class="mt-5" style="width:50%">
+            <tr>
+              <th>Product Dimensions</th>
+              <td>14.8 x 11.5 x 19.1 inches</td>
+            </tr>
+            <tr>
+              <th>Item Weight</th>
+              <td>8.5 pounds</td>
+            </tr>
+            <tr>
+              <th>Shipping Weight</th>
+              <td>8.5 pounds</td>
+            </tr>
+            <tr>
+              <th>Manufacturer</th>
+              <td>Honeywell</td>
+            </tr>
+            <tr>
+              <th>ASIN</th>
+              <td>B07C5Y1PFH</td>
+            </tr>
+            <tr>
+              <th>Item model number</th>
+              <td>HTF1220B</td>
+            </tr>
+        </table>
+    </div>
+    <div id="menu2" class="tab-pane">
+        <h4 class="mt-3">Create Review</h4>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                   <label for="inputFirstname">Name *</label>
+                   <input type="name" class="form-control" required>
+                </div>
+            </div>
+            <div class="form-row">
+               <div class="form-group col-md-6">
+                   <label for="inputEmail4">Email *</label>
+                   <input type="email" class="form-control" id="inputEmail4" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                   <label for="inputCity">Address</label>
+                   <input type="text" class="form-control" id="inputCity">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="Textarea1">Your review *</label>
+                    <textarea class="form-control" id="Textarea1" rows="3" placeholder="What did you like or dislike?" required ></textarea>
+                </div>
+            </div>      
+           <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!-- End: Product Specification -->
 @endsection

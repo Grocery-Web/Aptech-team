@@ -16,12 +16,26 @@ Route::get('/', function () {
     return view('mainpage');
 });
 
-
-Route::get('/product', function () {
+/* This route is for product page development. */
+Route::get('/test', function () {
     return view('product');
 });
 
+<<<<<<< HEAD
+/* This route is for About Us page */
+Route::get('/aboutus', function () {
+    return view('aboutus');
+});
+
+/* This route is for Contact Us page */
+Route::get('/contact', function () {
+    return view('contactus');
+});
+
+
+=======
 //User Authentication
+>>>>>>> sonvt8
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
