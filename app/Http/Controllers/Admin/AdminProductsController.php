@@ -79,4 +79,10 @@ class AdminProductsController extends Controller
 
         return redirect()->route("adminDisplayProducts");
     }
+
+    // Add new product
+    public function createProductForm()
+    {
+        return view('admin.createProductForm');
+    }
 }
