@@ -12,16 +12,14 @@
 */
 
 // Index Mainpage
-Route::get('/', function () {
-    return view('mainpage');
-});
+Route::get('/',  ["uses"=>"ProductsController@index", "as"=> "login"]);
 
 /* This route is for product page development. */
 Route::get('/test', function () {
     return view('product');
 });
 
-<<<<<<< HEAD
+
 /* This route is for About Us page */
 Route::get('/aboutus', function () {
     return view('aboutus');
@@ -33,9 +31,7 @@ Route::get('/contact', function () {
 });
 
 
-=======
 //User Authentication
->>>>>>> sonvt8
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
