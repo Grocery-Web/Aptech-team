@@ -17,21 +17,24 @@ class ProductsTableSeeder extends Seeder
             'name'        =>   'SYMPHONY WITH LED LIGHT 54 INCH',
             'description' =>   'LIVING ROOM CEILING FANS',
             'price'       =>   '299.99',
-            'type'        =>   'CEILING FANS'
+            'type'        =>   'CEILING FANS',
+            'image'       =>    'SYMPHONY WITH LED LIGHT 54 INCH.jpg'
         ]);
 
         DB::table('products')->insert([
             'name'        =>   'LOKI WITH LED LIGHT 36 INCH',
             'description' =>   'SMALL ROOM CEILING FANS',
             'price'       =>   '129.99',
-            'type'        =>   'CEILING FANS'
+            'type'        =>   'CEILING FANS',
+            'image'       =>    'LOKI WITH LED LIGHT 36 INCH.jpg'
         ]);
 
         DB::table('products')->insert([
             'name'        =>   'Luminous Buddy 230mm 55-Watt High Speed',
             'description' =>   'Exhaust Air Conditioner Blower Fan for Industrial Greenhouse Poultry Swine Farm',
             'price'       =>   '160',
-            'type'        =>   'EXHAUST FANS'
+            'type'        =>   'EXHAUST FANS',
+            'image'       =>   'Luminous Buddy 230mm 55-Watt High Speed.jpg'
         ]);
     }
 }
