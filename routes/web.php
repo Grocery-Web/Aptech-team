@@ -37,7 +37,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Admin Panel
-Route::get('admin/products', ["uses"=>"Admin\AdminProductsController@index","as"=>"adminDisplayProducts"]);
+Route::get('admin/products', ["uses"=>"Admin\AdminProductsController@index","as"=>"adminDisplayProducts"])->middleware('restrictToAdmin');;
 
 //display edit product form
 Route::get('admin/editProductForm/{id}', ["uses"=>"Admin\AdminProductsController@editProductForm", "as"=> "adminEditProductForm"]);
@@ -59,3 +59,6 @@ Route::get('admin/createProductForm', ["uses"=>"Admin\AdminProductsController@cr
 
 //Add new product from admin panel
 Route::post('admin/sendCreateProductForm', ["uses"=>"Admin\AdminProductsController@sendCreateProductForm", "as"=> "adminSendCreateProductForm"]);
+
+//Delete product from admin panel
+Route::get('admin/deleteProduct/{id}', ["uses"=>"Admin\AdminProductsController@deleteProduct", "as"=> "adminDeleteProduct"]);
