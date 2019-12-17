@@ -14,7 +14,15 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <p> Name: {!! Auth::user()->name !!}</p>
+                    <p> Email: {!! Auth::user()->email !!}</p>
+
+                    <a href="/"  class="btn btn-warning">Main Page</a>
+
+                    @if($userData->isAdmin())
+                    <a href="{{ route('adminDisplayProducts')}}" class="btn btn-primary">Admin Dashboard</a>
+                    @endif
+
                 </div>
             </div>
         </div>
