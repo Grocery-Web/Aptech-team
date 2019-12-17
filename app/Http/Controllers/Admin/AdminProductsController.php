@@ -87,30 +87,6 @@ class AdminProductsController extends Controller
     // Add new product
     public function sendCreateProductForm(Request $request)
     {
-        // $name       =   $request->input('name');
-        // $desciption =   $request->input('description');
-        // $type       =   $request->input('type');
-        // $price      =   $request->input('price');
-
-        // Validator::make($request->all(), ['image' => "required|file|image|mimes:jpg,png,jpeg|max:5000"])->validate();
-
-        // $ext = $request->file('image')->getClientOriginalExtension(); //jpg
-        // $stringImageFormat = str_replace(" ","",$request->input('name'));
-
-        // $imageName = $stringImageFormat.".".$ext;
-
-        // $request->image->storeAs("public\product_images", $request->input('image'));
-
-        // $arrayToInsert = array('name' => $name, 'description' => $desciption, 'image'=> $imageName
-        // ,'type' => $type, 'price' => $price);
-
-        // $result = DB::table('products')->insert($arrayToInsert);
-        // if($result){
-        //     return redirect()->route("adminDisplayProducts");
-        // }else{
-        //     return "Product was not created";
-        // }
-
         $name =  $request->input('name');
         $description =  $request->input('description');
         $type = $request->input('type');
@@ -135,5 +111,21 @@ class AdminProductsController extends Controller
            return "Product was not Created";
 
         }
+    }
+
+    // Delete Product
+    public function deleteProduct($id)
+    {
+        $product = Product::find($id);
+        $exists = Storage::exists("public/product_images/" . $product->image);
+
+        //delete image in storage
+        if ($exists) {
+            Storage::delete('public/product_images/' . $product->image);
+        }
+
+        Product::destroy($id);
+
+        return redirect()->route("adminDisplayProducts");
     }
 }
