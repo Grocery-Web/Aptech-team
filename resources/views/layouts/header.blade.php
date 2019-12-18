@@ -1,8 +1,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     <a class="navbar-brand" href="./"> <img class="favicon" src="{{asset('img/Favicon.ico')}}" alt=""> </a>
-    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#headerNav"
-        aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="headerNav">
@@ -11,8 +10,7 @@
                 <a class="nav-link" href="./">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="category-menu" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">Categories</a>
+                <a class="nav-link dropdown-toggle" href="#" id="category-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
                 <div class="dropdown-menu" aria-labelledby="category-menu">
                     <a class="dropdown-item" href="#">Ceiling Fans</a>
                     <a class="dropdown-item" href="#">Table Fans</a>
@@ -31,8 +29,7 @@
                 search
             </i>
             <div class="form-group form__text">
-                <input type="text" class="form-control nav__search--form" name="form_search" id=""
-                    placeholder="Search...">
+                <input type="text" class="form-control nav__search--form" name="form_search" id="" placeholder="Search...">
                 <button type='submit'>
                     <i class="material-icons nav__search--btn">
                         search
@@ -85,8 +82,8 @@
             </div>
         </div>
         <!-- End Shop Cart -->
-               <!-- Login btn -->
-               <div class="nav__login">
+        <!-- Login btn -->
+        <div class="nav__login">
             <a href="{{ route('login') }}"> <i class="material-icons nav__icon" style="color: #212529">
                     person_outline
                 </i>
