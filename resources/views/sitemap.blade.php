@@ -3,7 +3,7 @@
 <!-- Site Map section -->
 <div class="container sitemap">
     <h1 class="border-bottom border-dark text-primary">Sitemap</h1>
-    <ul class="list-group"><a href="#"><h3>Homepage</h3></a>
+    <ul class="list-group"><a href="{{ url('/') }}"><h3>Homepage</h3></a>
         <li class="list-group-item"><p class="font-weight-bold mb-0">Categories</p>
             <ul class="list-group">
                 <a href="#"><li class="list-group-item">Ceiling Fans</li></a>
