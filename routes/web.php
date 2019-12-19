@@ -31,7 +31,7 @@ Route::get('/contact', function () {
 
 // Sitemap Route
 Route::get('/sitemap', function () {
-    return view('sitemap');
+    return view('siteMap');
 });
 
 
