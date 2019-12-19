@@ -14,20 +14,24 @@
 // Index Mainpage
 Route::get('/',  ["uses"=>"ProductsController@index", "as"=> "login"]);
 
-/* This route is for product page development. */
+// This route is for product page development.
 Route::get('/test', function () {
     return view('product');
 });
 
-
-/* This route is for About Us page */
+// This route is for About Us page
 Route::get('/aboutus', function () {
     return view('aboutUs');
 });
 
-/* This route is for Contact Us page */
+// This route is for Contact Us page
 Route::get('/contact', function () {
     return view('contactUs');
+});
+
+// Sitemap Route
+Route::get('/sitemap', function () {
+    return view('sitemap');
 });
 
 
