@@ -16,21 +16,21 @@ class AdminProductsController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view("admin.displayProducts",['products'=>$products]);
+        return view("admin.displayProducts", ['products' => $products]);
     }
 
     // display edit product form
     public function editProductForm($id)
     {
         $product = Product::find($id);
-        return view('admin.editProductForm',['product'=>$product]);
+        return view('admin.editProductForm', ['product' => $product]);
     }
 
     // display edit product image form
     public function editProductImageForm($id)
     {
         $product = Product::find($id);
-        return view('admin.editProductImageForm',['product'=>$product]);
+        return view('admin.editProductImageForm', ['product' => $product]);
     }
 
     // Update product images
@@ -78,6 +78,25 @@ class AdminProductsController extends Controller
         return redirect()->route("adminDisplayProducts");
     }
 
+    //Delete product
+    public function deleteProduct($id)
+    {
+
+        $product = Product::find($id);
+
+        $exists =  Storage::disk("local")->exists("public/product_images/" . $product->image);
+
+        //if old image exists
+        if ($exists) {
+            //delete it
+            Storage::delete('public/product_images/' . $product->image);
+        }
+
+        Product::destroy($id);
+
+        return redirect()->route("adminDisplayProducts");
+    }
+
     // Call adding product form
     public function createProductForm()
     {
@@ -87,45 +106,52 @@ class AdminProductsController extends Controller
     // Add new product
     public function sendCreateProductForm(Request $request)
     {
-        $name =  $request->input('name');
+        $name        =  $request->input('name');
         $description =  $request->input('description');
-        $type = $request->input('type');
-        $price = $request->input('price');
+        $type        =  $request->input('type');
+        $price       =  $request->input('price');
+        $photos     =  array();
 
-        Validator::make($request->all(),['image'=>"required|file|image|mimes:jpg,png,jpeg|max:5000"])->validate();
+        Validator::make($request->all(), [
+            'image'     => "required|file|image|mimes:jpeg,png,jpg,gif,svg|max:5000",
+            'photos.*'  => "required|file|image|mimes:jpeg,png,jpg,gif,svg|max:5000"
+        ])->validate();
+
+        // Store display image into Storage/app
         $ext =  $request->file("image")->getClientOriginalExtension();
-        $stringImageReFormat = str_replace(" ","",$request->input('name'));
+        $stringImageReFormat = str_replace(" ", "", $request->input('name'));
 
-        $imageName = $stringImageReFormat.".".$ext; //blackdress.jpg
+        $imageName = $stringImageReFormat . "." . $ext; //blackdress.jpg
         $imageEncoded = File::get($request->image);
-        Storage::disk('local')->put('public/product_images/'.$imageName, $imageEncoded);
+        Storage::disk('local')->put('public/product_images/' . $imageName, $imageEncoded);
 
-        $newProductArray = array("name"=>$name, "description"=> $description,"image"=> $imageName,"type"=>$type,"price"=>$price);
+        //Store display image into Storage/app
+        $arr_img = [];
+        $path_upload = "/public/product_images/";
+        if ($photos = $request->file('photos')) {
+            foreach ($photos as $photo) {
+                $photoName      =   $photo->getClientOriginalName();
+                $photoEncoded   =   File::get($photo);
+                Storage::disk('local')->put($path_upload . $photoName, $photoEncoded);
+                $arr_img[]      =   $photoName;
+            }
+        }
 
-        $created = DB::table("products")->insert($newProductArray);
+        $newProductArray = array(
+            "name" => $name, "description" => $description, "image" => $imageName,
+            "type" => $type, "price" => $price
+        );
 
+        $created      = DB::table("products")->insert($newProductArray);
 
-        if($created){
+        $last         = DB::table('products')->latest()->first();
+        $galleryArray = array("product_id" => $last->id, "photos" => implode("|", $arr_img));
+        $gallery      = DB::table("products_photos")->insert($galleryArray);
+
+        if ($created && $gallery) {
             return redirect()->route("adminDisplayProducts");
-        }else{
-           return "Product was not Created";
-
+        } else {
+            return "Product was not Created";
         }
-    }
-
-    // Delete Product
-    public function deleteProduct($id)
-    {
-        $product = Product::find($id);
-        $exists = Storage::exists("public/product_images/" . $product->image);
-
-        //delete image in storage
-        if ($exists) {
-            Storage::delete('public/product_images/' . $product->image);
-        }
-
-        Product::destroy($id);
-
-        return redirect()->route("adminDisplayProducts");
     }
 }
