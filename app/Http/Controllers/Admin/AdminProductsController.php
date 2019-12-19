@@ -106,44 +106,49 @@ class AdminProductsController extends Controller
     // Add new product
     public function sendCreateProductForm(Request $request)
     {
-        $name        =  $request->input('name');
-        $description =  $request->input('description');
-        $type        =  $request->input('type');
-        $price       =  $request->input('price');
-        $photos     =  array();
+        $name         =  $request->input('name');
+        $description  =  $request->input('description');
+        $type         =  $request->input('type');
+        $price        =  $request->input('price');
+        $photos       =  array();
+
+        if (DB::table('products')->where('name', $name)) {
+            return redirect()->route("adminCreateProductForm")->withFail('Name of product is exist');
+        }
 
         Validator::make($request->all(), [
-            'image'     => "required|file|image|mimes:jpeg,png,jpg,gif,svg|max:5000",
-            'photos.*'  => "required|file|image|mimes:jpeg,png,jpg,gif,svg|max:5000"
+            'image'     => "file|image|mimes:jpeg,png,jpg,gif,svg|max:5000",
+            'photos.*'  => "file|image|mimes:jpeg,png,jpg,gif,svg|max:5000"
         ])->validate();
 
         // Store display image into Storage/app
+        $path_upload = "/public/product_images/";
         $ext =  $request->file("image")->getClientOriginalExtension();
         $stringImageReFormat = str_replace(" ", "", $request->input('name'));
 
         $imageName = $stringImageReFormat . "." . $ext; //blackdress.jpg
         $imageEncoded = File::get($request->image);
-        Storage::disk('local')->put('public/product_images/' . $imageName, $imageEncoded);
-
-        //Store display image into Storage/app
+        Storage::disk('local')->put($path_upload . $imageName, $imageEncoded);
+   
+        //Store related images into Storage/app
         $arr_img = [];
-        $path_upload = "/public/product_images/";
         if ($photos = $request->file('photos')) {
+            $i = 0;
             foreach ($photos as $photo) {
-                $photoName      =   $photo->getClientOriginalName();
-                $photoEncoded   =   File::get($photo);
-                Storage::disk('local')->put($path_upload . $photoName, $photoEncoded);
+                $photoExt       =   $photo->getClientOriginalExtension();
+                $photoName      =   $stringImageReFormat."_".$i.".".$photoExt;
+                $photo->move(base_path('storage/app/public/product_images'), $photoName);
                 $arr_img[]      =   $photoName;
+                $i++;
             }
         }
-
+        // Create products with display image
         $newProductArray = array(
             "name" => $name, "description" => $description, "image" => $imageName,
             "type" => $type, "price" => $price
         );
-
         $created      = DB::table("products")->insert($newProductArray);
-
+        // Add more related images to product
         $last         = DB::table('products')->latest()->first();
         $galleryArray = array("product_id" => $last->id, "photos" => implode("|", $arr_img));
         $gallery      = DB::table("products_photos")->insert($galleryArray);
