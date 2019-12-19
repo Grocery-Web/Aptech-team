@@ -26,7 +26,7 @@ class ProductsController extends Controller
         $cart->addItem($id, $product);
         $request->session()->put('cart', $cart);
 
-        return redirect()->route("");
+        return redirect()->route("login");
 
     }
 
@@ -39,7 +39,7 @@ class ProductsController extends Controller
         // cart is empty
         } else {
             echo "Your cart is empty";
-            return redirect()->route("");
+            return redirect()->route("login");
         }
 
     }
