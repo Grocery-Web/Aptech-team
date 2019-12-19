@@ -82,16 +82,25 @@ class AdminProductsController extends Controller
     public function deleteProduct($id)
     {
 
-        $product = Product::find($id);
+        $product    =   Product::find($id);
 
-        $exists =  Storage::disk("local")->exists("public/product_images/" . $product->image);
+        // Delete all related images in Storage
+        $photoInfo  =   DB::table('products_photos')->where('product_id', $id)->get();
+        $photoArray =   explode("|",$photoInfo [0]->photos);
+        foreach ($photoArray as $key => $value) {
+            $exists =   Storage::disk("local")->exists("public/product_images/" . $value);
+            if ($exists) {
+                Storage::delete('public/product_images/' . $value);
+            }
+        }
 
-        //if old image exists
+        // Delete display image in Storage
+        $exists     =  Storage::disk("local")->exists("public/product_images/" . $product->image);
         if ($exists) {
-            //delete it
             Storage::delete('public/product_images/' . $product->image);
         }
 
+        $product->product_photo()->delete();
         Product::destroy($id);
 
         return redirect()->route("adminDisplayProducts");
@@ -112,7 +121,8 @@ class AdminProductsController extends Controller
         $price        =  $request->input('price');
         $photos       =  array();
 
-        if (DB::table('products')->where('name', $name)) {
+        $result  =  DB::table('products')->where('name', $name)->get();
+        if (count($result)) {
             return redirect()->route("adminCreateProductForm")->withFail('Name of product is exist');
         }
 

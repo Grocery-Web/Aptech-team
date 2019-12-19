@@ -15,4 +15,9 @@ class Product extends Model
     public function getPriceAttribute($value){
         return $value;
     }
+
+    public function product_photo()
+    {
+        return $this->hasMany('App\ProductsPhoto');
+    }
 }
