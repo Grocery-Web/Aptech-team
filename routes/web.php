@@ -21,17 +21,17 @@ Route::get('/test', function () {
 
 // This route is for About Us page
 Route::get('/aboutus', function () {
-    return view('aboutUs');
+    return view('aboutus');
 });
 
 // This route is for Contact Us page
 Route::get('/contact', function () {
-    return view('contactUs');
+    return view('contactus');
 });
 
 // Sitemap Route
 Route::get('/sitemap', function () {
-    return view('siteMap');
+    return view('sitemap');
 });
 
 
