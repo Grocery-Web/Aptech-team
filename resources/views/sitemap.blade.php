@@ -20,7 +20,7 @@
         <li class="list-group-item"><a href="{{ route('home') }}" class="font-weight-bold">User Account</a>
             <ul class="list-group">
                 <a href="{{ route('login') }}"><li class="list-group-item">Log In</li></a>
-                <a href="#"><li class="list-group-item">Password Retrieval</li></a>
+                <a href="{{ url('/password/reset') }}"><li class="list-group-item">Password Retrieval</li></a>
                 <a href="{{ route('register') }}"><li class="list-group-item">Register</li></a>
             </ul>
         </li>
