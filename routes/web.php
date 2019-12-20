@@ -12,21 +12,26 @@
 */
 
 
-
-
-Route::group(['prefix' => '/'], function () {
-    // Index Mainpage
-    Route::get('',  ["uses"=>"ProductsController@index", "as"=> "login"]);
-    Route::get('aboutUs',  ["uses"=>"HomeController@aboutUs", "as"=> "aboutUs"]);
-    Route::get('contactUs',["uses"=>"HomeController@contactUs", "as"=> "contactUs"]);
-    Route::get('sitemap',  ["uses"=>"HomeController@sitemap", "as"=> "sitemap"]);
-    Route::get('test',  ["uses"=>"ProductsController@test", "as"=> "test"]);
-});
-
 //User Authentication
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Group Homepage
+Route::group(['prefix' => '/'], function () {
+    // Index Mainpage
+    Route::get('',         ["uses"=>"ProductsController@index", "as"=> "login"]);
+    Route::get('aboutUs',  ["uses"=>"HomeController@aboutUs", "as"=> "aboutUs"]);
+    Route::get('contactUs',["uses"=>"HomeController@contactUs", "as"=> "contactUs"]);
+    Route::get('sitemap',  ["uses"=>"HomeController@sitemap", "as"=> "sitemap"]);
+    Route::get('test',     ["uses"=>"HomeController@test", "as"=> "test"]);
+});
+
+// Group Homepage
+Route::group(['prefix' => '/product'], function () {
+    // Index Mainpage
+    Route::get('details/{id}',  ["uses"=>"ProductsController@productDetails", "as"=> "productDetails"]);
+});
 
 // Group Admin
 Route::group(['prefix' => '/admin'], function () {
@@ -56,4 +61,13 @@ Route::group(['prefix' => '/admin'], function () {
 
     //Delete product from admin panel
     Route::get('deleteProduct/{id}', ["uses"=>"Admin\AdminProductsController@deleteProduct", "as"=> "adminDeleteProduct"]);
+
+    //Display related image of product panel
+    Route::get('displayRelatedImageForm/{id}', ["uses" => "Admin\AdminProductsController@displayRelatedImageForm", "as" => "adminDisplayRelatedImageForm"]);
+
+    //Delete related image of product
+    Route::get('adminDeleteRalatedProduct/{idDisplay}/{id}', ["uses" => "Admin\AdminProductsController@deleteRalatedProduct", "as" => "adminDeleteRalatedProduct"]);
+
+    //Update related product
+    Route::post('editRelatedImageForm/{id}', ["uses" => "Admin\AdminProductsController@editRelatedImageForm", "as" => "adminEditRelatedImageForm"]);
 });

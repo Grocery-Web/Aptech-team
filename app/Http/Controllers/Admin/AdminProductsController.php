@@ -138,14 +138,14 @@ class AdminProductsController extends Controller
         $imageName = $stringImageReFormat . "." . $ext; //blackdress.jpg
         $imageEncoded = File::get($request->image);
         Storage::disk('local')->put($path_upload . $imageName, $imageEncoded);
-   
+
         //Store related images into Storage/app
         $arr_img = [];
         if ($photos = $request->file('photos')) {
             $i = 0;
             foreach ($photos as $photo) {
                 $photoExt       =   $photo->getClientOriginalExtension();
-                $photoName      =   $stringImageReFormat."_".$i.".".$photoExt;
+                $photoName      =   $stringImageReFormat . "_" . $i . "." . $photoExt;
                 $photo->move(base_path('storage/app/public/product_images'), $photoName);
                 $arr_img[]      =   $photoName;
                 $i++;
@@ -171,5 +171,12 @@ class AdminProductsController extends Controller
         } else {
             return "Product was not Created";
         }
+    }
+    // Display related image of product panel
+    public function displayRelatedImageForm($id)
+    {
+        $product    =   Product::find($id);
+        $gallery    =   DB::table('products_photos')->where('product_id', $id)->get();
+        return view('admin.displayRelatedImageForm', ['gallery' => $gallery]);
     }
 }
