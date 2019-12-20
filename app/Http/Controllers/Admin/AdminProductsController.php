@@ -85,12 +85,11 @@ class AdminProductsController extends Controller
         $product    =   Product::find($id);
 
         // Delete all related images in Storage
-        $photoInfo  =   DB::table('products_photos')->where('product_id', $id)->get();
-        $photoArray =   explode("|",$photoInfo [0]->photos);
-        foreach ($photoArray as $key => $value) {
-            $exists =   Storage::disk("local")->exists("public/product_images/" . $value);
+        $photoInfo  =   DB::table('products_photos')->where('product_id', $id)->get()->toArray();
+        foreach ($photoInfo as $key => $value) {
+            $exists =   Storage::disk("local")->exists("public/product_images/" . $value->photos);
             if ($exists) {
-                Storage::delete('public/product_images/' . $value);
+                Storage::delete('public/product_images/' . $value->photos);
             }
         }
 
@@ -159,11 +158,15 @@ class AdminProductsController extends Controller
         );
         $created      = DB::table("products")->insert($newProductArray);
         // Add more related images to product
-        $last         = DB::table('products')->latest()->first();
-        $galleryArray = array("product_id" => $last->id, "photos" => implode("|", $arr_img));
-        $gallery      = DB::table("products_photos")->insert($galleryArray);
+        $last         = DB::table('products')->orderBy('id', 'DESC')->first();
 
-        if ($created && $gallery) {
+        foreach ($arr_img as $key => $value) {
+            $insertPhoto = DB::table('products_photos')->insert(
+                ['product_id' => $last->id, 'photos' => $value]
+            );
+        }
+
+        if ($created && $insertPhoto) {
             return redirect()->route("adminDisplayProducts");
         } else {
             return "Product was not Created";
