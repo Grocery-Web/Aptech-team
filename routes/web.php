@@ -66,3 +66,6 @@ Route::post('admin/sendCreateProductForm', ["uses"=>"Admin\AdminProductsControll
 
 //Delete product from admin panel
 Route::get('admin/deleteProduct/{id}', ["uses"=>"Admin\AdminProductsController@deleteProduct", "as"=> "adminDeleteProduct"]);
+
+// Show cart panel
+Route::get('cart', ["uses"=>"ProductsController@showCart", "as"=> "cartProducts"]);
