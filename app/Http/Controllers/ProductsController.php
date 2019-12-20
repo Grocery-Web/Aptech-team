@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 // use App\Cart;
 use Illuminate\Support\Facades\Session;
+use App\ProductsPhoto;
 
 class ProductsController extends Controller
 {
@@ -17,7 +18,8 @@ class ProductsController extends Controller
 
     public function productDetails($id){
         $product    =   Product::find($id);
+        $gallery    =   DB::table('products_photos')->where('product_id', $id)->get();
    
-        return view("productDetail",compact("product"));
+        return view("productDetail",['product' => $product, 'gallery' => $gallery]);
     }
 }
