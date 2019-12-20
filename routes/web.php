@@ -68,6 +68,12 @@ Route::group(['prefix' => '/admin'], function () {
     //Delete related image of product
     Route::get('adminDeleteRalatedProduct/{idDisplay}/{id}', ["uses" => "Admin\AdminProductsController@deleteRalatedProduct", "as" => "adminDeleteRalatedProduct"]);
 
+//Delete product from admin panel
+Route::get('admin/deleteProduct/{id}', ["uses"=>"Admin\AdminProductsController@deleteProduct", "as"=> "adminDeleteProduct"]);
+
+// Show cart panel
+Route::get('cart', ["uses"=>"ProductsController@showCart", "as"=> "cartProducts"]);
+
     //Update related product
     Route::post('editRelatedImageForm/{id}', ["uses" => "Admin\AdminProductsController@editRelatedImageForm", "as" => "adminEditRelatedImageForm"]);
 });
