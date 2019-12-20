@@ -18,13 +18,13 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="aboutus">About Us</a>
+                <a class="nav-link" href="{{ route('aboutUs') }}">About Us</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="contact">Contact Us</a>
+                <a class="nav-link" href="{{ route('contactUs') }}">Contact Us</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="sitemap">Sitemap</a>
+                <a class="nav-link" href="{{ route('sitemap') }}">Sitemap</a>
             </li>
         </ul>
         <form class="nav__search">
