@@ -11,6 +11,8 @@
 |
 */
 
+// Index Mainpage
+Route::get('', ["uses"=>"ProductsController@index", "as"=> "login"]);
 
 //User Authentication
 Auth::routes();
@@ -19,8 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Group Homepage
 Route::group(['prefix' => '/'], function () {
-    // Index Mainpage
-    Route::get('',         ["uses"=>"ProductsController@index", "as"=> "login"]);
     Route::get('aboutUs',  ["uses"=>"HomeController@aboutUs", "as"=> "aboutUs"]);
     Route::get('contactUs',["uses"=>"HomeController@contactUs", "as"=> "contactUs"]);
     Route::get('sitemap',  ["uses"=>"HomeController@sitemap", "as"=> "sitemap"]);
