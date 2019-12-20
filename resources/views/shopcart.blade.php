@@ -44,19 +44,20 @@
             </div>
             <div class="row">
                 <span>
-                    Pirce:
+                    Price:
                 </span>
                 <strong>
                     9999999
                 </strong>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="#" class="btn btn-primary">buy now</a>
+                </div>
+            </div>
         </div>
 
     </div>
-    <div class="row">
-        <div class="col-md-2 offset-md-10">
-            <a href="#" class="btn btn-primary">buy now</a>
-        </div>
-    </div>
+
 </div>
 @endsection
