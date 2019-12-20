@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{asset('css/product.css')}}" />
     <link rel="stylesheet" href="{{asset('css/aboutus.css')}}" />
     <link rel="stylesheet" href="{{asset('css/contactus.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/sitemap.css')}}" />
     <link rel="shortcut icon" href="{{ asset('img/Favicon.ico') }}">
     <title>FANoFAN</title>
 </head>
