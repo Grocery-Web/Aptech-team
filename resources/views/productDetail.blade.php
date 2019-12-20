@@ -3,10 +3,10 @@
 <!-- Product Summary + purchase zone -->
 @php
     // dd($product);
-    // dd($product['name']);
+    // dd($product['description']);
     // dd($gallery);
     // foreach($gallery as $key => $value){
-    //     dd($value->photos);
+    //     dd($value->photos);`
     // }
 @endphp
 <div class="container product">
