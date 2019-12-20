@@ -33,6 +33,8 @@ Route::group(['prefix' => '/product'], function () {
     Route::get('details/{id}',  ["uses"=>"ProductsController@productDetails", "as"=> "productDetails"]);
     // Add product to cart
     Route::get('details/{id}/addToCart', ["uses"=>"ProductsController@addProductToCart", "as"=> "addProductToCart"]);
+    // Delete item from cart
+    Route::get('details/{id}/deleteItemFromCart', ["uses"=>"ProductsController@deleteItemFromCart", "as"=> "deleteItemFromCart"]);
     // Show cart panel
     Route::get('cart', ["uses"=>"ProductsController@showCart", "as"=> "cartProducts"]);
 });
