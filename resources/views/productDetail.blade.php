@@ -1,6 +1,14 @@
 @extends('layouts.master')
 @section('content')
 <!-- Product Summary + purchase zone -->
+@php
+    // dd($product);
+    // dd($product['name']);
+    // dd($gallery);
+    // foreach($gallery as $key => $value){
+    //     dd($value->photos);
+    // }
+@endphp
 <div class="container product">
         <div class="row">
             <div class="col-lg-5">

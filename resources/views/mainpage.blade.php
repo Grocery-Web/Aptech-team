@@ -145,7 +145,7 @@
                 $count++;
             ?>
                     <div class="card list_item__card">
-                        <a href=""> <img class="card-img-top list_item__card--img" src="{{asset ('storage')}}/product_images/{{$product['image']}}" alt="">
+                        <a href="{{ route('productDetails',['id' => $product->id])}}"> <img class="card-img-top list_item__card--img" src="{{asset ('storage')}}/product_images/{{$product['image']}}" alt="">
                             <div class="card-body list_item__card--body">
                                 <h4 class="card-title list_item__card--title">{{$product->name}}</h4>
                                 <p class="card-text list_item__card--text">

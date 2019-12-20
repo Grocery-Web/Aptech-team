@@ -16,21 +16,21 @@ class AdminProductsController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view("admin.displayProducts",['products'=>$products]);
+        return view("admin.displayProducts", ['products' => $products]);
     }
 
     // display edit product form
     public function editProductForm($id)
     {
         $product = Product::find($id);
-        return view('admin.editProductForm',['product'=>$product]);
+        return view('admin.editProductForm', ['product' => $product]);
     }
 
     // display edit product image form
     public function editProductImageForm($id)
     {
         $product = Product::find($id);
-        return view('admin.editProductImageForm',['product'=>$product]);
+        return view('admin.editProductImageForm', ['product' => $product]);
     }
 
     // Update product images
@@ -78,6 +78,33 @@ class AdminProductsController extends Controller
         return redirect()->route("adminDisplayProducts");
     }
 
+    //Delete product
+    public function deleteProduct($id)
+    {
+
+        $product    =   Product::find($id);
+
+        // Delete all related images in Storage
+        $photoInfo  =   DB::table('products_photos')->where('product_id', $id)->get()->toArray();
+        foreach ($photoInfo as $key => $value) {
+            $exists =   Storage::disk("local")->exists("public/product_images/" . $value->photos);
+            if ($exists) {
+                Storage::delete('public/product_images/' . $value->photos);
+            }
+        }
+
+        // Delete display image in Storage
+        $exists     =  Storage::disk("local")->exists("public/product_images/" . $product->image);
+        if ($exists) {
+            Storage::delete('public/product_images/' . $product->image);
+        }
+
+        $product->product_photo()->delete();
+        Product::destroy($id);
+
+        return redirect()->route("adminDisplayProducts");
+    }
+
     // Call adding product form
     public function createProductForm()
     {
@@ -87,45 +114,69 @@ class AdminProductsController extends Controller
     // Add new product
     public function sendCreateProductForm(Request $request)
     {
-        $name =  $request->input('name');
-        $description =  $request->input('description');
-        $type = $request->input('type');
-        $price = $request->input('price');
+        $name         =  $request->input('name');
+        $description  =  $request->input('description');
+        $type         =  $request->input('type');
+        $price        =  $request->input('price');
+        $photos       =  array();
 
-        Validator::make($request->all(),['image'=>"required|file|image|mimes:jpg,png,jpeg|max:5000"])->validate();
+        $result  =  DB::table('products')->where('name', $name)->get();
+        if (count($result)) {
+            return redirect()->route("adminCreateProductForm")->withFail('Name of product is exist');
+        }
+
+        Validator::make($request->all(), [
+            'image'     => "file|image|mimes:jpeg,png,jpg,gif,svg|max:5000",
+            'photos.*'  => "file|image|mimes:jpeg,png,jpg,gif,svg|max:5000"
+        ])->validate();
+
+        // Store display image into Storage/app
+        $path_upload = "/public/product_images/";
         $ext =  $request->file("image")->getClientOriginalExtension();
-        $stringImageReFormat = str_replace(" ","",$request->input('name'));
+        $stringImageReFormat = str_replace(" ", "", $request->input('name'));
 
-        $imageName = $stringImageReFormat.".".$ext; //blackdress.jpg
+        $imageName = $stringImageReFormat . "." . $ext; //blackdress.jpg
         $imageEncoded = File::get($request->image);
-        Storage::disk('local')->put('public/product_images/'.$imageName, $imageEncoded);
+        Storage::disk('local')->put($path_upload . $imageName, $imageEncoded);
 
-        $newProductArray = array("name"=>$name, "description"=> $description,"image"=> $imageName,"type"=>$type,"price"=>$price);
+        //Store related images into Storage/app
+        $arr_img = [];
+        if ($photos = $request->file('photos')) {
+            $i = 0;
+            foreach ($photos as $photo) {
+                $photoExt       =   $photo->getClientOriginalExtension();
+                $photoName      =   $stringImageReFormat . "_" . $i . "." . $photoExt;
+                $photo->move(base_path('storage/app/public/product_images'), $photoName);
+                $arr_img[]      =   $photoName;
+                $i++;
+            }
+        }
+        // Create products with display image
+        $newProductArray = array(
+            "name" => $name, "description" => $description, "image" => $imageName,
+            "type" => $type, "price" => $price
+        );
+        $created      = DB::table("products")->insert($newProductArray);
+        // Add more related images to product
+        $last         = DB::table('products')->orderBy('id', 'DESC')->first();
 
-        $created = DB::table("products")->insert($newProductArray);
+        foreach ($arr_img as $key => $value) {
+            $insertPhoto = DB::table('products_photos')->insert(
+                ['product_id' => $last->id, 'photos' => $value]
+            );
+        }
 
-
-        if($created){
+        if ($created && $insertPhoto) {
             return redirect()->route("adminDisplayProducts");
-        }else{
-           return "Product was not Created";
-
+        } else {
+            return "Product was not Created";
         }
     }
-
-    // Delete Product
-    public function deleteProduct($id)
+    // Display related image of product panel
+    public function displayRelatedImageForm($id)
     {
-        $product = Product::find($id);
-        $exists = Storage::exists("public/product_images/" . $product->image);
-
-        //delete image in storage
-        if ($exists) {
-            Storage::delete('public/product_images/' . $product->image);
-        }
-
-        Product::destroy($id);
-
-        return redirect()->route("adminDisplayProducts");
+        $product    =   Product::find($id);
+        $gallery    =   DB::table('products_photos')->where('product_id', $id)->get();
+        return view('admin.displayRelatedImageForm', ['gallery' => $gallery]);
     }
 }
