@@ -31,7 +31,7 @@
             <input type="text" class="form-control" name="description" id="description" placeholder="description"
                 required>
         </div>
-        <div class="containe" style="margin:0; padding: 0">
+        <div style="margin:0; padding: 0">
             <div class="row" style="margin:0; padding: 0">
                 <div class="col-md-3" style="padding-left: 0">
                     <div class="form-group">
