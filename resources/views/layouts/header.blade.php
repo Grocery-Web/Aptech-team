@@ -43,7 +43,7 @@
         </form>
         <!-- Shop Cart  -->
         <div class="nav__shopcart">
-            <i class="material-icons-outlined nav__icon">shop</i>
+            <i href="{{ route('cartProducts') }}" class="material-icons-outlined nav__icon">shop</i>
             <div class="form__text nav__shopcart--wrapper">
                 <div class="nav__shopcart--arrow-up"></div>
                 <div class="nav__shopcart--title">
@@ -53,30 +53,42 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8 nav__shopcart--item--left">
-                                Số lượng sản phẩm
+                                Number of Chosen Products
                             </div>
-                            <div class="col-md-4 nav__shopcart--item--right">
-                                10.000.000
-                            </div>
+                            @if(Session::has('cart'))
+                                <div class="col-md-4 nav__shopcart--item--right">
+                                    {‌{ Session::get('cart')->totalQuantity }}
+                                </div>
+                            @else
+                                <div class="col-md-4 nav__shopcart--item--right">
+                                    0
+                                </div>
+                            @endif
                         </div>
                         <div class="row">
                             <div class="col-md-8 nav__shopcart--item--left">
-                                Tổng tiền
+                                Total
                             </div>
-                            <div class="col-md-4 nav__shopcart--item--right">
-                                10.000.000
-                            </div>
+                            @if(Session::has('cart'))
+                                <div class="col-md-4 nav__shopcart--item--right">
+                                    {‌{ Session::get('cart')->totalPrice }}
+                                </div>
+                            @else
+                                <div class="col-md-4 nav__shopcart--item--right">
+                                    0
+                                </div>
+                            @endif
                         </div>
                         <div class="row">
                             <div class="col-md-8 nav__shopcart--item--left">
-                                Đơn vị tính
+                                Currency
                             </div>
                             <div class="col-md-4 nav__shopcart--item--right">
                                 VND
                             </div>
                         </div>
                         <div class="row">
-                            <a href="">
+                            <a href="{{ route('cartProducts') }}">
                                 <div class="btn btn-primary nav__shopcart--btn ">thanh toán</div>
                             </a>
                         </div>

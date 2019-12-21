@@ -31,9 +31,14 @@ Route::group(['prefix' => '/'], function () {
 Route::group(['prefix' => '/product'], function () {
     // Index Mainpage
     Route::get('details/{id}',  ["uses"=>"ProductsController@productDetails", "as"=> "productDetails"]);
-    // Show cart panel
-    Route::get('cart', ["uses"=>"ProductsController@showCart", "as"=> "cartProducts"]);
+    // Add product to cart
+    Route::get('details/{id}/addToCart', ["uses"=>"ProductsController@addProductToCart", "as"=> "addProductToCart"]);
+    // Delete item from cart
+    Route::get('details/{id}/deleteItemFromCart', ["uses"=>"ProductsController@deleteItemFromCart", "as"=> "deleteItemFromCart"]);
 });
+
+// Show cart panel
+Route::get('cart', ["uses"=>"ProductsController@showCart", "as"=> "cartProducts"]);
 
 // Group Admin
 Route::group(['prefix' => '/admin'], function () {
@@ -49,10 +54,10 @@ Route::group(['prefix' => '/admin'], function () {
     //Update product image from admin panel
     Route::post('updateProductImage/{id}', ["uses"=>"Admin\AdminProductsController@updateProductImage", "as"=> "adminUpdateProductImage"]);
 
-    //Update product infomation from admin panel
+    //Update product information from admin panel
     Route::post('updateProduct/{id}', ["uses"=>"Admin\AdminProductsController@updateProduct", "as"=> "adminUpdateProduct"]);
 
-    //Update product infomation from admin panel
+    //Update product information from admin panel
     Route::post('updateProduct/{id}', ["uses"=>"Admin\AdminProductsController@updateProduct", "as"=> "adminUpdateProduct"]);
 
     // Display adding new product form

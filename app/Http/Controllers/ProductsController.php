@@ -20,7 +20,7 @@ class ProductsController extends Controller
     public function productDetails($id){
         $product    =   Product::find($id);
         $gallery    =   DB::table('products_photos')->where('product_id', $id)->get();
-   
+
         return view("productDetail",['product' => $product, 'gallery' => $gallery]);
     }
 
@@ -41,12 +41,29 @@ class ProductsController extends Controller
 
         // check cart is not empty
         if($cart) {
-            return view('', ["cartItems"=> $cart]);
+            return view('shopcart', ["cartItems"=> $cart]);
         // cart is empty
         } else {
             echo "Your cart is empty";
             return redirect()->route("login");
         }
 
+    }
+
+    public function deleteItemFromCart(Request $request, $id) {
+
+        $cart = $request->session()->get('cart');
+
+        if(array_key_exists($id, $cart->items)) {
+            unset($cart->items['id']);
+        }
+
+        $prevCart = $request->session()->get('cart');
+        $updatedCart = new Cart($prevCart);
+        $updatedCart->updatePriceAndQuantity();
+
+        $request->session()->put('cart', $updatedCart);
+
+        return redirect()->route('cartProducts');
     }
 }
