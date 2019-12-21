@@ -53,11 +53,11 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8 nav__shopcart--item--left">
-                                Số lượng sản phẩm
+                                Number of Chosen Products
                             </div>
-                            @if(count($cart)>0)
+                            @if(Session::has('cart'))
                                 <div class="col-md-4 nav__shopcart--item--right">
-                                    {{ $cart->totalQuantity }}
+                                    {‌{ Session::get('cart')->totalQuantity }}
                                 </div>
                             @else
                                 <div class="col-md-4 nav__shopcart--item--right">
@@ -67,11 +67,11 @@
                         </div>
                         <div class="row">
                             <div class="col-md-8 nav__shopcart--item--left">
-                                Tổng tiền
+                                Total
                             </div>
-                            @if(count($cart)>0)
+                            @if(Session::has('cart'))
                                 <div class="col-md-4 nav__shopcart--item--right">
-                                    {{ $cart->totalPrice }}
+                                    {‌{ Session::get('cart')->totalPrice }}
                                 </div>
                             @else
                                 <div class="col-md-4 nav__shopcart--item--right">
@@ -81,7 +81,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-8 nav__shopcart--item--left">
-                                Đơn vị tính
+                                Currency
                             </div>
                             <div class="col-md-4 nav__shopcart--item--right">
                                 VND
