@@ -71,7 +71,7 @@
                         <button type="button" id="increase" onclick="increaseValue()" value="+">+</button>
                     </form>
                     <div class="addtocart ml-3 mr-3">
-                        <button type="button" class="btn btn-dark"><i class="fas fa-shopping-cart mr-2"></i>ADD TO CART</button>
+                        <button type="button" class="btn btn-dark"><a href="{{ route('addProductToCart', ['id'=>$product->$id]) }}"><i class="fas fa-shopping-cart mr-2"></i>ADD TO CART</a></button>
                     </div>
                     <div class="wishlist">
                         <button type="button" class="btn btn-danger"><i class="far fa-heart mr-2"></i>ADD TO WISHLIST</button>
