@@ -76,7 +76,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <a href="">
+                            <a href="{{ route('cartProducts') }}">
                                 <div class="btn btn-primary nav__shopcart--btn ">thanh toán</div>
                             </a>
                         </div>
