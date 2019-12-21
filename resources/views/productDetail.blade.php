@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="col-lg-7">
-                <h2>Honeywell Comfort Control Oscillating Table Fan Adjustable Tilt Head With 3 Speeds & Removeable Grill</h2>
+                <h2>{{$product['name']}}</h2>
                 <div class="product-rating">
                     <div class="rate mb-2">
                         <input type="radio" id="star5" name="rate" value="5" />
@@ -42,13 +42,13 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="price">
-                    <h4>$101.00 – $111.00</h4>
+                    <h4>{{$product['price']}}</h4>
                 </div>
                 <div class="product-summary mt-4">
-                Introducing the Honeywell Comfort ControlTM Table Fan: This fan delivers quiet, powerful, personal cooling in a compact modern design. It can be placed on a tabletop for focused cooling or used on the floor directing airflow where you need it. The convenient oscillation feature and adjustable tilting fan head allow for multiple ways to cool. Built with a robust metal grille that can be removed for easy cleaning, this fan is a great solution for your personal cooling needs.
+                {{$product['description']}}
                 </div>
                 <div class="sku mt-4">SKU: <b><a href="#" class="text-dark">HTF1220B</a></b></div>
-                <div class="categories mt-2">CATEGORIES: <b><a href="#" class="text-dark">TABLE FANS</a></b></div>
+                <div class="categories mt-2">CATEGORIES: <b><a href="#" class="text-dark">{{$product['type']}}</a></b></div>
                 <div class="product-color mt-2">COLOR:
                     <a href="#" class="text-decoration-none">
                         <div class="filter-color color_1 ml-3"></div>
