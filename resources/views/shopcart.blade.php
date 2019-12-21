@@ -9,17 +9,17 @@
         <div class="col-md-9 shoplist__left">
             <div class="shoplist__item">
                 <div class="row">
-                    <div class="col-md-3 shoplist__item--img">
+                    <div class="col-md-2 shoplist__item--img">
                         <img src="https://via.placeholder.com/150" alt="">
                     </div>
-                    <div class="col-md-4 shoplist__item--detail">
+                    <div class="col-md-5 shoplist__item--detail">
                         <div class="row shoplist__item--header">
                             Product Name
                         </div>
                         <div class="row shoplist__item--description">
                             Product Description
                         </div>
-                        <div class="row">
+                        <div class="row shoplist__item--description">
                             <a href="#">Delete</a>
                         </div>
                     </div>
@@ -42,18 +42,18 @@
                     9999999
                 </strong>
             </div>
+            <hr>
             <div class="row">
                 <span>
                     Price:
                 </span>
-                <strong>
+                <strong class="shoplist__right--price">
                     9999999
                 </strong>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="#" class="btn btn-primary">buy now</a>
-                </div>
+            <div class="buybtnposition">
+                <button type="button" href="#" class="btn btn-large btn-block btn-danger btn-checkout buybtn">Buy
+                    now</a>
             </div>
         </div>
 
