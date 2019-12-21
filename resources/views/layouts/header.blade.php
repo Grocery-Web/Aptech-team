@@ -43,7 +43,7 @@
         </form>
         <!-- Shop Cart  -->
         <div class="nav__shopcart">
-            <i class="material-icons-outlined nav__icon">shop</i>
+            <i href="{{ route('cartProducts') }}" class="material-icons-outlined nav__icon">shop</i>
             <div class="form__text nav__shopcart--wrapper">
                 <div class="nav__shopcart--arrow-up"></div>
                 <div class="nav__shopcart--title">
