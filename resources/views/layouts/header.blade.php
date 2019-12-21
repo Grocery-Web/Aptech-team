@@ -55,17 +55,29 @@
                             <div class="col-md-8 nav__shopcart--item--left">
                                 Số lượng sản phẩm
                             </div>
-                            <div class="col-md-4 nav__shopcart--item--right">
-                                10.000.000
-                            </div>
+                            @if(count($cart)>0)
+                                <div class="col-md-4 nav__shopcart--item--right">
+                                    {{ $cart->totalQuantity }}
+                                </div>
+                            @else
+                                <div class="col-md-4 nav__shopcart--item--right">
+                                    0
+                                </div>
+                            @endif
                         </div>
                         <div class="row">
                             <div class="col-md-8 nav__shopcart--item--left">
                                 Tổng tiền
                             </div>
-                            <div class="col-md-4 nav__shopcart--item--right">
-                                10.000.000
-                            </div>
+                            @if(count($cart)>0)
+                                <div class="col-md-4 nav__shopcart--item--right">
+                                    {{ $cart->totalPrice }}
+                                </div>
+                            @else
+                                <div class="col-md-4 nav__shopcart--item--right">
+                                    0
+                                </div>
+                            @endif
                         </div>
                         <div class="row">
                             <div class="col-md-8 nav__shopcart--item--left">
