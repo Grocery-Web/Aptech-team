@@ -29,10 +29,12 @@ class Cart
         if(array_key_exists($id, $this->items)) {
             $productToAdd = $this->items[$id];
             $productToAdd['quantity']++;
+            $product->waitedQuantity ++;
             $productToAdd['totalSinglePrice'] = $productToAdd['quantity'] * $price;
 
             // first time to add this item
         } else {
+            $product->waitedQuantity ++;
             $productToAdd = ['quantity' => 1, 'totalSinglePrice' => $price, 'data' => $product];
         }
 
