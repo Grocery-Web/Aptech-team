@@ -32,7 +32,7 @@ class ProductsController extends Controller
         $cart->addItem($id, $product);
         $request->session()->put('cart', $cart);
 
-        return redirect()->route("login");
+        return redirect('');
 
     }
 
@@ -45,7 +45,7 @@ class ProductsController extends Controller
         // cart is empty
         } else {
             echo "Your cart is empty";
-            return redirect()->route("login");
+            return redirect('');
         }
 
     }
@@ -65,5 +65,9 @@ class ProductsController extends Controller
         $request->session()->put('cart', $updatedCart);
 
         return redirect()->route('cartProducts');
+    }
+
+    public function updateWarehouse($product) {
+        ///
     }
 }
