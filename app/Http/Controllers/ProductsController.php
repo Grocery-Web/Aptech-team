@@ -67,7 +67,12 @@ class ProductsController extends Controller
         return redirect()->route('cartProducts');
     }
 
-    public function updateWarehouse($product) {
-        ///
+    public function clearCart() {
+        $cart = Session::get('cart');
+        foreach($cart->items as $item) {
+            $product = Product::find($item['data']['id']);
+            $product->quantity -= $item['data']['waitedQuantity'];
+        }
+        unset($cart);
     }
 }
