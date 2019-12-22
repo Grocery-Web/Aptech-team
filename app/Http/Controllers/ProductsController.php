@@ -44,8 +44,7 @@ class ProductsController extends Controller
             return view('shopcart', ["cartItems"=> $cart]);
         // cart is empty
         } else {
-            echo "Your cart is empty";
-            return redirect('');
+            return view('shopcart');
         }
 
     }
@@ -74,5 +73,6 @@ class ProductsController extends Controller
             $product->quantity -= $item['data']['waitedQuantity'];
         }
         unset($cart);
+        return redirect()->route('cartProducts');
     }
 }
