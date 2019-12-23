@@ -71,7 +71,7 @@ class ProductsController extends Controller
         if($cart) {
             foreach($cart->items as $item) {
                 $product = Product::find($item['data']['id']);
-                $product->quantity -= $item['data']['waitedQuantity'];
+                $product->quantity -= $item['totalSingleQuantity'];
             }
             unset($cart);
         }
