@@ -5,6 +5,7 @@
         <h2 class="heading__title">
             Shop Cart
         </h2>
+        @if(session()->has('cart'))
         <div class="row">
             <div class="col-md-9 shoplist__left">
                 <div class="shoplist__item">
@@ -52,12 +53,17 @@
                     </strong>
                 </div>
                 <div class="buybtnposition">
-                    <button type="button" href="#" class="btn btn-large btn-block btn-danger btn-checkout buybtn">Buy
+                    <button type="button" href="{{ route('clearCart') }}"
+                        class="btn btn-large btn-block btn-danger btn-checkout buybtn">Buy
                         now</a>
                 </div>
             </div>
-
         </div>
+        @else
+        <div class="row">
+            Your Card is Empty. Back to &nbsp;<a href="./"> Homepage </a>
+        </div>
+        @endif
     </div>
 </div>
 @endsection
