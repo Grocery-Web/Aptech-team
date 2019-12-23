@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Product;
-use Cart;
+use App\Cart;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 // use App\Cart;
@@ -32,7 +32,7 @@ class ProductsController extends Controller
         $cart->addItem($id, $product);
         $request->session()->put('cart', $cart);
 
-        return redirect()->route("login");
+        return redirect('');
 
     }
 
@@ -44,8 +44,7 @@ class ProductsController extends Controller
             return view('shopcart', ["cartItems"=> $cart]);
         // cart is empty
         } else {
-            echo "Your cart is empty";
-            return redirect()->route("login");
+            return view('shopcart');
         }
 
     }
@@ -64,6 +63,18 @@ class ProductsController extends Controller
 
         $request->session()->put('cart', $updatedCart);
 
+        return redirect()->route('cartProducts');
+    }
+
+    public function clearCart() {
+        $cart = Session::get('cart');
+        if($cart) {
+            foreach($cart->items as $item) {
+                $product = Product::find($item['data']['id']);
+                $product->quantity -= $item['data']['waitedQuantity'];
+            }
+            unset($cart);
+        }
         return redirect()->route('cartProducts');
     }
 }

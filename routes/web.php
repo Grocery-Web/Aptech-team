@@ -37,8 +37,13 @@ Route::group(['prefix' => '/product'], function () {
     Route::get('details/{id}/deleteItemFromCart', ["uses"=>"ProductsController@deleteItemFromCart", "as"=> "deleteItemFromCart"]);
 });
 
-// Show cart panel
-Route::get('cart', ["uses"=>"ProductsController@showCart", "as"=> "cartProducts"]);
+// Group cart
+Route::group(['prefix' => '/cart'], function () {
+    // Show cart panel
+    Route::get('', ["uses"=>"ProductsController@showCart", "as"=> "cartProducts"]);
+    // Make payment
+    Route::get('payment', ["uses"=>"ProductsController@clearCart", "as"=> "clearCart"]);
+});
 
 // Group Admin
 Route::group(['prefix' => '/admin'], function () {
