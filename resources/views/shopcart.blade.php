@@ -29,7 +29,7 @@
                             Quantity:  {{$item['totalSingleQuantity']}}
                         </div>
                         <div class="col-md-3 shoplist__item--price">
-                            Price:  {{$item['totalSingleQuantity']}} * {{$item['data']['price']}}
+                            Price:  ${{$item['totalSinglePrice']}}
                         </div>
 
                     </div>
@@ -51,7 +51,7 @@
                         Price:
                     </span>
                     <strong class="shoplist__right--price">
-                    {{ $cartItems->totalPrice }}
+                    ${{ $cartItems->totalPrice }}
                     </strong>
                 </div>
                 <div class="buybtnposition">
