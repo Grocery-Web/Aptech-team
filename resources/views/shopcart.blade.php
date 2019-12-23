@@ -8,6 +8,7 @@
         @if(session()->has('cart'))
         <div class="row">
             <div class="col-md-9 shoplist__left">
+                @foreach($cartItems->items as $item)
                 <div class="shoplist__item">
                     <div class="row">
                         <div class="col-md-2 shoplist__item--img">
@@ -15,24 +16,25 @@
                         </div>
                         <div class="col-md-5 shoplist__item--detail">
                             <div class="row shoplist__item--header">
-                                Product Name
+                            {{ $item['data']['name'] }}
                             </div>
                             <div class="row shoplist__item--description">
-                                Product Description
+                            {{ $item['data']['description'] }}
                             </div>
                             <div class="row shoplist__item--description">
                                 <a href="#">Delete</a>
                             </div>
                         </div>
                         <div class="col-md-2 shoplist__item--quantity">
-                            Quantity: (number here)
+                            Quantity:  {{$item['totalSingleQuantity']}}
                         </div>
                         <div class="col-md-3 shoplist__item--price">
-                            Price: (number here)
+                            Price:  {{$item['totalSingleQuantity']}} * {{$item['data']['price']}}
                         </div>
 
                     </div>
                 </div>
+                @endforeach
             </div>
             <div class="col-md-2 shoplist__right">
                 <div class="row">
@@ -40,7 +42,7 @@
                         Quantity:
                     </span>
                     <strong>
-                        9999999
+                    {{ $cartItems->totalQuantity }}
                     </strong>
                 </div>
                 <hr>
@@ -49,7 +51,7 @@
                         Price:
                     </span>
                     <strong class="shoplist__right--price">
-                        9999999
+                    {{ $cartItems->totalPrice }}
                     </strong>
                 </div>
                 <div class="buybtnposition">
