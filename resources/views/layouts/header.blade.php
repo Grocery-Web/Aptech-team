@@ -43,7 +43,7 @@
         </form>
         <!-- Shop Cart  -->
         <div class="nav__shopcart">
-            <a href="{{ route('cartProducts') }}" class="material-icons-outlined nav__icon">shop</a>
+            <a href="{{ route('cartProducts') }}" class="material-icons-outlined nav__icon" style="color: #212529; text-decoration:none">shop</a>
             <div class="form__text nav__shopcart--wrapper">
                 <div class="nav__shopcart--arrow-up"></div>
                 <div class="nav__shopcart--title">
@@ -115,8 +115,8 @@
                 </div>
             </form>
             @else
-            <form class="form__text" style="width:80px; height:50px; transform: translateX(-30px)">
-                <div class="nav__login--arrow-up" style="transform:translate(50px,-12px);"></div>
+            <form class="form__text" style="width:80px; height:50px; transform: translateX(-20px)">
+                <div class="nav__login--arrow-up" style="transform:translate(39px,-12px);"></div>
                 <div class="nav__login__form">
                 </div>
                 <div class="d-flex justify-content-center">
