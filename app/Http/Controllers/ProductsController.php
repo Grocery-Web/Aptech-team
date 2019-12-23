@@ -5,7 +5,6 @@ use App\Product;
 use App\Cart;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-// use App\Cart;
 use Illuminate\Support\Facades\Session;
 use App\ProductsPhoto;
 
@@ -71,7 +70,7 @@ class ProductsController extends Controller
         if($cart) {
             foreach($cart->items as $item) {
                 $product = Product::find($item['data']['id']);
-                $product->quantity -= $item['data']['waitedQuantity'];
+                $product->quantity -= $item['totalSingleQuantity'];
             }
             unset($cart);
         }

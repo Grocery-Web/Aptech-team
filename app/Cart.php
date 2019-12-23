@@ -28,14 +28,12 @@ class Cart
         // the item already exist
         if(array_key_exists($id, $this->items)) {
             $productToAdd = $this->items[$id];
-            $productToAdd['quantity']++;
-            $product->waitedQuantity ++;
-            $productToAdd['totalSinglePrice'] = $productToAdd['quantity'] * $price;
+            $productToAdd['totalSingleQuantity']++;
+            $productToAdd['totalSinglePrice'] = $productToAdd['totalSingleQuantity'] * $price;
 
             // first time to add this item
         } else {
-            $product->waitedQuantity ++;
-            $productToAdd = ['quantity' => 1, 'totalSinglePrice' => $price, 'data' => $product];
+            $productToAdd = ['totalSingleQuantity' => 1, 'totalSinglePrice' => $price, 'data' => $product];
         }
 
         $this->items[$id] = $productToAdd;
@@ -50,7 +48,7 @@ class Cart
         $totalQuantity = 0;
 
         foreach($this->items as $item) {
-            $totalQuantity = $totalQuantity + $item['quantity'];
+            $totalQuantity = $totalQuantity + $item['totalSingleQuantity'];
             $totalPrice = $totalPrice + $item['totalSinglePrice'];
         }
 
