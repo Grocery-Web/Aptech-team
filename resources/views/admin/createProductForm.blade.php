@@ -61,8 +61,19 @@
         </div>
 
         <div class="form-group">
-            <label for="producer">Producer</label>
-            <input type="text" class="form-control" name="producer" id="producer" placeholder="Producer" required>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="producer">Producer</label>
+                    <input type="text" class="form-control" name="producer" id="producer" placeholder="Producer"
+                        required>
+                </div>
+                <div class="col-md-6">
+                    <label for="Quantity">Quantity</label>
+                    <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Quantity"
+                        required>
+                </div>
+            </div>
+
         </div>
         <!-- <div class="form-group">
             <label for="type">Type</label>
