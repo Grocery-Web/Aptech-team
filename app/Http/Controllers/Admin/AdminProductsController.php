@@ -117,7 +117,13 @@ class AdminProductsController extends Controller
     {
         $name         =  $request->input('name');
         $description  =  $request->input('description');
+        $weight       =  $request->input('weight');
+        $width        =  $request->input('width');
+        $depth        =  $request->input('depth');
+        $height       =  $request->input('height');
+        $producer     =  $request->input('producer');
         $type         =  $request->input('type');
+        $quantity     =  $request->input('quantity');
         $price        =  $request->input('price');
         $photos       =  array();
 
@@ -154,8 +160,9 @@ class AdminProductsController extends Controller
         }
         // Create products with display image
         $newProductArray = array(
-            "name" => $name, "description" => $description, "image" => $imageName,
-            "type" => $type, "price" => $price
+            "name" => $name, "description" => $description, "weight" => $weight, "width" => $width, "depth" => $depth,
+            "height" => $height, "producer" => $producer, "image" => $imageName, "type" => $type, "price" => $price,
+            "quantity" => $quantity
         );
         $created      = DB::table("products")->insert($newProductArray);
         // Add more related images to product
@@ -170,13 +177,12 @@ class AdminProductsController extends Controller
         if ($created && $insertPhoto) {
             return redirect()->route("adminDisplayProducts");
         } else {
-            return "Product was not Created";
+            return redirect()->route("adminCreateProductForm")->withFail('Product was not Created');
         }
     }
     // Display related image of product panel
     public function displayRelatedImageForm($id)
     {
-        $product    =   Product::find($id);
         $gallery    =   DB::table('products_photos')->where('product_id', $id)->get();
         return view('admin.displayRelatedImageForm', ['gallery' => $gallery]);
     }
