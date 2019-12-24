@@ -37,6 +37,9 @@ Route::group(['prefix' => '/product'], function () {
     Route::get('details/{id}/deleteItemFromCart', ["uses"=>"ProductsController@deleteItemFromCart", "as"=> "deleteItemFromCart"]);
 });
 
+//Logout Button in Homepage
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 // Group cart
 Route::group(['prefix' => '/cart'], function () {
     // Show cart panel

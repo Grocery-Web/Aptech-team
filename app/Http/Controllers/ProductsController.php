@@ -38,6 +38,7 @@ class ProductsController extends Controller
     public function showCart() {
         $cart = Session::get('cart');
 
+
         // check cart is not empty
         if($cart) {
             return view('shopcart', ["cartItems"=> $cart]);
