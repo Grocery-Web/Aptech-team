@@ -6,13 +6,19 @@
 <div class="table-responsive">
 
     @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
+        <div class="alert alert-danger">
+            <ul>
 
-            <li>{!! print_r($errors->all()) !!}</li>
+                <li>{!! print_r($errors->all()) !!}</li>
 
-        </ul>
-    </div>
+            </ul>
+        </div>
+    @endif
+
+    @if(Session::has('fail'))
+        <div class="alert alert-danger">
+            {{Session::get('fail')}}
+        </div>
     @endif
 
 

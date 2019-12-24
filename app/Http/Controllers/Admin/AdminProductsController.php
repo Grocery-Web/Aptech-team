@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Product;
+use App\ProductsPhoto;
 
 class AdminProductsController extends Controller
 {
@@ -178,5 +179,19 @@ class AdminProductsController extends Controller
         $product    =   Product::find($id);
         $gallery    =   DB::table('products_photos')->where('product_id', $id)->get();
         return view('admin.displayRelatedImageForm', ['gallery' => $gallery]);
+    }
+    // Delete related image of product panel
+    public function deleteRalatedProduct($idDisplay,$id)
+    {
+        $photo      =  ProductsPhoto::find($id);
+        // Delete display image in Storage
+        $exists     =  Storage::disk("local")->exists("public/product_images/" . $photo['photos']);
+        if ($exists) {
+            Storage::delete('public/product_images/' . $photo['photos']);
+        } else {
+            return redirect()->route("adminDisplayRelatedImageForm", ['id' => $idDisplay])->withFail('Image does not exist');
+        }
+        ProductsPhoto::destroy($id);
+        return redirect()->route("adminDisplayRelatedImageForm", ['id' => $idDisplay]);
     }
 }
