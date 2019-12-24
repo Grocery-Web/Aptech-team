@@ -1,7 +1,8 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     <a class="navbar-brand" href="./"> <img class="favicon" src="{{asset('img/Favicon.ico')}}" alt=""> </a>
-    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#headerNav"
+        aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="headerNav">
@@ -10,7 +11,8 @@
                 <a class="nav-link" href="./">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="category-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+                <a class="nav-link dropdown-toggle" href="#" id="category-menu" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Categories</a>
                 <div class="dropdown-menu" aria-labelledby="category-menu">
                     <a class="dropdown-item" href="#">Ceiling Fans</a>
                     <a class="dropdown-item" href="#">Table Fans</a>
@@ -32,7 +34,8 @@
                 search
             </i>
             <div class="form-group form__text">
-                <input type="text" class="form-control nav__search--form" name="form_search" id="" placeholder="Search...">
+                <input type="text" class="form-control nav__search--form" name="form_search" id=""
+                    placeholder="Search...">
                 <button type='submit'>
                     <i class="material-icons nav__search--btn">
                         search
@@ -43,41 +46,54 @@
         </form>
         <!-- Shop Cart  -->
         <div class="nav__shopcart">
-            <i class="material-icons-outlined nav__icon">shop</i>
+            <a href="{{ route('cartProducts') }}" class="material-icons-outlined nav__icon"
+                style="color: #212529; text-decoration:none">shop</a>
             <div class="form__text nav__shopcart--wrapper">
                 <div class="nav__shopcart--arrow-up"></div>
                 <div class="nav__shopcart--title">
-                    giỏ hàng
+                    your cart
                 </div>
                 <div class="nav__shopcart--item">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8 nav__shopcart--item--left">
-                                Số lượng sản phẩm
+                                Number of Chosen Products
                             </div>
+                            @if(session()->has('cart'))
                             <div class="col-md-4 nav__shopcart--item--right">
-                                10.000.000
+                                {{ session()->get('cart')->totalQuantity }}
                             </div>
+                            @else
+                            <div class="col-md-4 nav__shopcart--item--right">
+                                0
+                            </div>
+                            @endif
                         </div>
                         <div class="row">
                             <div class="col-md-8 nav__shopcart--item--left">
-                                Tổng tiền
+                                Total
                             </div>
+                            @if(session()->has('cart'))
                             <div class="col-md-4 nav__shopcart--item--right">
-                                10.000.000
+                                {{ session()->get('cart')->totalPrice }}
                             </div>
+                            @else
+                            <div class="col-md-4 nav__shopcart--item--right">
+                                0
+                            </div>
+                            @endif
                         </div>
                         <div class="row">
                             <div class="col-md-8 nav__shopcart--item--left">
-                                Đơn vị tính
+                                Currency
                             </div>
                             <div class="col-md-4 nav__shopcart--item--right">
                                 VND
                             </div>
                         </div>
                         <div class="row">
-                            <a href="">
-                                <div class="btn btn-primary nav__shopcart--btn ">thanh toán</div>
+                            <a href="{{ route('cartProducts') }}">
+                                <div class="btn btn-primary nav__shopcart--btn ">buy now</div>
                             </a>
                         </div>
                     </div>
@@ -99,12 +115,12 @@
                     <p>Name: {!! Auth::user()->name !!}</p>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <a href="{{ route('login') }}" class="btn btn-primary ">Log out</a>
+                    <a class="btn btn-primary" href="{{ url('/logout') }}"> Logout </a>
                 </div>
             </form>
             @else
-            <form class="form__text" style="width:80px; height:50px; transform: translateX(-30px)">
-                <div class="nav__login--arrow-up" style="transform:translate(50px,-12px);"></div>
+            <form class="form__text" style="width:80px; height:50px; transform: translateX(-20px)">
+                <div class="nav__login--arrow-up" style="transform:translate(39px,-12px);"></div>
                 <div class="nav__login__form">
                 </div>
                 <div class="d-flex justify-content-center">

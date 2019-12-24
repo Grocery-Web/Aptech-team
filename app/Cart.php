@@ -1,4 +1,7 @@
 <?php
+
+namespace App;
+
 class Cart
 {
     public $items;
@@ -25,18 +28,32 @@ class Cart
         // the item already exist
         if(array_key_exists($id, $this->items)) {
             $productToAdd = $this->items[$id];
-            $productToAdd['quantity']++;
-            $productToAdd['totalPrice'] = $productToAdd['quantity'] * $price;
+            $productToAdd['totalSingleQuantity']++;
+            $productToAdd['totalSinglePrice'] = $productToAdd['totalSingleQuantity'] * $price;
 
             // first time to add this item
         } else {
-            $productToAdd = ['quantity' => 1, 'totalPrice' => $price, 'data' => $product];
+            $productToAdd = ['totalSingleQuantity' => 1, 'totalSinglePrice' => $price, 'data' => $product];
         }
 
         $this->items[$id] = $productToAdd;
         $this->totalQuantity++;
         $this->totalPrice = $this->totalPrice + $price;
 
+    }
+
+
+    public function updatePriceAndQuantity() {
+        $totalPrice = 0;
+        $totalQuantity = 0;
+
+        foreach($this->items as $item) {
+            $totalQuantity = $totalQuantity + $item['totalSingleQuantity'];
+            $totalPrice = $totalPrice + $item['totalSinglePrice'];
+        }
+
+        $this->totalQuantity = $totalQuantity;
+        $this->totalPrice = $totalPrice;
     }
 
 }
