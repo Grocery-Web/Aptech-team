@@ -22,7 +22,7 @@
                             {{ $item['data']['description'] }}
                             </div>
                             <div class="row shoplist__item--description">
-                                <a href="#">Delete</a>
+                                <a href="{{ route('deleteItemFromCart', ['id'=>$item['data']['id']]) }}">Remove</a>
                             </div>
                         </div>
                         <div class="col-md-2 shoplist__item--quantity">
@@ -55,9 +55,11 @@
                     </strong>
                 </div>
                 <div class="buybtnposition">
-                    <button type="button" href="{{ route('clearCart') }}"
-                        class="btn btn-large btn-block btn-danger btn-checkout buybtn">Buy
-                        now</a>
+                    <a href="{{ route('clearCart') }}">
+                    <button type="button"
+                        class="btn btn-large btn-block btn-danger btn-checkout buybtn">
+                        Buy now</button>
+                    </a>
                 </div>
             </div>
         </div>
