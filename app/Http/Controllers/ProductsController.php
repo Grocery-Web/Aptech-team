@@ -38,11 +38,10 @@ class ProductsController extends Controller
     public function showCart() {
         $cart = Session::get('cart');
 
-
         // check cart is not empty
         if($cart) {
             return view('shopcart', ["cartItems"=> $cart]);
-        // cart is empty
+        // cart is null
         } else {
             return view('shopcart');
         }
@@ -54,15 +53,17 @@ class ProductsController extends Controller
         $cart = $request->session()->get('cart');
 
         if(array_key_exists($id, $cart->items)) {
-            unset($cart->items['id']);
+            unset($cart->items[$id]);
         }
 
         $prevCart = $request->session()->get('cart');
-        $updatedCart = new Cart($prevCart);
-        $updatedCart->updatePriceAndQuantity();
-
-        $request->session()->put('cart', $updatedCart);
-
+        if(count($prevCart->items) != 0) {
+            $updatedCart = new Cart($prevCart);
+            $updatedCart->updatePriceAndQuantity();
+            $request->session()->put('cart', $updatedCart);
+        } else {
+            $request->session()->forget('cart');
+        }
         return redirect()->route('cartProducts');
     }
 
@@ -70,11 +71,13 @@ class ProductsController extends Controller
         $cart = Session::get('cart');
         if($cart) {
             foreach($cart->items as $item) {
-                $product = Product::find($item['data']['id']);
+                $product = Product::where('name', $item['data']['name'])->first();
                 $product->quantity -= $item['totalSingleQuantity'];
+                $product->save();
             }
-            unset($cart);
+            Session::forget('cart');
         }
+
         return redirect()->route('cartProducts');
     }
 }
