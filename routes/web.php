@@ -33,8 +33,6 @@ Route::group(['prefix' => '/product'], function () {
     Route::get('details/{id}',  ["uses"=>"ProductsController@productDetails", "as"=> "productDetails"]);
     // Add product to cart
     Route::get('details/{id}/addToCart', ["uses"=>"ProductsController@addProductToCart", "as"=> "addProductToCart"]);
-    // Delete item from cart
-    Route::get('details/{id}/deleteItemFromCart', ["uses"=>"ProductsController@deleteItemFromCart", "as"=> "deleteItemFromCart"]);
 });
 
 //Logout Button in Homepage
@@ -46,6 +44,8 @@ Route::group(['prefix' => '/cart'], function () {
     Route::get('', ["uses"=>"ProductsController@showCart", "as"=> "cartProducts"]);
     // Make payment
     Route::get('payment', ["uses"=>"ProductsController@clearCart", "as"=> "clearCart"]);
+    // Delete item from cart
+    Route::get('deleteItemFromCart/{id}', ["uses"=>"ProductsController@deleteItemFromCart", "as"=> "deleteItemFromCart"]);
 });
 
 // Group Admin
