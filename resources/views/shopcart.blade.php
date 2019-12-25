@@ -55,7 +55,7 @@
                     </strong>
                 </div>
                 <div class="buybtnposition">
-                    <a href="{{ route('clearCart') }}">
+                    <a href="{{ route('clearCart', ['id' => $userData['id']]) }}">
                     <button type="button"
                         class="btn btn-large btn-block btn-danger btn-checkout buybtn">
                         Buy now</button>
