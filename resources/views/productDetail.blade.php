@@ -67,6 +67,10 @@
                     <input type="number" id="quantity" min="0" step="1" value="0" />
                     <button type="button" id="increase" onclick="increaseValue()" value="+">+</button>
                 </form>
+                <script>
+                    value = parseInt(document.getElementById('quantity').value, 10);
+                    value = isNaN(value) ? 0 : value;
+                </script>
                 <div class="addtocart ml-3 mr-3">
                     <a href="{{ route('addProductToCart', ['id'=>$product['id']]) }}"><button type="button"
                             class="btn btn-dark"><i class="fas fa-shopping-cart mr-2"></i>ADD TO CART</button></a>
@@ -204,6 +208,5 @@
         </div>
     </div>
 </div>
-
 <!-- End: Product Specification -->
 @endsection
