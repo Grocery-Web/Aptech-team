@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Product;
 use App\Cart;
+use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -67,16 +68,40 @@ class ProductsController extends Controller
         return redirect()->route('cartProducts');
     }
 
-    public function clearCart() {
+    public function clearCart($id) {
         $cart = Session::get('cart');
+        $user = User::find($id);
+        
         if($cart) {
+            // add new invoice
+            $newInvoiceData = array(
+                'user_id' => $id, 
+                'total_quantity' => $cart->totalQuantity, 
+                'total_price' => $cart->totalPrice,
+                'shipping_address' => $user->address,
+                'status' => 'In progress'
+            );
+            DB::table('invoices')->insert($newInvoiceData);
+            $newInvoice = DB::table('invoices')->latest('created_at')->first();
+
+            // update product quantity
             foreach($cart->items as $item) {
                 $product = Product::where('name', $item['data']['name'])->first();
                 $product->quantity -= $item['totalSingleQuantity'];
                 $product->save();
+
+                // add new invoice detail
+                $newInvoiceDetail = array(
+                    'invoice_id' => $newInvoice->id,
+                    'product_id' => $product->id,
+                    'product_quantity' => $item['totalSingleQuantity']
+                );
+                DB::table('invoice_details')->insert($newInvoiceDetail);
             }
             Session::forget('cart');
         }
+
+        
 
         return redirect()->route('cartProducts');
     }

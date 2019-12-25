@@ -43,7 +43,7 @@ Route::group(['prefix' => '/cart'], function () {
     // Show cart panel
     Route::get('', ["uses"=>"ProductsController@showCart", "as"=> "cartProducts"]);
     // Make payment
-    Route::get('payment', ["uses"=>"ProductsController@clearCart", "as"=> "clearCart"]);
+    Route::get('payment/{id}', ["uses"=>"ProductsController@clearCart", "as"=> "clearCart"]);
     // Delete item from cart
     Route::get('deleteItemFromCart/{id}', ["uses"=>"ProductsController@deleteItemFromCart", "as"=> "deleteItemFromCart"]);
 });
