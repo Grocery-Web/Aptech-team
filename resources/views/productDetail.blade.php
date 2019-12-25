@@ -60,9 +60,9 @@
                 <a href="#" class="badge badge-light ml-2">Medium</a>
                 <a href="#" class="badge badge-light ml-2">Small</a>
             </div>
-            <hr class="mt-4 mb-3">
-            <div class="purchase d-flex flex-row flex-wrap mt-4">
-                <form class="numberInput mb-3">
+            <hr class="mt-4">
+            <div class="purchase d-flex flex-row flex-wrap align-items-center py-2">
+                <form class="numberInput">
                     <button type="button" id="minus" onclick="decreaseValue()" value="-">-</button>
                     <input type="number" id="quantity" min="0" step="1" value="0" />
                     <button type="button" id="increase" onclick="increaseValue()" value="+">+</button>
@@ -79,6 +79,9 @@
                 <div class="wishlist">
                     <button type="button" class="btn btn-danger"><i class="far fa-heart mr-2"></i>ADD TO
                         WISHLIST</button>
+                </div>
+                <div class="pdf-download p-3">
+                    <button type="button" class="btn btn-light"><img src="https://img.icons8.com/ultraviolet/80/000000/export-pdf.png"></button>
                 </div>
             </div>
         </div>
