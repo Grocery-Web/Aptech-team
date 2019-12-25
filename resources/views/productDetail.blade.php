@@ -60,7 +60,7 @@
                 <a href="#" class="badge badge-light ml-2">Medium</a>
                 <a href="#" class="badge badge-light ml-2">Small</a>
             </div>
-            <hr class="mt-4 mb-3">
+            <hr class="mt-4">
             <div class="purchase d-flex flex-row flex-wrap align-items-center py-2">
                 <form class="numberInput">
                     <button type="button" id="minus" onclick="decreaseValue()" value="-">-</button>
