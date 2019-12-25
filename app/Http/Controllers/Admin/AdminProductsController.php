@@ -68,15 +68,35 @@ class AdminProductsController extends Controller
     // Update product info form
     public function updateProduct(Request $request, $id)
     {
-        $name       =   $request->input('name');
-        $desciption =   $request->input('description');
-        $type       =   $request->input('type');
-        $price      =   $request->input('price');
-
-        $arrayToUpdate = array('name' => $name, 'description' => $desciption, 'type' => $type, 'price' => $price);
+        $name         =  $request->input('name');
+        $description  =  $request->input('description');
+        $weight       =  $request->input('weight');
+        $width        =  $request->input('width');
+        $depth        =  $request->input('depth');
+        $height       =  $request->input('height');
+        $producer     =  $request->input('producer');
+        $type         =  $request->input('type');
+        $quantity     =  $request->input('quantity');
+        $price        =  $request->input('price');
+        
+        // Check existed name of product
+        $newname = preg_replace('/\s+/', ' ' , $name);   //Replace multiple spaces with a single space
+        $result = DB::table('products')->where([
+            ['name', '=', $newname],
+            ['id', '<>', $id],
+        ])->get();
+        if (count($result)) {
+            return redirect()->route("adminEditProductForm",$id)->withFail('Name of product is exist');
+        }
+        // Update product info
+        $arrayToUpdate = array(
+            "name" => $name, "description" => $description, "weight" => $weight, "width" => $width, "depth" => $depth,
+            "height" => $height, "producer" => $producer, "type" => $type, "price" => $price,
+            "quantity" => $quantity
+        );
         DB::table('products')->where('id', $id)->update($arrayToUpdate);
-
         return redirect()->route("adminDisplayProducts");
+        // After finishing this function, you should update display image and related images again with new name 
     }
 
     //Delete product
@@ -127,7 +147,8 @@ class AdminProductsController extends Controller
         $price        =  $request->input('price');
         $photos       =  array();
 
-        $result  =  DB::table('products')->where('name', $name)->get();
+        $newname = preg_replace('/\s+/', ' ' , $name);
+        $result  =  DB::table('products')->where('name', $newname)->get();
         if (count($result)) {
             return redirect()->route("adminCreateProductForm")->withFail('Name of product is exist');
         }

@@ -17,13 +17,13 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name', 100)->unique();
             $table->text('description', 100);
-            $table->decimal('weight', 4, 2);
-            $table->decimal('width', 4, 2);
-            $table->decimal('depth', 4, 2);
-            $table->decimal('height', 4, 2);
+            $table->decimal('weight', 10, 2);
+            $table->decimal('width', 10, 2);
+            $table->decimal('depth', 10, 2);
+            $table->decimal('height', 10, 2);
             $table->text('producer', 100)->nullable();
             $table->string('image')->nullable();
-            $table->decimal('price', 8, 2);
+            $table->decimal('price', 10, 2);
             $table->string('type');
             $table->integer('quantity');
             $table->timestamps();
