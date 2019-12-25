@@ -68,14 +68,6 @@
             <option value="TABLE FANS">TABLE FANS</option>
             <option value="EXHAUST FANS">EXHAUST FANS</option>
         </select>
-        <div class="form-group">
-            <label for="image">Display Image</label>
-            <input type="file" class="" name="image" id="image" required>
-        </div>
-
-        <div class="form-group">
-            <label for="image">Related Images</label>
-            <input multiple="multiple" name="photos[]" type="file">
         </div>
         <div class="form-group">
             <label for="type">Price</label>

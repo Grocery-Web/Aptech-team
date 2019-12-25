@@ -68,12 +68,29 @@ class AdminProductsController extends Controller
     // Update product info form
     public function updateProduct(Request $request, $id)
     {
-        $name       =   $request->input('name');
-        $desciption =   $request->input('description');
-        $type       =   $request->input('type');
-        $price      =   $request->input('price');
+        // $name       =   $request->input('name');
+        // $desciption =   $request->input('description');
+        // $type       =   $request->input('type');
+        // $price      =   $request->input('price');
 
-        $arrayToUpdate = array('name' => $name, 'description' => $desciption, 'type' => $type, 'price' => $price);
+        $name         =  $request->input('name');
+        $description  =  $request->input('description');
+        $weight       =  $request->input('weight');
+        $width        =  $request->input('width');
+        $depth        =  $request->input('depth');
+        $height       =  $request->input('height');
+        $producer     =  $request->input('producer');
+        $type         =  $request->input('type');
+        $quantity     =  $request->input('quantity');
+        $price        =  $request->input('price');
+
+        // $arrayToUpdate = array('name' => $name, 'description' => $desciption, 'type' => $type, 'price' => $price);
+
+        $arrayToUpdate = array(
+            "name" => $name, "description" => $description, "weight" => $weight, "width" => $width, "depth" => $depth,
+            "height" => $height, "producer" => $producer, "type" => $type, "price" => $price,
+            "quantity" => $quantity
+        );
         DB::table('products')->where('id', $id)->update($arrayToUpdate);
 
         return redirect()->route("adminDisplayProducts");

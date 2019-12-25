@@ -67,6 +67,7 @@
                     <input type="number" id="quantity" min="0" step="1" value="0" />
                     <button type="button" id="increase" onclick="increaseValue()" value="+">+</button>
                 </form>
+
                 <script>
                     value = parseInt(document.getElementById('quantity').value, 10);
                     value = isNaN(value) ? 0 : value;
