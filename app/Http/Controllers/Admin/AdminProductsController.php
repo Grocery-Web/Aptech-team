@@ -186,18 +186,57 @@ class AdminProductsController extends Controller
         $gallery    =   DB::table('products_photos')->where('product_id', $id)->get();
         return view('admin.displayRelatedImageForm', ['gallery' => $gallery]);
     }
-    // Delete related image of product panel
-    public function deleteRalatedProduct($idDisplay,$id)
+    //Delete ralated product
+    public function deleteRalatedProduct($id)
     {
-        $photo      =  ProductsPhoto::find($id);
+        $photo    =   ProductsPhoto::find($id);
         // Delete display image in Storage
         $exists     =  Storage::disk("local")->exists("public/product_images/" . $photo['photos']);
         if ($exists) {
             Storage::delete('public/product_images/' . $photo['photos']);
         } else {
-            return redirect()->route("adminDisplayRelatedImageForm", ['id' => $idDisplay])->withFail('Image does not exist');
+            return redirect()->route("adminDisplayRelatedImageForm", ['id' => $photo['product_id']])->withFail('Image does not exist');
         }
         ProductsPhoto::destroy($id);
-        return redirect()->route("adminDisplayRelatedImageForm", ['id' => $idDisplay]);
+        return redirect()->route("adminDisplayRelatedImageForm", ['id' => $photo['product_id']]);
+    }
+    // Display form for updating related image of product
+    public function updateRelatedImageForm($id)
+    {
+        $photo    =   ProductsPhoto::find($id);
+        return view('admin.updateRelatedImageForm', ['photo' => $photo]);
+    }
+    // Update related image of product
+    public function updateRelatedImage(Request $request, $id)
+    {
+        // Delete display image in Storage
+        Validator::make($request->all(), ['photos' => "required|file|image|mimes:jpg,png,jpeg|max:5000"])->validate();
+
+
+        if ($request->hasFile("photos")) {
+
+            $photo      = ProductsPhoto::find($id);
+            $imageName  =  $photo->photos;
+            $exists = Storage::disk('local')->exists("public/product_images/" . $photo->photos);
+
+            //delete old image
+            if ($exists) {
+                Storage::delete('public/product_images/' . $imageName);
+            }
+
+            //upload new image
+            $ext = $request->file('photos')->getClientOriginalExtension(); //jpg
+
+            $request->photos->storeAs("public/product_images/", $imageName);
+
+            $arrayToUpdate = array('photos' => $imageName);
+            DB::table('products_photos')->where('id', $id)->update($arrayToUpdate);
+
+            return redirect()->route("adminDisplayRelatedImageForm", ['id' => $photo->product_id]);
+        } else {
+
+            $error = "NO Image was Selected";
+            return $error;
+        }
     }
 }
