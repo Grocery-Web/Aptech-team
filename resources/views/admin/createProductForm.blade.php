@@ -33,8 +33,13 @@
             <input type="text" class="form-control" name="name" id="name" placeholder="Product Name" required>
         </div>
         <div class="form-group">
-            <label for="description">Description</label>
-            <input type="text" class="form-control" name="description" id="description" placeholder="description"
+            <label for="description">Product Introduction</label>
+            <input type="text" class="form-control" name="introduction" id="introduction" placeholder="Product Introduction"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="description">Product Detail </label>
+            <input type="text" class="form-control" name="detail" id="detail" placeholder="Detail Product"
                 required>
         </div>
         <div style="margin:0; padding: 0">
