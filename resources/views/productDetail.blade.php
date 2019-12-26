@@ -68,12 +68,12 @@
                     <button type="button" id="increase" onclick="increaseValue()" value="+">+</button>
                 </form>
                 <div class="addtocart ml-3 mr-3">
-                    <a href="{{ route('addProductToCart', ['id'=>$product['id']]) }}"><button
+                    <a id="addtoCART" href="{{ route('addProductToCart', ['id'=>$product['id']]) }}"><button
                             type="button" class="btn btn-dark"><i class="fas fa-shopping-cart mr-2"></i>ADD TO
                             CART</button></a>
                 </div>
                 <div class="wishlist">
-                    <button  id="addtoCART" type="button" class="btn btn-danger"><i class="far fa-heart mr-2"></i>ADD TO
+                    <button type="button" class="btn btn-danger"><i class="far fa-heart mr-2"></i>ADD TO
                         WISHLIST</button>
                 </div>
                 <div class="pdf-download p-3">
