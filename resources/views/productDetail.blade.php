@@ -69,11 +69,14 @@
                 </form>
 
                 <script>
-                    value = parseInt(document.getElementById('quantity').value, 10);
-                    value = isNaN(value) ? 0 : value;
+                    addCart = document.getElementById('addtoCART');
+                    addCart.addEventListener('click', function(){
+                        let value_quantity = parseInt(document.getElementById('quantity').value, 10);
+                        value_quantity = isNaN(value_quantity) ? 0 : value_quantity;
+                    })
                 </script>
                 <div class="addtocart ml-3 mr-3">
-                    <a href="{{ route('addProductToCart', ['id'=>$product['id']]) }}"><button type="button"
+                    <a id="addtoCART" href="{{ route('addProductToCart', ['id'=>$product['id']]) }}"><button type="button"
                             class="btn btn-dark"><i class="fas fa-shopping-cart mr-2"></i>ADD TO CART</button></a>
                 </div>
                 <div class="wishlist">
