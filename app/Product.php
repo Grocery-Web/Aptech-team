@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    public $timestamps = false;
+    public $timestamps = true;
     //
     protected $fillable = [
-        'name', 'description', 'image','price','type', 'quantity'
+        'name', 'description', 'weight', 'width', 'depth', 'height', 'producer', 'image','price','type', 'quantity'
     ];
 
     public function getPriceAttribute($value){

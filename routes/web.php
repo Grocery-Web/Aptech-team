@@ -81,8 +81,11 @@ Route::group(['prefix' => '/admin'], function () {
     Route::get('displayRelatedImageForm/{id}', ["uses" => "Admin\AdminProductsController@displayRelatedImageForm", "as" => "adminDisplayRelatedImageForm"]);
 
     //Delete related image of product
-    Route::get('adminDeleteRalatedProduct/{idDisplay}/{id}', ["uses" => "Admin\AdminProductsController@deleteRalatedProduct", "as" => "adminDeleteRalatedProduct"]);
+    Route::get('adminDeleteRalatedProduct/{id}', ["uses" => "Admin\AdminProductsController@deleteRalatedProduct", "as" => "adminDeleteRalatedProduct"]);
+
+    //Display update related product form
+    Route::get('updateRelatedImageForm/{id}', ["uses" => "Admin\AdminProductsController@updateRelatedImageForm", "as" => "adminUpdateRelatedImageForm"]);
 
     //Update related product
-    Route::post('editRelatedImageForm/{id}', ["uses" => "Admin\AdminProductsController@editRelatedImageForm", "as" => "adminEditRelatedImageForm"]);
+    Route::post('adminUpdateRelatedImage/{id}', ["uses" => "Admin\AdminProductsController@updateRelatedImage", "as" => "adminUpdateRelatedImage"]);
 });

@@ -6,13 +6,19 @@
 <div class="table-responsive">
 
     @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
+        <div class="alert alert-danger">
+            <ul>
 
-            <li>{!! print_r($errors->all()) !!}</li>
+                <li>{!! print_r($errors->all()) !!}</li>
 
-        </ul>
-    </div>
+            </ul>
+        </div>
+    @endif
+
+    @if(Session::has('fail'))
+        <div class="alert alert-danger">
+            {{Session::get('fail')}}
+        </div>
     @endif
 
 
@@ -61,8 +67,19 @@
         </div>
 
         <div class="form-group">
-            <label for="producer">Producer</label>
-            <input type="text" class="form-control" name="producer" id="producer" placeholder="Producer" required>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="producer">Producer</label>
+                    <input type="text" class="form-control" name="producer" id="producer" placeholder="Producer"
+                        required>
+                </div>
+                <div class="col-md-6">
+                    <label for="Quantity">Quantity</label>
+                    <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Quantity"
+                        required>
+                </div>
+            </div>
+
         </div>
         <!-- <div class="form-group">
             <label for="type">Type</label>

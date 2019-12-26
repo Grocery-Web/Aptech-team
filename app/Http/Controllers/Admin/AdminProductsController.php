@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Product;
+use App\ProductsPhoto;
 
 class AdminProductsController extends Controller
 {
@@ -67,15 +68,35 @@ class AdminProductsController extends Controller
     // Update product info form
     public function updateProduct(Request $request, $id)
     {
-        $name       =   $request->input('name');
-        $desciption =   $request->input('description');
-        $type       =   $request->input('type');
-        $price      =   $request->input('price');
-
-        $arrayToUpdate = array('name' => $name, 'description' => $desciption, 'type' => $type, 'price' => $price);
+        $name         =  $request->input('name');
+        $description  =  $request->input('description');
+        $weight       =  $request->input('weight');
+        $width        =  $request->input('width');
+        $depth        =  $request->input('depth');
+        $height       =  $request->input('height');
+        $producer     =  $request->input('producer');
+        $type         =  $request->input('type');
+        $quantity     =  $request->input('quantity');
+        $price        =  $request->input('price');
+        
+        // Check existed name of product
+        $newname = preg_replace('/\s+/', ' ' , $name);   //Replace multiple spaces with a single space
+        $result = DB::table('products')->where([
+            ['name', '=', $newname],
+            ['id', '<>', $id],
+        ])->get();
+        if (count($result)) {
+            return redirect()->route("adminEditProductForm",$id)->withFail('Name of product is exist');
+        }
+        // Update product info
+        $arrayToUpdate = array(
+            "name" => $name, "description" => $description, "weight" => $weight, "width" => $width, "depth" => $depth,
+            "height" => $height, "producer" => $producer, "type" => $type, "price" => $price,
+            "quantity" => $quantity
+        );
         DB::table('products')->where('id', $id)->update($arrayToUpdate);
-
         return redirect()->route("adminDisplayProducts");
+        // After finishing this function, you should update display image and related images again with new name 
     }
 
     //Delete product
@@ -116,11 +137,18 @@ class AdminProductsController extends Controller
     {
         $name         =  $request->input('name');
         $description  =  $request->input('description');
+        $weight       =  $request->input('weight');
+        $width        =  $request->input('width');
+        $depth        =  $request->input('depth');
+        $height       =  $request->input('height');
+        $producer     =  $request->input('producer');
         $type         =  $request->input('type');
+        $quantity     =  $request->input('quantity');
         $price        =  $request->input('price');
         $photos       =  array();
 
-        $result  =  DB::table('products')->where('name', $name)->get();
+        $newname = preg_replace('/\s+/', ' ' , $name);
+        $result  =  DB::table('products')->where('name', $newname)->get();
         if (count($result)) {
             return redirect()->route("adminCreateProductForm")->withFail('Name of product is exist');
         }
@@ -153,8 +181,9 @@ class AdminProductsController extends Controller
         }
         // Create products with display image
         $newProductArray = array(
-            "name" => $name, "description" => $description, "image" => $imageName,
-            "type" => $type, "price" => $price
+            "name" => $name, "description" => $description, "weight" => $weight, "width" => $width, "depth" => $depth,
+            "height" => $height, "producer" => $producer, "image" => $imageName, "type" => $type, "price" => $price,
+            "quantity" => $quantity
         );
         $created      = DB::table("products")->insert($newProductArray);
         // Add more related images to product
@@ -169,14 +198,66 @@ class AdminProductsController extends Controller
         if ($created && $insertPhoto) {
             return redirect()->route("adminDisplayProducts");
         } else {
-            return "Product was not Created";
+            return redirect()->route("adminCreateProductForm")->withFail('Product was not Created');
         }
     }
     // Display related image of product panel
     public function displayRelatedImageForm($id)
     {
-        $product    =   Product::find($id);
         $gallery    =   DB::table('products_photos')->where('product_id', $id)->get();
         return view('admin.displayRelatedImageForm', ['gallery' => $gallery]);
+    }
+    //Delete ralated product
+    public function deleteRalatedProduct($id)
+    {
+        $photo    =   ProductsPhoto::find($id);
+        // Delete display image in Storage
+        $exists     =  Storage::disk("local")->exists("public/product_images/" . $photo['photos']);
+        if ($exists) {
+            Storage::delete('public/product_images/' . $photo['photos']);
+        } else {
+            return redirect()->route("adminDisplayRelatedImageForm", ['id' => $photo['product_id']])->withFail('Image does not exist');
+        }
+        ProductsPhoto::destroy($id);
+        return redirect()->route("adminDisplayRelatedImageForm", ['id' => $photo['product_id']]);
+    }
+    // Display form for updating related image of product
+    public function updateRelatedImageForm($id)
+    {
+        $photo    =   ProductsPhoto::find($id);
+        return view('admin.updateRelatedImageForm', ['photo' => $photo]);
+    }
+    // Update related image of product
+    public function updateRelatedImage(Request $request, $id)
+    {
+        // Delete display image in Storage
+        Validator::make($request->all(), ['photos' => "required|file|image|mimes:jpg,png,jpeg|max:5000"])->validate();
+
+
+        if ($request->hasFile("photos")) {
+
+            $photo      = ProductsPhoto::find($id);
+            $imageName  =  $photo->photos;
+            $exists = Storage::disk('local')->exists("public/product_images/" . $photo->photos);
+
+            //delete old image
+            if ($exists) {
+                Storage::delete('public/product_images/' . $imageName);
+            }
+
+            //upload new image
+            $ext = $request->file('photos')->getClientOriginalExtension(); //jpg
+
+            $request->photos->storeAs("public/product_images/", $imageName);
+
+            $arrayToUpdate = array('photos' => $imageName);
+            DB::table('products_photos')->where('id', $id)->update($arrayToUpdate);
+
+            return redirect()->route("adminDisplayRelatedImageForm", ['id' => $photo->product_id]);
+        } else {
+
+            $error = "NO Image was Selected";
+            return $error;
+        }
     }
 }

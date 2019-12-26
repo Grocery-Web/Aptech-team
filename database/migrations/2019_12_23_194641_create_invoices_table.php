@@ -17,7 +17,7 @@ class CreateInvoicesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->integer('total_quantity');
-            $table->integer('total_price');
+            $table->decimal('total_price', 10, 2);
             $table->string('shipping_address', 300);
             $table->string('status', 100);
             $table->timestamps();
