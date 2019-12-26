@@ -1,24 +1,14 @@
 @extends('layouts.master')
 @section('content')
-<!-- Product Summary + purchase zone -->
-@php
-// dd($product);
-// dd($product['name']);
-// dd($gallery);
-// foreach($gallery as $key => $value){
-// dd($value->photos);
-// }
-@endphp
 <div class="container product">
     <div class="row">
         <div class="col-lg-5">
             <div class="product-carousel">
-                <div><img src="https://images-na.ssl-images-amazon.com/images/I/91wFELT290L._SL1500_.jpg">
-                </div>
-                <div><img src="https://images-na.ssl-images-amazon.com/images/I/81zmAUCA5vL._SL1500_.jpg  ">
-                </div>
-                <div><img src="https://images-na.ssl-images-amazon.com/images/I/81Tq4at6PYL._SL1500_.jpg">
-                </div>
+                @foreach ($gallery as $key => $value)
+                    <div>
+                        <img src="{{asset ('storage')}}/product_images/{{$value->photos}}" alt="">
+                    </div>
+                @endforeach
             </div>
         </div>
         <div class="col-lg-7">
