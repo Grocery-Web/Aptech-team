@@ -72,7 +72,7 @@
                     addCart = document.getElementById('addtoCART');
                     addCart.addEventListener('click', function(){
                         let value_quantity = parseInt(document.getElementById('quantity').value, 10);
-                        value_quantity = isNaN(value) ? 0 : value;
+                        value_quantity = isNaN(value_quantity) ? 0 : value_quantity;
                     })
                 </script>
                 <div class="addtocart ml-3 mr-3">
