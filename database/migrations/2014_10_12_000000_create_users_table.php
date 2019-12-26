@@ -17,6 +17,9 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('username')->unique();
             $table->string('password');
+            $table->string('avatar')->default('default.jpg');
+            $table->boolean('is_admin')->default(false);
+            $table->integer('lv_user')->default(0);
             $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->string('phone')->unique()->nullable();

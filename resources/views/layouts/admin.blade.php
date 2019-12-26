@@ -19,7 +19,6 @@
 </head>
 
 <body>
-
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -36,7 +35,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/admin/products">Dashboard</a></li>
                 <li><a href="#">Settings</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="/home">Profile</a></li>
                 <li><a href="#">Help</a></li>
             </ul>
 
@@ -51,7 +50,9 @@
                 <li class="active"><a href="/admin/index">Overview <span class="sr-only">(current)</span></a></li>
                 <li><a href="/admin/createProductForm">Insert</a></li>
                 <li><a href="#">Edit</a></li>
-                <li><a href="/admin/users">Users</a></li>
+                @if($userData['lv_user']==2)
+                <li><a href="{{ route('adminDisplayAccount')}}">Users</a></li>
+                @endif
                 <li><a href="#">Analytics</a></li>
             </ul>
             <ul class="nav nav-sidebar">
