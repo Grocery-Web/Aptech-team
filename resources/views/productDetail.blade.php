@@ -143,8 +143,6 @@
 
     <div class="tab-content">
         <div id="home" class="tab-pane in active">
-            <img
-                src="https://m.media-amazon.com/images/S/aplus-media/sota/72729dbf-31b1-4cfd-ab89-fc75eefb968f.__CR0,54,400,400_PT0_SX300_V1___.jpg">
             <p class="mt-5">The Honeywell 12" Oscillating Table Fan can be implemented in a variety of settings to
                 improve the overall quality of airflow. The inclusion of three speed settings and a round 12 in. head
                 afford a wide customizable oscillation. An adjustable tilt fan head will provide owners the luxury of
@@ -158,19 +156,19 @@
             <table class="mt-5" style="width:50%">
                 <tr>
                     <th>Product Dimensions</th>
-                    <td>14.8 x 11.5 x 19.1 inches</td>
+                    <td>{{$product['depth']}} x {{$product['width']}} x {{$product['height']}} inches</td>
                 </tr>
                 <tr>
                     <th>Item Weight</th>
-                    <td>8.5 pounds</td>
+                    <td>{{$product['weight']}}</td>
                 </tr>
                 <tr>
                     <th>Shipping Weight</th>
-                    <td>8.5 pounds</td>
+                    <td>{{$product['weight']}}</td>
                 </tr>
                 <tr>
                     <th>Manufacturer</th>
-                    <td>Honeywell</td>
+                    <td>{{$product['producer']}}</td>
                 </tr>
                 <tr>
                     <th>ASIN</th>
