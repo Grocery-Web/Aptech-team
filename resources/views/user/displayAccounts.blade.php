@@ -27,7 +27,7 @@
             <td>{{$user['username']}}</td>
             <td>{{$user['role_id']}}</td>
 
-            <td><a href="#" class="btn btn-primary">Alter</a></td>
+            <td><a href="{{route('adminEditUserForm',['id' => $user['id'] ])}}" class="btn btn-primary">Alter</a></td>
             <td><a href="#"  class="btn btn-warning">Remove</a></td>
         </tr>
 

@@ -18,4 +18,10 @@ class AdminUsersController extends Controller
         $users = User::all();
         return view("user.displayAccounts", ['users' => $users]);
     }
+
+    public function editAccount($id)
+    {
+        $user = User::find($id);
+        return view("user.editAccounts", ['user' => $user]);
+    }
 }
