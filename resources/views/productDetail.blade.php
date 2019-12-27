@@ -1,24 +1,14 @@
 @extends('layouts.master')
 @section('content')
-<!-- Product Summary + purchase zone -->
-@php
-// dd($product);
-// dd($product['name']);
-// dd($gallery);
-// foreach($gallery as $key => $value){
-// dd($value->photos);
-// }
-@endphp
 <div class="container product">
     <div class="row">
         <div class="col-lg-5">
             <div class="product-carousel">
-                <div><img src="https://images-na.ssl-images-amazon.com/images/I/91wFELT290L._SL1500_.jpg">
-                </div>
-                <div><img src="https://images-na.ssl-images-amazon.com/images/I/81zmAUCA5vL._SL1500_.jpg  ">
-                </div>
-                <div><img src="https://images-na.ssl-images-amazon.com/images/I/81Tq4at6PYL._SL1500_.jpg">
-                </div>
+                @foreach ($gallery as $key => $value)
+                    <div>
+                        <img src="{{asset ('storage')}}/product_images/{{$value->photos}}" alt="">
+                    </div>
+                @endforeach
             </div>
         </div>
         <div class="col-lg-7">
@@ -67,22 +57,26 @@
                     <input type="number" id="quantity" min="0" step="1" value="0" />
                     <button type="button" id="increase" onclick="increaseValue()" value="+">+</button>
                 </form>
-
-                <script>
-                    value = parseInt(document.getElementById('quantity').value, 10);
-                    value = isNaN(value) ? 0 : value;
-                </script>
                 <div class="addtocart ml-3 mr-3">
-                    <a href="{{ route('addProductToCart', ['id'=>$product['id']]) }}"><button type="button"
-                            class="btn btn-dark"><i class="fas fa-shopping-cart mr-2"></i>ADD TO CART</button></a>
+                    <a id="addtoCART" href="{{ route('addProductToCart', ['id'=>$product['id']]) }}"><button
+                            type="button" class="btn btn-dark"><i class="fas fa-shopping-cart mr-2"></i>ADD TO
+                            CART</button></a>
                 </div>
                 <div class="wishlist">
                     <button type="button" class="btn btn-danger"><i class="far fa-heart mr-2"></i>ADD TO
                         WISHLIST</button>
                 </div>
                 <div class="pdf-download p-3">
-                    <button type="button" class="btn btn-light"><img src="https://img.icons8.com/ultraviolet/80/000000/export-pdf.png"></button>
+                    <button type="button" class="btn btn-light"><img
+                            src="https://img.icons8.com/ultraviolet/80/000000/export-pdf.png"></button>
                 </div>
+                <script>
+                let addCart = document.getElementById("addtoCART");
+                addCart.addEventListener('click', function() {
+                    let value_quantity = parseInt(document.getElementById('quantity').value, 10);
+                    value_quantity = isNaN(value_quantity) ? 0 : value_quantity;
+                })
+                </script>
             </div>
         </div>
     </div>
@@ -140,8 +134,6 @@
 
     <div class="tab-content">
         <div id="home" class="tab-pane in active">
-            <img
-                src="https://m.media-amazon.com/images/S/aplus-media/sota/72729dbf-31b1-4cfd-ab89-fc75eefb968f.__CR0,54,400,400_PT0_SX300_V1___.jpg">
             <p class="mt-5">The Honeywell 12" Oscillating Table Fan can be implemented in a variety of settings to
                 improve the overall quality of airflow. The inclusion of three speed settings and a round 12 in. head
                 afford a wide customizable oscillation. An adjustable tilt fan head will provide owners the luxury of
@@ -155,19 +147,19 @@
             <table class="mt-5" style="width:50%">
                 <tr>
                     <th>Product Dimensions</th>
-                    <td>14.8 x 11.5 x 19.1 inches</td>
+                    <td>{{$product['depth']}} x {{$product['width']}} x {{$product['height']}} inches</td>
                 </tr>
                 <tr>
                     <th>Item Weight</th>
-                    <td>8.5 pounds</td>
+                    <td>{{$product['weight']}}</td>
                 </tr>
                 <tr>
                     <th>Shipping Weight</th>
-                    <td>8.5 pounds</td>
+                    <td>{{$product['weight']}}</td>
                 </tr>
                 <tr>
                     <th>Manufacturer</th>
-                    <td>Honeywell</td>
+                    <td>{{$product['producer']}}</td>
                 </tr>
                 <tr>
                     <th>ASIN</th>
