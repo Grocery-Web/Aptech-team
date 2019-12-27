@@ -27,7 +27,7 @@ class ChangePasswordController extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
             Auth::logout();
-            return redirect()->route("login")->withSuccess('New password has aldready updated');;
+            return redirect()->route("login")->withSuccess('New password has aldready updated');
         }else{
             return redirect()->back()->withFail('New password has not been updated');
         }
