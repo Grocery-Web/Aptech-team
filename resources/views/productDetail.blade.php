@@ -52,16 +52,17 @@
             </div>
             <hr class="mt-4">
             <div class="purchase d-flex flex-row flex-wrap align-items-center py-2">
-                <form class="numberInput">
-                    <button type="button" id="minus" onclick="decreaseValue()" value="-">-</button>
+                <form class="numberInput d-flex align-items-stretch">
+                    <button type="button" class="updown" id="minus" onclick="decreaseValue()" value="-">-</button>
                     <input type="number" id="quantity" min="0" step="1" value="0" />
-                    <button type="button" id="increase" onclick="increaseValue()" value="+">+</button>
+                    <button type="button" class="updown" id="increase" onclick="increaseValue()" value="+">+</button>
+                
+                    <div class="addtocart ml-3 mr-3">
+                        <a id="addtoCART" href="{{ route('addProductToCart', ['id'=>$product['id']]) }}"><button
+                                type="button" class="btn btn-dark"><i class="fas fa-shopping-cart mr-2"></i>ADD TO
+                                CART</button></a>
+                    </div>
                 </form>
-                <div class="addtocart ml-3 mr-3">
-                    <a id="addtoCART" href="{{ route('addProductToCart', ['id'=>$product['id']]) }}"><button
-                            type="button" class="btn btn-dark"><i class="fas fa-shopping-cart mr-2"></i>ADD TO
-                            CART</button></a>
-                </div>
                 <div class="wishlist">
                     <button type="button" class="btn btn-danger"><i class="far fa-heart mr-2"></i>ADD TO
                         WISHLIST</button>
