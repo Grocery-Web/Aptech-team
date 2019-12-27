@@ -39,7 +39,6 @@ class AdminProductsController extends Controller
     {
         Validator::make($request->all(), ['image' => "required|file|image|mimes:jpg,png,jpeg|max:5000"])->validate();
 
-
         if ($request->hasFile("image")) {
 
             $product = Product::find($id);

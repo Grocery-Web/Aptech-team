@@ -11,7 +11,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Username</th>
-            <th>User Level</th>
+            <th>Role</th>
             <th>Edit</th>
             <th>Remove</th>
         </tr>
@@ -25,10 +25,10 @@
             <td>{{$user['name']}}</td>
             <td>{{$user['email']}}</td>
             <td>{{$user['username']}}</td>
-            <td>{{$user['lv_user']}}</td>
+            <td>{{$user['role_id']}}</td>
 
-            <td><a href="#" class="btn btn-primary">Alter</a></td>
-            <td><a href="#"  class="btn btn-warning">Remove</a></td>
+            <td><a href="{{route('adminEditUserForm',['id' => $user['id'] ])}}" class="btn btn-primary">Alter</a></td>
+            <td><a href="{{route('adminDeleteUser',['id' => $user['id'] ])}}"  class="btn btn-warning">Remove</a></td>
         </tr>
 
         @endforeach
