@@ -98,4 +98,6 @@ Route::group(['prefix' => '/user'], function () {
     Route::get('editAccount/{id}', ["uses"=>"Admin\AdminUsersController@editAccount", "as"=> "adminEditUserForm"]);
     //Submit User Update
     Route::post('updateUserChange/{id}', ["uses"=>"Admin\AdminUsersController@updateUserChange", "as"=> "adminUpdateUserChange"]);
+    //Delete User
+    Route::get('deleteUser/{id}', ["uses"=>"Admin\AdminUsersController@deleteUser", "as"=> "adminDeleteUser"]);
 });

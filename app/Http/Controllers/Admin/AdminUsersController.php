@@ -75,4 +75,19 @@ class AdminUsersController extends Controller
             return redirect()->route("adminEditUserForm",$id)->withFail('User has not updated yet');
         }
     }
+
+    public function deleteUser($id)
+    {
+        $user = User::find($id);
+        // Delete avatar in Storage
+        if($user['avatar'] != 'default.jpg'){
+            $exists = Storage::disk("local")->exists("public/product_images/".$user['avatar']);
+            if ($exists) {
+                Storage::delete('public/product_images/'.$user['avatar']);
+            }
+        }
+        User::destroy($id);
+        return redirect()->route("adminDisplayAccount");
+    }
+
 }
