@@ -19,7 +19,7 @@
 
                     <a href="/"  class="btn btn-warning">Main Page</a>
 
-                    @if($userData->isAdmin())
+                    @if($userData->isAdmin()==1 || $userData->isAdmin()==2)
                     <a href="{{ route('adminDisplayProducts')}}" class="btn btn-primary">Admin Dashboard</a>
                     @endif
 

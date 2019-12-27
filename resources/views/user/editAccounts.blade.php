@@ -36,7 +36,7 @@
             <div class="row" style="margin:0; padding: 0">
                 <div class="col-md-2" style="padding-left: 0">
                     <label for="role">Role_id</label>
-                    <select class="custom-select custom-select-lg mb-3" name="role" id="type" style="margin-bottom: 2rem; padding: 1rem; border-radius:5px">
+                    <select class="custom-select custom-select-lg mb-3" name="role" id="role" style="margin-bottom: 2rem; padding: 1rem; border-radius:5px">
                         <option selected>{{$user['role_id']}}</option>
                         <option value="1">Superadmin</option>
                         <option value="2">Admin</option>
