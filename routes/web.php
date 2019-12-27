@@ -48,10 +48,10 @@ Route::group(['prefix' => '/cart'], function () {
     Route::get('deleteItemFromCart/{id}', ["uses"=>"ProductsController@deleteItemFromCart", "as"=> "deleteItemFromCart"]);
 });
 
-// Group Admin
+// Group AdminProduct
 Route::group(['prefix' => '/admin'], function () {
     // Admin Panel
-    Route::get('products', ["uses"=>"Admin\AdminProductsController@index","as"=>"adminDisplayProducts"])->middleware('restrictToAdmin');;
+    Route::get('products', ["uses"=>"Admin\AdminProductsController@index","as"=>"adminDisplayProducts"])->middleware('restrictToAdmin');
 
     //display edit product form
     Route::get('editProductForm/{id}', ["uses"=>"Admin\AdminProductsController@editProductForm", "as"=> "adminEditProductForm"]);
@@ -88,4 +88,10 @@ Route::group(['prefix' => '/admin'], function () {
 
     //Update related product
     Route::post('adminUpdateRelatedImage/{id}', ["uses" => "Admin\AdminProductsController@updateRelatedImage", "as" => "adminUpdateRelatedImage"]);
+});
+
+// Group AdminUser
+Route::group(['prefix' => '/user'], function () {
+    //Display User Panel
+    Route::get('displayAccount', ["uses"=>"Admin\AdminUsersController@index", "as"=> "adminDisplayAccount"]);
 });
