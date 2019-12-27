@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->string('avatar')->default('default.jpg');
-            $table->boolean('is_admin')->default(false);
-            $table->integer('lv_user')->default(0);
+            $table->integer('role_id')->unsigned()->default(3);
+            $table->foreign('role_id')->references('id')->on('roles');
             $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->string('phone')->unique()->nullable();

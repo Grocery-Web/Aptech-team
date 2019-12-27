@@ -50,7 +50,7 @@
                 <li class="active"><a href="/admin/index">Overview <span class="sr-only">(current)</span></a></li>
                 <li><a href="/admin/createProductForm">Insert</a></li>
                 <li><a href="#">Edit</a></li>
-                @if($userData['lv_user']==2)
+                @if($userData['role_id']==1)
                 <li><a href="{{ route('adminDisplayAccount')}}">Users</a></li>
                 @endif
                 <li><a href="#">Analytics</a></li>
