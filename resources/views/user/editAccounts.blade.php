@@ -2,32 +2,30 @@
 
 @section('body')
 
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-
-        <li>{!! print_r($errors->all()) !!}</li>
-
-    </ul>
-</div>
-@endif
-
 @if(Session::has('fail'))
 <div class="alert alert-danger">
     {{Session::get('fail')}}
 </div>
 @endif
 
+@if(Session::has('success'))
+    <div class="alert alert-success">
+        {{Session::get('success')}}
+    </div>
+@endif
+
 <div class="table-responsive">
 
-    <form action="/user/updateAccount/{{$user->id}}" method="post">
+    <form action="/user/updateUserChange/{{$user->id}}" method="post">
 
         {{csrf_field()}}
-
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" name="username" id="username" value="{{$user['username']}}" required>
         </div>
+        @if ($errors->has('username'))
+            <span class="text-danger">{{ $errors->first('username') }}</span>
+        @endif
 
         <div class="form-group">
             <label for="name">Name</label>
@@ -37,8 +35,9 @@
         <div style="margin:0; padding: 0">
             <div class="row" style="margin:0; padding: 0">
                 <div class="col-md-2" style="padding-left: 0">
-                    <select class="custom-select custom-select-lg mb-3" name="type" id="type" style="margin-bottom: 2rem; padding: 1rem; border-radius:5px">
-                        <option selected>User Role ...</option>
+                    <label for="role">Role_id</label>
+                    <select class="custom-select custom-select-lg mb-3" name="role" id="type" style="margin-bottom: 2rem; padding: 1rem; border-radius:5px">
+                        <option selected>{{$user['role_id']}}</option>
                         <option value="1">Superadmin</option>
                         <option value="2">Admin</option>
                         <option value="3">Client</option>
@@ -58,6 +57,14 @@
                 </div>
             </div>
         </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" id="email" value="{{$user['email']}}" required>
+        </div>
+        @if ($errors->has('email'))
+            <span class="text-danger">{{ $errors->first('email') }}</span>
+        @endif
 
         <div class="form-group">
             <label for="phone">Phone</label>

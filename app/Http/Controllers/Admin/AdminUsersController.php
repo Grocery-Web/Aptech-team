@@ -24,4 +24,55 @@ class AdminUsersController extends Controller
         $user = User::find($id);
         return view("user.editAccounts", ['user' => $user]);
     }
+
+    public function updateUserChange(Request $request, $id)
+    {
+        $request->validate([
+            'email'    => 'email',
+        ]);
+
+        $username   =  preg_replace('/\s+/', ' ' , $request->input('username'));
+        $name       =  $request->input('name');
+        $email      =  $request->input('email');
+        $role       =  $request->input('role');
+        $gender     =  $request->input('gender');
+        $phone      =  $request->input('phone');
+        $address    =  $request->input('address');
+
+        // Check unique username
+        $result = DB::table('users')->where([
+            ['username', '=', $username],
+            ['id', '<>', $id],
+        ])->get();
+        if (count($result)) {
+            return redirect()->route("adminEditUserForm",$id)->withFail('Username has already taken');
+        }
+
+        // Check unique email
+        $result = DB::table('users')->where([
+            ['email', '=', $email],
+            ['id', '<>', $id],
+        ])->get();
+        if (count($result)) {
+            return redirect()->route("adminEditUserForm",$id)->withFail('Email has already takend');
+        }
+
+        // Check numeric phone
+        if(ctype_digit($phone)==false){
+            return redirect()->route("adminEditUserForm",$id)->withFail('Phone must is a range of number');
+        }
+
+        $userUpdated = array(
+            "name" => $name, "username" => $username, "role_id" => $role, "sex" => $gender, "phone" => $phone,
+            "address" => $address
+        );
+
+        $created  = DB::table("users")->where('id', $id)->update($userUpdated);
+
+        if ($created) {
+            return redirect()->route("adminEditUserForm",$id)->withSuccess('User has already updated');
+        } else {
+            return redirect()->route("adminEditUserForm",$id)->withFail('User has not updated yet');
+        }
+    }
 }
