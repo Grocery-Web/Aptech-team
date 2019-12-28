@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\ProductsPhoto;
+use PDF;
 
 class ProductsController extends Controller
 {
@@ -110,6 +111,7 @@ class ProductsController extends Controller
     }
 
     public function createPdf($id) {
-        return view('createPdf', ["userId"=> $id]);
+        $pdf = PDF::loadView('createPdf');
+        return $pdf->download('RealProgrammer.pdf');
     }
 }
