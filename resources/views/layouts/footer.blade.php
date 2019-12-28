@@ -63,7 +63,7 @@
                         </div>
                         <a href="#" class="footer__text">
                             ADDRESS: <br>
-                            1234 Street Name, City, England <br>
+                            75-81 Stirling Rd, Acton, London 8DJ, United Kingdom <br>
                             EMAIL: <br>
                             mail@example.com
                         </a>
