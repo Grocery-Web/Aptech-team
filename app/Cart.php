@@ -22,23 +22,24 @@ class Cart
         }
     }
 
-    public function addItem($id, $product) {
+    public function addItem($id, $product, $quantity) {
         $price = (int) str_replace("$", "", $product->price);
 
         // the item already exist
         if(array_key_exists($id, $this->items)) {
             $productToAdd = $this->items[$id];
-            $productToAdd['totalSingleQuantity']++;
+            $productToAdd['totalSingleQuantity'] += $quantity;
             $productToAdd['totalSinglePrice'] = $productToAdd['totalSingleQuantity'] * $price;
 
             // first time to add this item
         } else {
-            $productToAdd = ['totalSingleQuantity' => 1, 'totalSinglePrice' => $price, 'data' => $product];
+            $totalSinglePrice = $quantity * $price;
+            $productToAdd = ['totalSingleQuantity' => $quantity, 'totalSinglePrice' => $totalSinglePrice, 'data' => $product];
         }
 
         $this->items[$id] = $productToAdd;
-        $this->totalQuantity++;
-        $this->totalPrice = $this->totalPrice + $price;
+        $this->totalQuantity += $quantity;
+        $this->totalPrice = $this->totalPrice + $price * $quantity;
 
     }
 

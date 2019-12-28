@@ -28,8 +28,10 @@ class ProductsController extends Controller
         $prevCart = $request->session()->get('cart');
         $cart = new Cart($prevCart);
 
+        $quantity = $request->quantity;
+
         $product = Product::find($id);
-        $cart->addItem($id, $product);
+        $cart->addItem($id, $product, $quantity);
         $request->session()->put('cart', $cart);
 
         return redirect('');
