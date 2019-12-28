@@ -57,7 +57,7 @@
                     <button type="button" class="updown" id="minus" onclick="decreaseValue()" value="-">-</button>
                     <input type="number" id="quantity" min="0" step="1" value="0" name="quantity" />
                     <button type="button" class="updown" id="increase" onclick="increaseValue()" value="+">+</button>
-                
+
                     <div class="addtocart ml-3 mr-3">
                         <button
                                 type="submit" class="btn btn-dark"><i class="fas fa-shopping-cart mr-2"></i>ADD TO
@@ -69,16 +69,9 @@
                         WISHLIST</button>
                 </div>
                 <div class="pdf-download p-3">
-                    <button type="button" class="btn btn-light"><img
-                            src="https://img.icons8.com/ultraviolet/80/000000/export-pdf.png"></button>
+                    <a href="{{route('createPdf', [$product['id']] )}}"><button type="button" class="btn btn-light"><img
+                            src="https://img.icons8.com/ultraviolet/80/000000/export-pdf.png"></button> </a>
                 </div>
-                <script>
-                let addCart = document.getElementById("addtoCART");
-                addCart.addEventListener('click', function() {
-                    let value_quantity = parseInt(document.getElementById('quantity').value, 10);
-                    value_quantity = isNaN(value_quantity) ? 0 : value_quantity;
-                })
-                </script>
             </div>
         </div>
     </div>

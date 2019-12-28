@@ -73,12 +73,12 @@ class ProductsController extends Controller
     public function clearCart($id) {
         $cart = Session::get('cart');
         $user = User::find($id);
-        
+
         if($cart) {
             // add new invoice
             $newInvoiceData = array(
-                'user_id' => $id, 
-                'total_quantity' => $cart->totalQuantity, 
+                'user_id' => $id,
+                'total_quantity' => $cart->totalQuantity,
                 'total_price' => $cart->totalPrice,
                 'shipping_address' => $user->address,
                 'status' => 'In progress'
@@ -104,8 +104,12 @@ class ProductsController extends Controller
             Session::forget('cart');
         }
 
-        
+
 
         return redirect()->route('cartProducts');
+    }
+
+    public function createPdf($id) {
+        return view('createPdf', ["userId"=> $id]);
     }
 }
