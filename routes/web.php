@@ -37,6 +37,7 @@ Route::group(['prefix' => '/product'], function () {
     Route::get('details/{id}',  ["uses"=>"ProductsController@productDetails", "as"=> "productDetails"]);
     // Add product to cart
     Route::post('details/{id}/addToCart', ["uses"=>"ProductsController@addProductToCart", "as"=> "addProductToCart"]);
+    Route::get('details/{id}/createPdf', ["uses"=>"ProductsController@createPdf", "as"=> "createPdf"]);
 });
 
 //Logout Button in Homepage
@@ -106,5 +107,3 @@ Route::group(['prefix' => '/user'], function () {
     Route::get('deleteUser/{id}', ["uses"=>"Admin\AdminUsersController@deleteUser", "as"=> "adminDeleteUser"]);
 });
 
-// Route to control pdf file
-Route::get('/createPdf', function() { return Redirect::to("pdf/createPdf.php"); });
