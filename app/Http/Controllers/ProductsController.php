@@ -96,6 +96,7 @@ class ProductsController extends Controller
                 $newInvoiceDetail = array(
                     'invoice_id' => $newInvoice->id,
                     'product_id' => $product->id,
+                    'total' => $item['totalSinglePrice'],
                     'product_quantity' => $item['totalSingleQuantity']
                 );
                 DB::table('invoice_details')->insert($newInvoiceDetail);
