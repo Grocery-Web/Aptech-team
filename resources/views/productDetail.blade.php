@@ -52,15 +52,16 @@
             </div>
             <hr class="mt-4">
             <div class="purchase d-flex flex-row flex-wrap align-items-center py-2">
-                <form class="numberInput d-flex align-items-stretch">
+                <form method="POST" action="{{route('addProductToCart', [$product['id']] )}}" class="numberInput d-flex align-items-stretch">
+                    {{ csrf_field() }}
                     <button type="button" class="updown" id="minus" onclick="decreaseValue()" value="-">-</button>
-                    <input type="number" id="quantity" min="0" step="1" value="0" />
+                    <input type="number" id="quantity" min="0" step="1" value="0" name="quantity" />
                     <button type="button" class="updown" id="increase" onclick="increaseValue()" value="+">+</button>
                 
                     <div class="addtocart ml-3 mr-3">
-                        <a id="addtoCART" href="{{ route('addProductToCart', ['id'=>$product['id']]) }}"><button
-                                type="button" class="btn btn-dark"><i class="fas fa-shopping-cart mr-2"></i>ADD TO
-                                CART</button></a>
+                        <button
+                                type="submit" class="btn btn-dark"><i class="fas fa-shopping-cart mr-2"></i>ADD TO
+                                CART</button>
                     </div>
                 </form>
                 <div class="wishlist">

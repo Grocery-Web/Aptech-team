@@ -36,7 +36,7 @@ Route::group(['prefix' => '/product'], function () {
     // Index Mainpage
     Route::get('details/{id}',  ["uses"=>"ProductsController@productDetails", "as"=> "productDetails"]);
     // Add product to cart
-    Route::get('details/{id}/addToCart', ["uses"=>"ProductsController@addProductToCart", "as"=> "addProductToCart"]);
+    Route::post('details/{id}/addToCart', ["uses"=>"ProductsController@addProductToCart", "as"=> "addProductToCart"]);
 });
 
 //Logout Button in Homepage
