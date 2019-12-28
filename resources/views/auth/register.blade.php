@@ -12,23 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                    name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email"
-                                class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -68,6 +52,36 @@
                                     name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                                    name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="role_id"
+                                class="col-md-4 col-form-label text-md-right">{{ __('Role ID') }}</label>
+
+                            <div class="col-md-6">
+                                <select class="custom-select custom-select-lg mb-3" name="role_id" id="role_id"
+                                    style="border-radius:5px">
+                                    <option value="1">Superadmin</option>
+                                    <option value="2">Admin</option>
+                                    <option value="3">Client</option>
+                                </select>
+                            </div>
+                        </div>
+
 
                         {{-- additional data --}}
                         <div class="form-group row">
@@ -118,7 +132,15 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
+                        <div class="form-group row">
+                            <label for="userAvatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="file" name="userAvatar">
+                            </div>
+                        </div>
+
                         <div class="row justify-content-center" style="margin: 1rem">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="gender" id="male" value="Male"

@@ -21,6 +21,7 @@ class CreateInvoiceDetailsTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')
             ->onUpdate('cascade');
+            $table->decimal('total', 10, 2);
             $table->integer('product_quantity');
         });
     }

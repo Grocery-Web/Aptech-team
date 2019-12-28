@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 
 class AdminUsersController extends Controller
@@ -86,7 +87,12 @@ class AdminUsersController extends Controller
                 Storage::delete('public/product_images/'.$user['avatar']);
             }
         }
-        User::destroy($id);
+
+        if(Auth::user()->id == $user['id']){
+            User::destroy($id);
+            Auth::logout();
+            return redirect()->route("login");
+        }
         return redirect()->route("adminDisplayAccount");
     }
 

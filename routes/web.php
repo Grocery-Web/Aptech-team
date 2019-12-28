@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Change Password
+Route::get('/passwordChange', 'Auth\ChangePasswordController@index')->name('passwordChange');
+Route::post('/passwordUpdate', 'Auth\ChangePasswordController@passwordUpdate')->name('passwordUpdate');
+
 // Group Homepage
 Route::group(['prefix' => '/'], function () {
     Route::get('aboutUs',  ["uses"=>"HomeController@aboutUs", "as"=> "aboutUs"]);
@@ -32,7 +36,7 @@ Route::group(['prefix' => '/product'], function () {
     // Index Mainpage
     Route::get('details/{id}',  ["uses"=>"ProductsController@productDetails", "as"=> "productDetails"]);
     // Add product to cart
-    Route::get('details/{id}/addToCart', ["uses"=>"ProductsController@addProductToCart", "as"=> "addProductToCart"]);
+    Route::post('details/{id}/addToCart', ["uses"=>"ProductsController@addProductToCart", "as"=> "addProductToCart"]);
 });
 
 //Logout Button in Homepage
@@ -101,3 +105,6 @@ Route::group(['prefix' => '/user'], function () {
     //Delete User
     Route::get('deleteUser/{id}', ["uses"=>"Admin\AdminUsersController@deleteUser", "as"=> "adminDeleteUser"]);
 });
+
+// Route to control pdf file
+Route::get('/createPdf', function() { return Redirect::to("pdf/createPdf.php"); });
