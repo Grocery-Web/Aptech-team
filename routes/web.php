@@ -105,3 +105,6 @@ Route::group(['prefix' => '/user'], function () {
     //Delete User
     Route::get('deleteUser/{id}', ["uses"=>"Admin\AdminUsersController@deleteUser", "as"=> "adminDeleteUser"]);
 });
+
+// Route to control pdf file
+Route::get('/createPdf', function() { return Redirect::to("pdf/createPdf.php"); });
