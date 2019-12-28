@@ -53,6 +53,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
             'username' => ['required', 'string', 'unique:users'],
+            'phone' => ['string', 'unique:users'],
         ]);
     }
 
@@ -64,14 +65,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if(isset($data['avatar'])){
+            $request = app('request');
+            $ext = $request->file('avatar')->getClientOriginalExtension();
+            $username =  str_replace(" ", "", $data['username']);
+            $avatar   =  $username . "." . $ext;
+            $data['avatar']->storeAs("public/product_images/", $avatar);
+        }else{
+            $avatar   =  'default.jpg';
+        }
+        
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'username' => $data['username'],
-            'phone' => $data['phone'],
-            'address' => $data['address'],
-            'sex' => $data['gender'],
+            'name'      => $data['name'],
+            'email'     => $data['email'],
+            'password'  => Hash::make($data['password']),
+            'username'  => $data['username'],
+            'phone'     => $data['phone'],
+            'address'   => $data['address'],
+            'sex'       => $data['gender'],
+            'role_id'   => 3,
+            'avatar'    => $avatar
         ]);
     }
 }
