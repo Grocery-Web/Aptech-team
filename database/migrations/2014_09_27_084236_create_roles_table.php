@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRoleField extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddRoleField extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_admin')->after('name')->default(false);
-            $table->integer('lv_user')->after('is_admin')->default(0);
+        Schema::create('roles', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('lv_user');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,6 @@ class AddRoleField extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('roles');
     }
 }

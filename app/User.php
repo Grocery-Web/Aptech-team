@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'phone', 'address', 'sex'
+        'name', 'avatar', 'role_id', 'email', 'password', 'username', 'phone', 'address', 'sex'
     ];
 
     /**
@@ -37,7 +37,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
+
     public function isAdmin(){
-        return $this->is_admin;
+        return $this->role_id;
     }
 }

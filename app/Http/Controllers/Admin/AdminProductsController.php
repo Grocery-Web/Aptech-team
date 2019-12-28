@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
+use App\Product;
+use App\ProductsPhoto;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-use App\Product;
-use App\ProductsPhoto;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminProductsController extends Controller
 {
@@ -38,7 +41,6 @@ class AdminProductsController extends Controller
     public function updateProductImage(Request $request, $id)
     {
         Validator::make($request->all(), ['image' => "required|file|image|mimes:jpg,png,jpeg|max:5000"])->validate();
-
 
         if ($request->hasFile("image")) {
 
@@ -136,6 +138,7 @@ class AdminProductsController extends Controller
     public function sendCreateProductForm(Request $request)
     {
         $name         =  $request->input('name');
+        $user         =  User::find(Auth::id());
         $description  =  $request->input('description');
         $weight       =  $request->input('weight');
         $width        =  $request->input('width');
@@ -183,7 +186,7 @@ class AdminProductsController extends Controller
         $newProductArray = array(
             "name" => $name, "description" => $description, "weight" => $weight, "width" => $width, "depth" => $depth,
             "height" => $height, "producer" => $producer, "image" => $imageName, "type" => $type, "price" => $price,
-            "quantity" => $quantity
+            "quantity" => $quantity, "user_id" => $user['id']
         );
         $created      = DB::table("products")->insert($newProductArray);
         // Add more related images to product

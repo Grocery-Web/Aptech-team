@@ -81,10 +81,7 @@
             </div>
 
         </div>
-        <!-- <div class="form-group">
-            <label for="type">Type</label>
-            <input type="text" class="form-control" name="type" id="type" placeholder="type" required>
-        </div> -->
+        
         <select class="custom-select custom-select-lg mb-3" name="type" id="type"
             style="margin-bottom: 2rem; padding: 1rem; border-radius:5px">
             <option selected>Choose your products type ...</option>
