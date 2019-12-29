@@ -37,7 +37,7 @@
                 <li><a href="/home">Profile</a></li>
                 {{-- for superuser only --}}
                 @if($userData['role_id']==1)
-                <li><a href="#">Add User</a></li>
+                <li><a href="/user/addAccountForm">Add User</a></li>
                 @endif
                 {{-- ------------------ --}}
             </ul>

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
@@ -94,6 +95,52 @@ class AdminUsersController extends Controller
             return redirect()->route("login");
         }
         return redirect()->route("adminDisplayAccount");
+    }
+    // Display Adding User Form
+    public function addAccountForm()
+    {
+        return view("user.addAccount");
+    }
+    // Add New User
+    public function addNewAccount(Request $request)
+    {
+        $request->validate([
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'username' => 'required|string|unique:users',
+            'phone'    => 'string|unique:users',
+            'avatar'   => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+        ]);
+
+        $email                 =  $request->input('email');
+        $password              =  Hash::make($request->input('password'));
+        $username              =  $request->input('username');
+        $name                  =  $request->input('name');
+        $phone                 =  $request->input('phone');
+        $address               =  $request->input('address');
+        $avatar                =  $request->input('avatar');
+        $role_id               =  $request->input('role_id');
+        $gender                =  $request->input('gender');
+
+        $ext = $request->file('avatar')->getClientOriginalExtension();
+        $username =  str_replace(" ", "", $username);
+        $avatarname   =  $username . "." . $ext;
+        // dd($request->avatar);
+        $request->avatar->storeAs("public/product_images/", $avatarname);
+
+        $arrayToInsert = array(
+            "email" => $email, "password" => $password, "username" => $username, "name" => $name,
+            "phone" => $phone, "address" => $address, "avatar" => $avatarname, "role_id" => $role_id,
+            "sex" => $gender
+        );
+
+        $created  = DB::table("users")->insert($arrayToInsert);
+        if ($created) {
+            return redirect()->route("adminDisplayAccount");
+        } else {
+            return redirect()->route("adminAddAccountForm")->withFail('User has not been added yet');
+        }
     }
 
 }
