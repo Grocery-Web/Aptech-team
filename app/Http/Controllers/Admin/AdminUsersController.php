@@ -93,8 +93,11 @@ class AdminUsersController extends Controller
             User::destroy($id);
             Auth::logout();
             return redirect()->route("login");
+        }else{
+            User::destroy($id);
+            return redirect()->route("adminDisplayAccount");
         }
-        return redirect()->route("adminDisplayAccount");
+        
     }
     // Display Adding User Form
     public function addAccountForm()
@@ -126,7 +129,6 @@ class AdminUsersController extends Controller
         $ext = $request->file('avatar')->getClientOriginalExtension();
         $username =  str_replace(" ", "", $username);
         $avatarname   =  $username . "." . $ext;
-        // dd($request->avatar);
         $request->avatar->storeAs("public/product_images/", $avatarname);
 
         $arrayToInsert = array(
