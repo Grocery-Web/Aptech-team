@@ -105,5 +105,13 @@ Route::group(['prefix' => '/user'], function () {
     Route::post('updateUserChange/{id}', ["uses"=>"Admin\AdminUsersController@updateUserChange", "as"=> "adminUpdateUserChange"]);
     //Delete User
     Route::get('deleteUser/{id}', ["uses"=>"Admin\AdminUsersController@deleteUser", "as"=> "adminDeleteUser"]);
+    //Display Adding New User Form
+    Route::get('addAccountForm', ["uses"=>"Admin\AdminUsersController@addAccountForm", "as"=> "adminAddAccountForm"]);
+    //Add New User
+    Route::post('addNewAccount', ["uses"=>"Admin\AdminUsersController@addNewAccount", "as"=> "adminAddNewAccount"]);
+    //Display Avatar Update Form
+    Route::get('avatarUpdateForm', ["uses"=>"Admin\AdminUsersController@avatarUpdateForm", "as"=> "adminAvatarUpdateForm"]);
+    //Avatar Update
+    Route::post('updateAvatar/{id}', ["uses"=>"Admin\AdminUsersController@updateAvatar", "as"=> "adminUpdateAvatar"]);
 });
 

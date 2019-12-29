@@ -19,7 +19,8 @@ class UsersTableSeeder extends Seeder
             'EMAIL'       =>   'superadmin@gmail.com',
             'PHONE'       =>   '0977777606',
             'ADDRESS'     =>   'Hồ Chí Minh',
-            'SEX'         =>   'male'
+            'SEX'         =>   'male',
+            'AVATAR'      =>   'default.jpg'
         ]);
 
         DB::table('users')->insert([
