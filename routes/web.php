@@ -109,5 +109,9 @@ Route::group(['prefix' => '/user'], function () {
     Route::get('addAccountForm', ["uses"=>"Admin\AdminUsersController@addAccountForm", "as"=> "adminAddAccountForm"]);
     //Add New User
     Route::post('addNewAccount', ["uses"=>"Admin\AdminUsersController@addNewAccount", "as"=> "adminAddNewAccount"]);
+    //Display Avatar Update Form
+    Route::get('avatarUpdateForm', ["uses"=>"Admin\AdminUsersController@avatarUpdateForm", "as"=> "adminAvatarUpdateForm"]);
+    //Avatar Update
+    Route::post('updateAvatar/{id}', ["uses"=>"Admin\AdminUsersController@updateAvatar", "as"=> "adminUpdateAvatar"]);
 });
 

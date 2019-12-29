@@ -14,19 +14,62 @@ use App\User;
 
 class AdminUsersController extends Controller
 {
-    //display all user account
+    //Display all user account
     public function index()
     {
         $users = User::all();
         return view("user.displayAccounts", ['users' => $users]);
     }
 
+    //Display avatar update form
+    public function avatarUpdateForm()
+    {
+        return view("auth.avatarUpdate");
+    }
+
+    // Update avatar
+    public function updateAvatar(Request $request,$id)
+    {
+        $user = User::find($id);
+        $request->validate([
+            'avatar'   => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile("avatar")) {
+            $avatarname =  $user->avatar;
+            if($avatarname == 'default.jpg'){
+                $ext =  $request->file("avatar")->getClientOriginalExtension();
+                $imageName = $user->username . "." . $ext; 
+                $request->avatar->storeAs("public/user_images/", $imageName);
+                $arrayToUpdate = array('avatar' => $imageName);
+                DB::table('users')->where('id', $id)->update($arrayToUpdate);
+                return redirect()->route("adminAvatarUpdateForm")->withSuccess('Avatar has already updated');
+            }else{
+                $exists = Storage::disk('local')->exists("public/product_images/" . $avatarname);
+                //delete old avatar
+                if ($exists) {
+                    Storage::delete('public/product_images/' . $avatarname);
+                }
+                //upload new avatar
+                $request->avatar->storeAs("public/user_images/", $avatarname);
+                // update table users
+                $arrayToUpdate = array('avatar' => $avatarname);
+                DB::table('users')->where('id', $id)->update($arrayToUpdate);
+                return redirect()->route("adminAvatarUpdateForm")->withSuccess('Avatar has already updated');
+            }
+        }else{
+            return redirect()->route("adminAvatarUpdateForm")->withFail('Avatar has not updated yet');
+        }
+    }
+
+    // Display Update User Account Form
     public function editAccount($id)
     {
         $user = User::find($id);
         return view("user.editAccounts", ['user' => $user]);
     }
 
+    // Update User Account
     public function updateUserChange(Request $request, $id)
     {
         $request->validate([
@@ -83,9 +126,9 @@ class AdminUsersController extends Controller
         $user = User::find($id);
         // Delete avatar in Storage
         if($user['avatar'] != 'default.jpg'){
-            $exists = Storage::disk("local")->exists("public/product_images/".$user['avatar']);
+            $exists = Storage::disk("local")->exists("public/user_images/".$user['avatar']);
             if ($exists) {
-                Storage::delete('public/product_images/'.$user['avatar']);
+                Storage::delete('public/user_images/'.$user['avatar']);
             }
         }
 
@@ -113,7 +156,7 @@ class AdminUsersController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'username' => 'required|string|unique:users',
             'phone'    => 'string|unique:users',
-            'avatar'   => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+            'avatar'   => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $email                 =  $request->input('email');
@@ -129,7 +172,7 @@ class AdminUsersController extends Controller
         $ext = $request->file('avatar')->getClientOriginalExtension();
         $username =  str_replace(" ", "", $username);
         $avatarname   =  $username . "." . $ext;
-        $request->avatar->storeAs("public/product_images/", $avatarname);
+        $request->avatar->storeAs("public/user_images/", $avatarname);
 
         $arrayToInsert = array(
             "email" => $email, "password" => $password, "username" => $username, "name" => $name,

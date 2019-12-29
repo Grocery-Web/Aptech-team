@@ -55,10 +55,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('passwordChange') }}">
+                                    <a class="dropdown-item" href="{{ route('passwordChange')}}">
                                         Change Password
                                     </a>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/user/avatarUpdateForm">
                                         Change Avatar
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
