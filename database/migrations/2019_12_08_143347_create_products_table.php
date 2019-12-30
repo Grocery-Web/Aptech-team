@@ -26,7 +26,9 @@ class CreateProductsTable extends Migration
             $table->text('producer', 100)->nullable();
             $table->string('image')->nullable();
             $table->decimal('price', 10, 2);
-            $table->string('type');
+            $table->bigInteger('cate_id')->unsigned();
+            $table->foreign('cate_id')->references('id')->on('categories')->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->integer('quantity');
             $table->timestamps();
         });

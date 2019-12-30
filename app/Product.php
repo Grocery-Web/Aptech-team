@@ -18,6 +18,11 @@ class Product extends Model
 
     public function product_photo()
     {
-        return $this->hasMany('App\ProductsPhoto');
+        return $this->hasMany('App\ProductsPhoto', 'product_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
     }
 }

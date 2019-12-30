@@ -14,6 +14,8 @@
 // Index Mainpage
 Route::get('', ["uses"=>"ProductsController@index", "as"=> "login"]);
 
+
+
 //User Authentication
 Auth::routes();
 
