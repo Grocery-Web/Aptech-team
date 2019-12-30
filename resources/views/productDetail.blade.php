@@ -55,7 +55,7 @@
                 <form method="POST" action="{{route('addProductToCart', [$product['id']] )}}" class="numberInput d-flex align-items-stretch">
                     {{ csrf_field() }}
                     <button type="button" class="updown" id="minus" onclick="decreaseValue()" value="-">-</button>
-                    <input type="number" id="quantity" min="0" step="1" value="0" name="quantity" />
+                    <input type="number" id="quantity" min="1" step="1" value="1" name="quantity" />
                     <button type="button" class="updown" id="increase" onclick="increaseValue()" value="+">+</button>
 
                     <div class="addtocart ml-3 mr-3">
@@ -222,7 +222,7 @@
                         </div>
                         <button type="submit" class="btn btn-success">Submit</button>
                     </form>
-                    <div class="row mt-2">
+                    <div class="row mt-3">
                         <div class="col-md-1">
                             <img src="https://img.icons8.com/ios-filled/50/000000/user-male-circle.png"
                                 class="rounded-circle">
