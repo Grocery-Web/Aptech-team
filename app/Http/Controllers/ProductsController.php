@@ -112,6 +112,6 @@ class ProductsController extends Controller
 
     public function createPdf($id) {
         $pdf = PDF::loadView('createPdf');
-        return $pdf->download('RealProgrammer.pdf');
+        return $pdf->download('Product Information.pdf');
     }
 }

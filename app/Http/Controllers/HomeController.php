@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -41,8 +42,8 @@ class HomeController extends Controller
         return view('sitemap');
     }
 
-    public function test()
-    {
-        return view('productDetail');
+    public function test(){  
+        $parentCategories = Category::where('parent_id',NULL)->get();
+        return view('test', compact('parentCategories'));
     }
 }
