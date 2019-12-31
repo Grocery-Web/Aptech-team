@@ -2,7 +2,7 @@
 
 @section('body')
 <div>
-    <h1>Display Category</h1>
+    <h1>Categories List</h1>
     <a href="{{ route('addCategoryForm')}}" class="btn btn-primary">Add New</a>
 </div>
 
@@ -26,7 +26,7 @@
             <td>{{$category['name']}}</td>
             <td>{{$category['parent_id']}}</td>
 
-            <td><a href="{{ route('adminEditCateForm',['id' => $category['id'] ])}}" class="btn btn-primary">Edit</a></td>
+            <td><a href="{{ route('adminEditCateForm',['id' => $category['id']])}}" class="btn btn-primary">Edit</a></td>
             <td><a href="{{ route('adminDeleteCate',['id' => $category['id']])}}"  class="btn btn-warning">Remove</a></td>
         </tr>
 
