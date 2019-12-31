@@ -117,3 +117,20 @@ Route::group(['prefix' => '/user'], function () {
     Route::post('updateAvatar/{id}', ["uses"=>"Admin\AdminUsersController@updateAvatar", "as"=> "adminUpdateAvatar"]);
 });
 
+
+// Group AdminCategory
+Route::group(['prefix' => '/caterory'], function () {
+    //Display Category Panel
+    Route::get('displayCategories', ["uses"=>"Admin\AdminCategoriesController@index", "as"=> "adminDisplayCategories"]);
+    //Display form adding new Category
+    Route::get('createCategoryForm', ["uses"=>"Admin\AdminCategoriesController@createCategoryForm", "as"=> "adminCreateCategoryForm"]);
+    //Add New Category
+    Route::post('addNewCategory', ["uses"=>"Admin\AdminCategoriesController@addNewCategory", "as"=> "adminAddNewCategory"]);
+    //Display form updating Category
+    Route::get('editCateForm/{id}', ["uses"=>"Admin\AdminCategoriesController@editCateForm", "as"=> "adminEditCateForm"]);
+    //Category Update
+    Route::post('updateCategory/{id}', ["uses"=>"Admin\AdminCategoriesController@updateCategory", "as"=> "adminUpdateCategory"]);
+    //Delete Category
+    Route::get('deleteCate/{id}', ["uses"=>"Admin\AdminCategoriesController@deleteCate", "as"=> "adminDeleteCate"]);
+});
+

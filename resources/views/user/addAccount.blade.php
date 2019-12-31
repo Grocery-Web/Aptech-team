@@ -2,7 +2,7 @@
 
 @section('body')
 
-
+<h1>New User</h1>
 <div class="table-responsive">
 
     @if(Session::has('fail'))

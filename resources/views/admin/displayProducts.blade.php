@@ -2,7 +2,7 @@
 
 @section('body')
 
-
+<h1>Products List</h1>
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
