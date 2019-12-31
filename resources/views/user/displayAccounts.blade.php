@@ -2,7 +2,10 @@
 
 @section('body')
 
-<h1>Users List</h1>
+<div>
+    <h1>Users List</h1>
+    <a href="{{ route('adminAddAccountForm')}}" class="btn btn-primary">Add New</a>
+</div>
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
