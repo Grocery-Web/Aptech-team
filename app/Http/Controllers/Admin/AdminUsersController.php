@@ -165,7 +165,6 @@ class AdminUsersController extends Controller
         $name                  =  $request->input('name');
         $phone                 =  $request->input('phone');
         $address               =  $request->input('address');
-        $avatar                =  $request->input('avatar');
         $role_id               =  $request->input('role_id');
         $gender                =  $request->input('gender');
 
