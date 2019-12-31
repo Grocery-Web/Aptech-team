@@ -3,7 +3,7 @@
 @section('body')
 <div>
     <h1>Categories List</h1>
-    <a href="{{ route('addCategoryForm')}}" class="btn btn-primary">Add New</a>
+    <a href="{{ route('adminCreateCategoryForm')}}" class="btn btn-primary">Add New</a>
 </div>
 
 

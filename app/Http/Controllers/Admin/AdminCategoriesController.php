@@ -18,11 +18,40 @@ class AdminCategoriesController extends Controller
     }
 
     //display form adding new Category
-    // public function addCategoryForm()
-    // {
-    //     $parentCategories = Category::where('parent_id',NULL)->get();
-    //     return view("category.addCategory", ['parentCate' => $parentCategories]);
-    // }
+    public function createCategoryForm()
+    {
+        $parentCategories = Category::where('parent_id',NULL)->get();
+        return view("category.addCategory", ['parentCate' => $parentCategories]);
+    }
+
+    //Add new Category
+    public function addNewCategory(Request $request)
+    {
+        $request->validate([
+            'name'   => 'required|string|max:255',
+        ]);
+
+        $name         =  $request->name;
+        $parent_id  =  $request->parent_id;
+
+        // Check unique username
+        $result = DB::table('categories')->where([
+            ['name', '=', $name]
+        ])->get();
+        if (count($result)) {
+            return redirect()->route("adminCreateCategoryForm")->withFail('Name has aldready taken');
+        }
+        
+        $arrayToInsert = array('name' => $name, "parent_id" => $parent_id);
+
+        $created  = DB::table("categories")->insert($arrayToInsert);
+
+        if($created){
+            return redirect()->route("adminCreateCategoryForm")->withSuccess('Categories has already created');
+        }else{
+            return redirect()->route("adminCreateCategoryForm")->withFail('Categories has not created yet');
+        }
+    }
 
     //display form editing Category
     public function editCateForm($id)
@@ -39,7 +68,7 @@ class AdminCategoriesController extends Controller
             'name'   => 'required|string|max:255',
         ]);
 
-        $name         =  $request->name;
+        $name       =  $request->name;
         $parent_id  =  $request->parent_id;
 
         // Check unique username
@@ -52,9 +81,9 @@ class AdminCategoriesController extends Controller
         }
         
         $arrayToUpdate = array('name' => $name, "parent_id" => $parent_id);
-        $create = DB::table('categories')->where('id', $id)->update($arrayToUpdate);
+        $created = DB::table('categories')->where('id', $id)->update($arrayToUpdate);
 
-        if($create){
+        if($created){
             return redirect()->route("adminEditCateForm",$id)->withSuccess('Categories has already updated');
         }else{
             return redirect()->route("adminEditCateForm",$id)->withFail('Categories has not updated yet');

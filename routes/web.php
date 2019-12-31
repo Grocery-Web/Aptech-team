@@ -123,9 +123,9 @@ Route::group(['prefix' => '/caterory'], function () {
     //Display Category Panel
     Route::get('displayCategories', ["uses"=>"Admin\AdminCategoriesController@index", "as"=> "adminDisplayCategories"]);
     //Display form adding new Category
-    Route::get('addCategoryForm', ["uses"=>"Admin\AdminCategoriesController@addCategoryForm", "as"=> "addCategoryForm"]);
+    Route::get('createCategoryForm', ["uses"=>"Admin\AdminCategoriesController@createCategoryForm", "as"=> "adminCreateCategoryForm"]);
     //Add New Category
-    Route::post('addNewAccount', ["uses"=>"Admin\AdminUsersController@addNewAccount", "as"=> "adminAddNewAccount"]);
+    Route::post('addNewCategory', ["uses"=>"Admin\AdminCategoriesController@addNewCategory", "as"=> "adminAddNewCategory"]);
     //Display form updating Category
     Route::get('editCateForm/{id}', ["uses"=>"Admin\AdminCategoriesController@editCateForm", "as"=> "adminEditCateForm"]);
     //Category Update
