@@ -35,11 +35,6 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/admin/products">Dashboard</a></li>
                 <li><a href="/home">Profile</a></li>
-                {{-- for superuser only --}}
-                @if($userData['role_id']==1)
-                <li><a href="/user/addAccountForm">Add User</a></li>
-                @endif
-                {{-- ------------------ --}}
             </ul>
 
         </div>
