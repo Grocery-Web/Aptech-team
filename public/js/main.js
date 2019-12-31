@@ -50,3 +50,18 @@ document.addEventListener('DOMContentLoaded', function () {
     //     popup.classList.remove('appeared');
     // })
 })
+
+$(function() {
+    // ------------------------------------------------------- //
+    // Multi Level dropdowns
+    // ------------------------------------------------------ //
+    $("ul.dropdown-menu [data-toggle='dropdown']").on("mouseover", function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      $(this).siblings().toggleClass("show");
+    });
+
+    $("ul.dropdown-menu [data-toggle='dropdown']").on("mouseleave", function(event) {
+        $(this).siblings().removeClass("show");
+    });
+});
