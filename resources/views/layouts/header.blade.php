@@ -6,19 +6,58 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="headerNav">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
+            <!-- Level one dropdown -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="category-menu" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">Categories</a>
-                <div class="dropdown-menu" aria-labelledby="category-menu">
-                    <a class="dropdown-item" href="#">Ceiling Fans</a>
-                    <a class="dropdown-item" href="#">Table Fans</a>
-                    <a class="dropdown-item" href="#">Exhaust Fans</a>
-                </div>
+                <a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    class="nav-link dropdown-toggle">CATEGORIES</a>
+                <ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow">
+
+                    <li class="dropdown-submenu">
+                        <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" class="dropdown-item dropdown-toggle">CEILING FANS</a>
+                        <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
+                            <li>
+                                <a tabindex="-1" href="#" class="dropdown-item">CF1</a>
+                            </li>
+                            <li><a href="#" class="dropdown-item">CF2</a></li>
+                            <li><a href="#" class="dropdown-item">CF3</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" class="dropdown-item dropdown-toggle">TABLE FANS</a>
+                        <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
+                            <li>
+                                <a tabindex="-1" href="#" class="dropdown-item">TF1</a>
+                            </li>
+                            <li><a href="#" class="dropdown-item">TF2</a></li>
+                            <li><a href="#" class="dropdown-item">TF3</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Level two dropdown-->
+                    <li class="dropdown-submenu">
+                        <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" class="dropdown-item dropdown-toggle">EXHAUST FANS</a>
+                        <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
+                            <li>
+                                <a tabindex="-1" href="#" class="dropdown-item">EF1</a>
+                            </li>
+                            <li><a href="#" class="dropdown-item">EF2</a></li>
+                            <li><a href="#" class="dropdown-item">EF3</a></li>
+                        </ul>
+                    </li>
+                    <!-- End Level two -->
+                    
+                </ul>
             </li>
+            <!-- End Level one -->
+
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('aboutUs') }}">About Us</a>
             </li>
