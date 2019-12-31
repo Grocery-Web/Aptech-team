@@ -17,7 +17,7 @@
     </div>
     @endif
 
-    <form action="{{ route('adminUpdateCategory')}}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('adminUpdateCategory',['id' => $category['id']])}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="form-group row">
             <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Name') }}</label>
