@@ -2,6 +2,7 @@
 
 @section('body')
 
+<h1>Users List</h1>
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>

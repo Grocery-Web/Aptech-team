@@ -2,7 +2,7 @@
 
 @section('body')
 
-
+<h1>Display Image Update</h1>
 <div class="table-responsive">
 
     @if ($errors->any())
