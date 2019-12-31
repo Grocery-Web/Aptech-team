@@ -131,6 +131,6 @@ Route::group(['prefix' => '/caterory'], function () {
     //Category Update
     Route::post('updateCategory/{id}', ["uses"=>"Admin\AdminCategoriesController@updateCategory", "as"=> "adminUpdateCategory"]);
     //Delete Category
-    Route::get('deleteCate/{id}', ["uses"=>"Admin\AdminUsersController@deleteCate", "as"=> "adminDeleteCate"]);
+    Route::get('deleteCate/{id}', ["uses"=>"Admin\AdminCategoriesController@deleteCate", "as"=> "adminDeleteCate"]);
 });
 

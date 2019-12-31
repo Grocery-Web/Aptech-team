@@ -88,6 +88,12 @@ class AdminCategoriesController extends Controller
         }else{
             return redirect()->route("adminEditCateForm",$id)->withFail('Categories has not updated yet');
         }
-        
+    }
+
+    //Delete Category
+    public function deleteCate($id)
+    {
+        Category::destroy($id);
+        return redirect()->route("adminDisplayCategories");
     }
 }
