@@ -2,6 +2,8 @@
 
 @section('body')
 
+<h1>Related Images</h1>
+
 @if(Session::has('fail'))
 <div class="alert alert-danger">
     {{Session::get('fail')}}

@@ -2,7 +2,7 @@
 
 @section('body')
 
-
+<h1>New Product</h1>
 <div class="table-responsive">
 
     @if ($errors->any())

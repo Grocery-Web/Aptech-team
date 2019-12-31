@@ -34,9 +34,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
                 <li><a href="/admin/products">Dashboard</a></li>
-                <li><a href="#">Settings</a></li>
                 <li><a href="/home">Profile</a></li>
-                <li><a href="#">Help</a></li>
             </ul>
 
         </div>
@@ -48,11 +46,13 @@
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li class="active"><a href="/admin/index">Overview <span class="sr-only">(current)</span></a></li>
-                <li><a href="/admin/createProductForm">Insert</a></li>
+                <li><a href="/caterory/displayCategories">Category</a></li>
                 <li><a href="#">Edit</a></li>
+                {{-- for superuser only --}}
                 @if($userData['role_id']==1)
                 <li><a href="{{ route('adminDisplayAccount')}}">Users</a></li>
                 @endif
+                {{-- ------------------ --}}
                 <li><a href="#">Analytics</a></li>
             </ul>
             <ul class="nav nav-sidebar">
@@ -63,7 +63,7 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Dashboard</h1>
+            {{-- <h1 class="page-header">Dashboard</h1> --}}
 
 
             @yield('body')

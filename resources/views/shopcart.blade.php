@@ -12,7 +12,7 @@
                 <div class="shoplist__item">
                     <div class="row">
                         <div class="col-md-2 shoplist__item--img">
-                            <img src="https://via.placeholder.com/150" alt="">
+                        <img src="{{asset ('storage')}}/product_images/{{$item['data']['image']}}" alt="" style="width:150px; height:150px">
                         </div>
                         <div class="col-md-5 shoplist__item--detail">
                             <div class="row shoplist__item--header">
@@ -55,10 +55,8 @@
                     </strong>
                 </div>
                 <div class="buybtnposition">
-                    <a href="{{ route('clearCart', ['id' => $userData['id']]) }}">
-                    <button type="button"
-                        class="btn btn-large btn-block btn-danger btn-checkout buybtn">
-                        Buy now</button>
+                    <a href="{{ route('clearCart', ['id' => $userData['id']]) }}" style="text-decoration: none; width:100%">
+                    <button type="button" class="btn btn-large btn-block btn-danger btn-checkout buybtn">Buy now</button>
                     </a>
                 </div>
             </div>

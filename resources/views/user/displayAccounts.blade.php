@@ -2,6 +2,10 @@
 
 @section('body')
 
+<div>
+    <h1>Users List</h1>
+    <a href="{{ route('adminAddAccountForm')}}" class="btn btn-primary">Add New</a>
+</div>
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
@@ -21,7 +25,7 @@
         @foreach($users as $user)
         <tr>
             <td>{{$user['id']}}</td>
-            <td><img src="{{asset ('storage')}}/product_images/{{$user['avatar']}}" alt="{{asset ('storage')}}/product_images/{{$user['avatar']}}" width="100" height="100" style="max-height:220px" ></td>
+            <td><img src="{{asset ('storage')}}/user_images/{{$user['avatar']}}" alt="{{asset ('storage')}}/product_images/{{$user['avatar']}}" width="100" height="100" style="max-height:220px" ></td>
             <td>{{$user['name']}}</td>
             <td>{{$user['email']}}</td>
             <td>{{$user['username']}}</td>

@@ -2,19 +2,20 @@
 
 @section('body')
 
-@if(Session::has('fail'))
-<div class="alert alert-danger">
-    {{Session::get('fail')}}
-</div>
-@endif
+<h1>User Update</h1>
 
-@if(Session::has('success'))
+<div class="table-responsive">
+    @if(Session::has('fail'))
+    <div class="alert alert-danger">
+        {{Session::get('fail')}}
+    </div>
+    @endif
+
+    @if(Session::has('success'))
     <div class="alert alert-success">
         {{Session::get('success')}}
     </div>
-@endif
-
-<div class="table-responsive">
+    @endif
 
     <form action="/user/updateUserChange/{{$user->id}}" method="post">
 
@@ -24,7 +25,7 @@
             <input type="text" class="form-control" name="username" id="username" value="{{$user['username']}}" required>
         </div>
         @if ($errors->has('username'))
-            <span class="text-danger">{{ $errors->first('username') }}</span>
+        <span class="text-danger">{{ $errors->first('username') }}</span>
         @endif
 
         <div class="form-group">
@@ -63,7 +64,7 @@
             <input type="text" class="form-control" name="email" id="email" value="{{$user['email']}}" required>
         </div>
         @if ($errors->has('email'))
-            <span class="text-danger">{{ $errors->first('email') }}</span>
+        <span class="text-danger">{{ $errors->first('email') }}</span>
         @endif
 
         <div class="form-group">

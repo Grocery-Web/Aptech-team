@@ -14,6 +14,8 @@
 // Index Mainpage
 Route::get('', ["uses"=>"ProductsController@index", "as"=> "login"]);
 
+
+
 //User Authentication
 Auth::routes();
 
@@ -37,6 +39,7 @@ Route::group(['prefix' => '/product'], function () {
     Route::get('details/{id}',  ["uses"=>"ProductsController@productDetails", "as"=> "productDetails"]);
     // Add product to cart
     Route::post('details/{id}/addToCart', ["uses"=>"ProductsController@addProductToCart", "as"=> "addProductToCart"]);
+    Route::get('details/{id}/createPdf', ["uses"=>"ProductsController@createPdf", "as"=> "createPdf"]);
 });
 
 //Logout Button in Homepage
@@ -104,7 +107,30 @@ Route::group(['prefix' => '/user'], function () {
     Route::post('updateUserChange/{id}', ["uses"=>"Admin\AdminUsersController@updateUserChange", "as"=> "adminUpdateUserChange"]);
     //Delete User
     Route::get('deleteUser/{id}', ["uses"=>"Admin\AdminUsersController@deleteUser", "as"=> "adminDeleteUser"]);
+    //Display Adding New User Form
+    Route::get('addAccountForm', ["uses"=>"Admin\AdminUsersController@addAccountForm", "as"=> "adminAddAccountForm"]);
+    //Add New User
+    Route::post('addNewAccount', ["uses"=>"Admin\AdminUsersController@addNewAccount", "as"=> "adminAddNewAccount"]);
+    //Display Avatar Update Form
+    Route::get('avatarUpdateForm', ["uses"=>"Admin\AdminUsersController@avatarUpdateForm", "as"=> "adminAvatarUpdateForm"]);
+    //Avatar Update
+    Route::post('updateAvatar/{id}', ["uses"=>"Admin\AdminUsersController@updateAvatar", "as"=> "adminUpdateAvatar"]);
 });
 
-// Route to control pdf file
-Route::get('/createPdf', function() { return Redirect::to("pdf/createPdf.php"); });
+
+// Group AdminCategory
+Route::group(['prefix' => '/caterory'], function () {
+    //Display Category Panel
+    Route::get('displayCategories', ["uses"=>"Admin\AdminCategoriesController@index", "as"=> "adminDisplayCategories"]);
+    //Display form adding new Category
+    Route::get('createCategoryForm', ["uses"=>"Admin\AdminCategoriesController@createCategoryForm", "as"=> "adminCreateCategoryForm"]);
+    //Add New Category
+    Route::post('addNewCategory', ["uses"=>"Admin\AdminCategoriesController@addNewCategory", "as"=> "adminAddNewCategory"]);
+    //Display form updating Category
+    Route::get('editCateForm/{id}', ["uses"=>"Admin\AdminCategoriesController@editCateForm", "as"=> "adminEditCateForm"]);
+    //Category Update
+    Route::post('updateCategory/{id}', ["uses"=>"Admin\AdminCategoriesController@updateCategory", "as"=> "adminUpdateCategory"]);
+    //Delete Category
+    Route::get('deleteCate/{id}', ["uses"=>"Admin\AdminCategoriesController@deleteCate", "as"=> "adminDeleteCate"]);
+});
+
