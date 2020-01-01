@@ -2,7 +2,7 @@
 
 @section('body')
 
-
+<h1>New User</h1>
 <div class="table-responsive">
 
     @if(Session::has('fail'))
@@ -115,7 +115,7 @@
             <label for="avatar" class="col-md-2 col-form-label text-md-right">{{ __('Avatar') }}</label>
 
             <div class="col-md-6">
-                <input type="file" name="avatar">
+                <input type="file" class="" name="avatar" id="avatar">
                 @error('avatar')
                 <span class="invalid-feedback" role="alert">
                     <strong><span style="color:red">{{ $message }}</span></strong>
