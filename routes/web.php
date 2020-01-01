@@ -75,7 +75,7 @@ Route::group(['prefix' => '/admin'], function () {
     //Update product information from admin panel
     Route::post('updateProduct/{id}', ["uses"=>"Admin\AdminProductsController@updateProduct", "as"=> "adminUpdateProduct"]);
 
-    // Display adding new product form
+    // Display form adding new product
     Route::get('createProductForm', ["uses"=>"Admin\AdminProductsController@createProductForm","as"=>"adminCreateProductForm"]);
 
     //Add new product from admin panel
