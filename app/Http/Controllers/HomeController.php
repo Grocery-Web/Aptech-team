@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Product;
+
 
 class HomeController extends Controller
 {
@@ -48,5 +50,15 @@ class HomeController extends Controller
     public function test(){  
         $parentCategories = Category::where('parent_id',NULL)->get();
         return view('test', compact('parentCategories'));
+    }
+
+    public function search(Request $request){
+        $query = $request->search;
+        $products = Product::where('name','like','%'.$query.'%')
+                            ->orWhere('price',$query)
+                            ->get();
+        $parentCategories = Category::where('parent_id',NULL)->get();
+
+        return view("mainpage", ['products' => $products, 'parentCategories' => $parentCategories]);
     }
 }

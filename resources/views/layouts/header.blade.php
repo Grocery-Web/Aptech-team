@@ -46,13 +46,13 @@
                 <a class="nav-link" href="{{ route('sitemap') }}">Sitemap</a>
             </li>
         </ul>
-        <form class="nav__search">
+        <form action="/search" method="GET" class="nav__search">
             <i class="material-icons nav__icon ">
                 search
             </i>
             <div class="form-group form__text">
-                <input type="text" class="form-control nav__search--form" name="form_search" id=""
-                    placeholder="Search...">
+                <input type="text" class="form-control nav__search--form" name="search" id="search"
+                value="{{request()->input('search')}}" placeholder="Search...">
                 <button type='submit'>
                     <i class="material-icons nav__search--btn">
                         search
