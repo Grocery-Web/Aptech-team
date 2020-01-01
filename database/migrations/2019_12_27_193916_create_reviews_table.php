@@ -18,7 +18,7 @@ class CreateReviewsTable extends Migration
             $table->string('headline', 200);
             $table->text('content', 1500);
             $table->bigInteger('parent_id')->unsigned()->nullable();
-            $table->foreign('parent_id')->references('id')->on('comments')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('parent_id')->references('id')->on('reviews')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('user_id')->unsigned();
