@@ -40,6 +40,7 @@ Route::group(['prefix' => '/product'], function () {
     // Add product to cart
     Route::post('details/{id}/addToCart', ["uses"=>"ProductsController@addProductToCart", "as"=> "addProductToCart"]);
     Route::get('details/{id}/createPdf', ["uses"=>"ProductsController@createPdf", "as"=> "createPdf"]);
+    Route::get('sortCategory/{id}', ["uses"=>"ProductsController@sortCategory", "as"=> "sortCategory "]);
 });
 
 //Logout Button in Homepage

@@ -115,4 +115,11 @@ class ProductsController extends Controller
         $pdf = PDF::loadView('createPdf');
         return $pdf->download('Product Information.pdf');
     }
+
+    public function sortCategory($id) {
+        $category  = Category::find($id);
+        $products  = $category->Product;
+        $parentCategories = Category::where('parent_id',NULL)->get();
+        return view("mainpage", ['products' => $products, 'parentCategories' => $parentCategories]);
+    }
 }

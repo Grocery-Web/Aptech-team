@@ -86,20 +86,12 @@
             <div class="col-md-6">
                 <select class="custom-select custom-select-lg mb-3" name="cate_id" id="cate_id"
                     style="border-radius:5px">
-                    @foreach ($parentCate as $cate)
+                    @foreach ($subCate as $cate)
                     <option value="{{$cate['id']}}">{{$cate['name']}}</option>
                     @endforeach
                 </select>
             </div>
         </div>
-        
-        {{-- <select class="custom-select custom-select-lg mb-3" name="cate_id" id="cate_id"
-            style="margin-bottom: 2rem; padding: 1rem; border-radius:5px">
-            <option selected>{{NULL}}</option>
-            <option value="CEILING FANS">CEILING FANS</option>
-            <option value="TABLE FANS">TABLE FANS</option>
-            <option value="EXHAUST FANS">EXHAUST FANS</option>
-        </select> --}}
 
         <div class="form-group">
             <label for="image">Display Image</label>
@@ -110,6 +102,7 @@
             <label for="image">Related Images</label>
             <input multiple="multiple" name="photos[]" type="file">
         </div>
+        
         <div class="form-group">
             <label for="type">Price</label>
             <input type="text" class="form-control" name="price" id="price" placeholder="price" required>

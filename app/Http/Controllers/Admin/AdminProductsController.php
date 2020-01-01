@@ -28,8 +28,8 @@ class AdminProductsController extends Controller
     public function editProductForm($id)
     {
         $product          = Product::find($id);
-        $parentCategories = Category::where('parent_id',NULL)->get();
-        return view('admin.editProductForm', ['product' => $product, 'parentCate' => $parentCategories]);
+        $subCategory = Category::where('parent_id','<>',NULL)->get();
+        return view('admin.editProductForm', ['product' => $product, 'subCate' => $subCategory]);
     }
 
     // display edit product image form
@@ -133,8 +133,8 @@ class AdminProductsController extends Controller
     // Call adding product form
     public function createProductForm()
     {
-        $parentCategories = Category::where('parent_id',NULL)->get();
-        return view('admin.createProductForm',['parentCate' => $parentCategories]);
+        $subCategory = Category::where('parent_id','<>',NULL)->get();
+        return view('admin.createProductForm',['subCate' => $subCategory]);
     }
 
     // Add new product
