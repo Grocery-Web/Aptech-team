@@ -71,7 +71,7 @@
             <div class="col-md-6">
                 <select class="custom-select custom-select-lg mb-3" name="cate_id" id="cate_id"
                     style="border-radius:5px">
-                    @foreach ($parentCate as $cate)
+                    @foreach ($subCate as $cate)
                     <option value="{{$cate['id']}}">{{$cate['name']}}</option>
                     @endforeach
                 </select>
