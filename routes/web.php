@@ -31,6 +31,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('contactUs',["uses"=>"HomeController@contactUs", "as"=> "contactUs"]);
     Route::get('sitemap',  ["uses"=>"HomeController@sitemap", "as"=> "sitemap"]);
     Route::get('test',     ["uses"=>"HomeController@test", "as"=> "test"]);
+    Route::get('search',   ["uses"=>"HomeController@search", "as"=> "getSearch"]);
 });
 
 // Group Homepage
