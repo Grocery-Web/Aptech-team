@@ -42,7 +42,7 @@ Route::group(['prefix' => '/product'], function () {
     // Download pdf file
     Route::get('details/{id}/createPdf', ["uses"=>"ProductsController@createPdf", "as"=> "createPdf"]);
     // Add new comment or feedback 
-    Route::post('details/{id}/addReview', ["uses"=>"ReviewsController@addReview", "as"=> "addProductToCart"]);
+    Route::post('details/{id}/addReview/{user_id}', ["uses"=>"ProductsController@addReview", "as"=> "addReview"]);
 });
 
 //Logout Button in Homepage

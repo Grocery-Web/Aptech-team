@@ -173,7 +173,7 @@
                 review</button>
             <div class="collapse" id="feedbackForm">
                 <h5 class="mt-4 mb-3">CREATE REVIEW</h5>
-                <form method="POST" action="{{route('addProductToCart', [$product['id']] )}}">
+                <form method="POST" action="{{route('addReview', [$product['id'], $userData['id']] )}}">
                     {{ csrf_field() }}
                     <div class="form-row">
                         <div class="form-group col-md-6">

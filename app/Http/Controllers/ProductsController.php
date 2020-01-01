@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Cart;
 use App\User;
+use App\Review;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -114,4 +115,19 @@ class ProductsController extends Controller
         $pdf = PDF::loadView('createPdf');
         return $pdf->download('Product Information.pdf');
     }
+
+    public function addReview(Request $request, $id, $user_id) {
+        $headline = $request->headline;
+        $content = $request->content;
+        $newReviewData = array(
+            'headline' => $headline,
+            'content' => $content,
+            'parent_id' => null,
+            'product_id' => $id,
+            'user_id' => $user_id,
+            'level' => 'parent'
+        );
+        DB::table('reviews')->insert($newReviewData);
+    }
+
 }
