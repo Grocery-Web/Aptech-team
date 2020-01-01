@@ -2,7 +2,10 @@
 
 @section('body')
 
-<h1>Products List</h1>
+<div>
+    <h1>Products List</h1>
+    <a href="{{ route('adminCreateProductForm')}}" class="btn btn-primary">Add New</a>
+</div>
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
@@ -11,7 +14,7 @@
             <th>Image</th>
             <th>Name</th>
             <th>Description</th>
-            <th>Type</th>
+            <th>Category ID</th>
             <th>Price</th>
             <th>Edit Image</th>
             <th>Edit Related Images</th>
@@ -27,7 +30,7 @@
             <td><img src="{{asset ('storage')}}/product_images/{{$product['image']}}" alt="{{asset ('storage')}}/product_images/{{$product['image']}}" width="100" height="100" style="max-height:220px" ></td>
             <td>{{$product['name']}}</td>
             <td>{{$product['description']}}</td>
-            <td>{{$product['type']}}</td>
+            <td>{{$product['cate_id']}}</td>
             <td>${{$product['price']}}</td>
 
             <td><a href="{{ route('adminEditProductImageForm',['id' => $product['id'] ])}}" class="btn btn-primary">Edit Display Image</a></td>

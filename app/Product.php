@@ -9,7 +9,7 @@ class Product extends Model
     public $timestamps = true;
     //
     protected $fillable = [
-        'name', 'description', 'weight', 'width', 'depth', 'height', 'producer', 'image','price','type', 'quantity'
+        'name', 'description', 'weight', 'width', 'depth', 'height', 'producer', 'image','price','cate_id', 'quantity'
     ];
 
     public function getPriceAttribute($value){
