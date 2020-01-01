@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class CommentsController extends Controller
 {
@@ -14,6 +16,10 @@ class CommentsController extends Controller
      */
     public function __invoke(Request $request)
     {
+        //
+    }
+
+    public function addReview(Request $request, $id, $user_id) {
         //
     }
 }

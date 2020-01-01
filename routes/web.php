@@ -39,7 +39,10 @@ Route::group(['prefix' => '/product'], function () {
     Route::get('details/{id}',  ["uses"=>"ProductsController@productDetails", "as"=> "productDetails"]);
     // Add product to cart
     Route::post('details/{id}/addToCart', ["uses"=>"ProductsController@addProductToCart", "as"=> "addProductToCart"]);
+    // Download pdf file
     Route::get('details/{id}/createPdf', ["uses"=>"ProductsController@createPdf", "as"=> "createPdf"]);
+    // Add new comment or feedback 
+    Route::post('details/{id}/addReview', ["uses"=>"ReviewsController@addReview", "as"=> "addProductToCart"]);
 });
 
 //Logout Button in Homepage

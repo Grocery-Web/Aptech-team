@@ -173,18 +173,19 @@
                 review</button>
             <div class="collapse" id="feedbackForm">
                 <h5 class="mt-4 mb-3">CREATE REVIEW</h5>
-                <form>
+                <form method="POST" action="{{route('addProductToCart', [$product['id']] )}}">
+                    {{ csrf_field() }}
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="reviewHeading">Add a headline *</label>
-                            <input type="text" class="form-control" id="reviewHeading"
+                            <input type="text" name="headline" class="form-control" id="reviewHeading"
                                 placeholder="What's most important to know?" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="Textarea1">Your review *</label>
-                            <textarea class="form-control" id="Textarea1" rows="3"
+                            <textarea class="form-control" name="content" id="Textarea1" rows="3"
                                 placeholder="What did you like or dislike?" required></textarea>
                         </div>
                     </div>
