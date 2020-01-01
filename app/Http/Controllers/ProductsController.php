@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Cart;
 use App\User;
+use App\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -14,8 +15,8 @@ class ProductsController extends Controller
 {
     public function index(){
         $products = Product::all();
-
-        return view("mainpage",compact("products"));
+        $parentCategories = Category::where('parent_id',NULL)->get();
+        return view("mainpage", ['products' => $products, 'parentCategories' => $parentCategories]);
     }
 
     public function productDetails($id){
