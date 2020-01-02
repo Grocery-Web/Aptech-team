@@ -14,7 +14,7 @@ use PDF;
 class ProductsController extends Controller
 {
     public function index(){
-        $products = Product::paginate(12);
+        $products = Product::paginate(1);
         $parentCategories = Category::where('parent_id',NULL)->get();
         return view("mainpage", ['products' => $products, 'parentCategories' => $parentCategories]);
     }
