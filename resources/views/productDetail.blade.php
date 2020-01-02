@@ -208,7 +208,7 @@
                 @foreach ($reviews as $review)
                     @if ($review->level == 'parent')
                     <div class="col-md-3 text-center">
-                        <img src="public/storage/user_images/<?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->avatar; ?>" class="rounded-circle">
+                        <img src="{{asset ('storage')}}/user_images/<?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->avatar; ?>" class="rounded-circle">
                         <h6><?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->name; ?></h6>
                     </div>
                     <div class="col-md-9">
@@ -239,7 +239,7 @@
                             @if ($reply->parent_id == $review->id)
                                 <div class="row mt-3">
                                     <div class="col-md-1">
-                                        <img src="public/storage/user_images/<?php $user = DB::table('users')->where('id', $reply->user_id)->get(); echo $user[0]->avatar; ?>"
+                                        <img src="{{asset ('storage')}}/user_images/<?php $user = DB::table('users')->where('id', $reply->user_id)->get(); echo $user[0]->avatar; ?>"
                                             class="rounded-circle">
                                     </div>
                                     <div class="col-md-11">
