@@ -175,6 +175,7 @@
                     ?>
                 @endforeach
         </div>
+        {{ $products->links() }}
     </div>
     <!-- End Card List -->
     <!-- Newsletter -->
