@@ -22,9 +22,10 @@ class ProductsController extends Controller
     public function productDetails($id){
         $product    =   Product::find($id);
         $gallery    =   DB::table('products_photos')->where('product_id', $id)->get();
-        $review     =   DB::table('reviews')->where('product_id', $id)->get();
+        $reviews    =   DB::table('reviews')->where('product_id', $id)->get();
+        $invoiceDetail =  DB::table('invoice_details')->where('product_id', $id)->get();
 
-        return view("productDetail",['product' => $product, 'gallery' => $gallery, 'review' => $review]);
+        return view("productDetail",['product' => $product, 'gallery' => $gallery, 'reviews' => $reviews, 'invoiceDetail' => $invoiceDetail]);
     }
 
     public function addProductToCart(Request $request, $id) {
@@ -37,7 +38,7 @@ class ProductsController extends Controller
         $cart->addItem($id, $product, $quantity);
         $request->session()->put('cart', $cart);
 
-        return redirect('');
+        return redirect()->back();
 
     }
 
@@ -98,6 +99,7 @@ class ProductsController extends Controller
                 // add new invoice detail
                 $newInvoiceDetail = array(
                     'invoice_id' => $newInvoice->id,
+                    'user_id' => $id,
                     'product_id' => $product->id,
                     'total' => $item['totalSinglePrice'],
                     'product_quantity' => $item['totalSingleQuantity']
@@ -129,6 +131,21 @@ class ProductsController extends Controller
             'level' => 'parent'
         );
         DB::table('reviews')->insert($newReviewData);
+        return redirect()->back();
+    }
+
+    public function addReply(Request $request, $id, $user_id, $parent_id) {
+        $content = $request->content;
+        $newReplyData = array(
+            'headline' => null,
+            'content' => $content,
+            'parent_id' => $parent_id,
+            'product_id' => $id,
+            'user_id' => $user_id,
+            'level' => 'child'
+        );
+        DB::table('reviews')->insert($newReplyData);
+        return redirect()->back();
     }
 
 }

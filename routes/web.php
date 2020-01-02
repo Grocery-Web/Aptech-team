@@ -43,6 +43,8 @@ Route::group(['prefix' => '/product'], function () {
     Route::get('details/{id}/createPdf', ["uses"=>"ProductsController@createPdf", "as"=> "createPdf"]);
     // Add new comment or feedback 
     Route::post('details/{id}/addReview/{user_id}', ["uses"=>"ProductsController@addReview", "as"=> "addReview"]);
+    // Add new reply
+    Route::post('details/{id}/addReply/{user_id}/{parent_id}', ["uses"=>"ProductsController@addReply", "as"=> "addReply"]);
 });
 
 //Logout Button in Homepage
