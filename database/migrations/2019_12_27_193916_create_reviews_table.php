@@ -15,7 +15,7 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('headline', 200);
+            $table->string('headline', 200)->nullable();
             $table->text('content', 1500);
             $table->bigInteger('parent_id')->unsigned()->nullable();
             $table->foreign('parent_id')->references('id')->on('reviews')->onDelete('cascade')->onUpdate('cascade');
