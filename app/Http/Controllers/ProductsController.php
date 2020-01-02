@@ -21,9 +21,10 @@ class ProductsController extends Controller
 
     public function productDetails($id){
         $product    =   Product::find($id);
+        $parentCategories = Category::where('parent_id',NULL)->get();
         $gallery    =   DB::table('products_photos')->where('product_id', $id)->get();
 
-        return view("productDetail",['product' => $product, 'gallery' => $gallery]);
+        return view("productDetail",['product' => $product, 'gallery' => $gallery, 'parentCategories' => $parentCategories]);
     }
 
     public function addProductToCart(Request $request, $id) {
@@ -112,7 +113,8 @@ class ProductsController extends Controller
     }
 
     public function createPdf($id) {
-        $pdf = PDF::loadView('createPdf');
+        $product    =   Product::find($id);
+        $pdf = PDF::loadView('createPdf', ['product' => $product]);
         return $pdf->download('Product Information.pdf');
     }
 
