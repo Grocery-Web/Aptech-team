@@ -207,11 +207,11 @@
             <div class="customer-feedback row mt-4">
                 @foreach ($reviews as $review)
                     @if ($review->level == 'parent')
-                    <div class="col-md-3 text-center">
-                        <img src="{{asset ('storage')}}/user_images/<?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->avatar; ?>" class="rounded-circle">
+                    <div class="col-md-3 mb-5 text-center">
+                        <img src="{{asset ('storage')}}/user_images/<?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->avatar; ?>" class="rounded-circle" height="60" width="60">
                         <h6><?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->name; ?></h6>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9 border-left border-success mb-5">
                         <h6 class="mb-1">{{ $review->headline }}</h6>
                         @if ($invoiceDetail->contains('user_id', $review->user_id))
                             <img src="https://img.icons8.com/color/25/000000/checked-checkbox.png">
@@ -240,7 +240,7 @@
                                 <div class="row mt-3">
                                     <div class="col-md-1">
                                         <img src="{{asset ('storage')}}/user_images/<?php $user = DB::table('users')->where('id', $reply->user_id)->get(); echo $user[0]->avatar; ?>"
-                                            class="rounded-circle">
+                                            class="rounded-circle" height="60" width="60">
                                     </div>
                                     <div class="col-md-11">
                                         <h6><?php $user = DB::table('users')->where('id', $reply->user_id)->get(); echo $user[0]->name; ?></h6>
