@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use App\Product;
 use App\ProductsPhoto;
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,8 +27,9 @@ class AdminProductsController extends Controller
     // display edit product form
     public function editProductForm($id)
     {
-        $product = Product::find($id);
-        return view('admin.editProductForm', ['product' => $product]);
+        $product          = Product::find($id);
+        $subCategory = Category::where('parent_id','<>',NULL)->get();
+        return view('admin.editProductForm', ['product' => $product, 'subCate' => $subCategory]);
     }
 
     // display edit product image form
@@ -77,7 +79,7 @@ class AdminProductsController extends Controller
         $depth        =  $request->input('depth');
         $height       =  $request->input('height');
         $producer     =  $request->input('producer');
-        $type         =  $request->input('type');
+        $cate_id      =  $request->input('cate_id');
         $quantity     =  $request->input('quantity');
         $price        =  $request->input('price');
         
@@ -93,7 +95,7 @@ class AdminProductsController extends Controller
         // Update product info
         $arrayToUpdate = array(
             "name" => $name, "description" => $description, "weight" => $weight, "width" => $width, "depth" => $depth,
-            "height" => $height, "producer" => $producer, "type" => $type, "price" => $price,
+            "height" => $height, "producer" => $producer, "cate_id" => $cate_id, "price" => $price,
             "quantity" => $quantity
         );
         DB::table('products')->where('id', $id)->update($arrayToUpdate);
@@ -131,7 +133,8 @@ class AdminProductsController extends Controller
     // Call adding product form
     public function createProductForm()
     {
-        return view('admin.createProductForm');
+        $subCategory = Category::where('parent_id','<>',NULL)->get();
+        return view('admin.createProductForm',['subCate' => $subCategory]);
     }
 
     // Add new product
@@ -145,7 +148,7 @@ class AdminProductsController extends Controller
         $depth        =  $request->input('depth');
         $height       =  $request->input('height');
         $producer     =  $request->input('producer');
-        $type         =  $request->input('type');
+        $cate_id      =  $request->input('cate_id');
         $quantity     =  $request->input('quantity');
         $price        =  $request->input('price');
         $photos       =  array();
@@ -185,7 +188,7 @@ class AdminProductsController extends Controller
         // Create products with display image
         $newProductArray = array(
             "name" => $name, "description" => $description, "weight" => $weight, "width" => $width, "depth" => $depth,
-            "height" => $height, "producer" => $producer, "image" => $imageName, "type" => $type, "price" => $price,
+            "height" => $height, "producer" => $producer, "image" => $imageName, "cate_id" => $cate_id, "price" => $price,
             "quantity" => $quantity, "user_id" => $user['id']
         );
         $created      = DB::table("products")->insert($newProductArray);

@@ -45,9 +45,8 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="/admin/index">Overview <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="{{ route('adminDisplayProducts')}}">Product <span class="sr-only">(current)</span></a></li>
                 <li><a href="/caterory/displayCategories">Category</a></li>
-                <li><a href="#">Edit</a></li>
                 {{-- for superuser only --}}
                 @if($userData['role_id']==1)
                 <li><a href="{{ route('adminDisplayAccount')}}">Users</a></li>

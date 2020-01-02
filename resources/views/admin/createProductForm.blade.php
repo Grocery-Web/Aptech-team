@@ -21,9 +21,6 @@
         </div>
     @endif
 
-
-    <h2>Create New Product</h2>
-
     <form action="/admin/sendCreateProductForm" method="post" enctype="multipart/form-data">
 
         {{csrf_field()}}
@@ -82,13 +79,20 @@
 
         </div>
         
-        <select class="custom-select custom-select-lg mb-3" name="type" id="type"
-            style="margin-bottom: 2rem; padding: 1rem; border-radius:5px">
-            <option selected>Choose your products type ...</option>
-            <option value="CEILING FANS">CEILING FANS</option>
-            <option value="TABLE FANS">TABLE FANS</option>
-            <option value="EXHAUST FANS">EXHAUST FANS</option>
-        </select>
+        <div class="form-group row">
+            <label for="cate_id"
+                class="col-md-2 col-form-label text-md-right">{{ __('Category ID') }}</label>
+
+            <div class="col-md-6">
+                <select class="custom-select custom-select-lg mb-3" name="cate_id" id="cate_id"
+                    style="border-radius:5px">
+                    @foreach ($subCate as $cate)
+                    <option value="{{$cate['id']}}">{{$cate['name']}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
         <div class="form-group">
             <label for="image">Display Image</label>
             <input type="file" class="" name="image" id="image" required>
@@ -98,6 +102,7 @@
             <label for="image">Related Images</label>
             <input multiple="multiple" name="photos[]" type="file">
         </div>
+        
         <div class="form-group">
             <label for="type">Price</label>
             <input type="text" class="form-control" name="price" id="price" placeholder="price" required>

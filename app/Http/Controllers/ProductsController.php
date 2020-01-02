@@ -5,6 +5,7 @@ use App\Product;
 use App\Cart;
 use App\User;
 use App\Review;
+use App\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -14,18 +15,19 @@ use PDF;
 class ProductsController extends Controller
 {
     public function index(){
-        $products = Product::all();
-
-        return view("mainpage",compact("products"));
+        $products = Product::paginate(1);
+        $parentCategories = Category::where('parent_id',NULL)->get();
+        return view("mainpage", ['products' => $products, 'parentCategories' => $parentCategories]);
     }
 
     public function productDetails($id){
         $product    =   Product::find($id);
+        $parentCategories = Category::where('parent_id',NULL)->get();
         $gallery    =   DB::table('products_photos')->where('product_id', $id)->get();
         $reviews    =   DB::table('reviews')->where('product_id', $id)->get();
         $invoiceDetail =  DB::table('invoice_details')->where('product_id', $id)->get();
 
-        return view("productDetail",['product' => $product, 'gallery' => $gallery, 'reviews' => $reviews, 'invoiceDetail' => $invoiceDetail]);
+        return view("productDetail",['product' => $product, 'gallery' => $gallery, 'reviews' => $reviews, 'parentCategories' => $parentCategories, 'invoiceDetail' => $invoiceDetail]);
     }
 
     public function addProductToCart(Request $request, $id) {
@@ -115,9 +117,11 @@ class ProductsController extends Controller
     }
 
     public function createPdf($id) {
-        $pdf = PDF::loadView('createPdf');
+        $product    =   Product::find($id);
+        $pdf = PDF::loadView('createPdf', ['product' => $product]);
         return $pdf->download('Product Information.pdf');
     }
+
 
     public function addReview(Request $request, $id, $user_id) {
         $headline = $request->headline;
@@ -146,6 +150,14 @@ class ProductsController extends Controller
         );
         DB::table('reviews')->insert($newReplyData);
         return redirect()->back();
+    }
+
+
+    public function sortCategory($id) {
+        $category  = Category::find($id);
+        $products  = $category->Product;
+        $parentCategories = Category::where('parent_id',NULL)->get();
+        return view("mainpage", ['products' => $products, 'parentCategories' => $parentCategories]);
     }
 
 }

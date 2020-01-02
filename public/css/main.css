@@ -19,3 +19,9 @@
   .dropdown-item {
     padding: .25rem 0.5rem;
   }
+  .dropdown-submenu:hover .dropdown-menu {
+    display: block;
+  }
+  ul.dropdown-menu {
+    z-index: 10;
+  }

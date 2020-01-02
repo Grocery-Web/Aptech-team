@@ -31,6 +31,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('contactUs',["uses"=>"HomeController@contactUs", "as"=> "contactUs"]);
     Route::get('sitemap',  ["uses"=>"HomeController@sitemap", "as"=> "sitemap"]);
     Route::get('test',     ["uses"=>"HomeController@test", "as"=> "test"]);
+    Route::get('search',   ["uses"=>"HomeController@search", "as"=> "getSearch"]);
 });
 
 // Group Homepage
@@ -45,6 +46,7 @@ Route::group(['prefix' => '/product'], function () {
     Route::post('details/{id}/addReview/{user_id}', ["uses"=>"ProductsController@addReview", "as"=> "addReview"]);
     // Add new reply
     Route::post('details/{id}/addReply/{user_id}/{parent_id}', ["uses"=>"ProductsController@addReply", "as"=> "addReply"]);
+    Route::get('sortCategory/{id}', ["uses"=>"ProductsController@sortCategory", "as"=> "sortCategory "]);
 });
 
 //Logout Button in Homepage
@@ -80,7 +82,7 @@ Route::group(['prefix' => '/admin'], function () {
     //Update product information from admin panel
     Route::post('updateProduct/{id}', ["uses"=>"Admin\AdminProductsController@updateProduct", "as"=> "adminUpdateProduct"]);
 
-    // Display adding new product form
+    // Display form adding new product
     Route::get('createProductForm', ["uses"=>"Admin\AdminProductsController@createProductForm","as"=>"adminCreateProductForm"]);
 
     //Add new product from admin panel

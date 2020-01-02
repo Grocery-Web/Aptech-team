@@ -16,44 +16,22 @@
                     class="nav-link dropdown-toggle">CATEGORIES</a>
                 <ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow">
 
+                    @foreach ($parentCategories as $category)
                     <li class="dropdown-submenu">
                         <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false" class="dropdown-item dropdown-toggle">CEILING FANS</a>
+                            aria-expanded="false" class="dropdown-item dropdown-toggle">{{$category['name']}}</a>
+                        @if (count($category->subcategory))
                         <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
+                            @foreach ($category->subcategory as $subcategory)
                             <li>
-                                <a tabindex="-1" href="#" class="dropdown-item">CF1</a>
+                                <a href="/product/category/{{$subcategory['id']}}" class="dropdown-item">{{$subcategory->name}}</a>
                             </li>
-                            <li><a href="#" class="dropdown-item">CF2</a></li>
-                            <li><a href="#" class="dropdown-item">CF3</a></li>
+                            @endforeach
                         </ul>
+                        @endif
                     </li>
+                    @endforeach
 
-                    <li class="dropdown-submenu">
-                        <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false" class="dropdown-item dropdown-toggle">TABLE FANS</a>
-                        <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
-                            <li>
-                                <a tabindex="-1" href="#" class="dropdown-item">TF1</a>
-                            </li>
-                            <li><a href="#" class="dropdown-item">TF2</a></li>
-                            <li><a href="#" class="dropdown-item">TF3</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- Level two dropdown-->
-                    <li class="dropdown-submenu">
-                        <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false" class="dropdown-item dropdown-toggle">EXHAUST FANS</a>
-                        <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
-                            <li>
-                                <a tabindex="-1" href="#" class="dropdown-item">EF1</a>
-                            </li>
-                            <li><a href="#" class="dropdown-item">EF2</a></li>
-                            <li><a href="#" class="dropdown-item">EF3</a></li>
-                        </ul>
-                    </li>
-                    <!-- End Level two -->
-                    
                 </ul>
             </li>
             <!-- End Level one -->
@@ -68,13 +46,13 @@
                 <a class="nav-link" href="{{ route('sitemap') }}">Sitemap</a>
             </li>
         </ul>
-        <form class="nav__search">
+        <form action="/search" method="GET" class="nav__search">
             <i class="material-icons nav__icon ">
                 search
             </i>
             <div class="form-group form__text">
-                <input type="text" class="form-control nav__search--form" name="form_search" id=""
-                    placeholder="Search...">
+                <input type="text" class="form-control nav__search--form" name="search" id="search"
+                value="{{request()->input('search')}}" placeholder="Search...">
                 <button type='submit'>
                     <i class="material-icons nav__search--btn">
                         search

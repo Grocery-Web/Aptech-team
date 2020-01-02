@@ -9,9 +9,8 @@
 </head>
 
 <body>
-    <p>Product Img</p>
-    <p>Product info</p>
-    <p>Product Price</p>
+    <p>{{$product->description}}</p>
+    <p>{{$product->price}}</p>
 </body>
 
 </html>
