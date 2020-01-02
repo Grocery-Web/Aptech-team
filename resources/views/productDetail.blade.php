@@ -219,9 +219,9 @@
                         @endif
                         <p class="my-2">{{ $review->content }}</p>
                         @if ($userData)
-                        <a class="text-primary" data-toggle="collapse" href="#replyForm" role="button" aria-expanded="false"
-                            aria-controls="replyForm">Reply</a>
-                        <form class="collapse mt-2" id="replyForm" method="POST" action="{{route('addReply', [$product['id'], $userData['id'], $review->id] )}}">
+                        <a class="text-primary" data-toggle="collapse" href="#replyForm{{ $review->id }}" role="button" aria-expanded="false"
+                            aria-controls="replyForm{{ $review->id }}">Reply</a>
+                        <form class="collapse mt-2" id="replyForm{{ $review->id }}" method="POST" action="{{route('addReply', [$product['id'], $userData['id'], $review->id] )}}">
                             {{ csrf_field() }}
                             <div class="form-row">
                                 <div class="form-group col-md-12">
