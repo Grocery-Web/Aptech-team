@@ -22,8 +22,9 @@ class ProductsController extends Controller
     public function productDetails($id){
         $product    =   Product::find($id);
         $gallery    =   DB::table('products_photos')->where('product_id', $id)->get();
+        $review     =   DB::table('reviews')->where('product_id', $id)->get();
 
-        return view("productDetail",['product' => $product, 'gallery' => $gallery]);
+        return view("productDetail",['product' => $product, 'gallery' => $gallery, 'review' => $review]);
     }
 
     public function addProductToCart(Request $request, $id) {

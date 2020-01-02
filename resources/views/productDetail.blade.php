@@ -168,6 +168,7 @@
         </div>
         <div id="menu2" class="tab-pane py-3">
             <small>Purchased this product already ? Tell us what you think.</small><br>
+            @if ($userData)
             <button type="button" class="btn btn-success btn-lg font-weight-light mt-2" data-toggle="collapse"
                 data-target="#feedbackForm" aria-expanded="false" aria-controls="feedbackForm">Add your
                 review</button>
@@ -192,6 +193,10 @@
                     <button type="submit" class="btn btn-success">Submit</button>
                 </form>
             </div>
+            @else
+            <a href="{{ route('login') }}"><button type="button" class="btn btn-success btn-lg font-weight-light mt-2" >Add your
+                review</button></a>
+            @endif
             <div class="p-3 mt-4 bg-secondary text-white">There are currently <span>1</span> feedback.</div>
             <div class="customer-feedback row mt-4">
                 <div class="col-md-3 text-center">
