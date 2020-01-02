@@ -205,64 +205,15 @@
                 <div class="p-3 mt-4 bg-secondary text-white">There are currently <span><?php echo count($reviews) ?></span> feedbacks.</div>
             @endif
             <div class="customer-feedback row mt-4">
-                <div class="col-md-3 text-center">
-                    <img src="https://img.icons8.com/ios-filled/50/000000/user-male-circle.png" class="rounded-circle">
-                    <h6>Username</h6>
-                </div>
-                <div class="col-md-9">
-                    <h6 class="mb-1">Excellent fan with a single glaring con,for those young at heart</h6>
-                    <img src="https://img.icons8.com/color/25/000000/checked-checkbox.png">
-                    <small class="text-success">Verified Purchaser</small>
-                    <p class="my-2">Let's be realistic: when you buy a fan, you want it to move the air. This beauty
-                        does it in spades! Even on low, it is still pushing quite a bit of air and does so relatively
-                        quietly. I set it up a few feet from my bed thinking it was "enough". Wrong. It's almost too
-                        much, and from me, that's saying something. If I lay with my back to it (like I normally would)
-                        there is enough wind going past my ears that it make a sound - yes, literally the wind rushing
-                        past my ear. And that's on low from 3 feet away! ... Frankly, I love it! I have had too many
-                        little fans that just couldn't live up to the task. But this little jewel does exactly what it
-                        is supposed to do. But be advised, it makes noise. Especially on high. This is a fan! And I am a
-                        fan of this fan!</p>
-                    <a class="text-primary" data-toggle="collapse" href="#replyForm" role="button" aria-expanded="false"
-                        aria-controls="replyForm">Reply</a>
-                    <form class="collapse mt-2" id="replyForm">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <textarea class="form-control" id="replyArea" rows="4"
-                                    placeholder="Write your reply here. Maximum words allowed is 1500."
-                                    required></textarea>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-success">Submit</button>
-                    </form>
-                    <div class="row mt-3">
-                        <div class="col-md-1">
-                            <img src="https://img.icons8.com/ios-filled/50/000000/user-male-circle.png"
-                                class="rounded-circle">
-                        </div>
-                        <div class="col-md-11">
-                            <h6>Username</h6>
-                            <p>Great review! Plan to place the order. Thank you so much for your sharing. </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- test -->
                 @foreach ($reviews as $review)
                     @if ($review->level == 'parent')
                     <div class="col-md-3 text-center">
-                        <img src="https://img.icons8.com/ios-filled/50/000000/user-male-circle.png" class="rounded-circle">
-                        <h6>
-                            abc
-                            <!-- <?php
-    // $user = DB::table('users')->where('id', $review->user_id)->get();
-    // echo $user['name'];
-    // dd($user["name"]);
-    ?> -->
-                        </h6>
+                        <img src="public/storage/user_images/<?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->avatar; ?>" class="rounded-circle">
+                        <h6><?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->name; ?></h6>
                     </div>
                     <div class="col-md-9">
                         <h6 class="mb-1">{{ $review->headline }}</h6>
-                        @if ($invoiceDetail->contains('user_id', $userData->id))
+                        @if ($invoiceDetail->contains('user_id', $review->user_id))
                             <img src="https://img.icons8.com/color/25/000000/checked-checkbox.png">
                             <small class="text-success">Verified Purchaser</small>
                         @endif
@@ -288,11 +239,11 @@
                             @if ($reply->parent_id == $review->id)
                                 <div class="row mt-3">
                                     <div class="col-md-1">
-                                        <img src="https://img.icons8.com/ios-filled/50/000000/user-male-circle.png"
+                                        <img src="public/storage/user_images/<?php $user = DB::table('users')->where('id', $reply->user_id)->get(); echo $user[0]->avatar; ?>"
                                             class="rounded-circle">
                                     </div>
                                     <div class="col-md-11">
-                                        <h6>Username</h6>
+                                        <h6><?php $user = DB::table('users')->where('id', $reply->user_id)->get(); echo $user[0]->name; ?></h6>
                                         <p>{{ $reply->content }}</p>
                                     </div>
                                 </div>
@@ -301,8 +252,6 @@
                     </div>
                     @endif
                 @endforeach
-                <!-- endtest -->
-
             </div>
         </div>
     </div>
