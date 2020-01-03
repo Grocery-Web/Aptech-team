@@ -23,57 +23,11 @@
 }
 /* End: Carousel Image */
 /* --------------------------------------------------------- */
-/* Star Rating */
-.rate {
-  float: left;
-  height: 46px;
-}
-  
-.rate:not(:checked) > input {
-  position: absolute;
-  top: -9999px;  
-}
-
-.rate:not(:checked) > label {
-  float: right;
-  width: 1em;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: pointer;
-  font-size: 30px;
-  color: #ccc;
-}
-
-.rate:not(:checked) > label:before { content: '★ '; }
-.rate > input:checked ~ label { color: #ffc700; }
-.rate:not(:checked) > label:hover, .rate:not(:checked) > label:hover ~ label { color: #deb217; }
-.rate > input:checked + label:hover, .rate > input:checked + label:hover ~ label, .rate > input:checked ~ label:hover,.rate > input:checked ~ label:hover ~ label, .rate > label:hover ~ input:checked ~ label { color: #c59b08; }
-/* End: Star Rating */
-/* --------------------------------------------------------- */
 /* Product Price */
 .product .price {
   color: #B12704;
 }
 /* End: Product Price */
-/* --------------------------------------------------------- */
-/* Product Color */
-
-.filter-color {
-  display: inline-block;
-  width: 28px;
-  height: 28px;
-  vertical-align: middle;
-}
-
-.color_1 {
-  background-color: red;
-}
-
-.color_2 {
-  background-color: blue;
-}
-
-/* End: Product Color */
 /* --------------------------------------------------------- */
 /* Increase/Decrease Input */
 .numberInput .updown {
