@@ -46,13 +46,14 @@ class ProductsController extends Controller
 
     public function showCart() {
         $cart = Session::get('cart');
+        $parentCategories = Category::where('parent_id',NULL)->get();
 
         // check cart is not empty
         if($cart) {
-            return view('shopcart', ["cartItems"=> $cart]);
+            return view('shopcart', ["cartItems"=> $cart, 'parentCategories' => $parentCategories]);
         // cart is null
         } else {
-            return view('shopcart');
+            return view('shopcart', ['parentCategories' => $parentCategories]);
         }
 
     }
