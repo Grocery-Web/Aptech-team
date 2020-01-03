@@ -220,9 +220,9 @@
                         <h6 class="mt-1"><?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->name; ?></h6>
                     </div>
                     <div class="col-md-9 border-left border-success mb-5">
-                        <h6 class="mb-1">{{ $review->headline }}</h6>
+                        <h6 class="mb-1 reviewHead">{{ $review->headline }}</h6>
                         @if ($invoiceDetail->contains('user_id', $review->user_id))
-                            <img src="https://img.icons8.com/color/25/000000/checked-checkbox.png">
+                            <img src="{{asset('img/verified.png')}}" height="15" width="15">
                             <small class="text-success">Verified Purchaser</small>
                         @endif
                         <p class="my-2">{{ $review->content }}</p>
@@ -231,8 +231,8 @@
                             <a class="text-success" data-toggle="collapse" href="#replyForm{{ $review->id }}"   role="button" aria-expanded="false"
                                 aria-controls="replyForm{{ $review->id }}">Reply</a>
                             @if ($review->user_id == $userData->id or $userData->id == 1)
-                                <a href="{{ route('deleteReview', ['id' => $review->id]) }}"><button type="button" class="btn btn-outline-light btn-sm deleteComment">
-                                    <img src="https://img.icons8.com/ios-glyphs/24/000000/delete-forever.png">
+                                <a href="{{ route('deleteReview', ['id' => $review->id]) }}"><button type="button" class="btn btn-outline-light btn-sm p-1 deleteComment">
+                                    <img src="https://img.icons8.com/color/30/000000/delete-forever.png">
                                 </button></a>
                             @endif
                         </div>
@@ -262,8 +262,8 @@
                                         <div class="d-flex justify-content-between">
                                             <p>{{ $reply->content }}</p>
                                             @if ($reply->user_id == $userData->id or $userData->id == 1)
-                                                <a href="{{ route('deleteReview', ['id' => $reply->id]) }}"><button type="button" class="btn btn-outline-light btn-sm deleteComment">
-                                                    <img src="https://img.icons8.com/ios-glyphs/24/000000/delete-forever.png">
+                                                <a href="{{ route('deleteReview', ['id' => $reply->id]) }}"><button type="button" class="btn btn-outline-light btn-sm p-1 deleteComment">
+                                                    <img src="https://img.icons8.com/color/30/000000/delete-forever.png">
                                                 </button></a>
                                             @endif
                                         </div>
