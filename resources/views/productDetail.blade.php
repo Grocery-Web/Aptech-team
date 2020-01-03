@@ -222,9 +222,9 @@
                         <div class="d-flex justify-content-between">
                             <a class="text-success" data-toggle="collapse" href="#replyForm{{ $review->id }}"   role="button" aria-expanded="false"
                                 aria-controls="replyForm{{ $review->id }}">Reply</a>
-                            <button type="button" class="btn btn-outline-light btn-sm deleteComment">
+                            <a href="{{ route('deleteReview', ['id' => $review->id]) }}"><button type="button" class="btn btn-outline-light btn-sm deleteComment">
                                 <img src="https://img.icons8.com/ios-glyphs/24/000000/delete-forever.png">
-                            </button>
+                            </button></a>
                         </div>
                         <form class="collapse mt-2" id="replyForm{{ $review->id }}" method="POST" action="{{route('addReply', [$product['id'], $userData['id'], $review->id] )}}">
                             {{ csrf_field() }}
@@ -251,9 +251,9 @@
                                         <h6><?php $user = DB::table('users')->where('id', $reply->user_id)->get(); echo $user[0]->name; ?></h6>
                                         <div class="d-flex justify-content-between">
                                             <p>{{ $reply->content }}</p>
-                                            <button type="button" class="btn btn-outline-light btn-sm deleteComment">
+                                            <a href="{{ route('deleteReview', ['id' => $reply->id]) }}"><button type="button" class="btn btn-outline-light btn-sm deleteComment">
                                                 <img src="https://img.icons8.com/ios-glyphs/24/000000/delete-forever.png">
-                                            </button>
+                                            </button></a>
                                         </div>
                                     </div>
                                 </div>
