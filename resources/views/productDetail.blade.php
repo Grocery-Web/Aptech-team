@@ -128,6 +128,8 @@
     </ul>
 
     <div class="tab-content">
+
+        <!-- Description Tab -->
         <div id="home" class="tab-pane in active">
             <p class="mt-5">The Honeywell 12" Oscillating Table Fan can be implemented in a variety of settings to
                 improve the overall quality of airflow. The inclusion of three speed settings and a round 12 in. head
@@ -138,6 +140,9 @@
                 process of cleaning off accumulated dust and debris. The Honeywell 12" Oscillating Table Fan can provide
                 instant relief in a personal setting (i.e. offices or small rooms).</p>
         </div>
+        <!-- End: Description Tab -->
+
+        <!-- Product Information Tab -->
         <div id="menu1" class="tab-pane">
             <table class="mt-5" style="width:50%">
                 <tr>
@@ -166,6 +171,9 @@
                 </tr>
             </table>
         </div>
+        <!-- End: Product Information Tab -->
+
+        <!-- Customer Feedback Tab -->
         <div id="menu2" class="tab-pane py-3">
             <small>Purchased this product already ? Tell us what you think.</small><br>
             @if ($userData)
@@ -268,6 +276,8 @@
                 @endforeach
             </div>
         </div>
+        <!-- End: Customer Feedback Tab -->
+        
     </div>
 </div>
 <!-- End: Product Specification -->
