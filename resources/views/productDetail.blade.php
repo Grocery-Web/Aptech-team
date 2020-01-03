@@ -209,7 +209,7 @@
                     @if ($review->level == 'parent')
                     <div class="col-md-3 mb-5 text-center">
                         <img src="{{asset ('storage')}}/user_images/<?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->avatar; ?>" class="rounded-circle" height="60" width="60">
-                        <h6><?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->name; ?></h6>
+                        <h6 class="mt-1"><?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->name; ?></h6>
                     </div>
                     <div class="col-md-9 border-left border-success mb-5">
                         <h6 class="mb-1">{{ $review->headline }}</h6>
@@ -219,8 +219,13 @@
                         @endif
                         <p class="my-2">{{ $review->content }}</p>
                         @if ($userData)
-                        <a class="text-primary" data-toggle="collapse" href="#replyForm{{ $review->id }}" role="button" aria-expanded="false"
-                            aria-controls="replyForm{{ $review->id }}">Reply</a>
+                        <div class="d-flex justify-content-between">
+                            <a class="text-success" data-toggle="collapse" href="#replyForm{{ $review->id }}"   role="button" aria-expanded="false"
+                                aria-controls="replyForm{{ $review->id }}">Reply</a>
+                            <button type="button" class="btn btn-outline-light btn-sm deleteComment">
+                                <img src="https://img.icons8.com/ios-glyphs/24/000000/delete-forever.png">
+                            </button>
+                        </div>
                         <form class="collapse mt-2" id="replyForm{{ $review->id }}" method="POST" action="{{route('addReply', [$product['id'], $userData['id'], $review->id] )}}">
                             {{ csrf_field() }}
                             <div class="form-row">
@@ -244,7 +249,12 @@
                                     </div>
                                     <div class="col-md-11">
                                         <h6><?php $user = DB::table('users')->where('id', $reply->user_id)->get(); echo $user[0]->name; ?></h6>
-                                        <p>{{ $reply->content }}</p>
+                                        <div class="d-flex justify-content-between">
+                                            <p>{{ $reply->content }}</p>
+                                            <button type="button" class="btn btn-outline-light btn-sm deleteComment">
+                                                <img src="https://img.icons8.com/ios-glyphs/24/000000/delete-forever.png">
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             @endif
