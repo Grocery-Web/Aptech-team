@@ -9,8 +9,9 @@
 </head>
 
 <body>
-    <p>{{$product->description}}</p>
+    <p>{{$product->image}}</p>
     <p>{{$product->price}}</p>
+    <img src="<?php echo public_path().'/storage/product_images/'.$product->image;?>"/>
 </body>
 
 </html>

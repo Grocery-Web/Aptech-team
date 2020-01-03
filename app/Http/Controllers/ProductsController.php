@@ -15,7 +15,7 @@ use PDF;
 class ProductsController extends Controller
 {
     public function index(){
-        $products = Product::paginate(1);
+        $products = Product::paginate(6);
         $parentCategories = Category::where('parent_id',NULL)->get();
         return view("mainpage", ['products' => $products, 'parentCategories' => $parentCategories]);
     }
@@ -50,10 +50,11 @@ class ProductsController extends Controller
 
         // check cart is not empty
         if($cart) {
-            return view('shopcart', ["cartItems"=> $cart, 'parentCategories' => $parentCategories]);
+
+            return view('shopcart', ["cartItems"=> $cart,'parentCategories' => $parentCategories]);
         // cart is null
         } else {
-            return view('shopcart', ['parentCategories' => $parentCategories]);
+            return view('shopcart',['parentCategories' => $parentCategories]);
         }
 
     }
