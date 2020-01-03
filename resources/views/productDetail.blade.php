@@ -232,7 +232,7 @@
                                 aria-controls="replyForm{{ $review->id }}">Reply</a>
                             @if ($review->user_id == $userData->id or $userData->id == 1)
                                 <a href="{{ route('deleteReview', ['id' => $review->id]) }}"><button type="button" class="btn btn-outline-light btn-sm p-1 deleteComment">
-                                    <img src="https://img.icons8.com/color/30/000000/delete-forever.png">
+                                    <img src="https://img.icons8.com/material-rounded/24/000000/delete-forever.png">
                                 </button></a>
                             @endif
                         </div>
@@ -263,7 +263,7 @@
                                             <p>{{ $reply->content }}</p>
                                             @if ($reply->user_id == $userData->id or $userData->id == 1)
                                                 <a href="{{ route('deleteReview', ['id' => $reply->id]) }}"><button type="button" class="btn btn-outline-light btn-sm p-1 deleteComment">
-                                                    <img src="https://img.icons8.com/color/30/000000/delete-forever.png">
+                                                    <img src="https://img.icons8.com/material-rounded/24/000000/delete-forever.png">
                                                 </button></a>
                                             @endif
                                         </div>
