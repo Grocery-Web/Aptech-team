@@ -47,7 +47,7 @@ class HomeController extends Controller
         return view('sitemap', ['parentCategories' => $parentCategories]);
     }
 
-    public function test(){  
+    public function test(){
         $parentCategories = Category::where('parent_id',NULL)->get();
         return view('test', compact('parentCategories'));
     }

@@ -6,9 +6,19 @@
     <ul class="list-group"><a href="{{ url('/') }}"><h3>Homepage</h3></a>
         <li class="list-group-item"><p class="font-weight-bold mb-0">Categories</p>
             <ul class="list-group">
-                <a href="#"><li class="list-group-item">Ceiling Fans</li></a>
-                <a href="#"><li class="list-group-item">Table Fans</li></a>
-                <a href="#"><li class="list-group-item">Exhaust Fans</li></a>
+
+                @foreach ($parentCategories as $category)
+                <a href="#"><li class="list-group-item">{{$category['name']}}</li></a>
+                    @if (count($category->subcategory))
+                    <ul class="list-group pl-4">
+                        @foreach ($category->subcategory as $subcategory)
+                        <a href="/product/category/{{$subcategory['id']}}"><li class="list-group-item font-italic">
+                            {{$subcategory->name}}</li></a>
+                        @endforeach
+                    </ul>
+                    @endif
+                @endforeach
+                
             </ul>
         
         </li>

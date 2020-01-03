@@ -175,6 +175,9 @@
                     ?>
                 @endforeach
         </div>
+        <div class="row justify-content-center">
+            {{ $products->links() }}
+        </div>
     </div>
     <!-- End Card List -->
     <!-- Newsletter -->
