@@ -40,7 +40,12 @@ Route::group(['prefix' => '/product'], function () {
     Route::get('details/{id}',  ["uses"=>"ProductsController@productDetails", "as"=> "productDetails"]);
     // Add product to cart
     Route::post('details/{id}/addToCart', ["uses"=>"ProductsController@addProductToCart", "as"=> "addProductToCart"]);
+    // Download pdf file
     Route::get('details/{id}/createPdf', ["uses"=>"ProductsController@createPdf", "as"=> "createPdf"]);
+    // Add new comment or feedback 
+    Route::post('details/{id}/addReview/{user_id}', ["uses"=>"ProductsController@addReview", "as"=> "addReview"]);
+    // Add new reply
+    Route::post('details/{id}/addReply/{user_id}/{parent_id}', ["uses"=>"ProductsController@addReply", "as"=> "addReply"]);
     Route::get('sortCategory/{id}', ["uses"=>"ProductsController@sortCategory", "as"=> "sortCategory "]);
 });
 
@@ -136,3 +141,8 @@ Route::group(['prefix' => '/caterory'], function () {
     Route::get('deleteCate/{id}', ["uses"=>"Admin\AdminCategoriesController@deleteCate", "as"=> "adminDeleteCate"]);
 });
 
+// Group review
+Route::group(['prefix' => '/review'], function () {
+    // Delete review
+    Route::get('deleteReview/{id}', ["uses"=>"ReviewsController@deleteReview", "as"=> "deleteReview"]);
+});

@@ -128,6 +128,8 @@
     </ul>
 
     <div class="tab-content">
+
+        <!-- Description Tab -->
         <div id="home" class="tab-pane in active">
             <p class="mt-5">The Honeywell 12" Oscillating Table Fan can be implemented in a variety of settings to
                 improve the overall quality of airflow. The inclusion of three speed settings and a round 12 in. head
@@ -138,6 +140,9 @@
                 process of cleaning off accumulated dust and debris. The Honeywell 12" Oscillating Table Fan can provide
                 instant relief in a personal setting (i.e. offices or small rooms).</p>
         </div>
+        <!-- End: Description Tab -->
+
+        <!-- Product Information Tab -->
         <div id="menu1" class="tab-pane">
             <table class="mt-5" style="width:50%">
                 <tr>
@@ -166,75 +171,113 @@
                 </tr>
             </table>
         </div>
+        <!-- End: Product Information Tab -->
+
+        <!-- Customer Feedback Tab -->
         <div id="menu2" class="tab-pane py-3">
             <small>Purchased this product already ? Tell us what you think.</small><br>
-            <button type="button" class="btn btn-success btn-lg font-weight-light mt-2" data-toggle="collapse"
-                data-target="#feedbackForm" aria-expanded="false" aria-controls="feedbackForm">Add your
-                review</button>
-            <div class="collapse" id="feedbackForm">
-                <h5 class="mt-4 mb-3">CREATE REVIEW</h5>
-                <form>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="reviewHeading">Add a headline *</label>
-                            <input type="text" class="form-control" id="reviewHeading"
-                                placeholder="What's most important to know?" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="Textarea1">Your review *</label>
-                            <textarea class="form-control" id="Textarea1" rows="3"
-                                placeholder="What did you like or dislike?" required></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </form>
-            </div>
-            <div class="p-3 mt-4 bg-secondary text-white">There are currently <span>1</span> feedback.</div>
-            <div class="customer-feedback row mt-4">
-                <div class="col-md-3 text-center">
-                    <img src="https://img.icons8.com/ios-filled/50/000000/user-male-circle.png" class="rounded-circle">
-                    <h6>Username</h6>
-                </div>
-                <div class="col-md-9">
-                    <h6 class="mb-1">Excellent fan with a single glaring con,for those young at heart</h6>
-                    <img src="https://img.icons8.com/color/25/000000/checked-checkbox.png">
-                    <small class="text-success">Verified Purchaser</small>
-                    <p class="my-2">Let's be realistic: when you buy a fan, you want it to move the air. This beauty
-                        does it in spades! Even on low, it is still pushing quite a bit of air and does so relatively
-                        quietly. I set it up a few feet from my bed thinking it was "enough". Wrong. It's almost too
-                        much, and from me, that's saying something. If I lay with my back to it (like I normally would)
-                        there is enough wind going past my ears that it make a sound - yes, literally the wind rushing
-                        past my ear. And that's on low from 3 feet away! ... Frankly, I love it! I have had too many
-                        little fans that just couldn't live up to the task. But this little jewel does exactly what it
-                        is supposed to do. But be advised, it makes noise. Especially on high. This is a fan! And I am a
-                        fan of this fan!</p>
-                    <a class="text-primary" data-toggle="collapse" href="#replyForm" role="button" aria-expanded="false"
-                        aria-controls="replyForm">Reply</a>
-                    <form class="collapse mt-2" id="replyForm">
+            @if ($userData)
+                <button type="button" class="btn btn-success btn-lg font-weight-light mt-2" data-toggle="collapse"
+                    data-target="#feedbackForm" aria-expanded="false" aria-controls="feedbackForm">Add your
+                    review</button>
+                <div class="collapse" id="feedbackForm">
+                    <h5 class="mt-4 mb-3">CREATE REVIEW</h5>
+                    <form method="POST" action="{{route('addReview', [$product['id'], $userData['id']] )}}">
+                        {{ csrf_field() }}
                         <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <textarea class="form-control" id="replyArea" rows="4"
-                                    placeholder="Write your reply here. Maximum words allowed is 1500."
-                                    required></textarea>
+                            <div class="form-group col-md-6">
+                                <label for="reviewHeading">Add a headline *</label>
+                                <input type="text" name="headline" class="form-control" id="reviewHeading"
+                                    placeholder="What's most important to know?" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="Textarea1">Your review *</label>
+                                <textarea class="form-control" name="content" id="Textarea1" rows="3"
+                                    placeholder="What did you like or dislike?" required></textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-success">Submit</button>
                     </form>
-                    <div class="row mt-3">
-                        <div class="col-md-1">
-                            <img src="https://img.icons8.com/ios-filled/50/000000/user-male-circle.png"
-                                class="rounded-circle">
-                        </div>
-                        <div class="col-md-11">
-                            <h6>Username</h6>
-                            <p>Great review! Plan to place the order. Thank you so much for your sharing. </p>
-                        </div>
-                    </div>
                 </div>
+            @else
+                <a href="{{ route('login') }}"><button type="button" class="btn btn-success btn-lg font-weight-light mt-2" >Add your
+                review</button></a>
+            @endif
+            @if (count($reviews) == 0)
+                <div class="p-3 mt-4 bg-secondary text-white">There are currently <span>no</span> feedbacks.</div>
+            @elseif (count($reviews) == 1)
+                <div class="p-3 mt-4 bg-secondary text-white">There is currently <span>1</span> feedback.</div>
+            @else
+                <div class="p-3 mt-4 bg-secondary text-white">There are currently <span><?php echo count($reviews) ?></span> feedbacks.</div>
+            @endif
+            <div class="customer-feedback row mt-4">
+                @foreach ($reviews as $review)
+                    @if ($review->level == 'parent')
+                    <div class="col-md-3 mb-5 text-center">
+                        <img src="{{asset ('storage')}}/user_images/<?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->avatar; ?>" class="rounded-circle" height="60" width="60">
+                        <h6 class="mt-1"><?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->name; ?></h6>
+                    </div>
+                    <div class="col-md-9 border-left border-success mb-5">
+                        <h6 class="mb-1 reviewHead">{{ $review->headline }}</h6>
+                        @if ($invoiceDetail->contains('user_id', $review->user_id))
+                            <img src="{{asset('img/verified.png')}}" height="15" width="15">
+                            <small class="text-success">Verified Purchaser</small>
+                        @endif
+                        <p class="my-2">{{ $review->content }}</p>
+                        @if ($userData)
+                        <div class="d-flex justify-content-between">
+                            <a class="text-success" data-toggle="collapse" href="#replyForm{{ $review->id }}"   role="button" aria-expanded="false"
+                                aria-controls="replyForm{{ $review->id }}">Reply</a>
+                            @if ($review->user_id == $userData->id or $userData->id == 1)
+                                <a href="{{ route('deleteReview', ['id' => $review->id]) }}"><button type="button" class="btn btn-outline-light btn-sm p-1 deleteComment">
+                                    <img src="https://img.icons8.com/color/30/000000/delete-forever.png">
+                                </button></a>
+                            @endif
+                        </div>
+                        <form class="collapse mt-2" id="replyForm{{ $review->id }}" method="POST" action="{{route('addReply', [$product['id'], $userData['id'], $review->id] )}}">
+                            {{ csrf_field() }}
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <textarea name="content" class="form-control" id="replyArea" rows="4"
+                                        placeholder="Write your reply here. Maximum words allowed is 1500."
+                                        required></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </form>
+                        @else
+                            <a class="text-primary" href="{{ route('login') }}" role="button" >Reply</a>
+                        @endif
+                        @foreach ($reviews as $reply)
+                            @if ($reply->parent_id == $review->id)
+                                <div class="row mt-3">
+                                    <div class="col-md-1">
+                                        <img src="{{asset ('storage')}}/user_images/<?php $user = DB::table('users')->where('id', $reply->user_id)->get(); echo $user[0]->avatar; ?>"
+                                            class="rounded-circle" height="60" width="60">
+                                    </div>
+                                    <div class="col-md-11">
+                                        <h6><?php $user = DB::table('users')->where('id', $reply->user_id)->get(); echo $user[0]->name; ?></h6>
+                                        <div class="d-flex justify-content-between">
+                                            <p>{{ $reply->content }}</p>
+                                            @if ($reply->user_id == $userData->id or $userData->id == 1)
+                                                <a href="{{ route('deleteReview', ['id' => $reply->id]) }}"><button type="button" class="btn btn-outline-light btn-sm p-1 deleteComment">
+                                                    <img src="https://img.icons8.com/color/30/000000/delete-forever.png">
+                                                </button></a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    @endif
+                @endforeach
             </div>
         </div>
+        <!-- End: Customer Feedback Tab -->
+        
     </div>
 </div>
 <!-- End: Product Specification -->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Cart;
 use App\User;
+use App\Review;
 use App\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -23,8 +24,10 @@ class ProductsController extends Controller
         $product    =   Product::find($id);
         $parentCategories = Category::where('parent_id',NULL)->get();
         $gallery    =   DB::table('products_photos')->where('product_id', $id)->get();
+        $reviews    =   DB::table('reviews')->where('product_id', $id)->get();
+        $invoiceDetail =  DB::table('invoice_details')->where('product_id', $id)->get();
 
-        return view("productDetail",['product' => $product, 'gallery' => $gallery, 'parentCategories' => $parentCategories]);
+        return view("productDetail",['product' => $product, 'gallery' => $gallery, 'reviews' => $reviews, 'parentCategories' => $parentCategories, 'invoiceDetail' => $invoiceDetail]);
     }
 
     public function addProductToCart(Request $request, $id) {
@@ -37,7 +40,7 @@ class ProductsController extends Controller
         $cart->addItem($id, $product, $quantity);
         $request->session()->put('cart', $cart);
 
-        return redirect('');
+        return redirect()->back();
 
     }
 
@@ -47,6 +50,7 @@ class ProductsController extends Controller
 
         // check cart is not empty
         if($cart) {
+
             return view('shopcart', ["cartItems"=> $cart,'parentCategories' => $parentCategories]);
         // cart is null
         } else {
@@ -87,7 +91,8 @@ class ProductsController extends Controller
                 'shipping_address' => $user->address,
                 'status' => 'In progress'
             );
-            DB::table('invoices')->insert($newInvoiceData);
+            $created = DB::table('invoices')->insert($newInvoiceData);
+
             $newInvoice = DB::table('invoices')->latest('created_at')->first();
 
             // update product quantity
@@ -99,6 +104,7 @@ class ProductsController extends Controller
                 // add new invoice detail
                 $newInvoiceDetail = array(
                     'invoice_id' => $newInvoice->id,
+                    'user_id' => $id,
                     'product_id' => $product->id,
                     'total' => $item['totalSinglePrice'],
                     'product_quantity' => $item['totalSingleQuantity']
@@ -107,10 +113,13 @@ class ProductsController extends Controller
             }
             Session::forget('cart');
         }
-
-
-
-        return redirect()->route('cartProducts');
+        
+        // check if payment was successful
+        if($created){
+            return redirect()->route("cartProducts")->withSuccess('Order Completed Successfully! Thank for your support.');
+        } else{
+            return redirect()->route("cartProducts")->withFail('Your order failed! Please try again.');
+        }    
     }
 
     public function createPdf($id) {
@@ -119,10 +128,42 @@ class ProductsController extends Controller
         return $pdf->download('Product Information.pdf');
     }
 
+
+    public function addReview(Request $request, $id, $user_id) {
+        $headline = $request->headline;
+        $content = $request->content;
+        $newReviewData = array(
+            'headline' => $headline,
+            'content' => $content,
+            'parent_id' => null,
+            'product_id' => $id,
+            'user_id' => $user_id,
+            'level' => 'parent'
+        );
+        DB::table('reviews')->insert($newReviewData);
+        return redirect()->back();
+    }
+
+    public function addReply(Request $request, $id, $user_id, $parent_id) {
+        $content = $request->content;
+        $newReplyData = array(
+            'headline' => null,
+            'content' => $content,
+            'parent_id' => $parent_id,
+            'product_id' => $id,
+            'user_id' => $user_id,
+            'level' => 'child'
+        );
+        DB::table('reviews')->insert($newReplyData);
+        return redirect()->back();
+    }
+
+
     public function sortCategory($id) {
         $category  = Category::find($id);
         $products  = $category->Product;
         $parentCategories = Category::where('parent_id',NULL)->get();
         return view("mainpage", ['products' => $products, 'parentCategories' => $parentCategories]);
     }
+
 }
