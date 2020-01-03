@@ -207,11 +207,11 @@
             <div class="customer-feedback row mt-4">
                 @foreach ($reviews as $review)
                     @if ($review->level == 'parent')
-                    <div class="col-md-3 text-center">
-                        <img src="{{asset ('storage')}}/user_images/<?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->avatar; ?>" class="rounded-circle">
-                        <h6><?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->name; ?></h6>
+                    <div class="col-md-3 mb-5 text-center">
+                        <img src="{{asset ('storage')}}/user_images/<?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->avatar; ?>" class="rounded-circle" height="60" width="60">
+                        <h6 class="mt-1"><?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->name; ?></h6>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9 border-left border-success mb-5">
                         <h6 class="mb-1">{{ $review->headline }}</h6>
                         @if ($invoiceDetail->contains('user_id', $review->user_id))
                             <img src="https://img.icons8.com/color/25/000000/checked-checkbox.png">
@@ -219,9 +219,14 @@
                         @endif
                         <p class="my-2">{{ $review->content }}</p>
                         @if ($userData)
-                        <a class="text-primary" data-toggle="collapse" href="#replyForm" role="button" aria-expanded="false"
-                            aria-controls="replyForm">Reply</a>
-                        <form class="collapse mt-2" id="replyForm" method="POST" action="{{route('addReply', [$product['id'], $userData['id'], $review->id] )}}">
+                        <div class="d-flex justify-content-between">
+                            <a class="text-success" data-toggle="collapse" href="#replyForm{{ $review->id }}"   role="button" aria-expanded="false"
+                                aria-controls="replyForm{{ $review->id }}">Reply</a>
+                            <button type="button" class="btn btn-outline-light btn-sm deleteComment">
+                                <img src="https://img.icons8.com/ios-glyphs/24/000000/delete-forever.png">
+                            </button>
+                        </div>
+                        <form class="collapse mt-2" id="replyForm{{ $review->id }}" method="POST" action="{{route('addReply', [$product['id'], $userData['id'], $review->id] )}}">
                             {{ csrf_field() }}
                             <div class="form-row">
                                 <div class="form-group col-md-12">
@@ -240,11 +245,16 @@
                                 <div class="row mt-3">
                                     <div class="col-md-1">
                                         <img src="{{asset ('storage')}}/user_images/<?php $user = DB::table('users')->where('id', $reply->user_id)->get(); echo $user[0]->avatar; ?>"
-                                            class="rounded-circle">
+                                            class="rounded-circle" height="60" width="60">
                                     </div>
                                     <div class="col-md-11">
                                         <h6><?php $user = DB::table('users')->where('id', $reply->user_id)->get(); echo $user[0]->name; ?></h6>
-                                        <p>{{ $reply->content }}</p>
+                                        <div class="d-flex justify-content-between">
+                                            <p>{{ $reply->content }}</p>
+                                            <button type="button" class="btn btn-outline-light btn-sm deleteComment">
+                                                <img src="https://img.icons8.com/ios-glyphs/24/000000/delete-forever.png">
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             @endif
