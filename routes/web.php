@@ -141,6 +141,22 @@ Route::group(['prefix' => '/caterory'], function () {
     Route::get('deleteCate/{id}', ["uses"=>"Admin\AdminCategoriesController@deleteCate", "as"=> "adminDeleteCate"]);
 });
 
+// Group AdminInvoice
+Route::group(['prefix' => '/invoice'], function () {
+    //Display Invoice Panel
+    Route::get('displayInvoices', ["uses"=>"Admin\AdminInvoicesController@index", "as"=> "adminDisplayInvoices"]);
+    //Display Invoice Detail
+    Route::get('displayInvoiceDetails/{id}', ["uses"=>"Admin\AdminInvoicesController@displayInvoiceDetails", "as"=> "adminDisplayInvoiceDetails"]);
+    //Display edit invoice form
+    Route::get('editInvoiceForm/{id}', ["uses"=>"Admin\AdminInvoicesController@editInvoiceForm", "as"=> "editInvoiceForm"]);
+    //Update invoice information from admin panel
+    Route::post('updateInvoice/{id}', ["uses"=>"Admin\AdminInvoicesController@updateInvoice", "as"=> "adminUpdateInvoice"]);
+    //Remove invoice from admin panel
+    Route::get('removeInvoice/{id}', ["uses"=>"Admin\AdminInvoicesController@removeInvoice", "as"=> "adminRemoveInvoice"]);
+    //Clear all invoices from admin panel
+    Route::get('clearAllInvoices', ["uses"=>"Admin\AdminInvoicesController@clearAllInvoices", "as"=> "adminClearAllInvoices"]);
+});
+
 // Group review
 Route::group(['prefix' => '/review'], function () {
     // Delete review
