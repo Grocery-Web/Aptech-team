@@ -26,6 +26,8 @@
 /* Product Price */
 .product .price {
   color: #B12704;
+  font-size: 22px;
+  padding-top: 0.4rem;
 }
 /* End: Product Price */
 /* --------------------------------------------------------- */
@@ -134,4 +136,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 .reviewHead {
   font-size: 1.04rem;
+}
+
+.product .table {
+  margin-bottom: 0.5rem!important;
 }
