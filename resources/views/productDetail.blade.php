@@ -14,7 +14,7 @@
         <div class="col-lg-7">
             <h2>{{$product['name']}}</h2>
             <div class="product-rating">
-                
+
             </div>
             <div class="clearfix"></div>
             <div class="price">
@@ -257,7 +257,7 @@
             </div>
         </div>
         <!-- End: Customer Feedback Tab -->
-        
+
     </div>
 </div>
 <!-- End: Product Specification -->
