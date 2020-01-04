@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ProductSeeder extends Seeder
+class ProductsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,6 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-
         DB::table('products')->insert([
             'user_id'     =>   '1',
             'name'     =>   'Honeywell HT-900 TurboForce Air Circulator Fan Black',
@@ -392,12 +391,5 @@ class ProductSeeder extends Seeder
             'quantity'     =>   '00',
             'image'     =>   'Panasonic FV-30VQ3 WhisperCeiling Ventilation Fan, Quiet Air Flow, Long Lasting, Easy to Install.jpg',
         ]);
-
-
-
-
-
-
-
     }
 }

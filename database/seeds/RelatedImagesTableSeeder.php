@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ProductRelateSeeder extends Seeder
+class RelatedImagesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,6 @@ class ProductRelateSeeder extends Seeder
      */
     public function run()
     {
-
         DB::table('products_photos')->insert([
             'product_id'     =>   '1',
             'photos'     =>   'Honeywell HT-900 TurboForce Air Circulator Fan Black_0.jpg',
@@ -227,6 +226,5 @@ class ProductRelateSeeder extends Seeder
             'product_id'     =>   '24',
             'photos'     =>   'Panasonic FV-30VQ3 WhisperCeiling Ventilation Fan, Quiet Air Flow, Long Lasting, Easy to Install_1.jpg',
         ]);
-
     }
 }
