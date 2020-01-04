@@ -11,7 +11,7 @@
             <!-- Carousel items have `.embed-responsive-item` -->
             <div class="carousel-item embed-responsive-item home__carousel--img1 active ">
                 <div class="home__carousel--title">
-                    Winter Sale - Get 30% OFF <br> On TABLE FANS.
+                    Home Essentials <br> - TABLE FANS.
                     <div class="home__carousel--title--text">
                         <p>It's Time To Start Shopping</p>
                     </div>
@@ -20,7 +20,7 @@
             </div>
             <div class="carousel-item embed-responsive-item home__carousel--img2">
                 <div class="home__carousel--title">
-                    New Campaign Sale <br> UP to 65%
+                    Home Essentials
                     <div class="home__carousel--title--text">
                         <p>For CEILING FANS</p>
                     </div>
@@ -39,65 +39,6 @@
         </a>
     </div>
     <!-- End Carousel -->
-    <div class="container hot_deal">
-        <div class="row">
-            <h2 class="heading__title">
-                Hot Deal
-            </h2>
-            <div class="hot_deal__time_left">Time left</div>
-        </div>
-        <div class="card-deck hot_deal__card">
-            <div class="card mb-4" style="max-width: 540px;">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="https://via.placeholder.com/150px*160px" class="card-img hot_deal__card--img"
-                            alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body hot_deal__card--body">
-                            <h5 class="card-title  hot_deal__card--title">Card title</h5>
-                            <p class="card-text hot_deal__card--text">This is a wider card with supporting text below as
-                                a natural lead-in to
-                                .</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-4" style="max-width: 540px;">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="https://via.placeholder.com/150px*160px" class="card-img hot_deal__card--img"
-                            alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body hot_deal__card--body">
-                            <h5 class="card-title  hot_deal__card--title">Card title</h5>
-                            <p class="card-text hot_deal__card--text">This is a wider card with supporting text below as
-                                a natural lead-in to
-                                .</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-4" style="max-width: 540px;">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="https://via.placeholder.com/150px*160px" class="card-img hot_deal__card--img"
-                            alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body hot_deal__card--body">
-                            <h5 class="card-title  hot_deal__card--title">Card title</h5>
-                            <p class="card-text hot_deal__card--text">This is a wider card with supporting text below as
-                                a natural lead-in to
-                                .</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Hot Deals -->
     <!-- Categories -->
     <div class="container category">
         <h2 class="heading__title">
@@ -175,9 +116,9 @@
                     ?>
                 @endforeach
         </div>
-        <div class="row justify-content-center">
+        {{-- <div class="row justify-content-center">
             {{ $products->links() }}
-        </div>
+        </div> --}}
     </div>
     <!-- End Card List -->
     <!-- Newsletter -->

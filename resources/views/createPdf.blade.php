@@ -9,8 +9,21 @@
 </head>
 
 <body>
-    <p>{{$product->description}}</p>
-    <p>{{$product->price}}</p>
+    {{-- <p>{{$product->image}}</p>
+    <p>{{$product->price}}</p> --}}
+    <h1>Product Name: {{$product->name}}</h1>
+    <div class="wrapper">
+        <div class="wrapper__img">
+            <img style="width: 200px; height: 200px"  src="<?php echo public_path().'/storage/product_images/'.$product->image;?>"/>
+        </div>
+        <div class="wrapper__detail">
+            <p>Product description: {{$product->description}}</p>
+            <p>Manufacturer: {{$product->producer}} </p>
+
+        <p>Price: <span class="price" style="color: #B12704">{{$product->price}}</span> </p>
+        </div>
+    </div>
+
 </body>
 
 </html>

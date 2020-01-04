@@ -1,6 +1,6 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a class="navbar-brand" href="./"> <img class="favicon" src="{{asset('img/Favicon.ico')}}" alt=""> </a>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="/"> <img class="favicon" src="{{asset('img/Favicon.ico')}}" alt=""> </a>
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#headerNav"
         aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -24,7 +24,7 @@
                         <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
                             @foreach ($category->subcategory as $subcategory)
                             <li>
-                                <a href="/product/category/{{$subcategory['id']}}" class="dropdown-item">{{$subcategory->name}}</a>
+                                <a href="/product/sortCategory/{{$subcategory['id']}}" class="dropdown-item">{{$subcategory->name}}</a>
                             </li>
                             @endforeach
                         </ul>
@@ -64,7 +64,7 @@
         <!-- Shop Cart  -->
         <div class="nav__shopcart">
             <a href="{{ route('cartProducts') }}" class="material-icons-outlined nav__icon"
-                style="color: #212529; text-decoration:none">shop</a>
+                style="color: #f5f5f5cc; text-decoration:none">shop</a>
             <div class="form__text nav__shopcart--wrapper">
                 <div class="nav__shopcart--arrow-up"></div>
                 <div class="nav__shopcart--title">
@@ -120,16 +120,17 @@
         <!-- End Shop Cart -->
         <!-- Login btn -->
         <div class="nav__login">
-            <a href="{{ route('login') }}"> <i class="material-icons nav__icon" style="color: #212529">
+            <a href="{{ route('login') }}"> <i class="material-icons nav__icon" style="color: #f5f5f5cc">
                     person_outline
                 </i>
             </a>
             @if(Auth::check())
             <form class="form__text">
                 <div class="nav__login--arrow-up"></div>
-                <div class="nav__login__form">
+                <div class="nav__login__form" style="color:black">
                     <p>Email: {!! Auth::user()->email !!}</p>
                     <p>Name: {!! Auth::user()->name !!}</p>
+                    <p><a href="">Check your invoice</a></p>
                 </div>
                 <div class="d-flex justify-content-center">
                     <a class="btn btn-primary" href="{{ url('/logout') }}"> Logout </a>
