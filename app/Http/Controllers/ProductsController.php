@@ -89,7 +89,7 @@ class ProductsController extends Controller
                 'total_quantity' => $cart->totalQuantity,
                 'total_price' => $cart->totalPrice,
                 'shipping_address' => $user->address,
-                'status' => 'In progress'
+                'status' => 'Not approved yet'
             );
             $created = DB::table('invoices')->insert($newInvoiceData);
 
