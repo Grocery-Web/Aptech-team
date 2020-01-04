@@ -74,28 +74,28 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8 nav__shopcart--item--left">
-                                Number of Chosen Products
+                                Total Quantity
                             </div>
                             @if(session()->has('cart'))
-                            <div class="col-md-4 nav__shopcart--item--right">
+                            <div class="col-md-4 nav__shopcart--item--right" style="color:black">
                                 {{ session()->get('cart')->totalQuantity }}
                             </div>
                             @else
-                            <div class="col-md-4 nav__shopcart--item--right">
+                            <div class="col-md-4 nav__shopcart--item--right" style="color:black">
                                 0
                             </div>
                             @endif
                         </div>
                         <div class="row">
                             <div class="col-md-8 nav__shopcart--item--left">
-                                Total
+                                Total Price
                             </div>
                             @if(session()->has('cart'))
-                            <div class="col-md-4 nav__shopcart--item--right">
+                            <div class="col-md-4 nav__shopcart--item--right" style="color:black">
                                 {{ session()->get('cart')->totalPrice }}
                             </div>
                             @else
-                            <div class="col-md-4 nav__shopcart--item--right">
+                            <div class="col-md-4 nav__shopcart--item--right" style="color:black">
                                 0
                             </div>
                             @endif
@@ -104,13 +104,13 @@
                             <div class="col-md-8 nav__shopcart--item--left">
                                 Currency
                             </div>
-                            <div class="col-md-4 nav__shopcart--item--right">
-                                VND
+                            <div class="col-md-4 nav__shopcart--item--right" style="color:black">
+                                USD
                             </div>
                         </div>
                         <div class="row">
                             <a href="{{ route('cartProducts') }}">
-                                <div class="btn btn-primary nav__shopcart--btn ">buy now</div>
+                                <div class="btn btn-primary nav__shopcart--btn">check out</div>
                             </a>
                         </div>
                     </div>
