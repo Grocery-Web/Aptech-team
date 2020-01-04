@@ -40,7 +40,7 @@
     </div>
     <!-- End Carousel -->
     <!-- Categories -->
-    <div class="container category">
+    {{-- <div class="container category">
         <h2 class="heading__title">
             Shop By Category
         </h2>
@@ -70,7 +70,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End Categories -->
     <!-- List items -->
     <div class="container list_item">
