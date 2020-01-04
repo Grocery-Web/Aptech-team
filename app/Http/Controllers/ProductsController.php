@@ -113,13 +113,13 @@ class ProductsController extends Controller
             }
             Session::forget('cart');
         }
-        
+
         // check if payment was successful
         if($created){
             return redirect()->route("cartProducts")->withSuccess('Order Completed Successfully! Thank for your support.');
         } else{
             return redirect()->route("cartProducts")->withFail('Your order failed! Please try again.');
-        }    
+        }
     }
 
     public function createPdf($id) {
