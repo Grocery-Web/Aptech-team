@@ -146,3 +146,12 @@ Route::group(['prefix' => '/review'], function () {
     // Delete review
     Route::get('deleteReview/{id}', ["uses"=>"ReviewsController@deleteReview", "as"=> "deleteReview"]);
 });
+
+
+// Group Client's order management
+Route::group(['prefix' => '/order'], function () {
+    // Check order
+    Route::get('{id}', ["uses"=>"Client\ClientOrdersController@checkOrder", "as"=> "checkOrder"]);
+    // Cancel order
+    Route::get('{id}/cancelOrder', ["uses"=>"Client\ClientOrdersController@cancelOrder", "as"=> "cancelOrder"]);
+});
