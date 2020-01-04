@@ -160,10 +160,9 @@ class ProductsController extends Controller
 
 
     public function sortCategory($id) {
-        $category  = Category::find($id);
-        $products  = $category->Product;
+        $products  = Product::where('cate_id',$id)->paginate(4);
         $parentCategories = Category::where('parent_id',NULL)->get();
-        return view("mainpage", ['products' => $products, 'parentCategories' => $parentCategories]);
+        return view("category.searchCate", ['products' => $products, 'parentCategories' => $parentCategories]);
     }
 
 }
