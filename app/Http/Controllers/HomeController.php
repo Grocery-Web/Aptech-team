@@ -47,18 +47,13 @@ class HomeController extends Controller
         return view('sitemap', ['parentCategories' => $parentCategories]);
     }
 
-    public function test(){
-        $parentCategories = Category::where('parent_id',NULL)->get();
-        return view('test', compact('parentCategories'));
-    }
-
     public function search(Request $request){
         $query = $request->search;
         $products = Product::where('name','like','%'.$query.'%')
                             ->orWhere('price',$query)
-                            ->get();
+                            ->paginate(6);
         $parentCategories = Category::where('parent_id',NULL)->get();
 
-        return view("mainpage", ['products' => $products, 'parentCategories' => $parentCategories]);
+        return view("searchProduct", ['products' => $products, 'parentCategories' => $parentCategories]);
     }
 }
