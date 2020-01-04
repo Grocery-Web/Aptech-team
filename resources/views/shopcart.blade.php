@@ -15,7 +15,7 @@
                         <img src="{{asset ('storage')}}/product_images/{{$item['data']['image']}}" alt="" style="width:150px; height:150px">
                         </div>
                         <div class="col-md-5 shoplist__item--detail">
-                            <div class="row shoplist__item--header">
+                            <div class="row shoplist__item--header" style="font-weight:700">
                             {{ $item['data']['name'] }}
                             </div>
                             <div class="row shoplist__item--description">
