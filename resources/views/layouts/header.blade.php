@@ -130,6 +130,7 @@
                 <div class="nav__login__form">
                     <p>Email: {!! Auth::user()->email !!}</p>
                     <p>Name: {!! Auth::user()->name !!}</p>
+                    <p><a href="">Check your invoice</a></p>
                 </div>
                 <div class="d-flex justify-content-center">
                     <a class="btn btn-primary" href="{{ url('/logout') }}"> Logout </a>
