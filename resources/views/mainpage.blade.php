@@ -15,7 +15,7 @@
                     <div class="home__carousel--title--text">
                         <p>It's Time To Start Shopping</p>
                     </div>
-                    <button class="btn btn-dark">SHOP NOW</button>
+                    <a href="#popular"> <button class="btn btn-dark">SHOP NOW</button> </a>
                 </div>
             </div>
             <div class="carousel-item embed-responsive-item home__carousel--img2">
@@ -24,7 +24,7 @@
                     <div class="home__carousel--title--text">
                         <p>For CEILING FANS</p>
                     </div>
-                    <button class="btn btn-dark">SHOP NOW</button>
+                    <a href="#popular"> <button class="btn btn-dark">SHOP NOW</button> </a>
                 </div>
             </div>
 
@@ -40,7 +40,7 @@
     </div>
     <!-- End Carousel -->
     <!-- Categories -->
-    <div class="container category">
+    {{-- <div class="container category">
         <h2 class="heading__title">
             Shop By Category
         </h2>
@@ -70,10 +70,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End Categories -->
     <!-- List items -->
-    <div class="container list_item">
+    <div class="container list_item" id="popular">
         <h2 class="heading__title">
             Popular Products
         </h2>
@@ -163,3 +163,4 @@
 <hr>
 <!-- End Newsletter -->
 @endsection
+
