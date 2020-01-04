@@ -1,6 +1,6 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a class="navbar-brand" href="./"> <img class="favicon" src="{{asset('img/Favicon.ico')}}" alt=""> </a>
+    <a class="navbar-brand" href="/"> <img class="favicon" src="{{asset('img/Favicon.ico')}}" alt=""> </a>
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#headerNav"
         aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -24,7 +24,7 @@
                         <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
                             @foreach ($category->subcategory as $subcategory)
                             <li>
-                                <a href="/product/category/{{$subcategory['id']}}" class="dropdown-item">{{$subcategory->name}}</a>
+                                <a href="/product/sortCategory/{{$subcategory['id']}}" class="dropdown-item">{{$subcategory->name}}</a>
                             </li>
                             @endforeach
                         </ul>

@@ -66,17 +66,6 @@
             Your Card is Empty. Back to &nbsp;<a href="./"> Homepage </a>
         </div>
         @endif
-        @if(Session::has('fail'))
-        <div class="alert alert-danger">
-            {{Session::get('fail')}}
-        </div>
-        @endif
-
-        @if(Session::has('success'))
-        <div class="alert alert-success">
-            {{Session::get('success')}}
-        </div>
-        @endif
     </div>
 </div>
 @endsection

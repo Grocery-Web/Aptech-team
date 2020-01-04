@@ -14,18 +14,7 @@
         <div class="col-lg-7">
             <h2>{{$product['name']}}</h2>
             <div class="product-rating">
-                <div class="rate mb-2">
-                    <input type="radio" id="star5" name="rate" value="5" />
-                    <label for="star5" title="text">5 stars</label>
-                    <input type="radio" id="star4" name="rate" value="4" />
-                    <label for="star4" title="text">4 stars</label>
-                    <input type="radio" id="star3" name="rate" value="3" />
-                    <label for="star3" title="text">3 stars</label>
-                    <input type="radio" id="star2" name="rate" value="2" />
-                    <label for="star2" title="text">2 stars</label>
-                    <input type="radio" id="star1" name="rate" value="1" />
-                    <label for="star1" title="text">1 star</label>
-                </div>
+                
             </div>
             <div class="clearfix"></div>
             <div class="price">
@@ -34,16 +23,7 @@
             <div class="product-summary mt-4">
                 {{$product['description']}}
             </div>
-            <div class="sku mt-4">SKU: <b><a href="#" class="text-dark">HTF1220B</a></b></div>
             <div class="categories mt-2">CATEGORIES: <b><a href="#" class="text-dark">{{$product['type']}}</a></b></div>
-            <div class="product-color mt-2">COLOR:
-                <a href="#" class="text-decoration-none">
-                    <div class="filter-color color_1 ml-3"></div>
-                </a>
-                <a href="#" class="text-decoration-none">
-                    <div class="filter-color color_2"></div>
-                </a>
-            </div>
             <div class="product-size mt-2">SIZE:
                 <a href="#" class="badge badge-light ml-2">Extra Large</a>
                 <a href="#" class="badge badge-light ml-2">Large</a>
@@ -128,6 +108,8 @@
     </ul>
 
     <div class="tab-content">
+
+        <!-- Description Tab -->
         <div id="home" class="tab-pane in active">
             <p class="mt-5">The Honeywell 12" Oscillating Table Fan can be implemented in a variety of settings to
                 improve the overall quality of airflow. The inclusion of three speed settings and a round 12 in. head
@@ -138,6 +120,9 @@
                 process of cleaning off accumulated dust and debris. The Honeywell 12" Oscillating Table Fan can provide
                 instant relief in a personal setting (i.e. offices or small rooms).</p>
         </div>
+        <!-- End: Description Tab -->
+
+        <!-- Product Information Tab -->
         <div id="menu1" class="tab-pane">
             <table class="mt-5" style="width:50%">
                 <tr>
@@ -166,6 +151,9 @@
                 </tr>
             </table>
         </div>
+        <!-- End: Product Information Tab -->
+
+        <!-- Customer Feedback Tab -->
         <div id="menu2" class="tab-pane py-3">
             <small>Purchased this product already ? Tell us what you think.</small><br>
             @if ($userData)
@@ -209,18 +197,25 @@
                     @if ($review->level == 'parent')
                     <div class="col-md-3 mb-5 text-center">
                         <img src="{{asset ('storage')}}/user_images/<?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->avatar; ?>" class="rounded-circle" height="60" width="60">
-                        <h6><?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->name; ?></h6>
+                        <h6 class="mt-1"><?php $user = DB::table('users')->where('id', $review->user_id)->get(); echo $user[0]->name; ?></h6>
                     </div>
                     <div class="col-md-9 border-left border-success mb-5">
-                        <h6 class="mb-1">{{ $review->headline }}</h6>
+                        <h6 class="mb-1 reviewHead">{{ $review->headline }}</h6>
                         @if ($invoiceDetail->contains('user_id', $review->user_id))
-                            <img src="https://img.icons8.com/color/25/000000/checked-checkbox.png">
+                            <img src="{{asset('img/verified.png')}}" height="15" width="15">
                             <small class="text-success">Verified Purchaser</small>
                         @endif
                         <p class="my-2">{{ $review->content }}</p>
                         @if ($userData)
-                        <a class="text-primary" data-toggle="collapse" href="#replyForm{{ $review->id }}" role="button" aria-expanded="false"
-                            aria-controls="replyForm{{ $review->id }}">Reply</a>
+                        <div class="d-flex justify-content-between">
+                            <a class="text-success" data-toggle="collapse" href="#replyForm{{ $review->id }}"   role="button" aria-expanded="false"
+                                aria-controls="replyForm{{ $review->id }}">Reply</a>
+                            @if ($review->user_id == $userData->id or $userData->id == 1)
+                                <a href="{{ route('deleteReview', ['id' => $review->id]) }}"><button type="button" class="btn btn-outline-light btn-sm p-1 deleteComment">
+                                    <img src="https://img.icons8.com/material-rounded/24/000000/delete-forever.png">
+                                </button></a>
+                            @endif
+                        </div>
                         <form class="collapse mt-2" id="replyForm{{ $review->id }}" method="POST" action="{{route('addReply', [$product['id'], $userData['id'], $review->id] )}}">
                             {{ csrf_field() }}
                             <div class="form-row">
@@ -244,7 +239,14 @@
                                     </div>
                                     <div class="col-md-11">
                                         <h6><?php $user = DB::table('users')->where('id', $reply->user_id)->get(); echo $user[0]->name; ?></h6>
-                                        <p>{{ $reply->content }}</p>
+                                        <div class="d-flex justify-content-between">
+                                            <p>{{ $reply->content }}</p>
+                                            @if ($reply->user_id == $userData->id or $userData->id == 1)
+                                                <a href="{{ route('deleteReview', ['id' => $reply->id]) }}"><button type="button" class="btn btn-outline-light btn-sm p-1 deleteComment">
+                                                    <img src="https://img.icons8.com/material-rounded/24/000000/delete-forever.png">
+                                                </button></a>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             @endif
@@ -254,6 +256,8 @@
                 @endforeach
             </div>
         </div>
+        <!-- End: Customer Feedback Tab -->
+        
     </div>
 </div>
 <!-- End: Product Specification -->

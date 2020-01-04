@@ -15,7 +15,7 @@ use PDF;
 class ProductsController extends Controller
 {
     public function index(){
-        $products = Product::paginate(1);
+        $products = Product::paginate(6);
         $parentCategories = Category::where('parent_id',NULL)->get();
         return view("mainpage", ['products' => $products, 'parentCategories' => $parentCategories]);
     }
@@ -46,13 +46,15 @@ class ProductsController extends Controller
 
     public function showCart() {
         $cart = Session::get('cart');
+        $parentCategories = Category::where('parent_id',NULL)->get();
 
         // check cart is not empty
         if($cart) {
-            return view('shopcart', ["cartItems"=> $cart]);
+
+            return view('shopcart', ["cartItems"=> $cart,'parentCategories' => $parentCategories]);
         // cart is null
         } else {
-            return view('shopcart');
+            return view('shopcart',['parentCategories' => $parentCategories]);
         }
 
     }
@@ -89,7 +91,8 @@ class ProductsController extends Controller
                 'shipping_address' => $user->address,
                 'status' => 'In progress'
             );
-            DB::table('invoices')->insert($newInvoiceData);
+            $created = DB::table('invoices')->insert($newInvoiceData);
+
             $newInvoice = DB::table('invoices')->latest('created_at')->first();
 
             // update product quantity
@@ -110,10 +113,13 @@ class ProductsController extends Controller
             }
             Session::forget('cart');
         }
-
-
-
-        return redirect()->route('cartProducts');
+        
+        // check if payment was successful
+        if($created){
+            return redirect()->route("cartProducts")->withSuccess('Order Completed Successfully! Thank for your support.');
+        } else{
+            return redirect()->route("cartProducts")->withFail('Your order failed! Please try again.');
+        }    
     }
 
     public function createPdf($id) {

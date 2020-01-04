@@ -141,3 +141,8 @@ Route::group(['prefix' => '/caterory'], function () {
     Route::get('deleteCate/{id}', ["uses"=>"Admin\AdminCategoriesController@deleteCate", "as"=> "adminDeleteCate"]);
 });
 
+// Group review
+Route::group(['prefix' => '/review'], function () {
+    // Delete review
+    Route::get('deleteReview/{id}', ["uses"=>"ReviewsController@deleteReview", "as"=> "deleteReview"]);
+});
