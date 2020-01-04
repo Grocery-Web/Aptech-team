@@ -77,7 +77,7 @@
         <h2 class="heading__title">
             Popular Products
         </h2>
-        <div class="card-deck">
+        <div class="card-deck" style="background-color: white; margin-bottom: 3rem; border-radius:5px">
             <?php
                 $count =0;
             ?>
@@ -85,11 +85,11 @@
             <?php
                 $count++;
             ?>
-                    <div class="card list_item__card">
-                        <a href="{{ route('productDetails',['id' => $product->id])}}"> <img class="card-img-top list_item__card--img" src="{{asset ('storage')}}/product_images/{{$product['image']}}" alt="">
+                    <div class="card list_item__card" style="margin-top:2rem">
+                        <a href="{{ route('productDetails',['id' => $product->id])}}"> <img class="card-img-top list_item__card--img d-flex justify-content-center" src="{{asset ('storage')}}/product_images/{{$product['image']}}" alt="">
                             <div class="card-body list_item__card--body">
                                 <h4 class="card-title list_item__card--title">{{$product->name}}</h4>
-                                <p class="card-text list_item__card--text">
+                                <p class="card-text list_item__card--text" style="font-weight:700">
                                     ${{$product->price}}</p>
                             </div>
                         </a>
@@ -116,9 +116,9 @@
                     ?>
                 @endforeach
         </div>
-        {{-- <div class="row justify-content-center">
+        <div class="row justify-content-center">
             {{ $products->links() }}
-        </div> --}}
+        </div>
     </div>
     <!-- End Card List -->
     <!-- Newsletter -->
