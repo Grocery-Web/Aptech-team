@@ -23,7 +23,7 @@
             <div class="product-summary mt-4">
                 {{$product['description']}}
             </div>
-            <div class="categories mt-2">CATEGORIES: <b><a href="#" class="text-dark">{{$product['type']}}</a></b></div>
+            <div class="categories mt-2"><?php $cate = DB::table('categories')->where('id', $product['cate_id'])->get(); echo $cate[0]->name; ?> <b><a href="#" class="text-dark">{{$product['type']}}</a></b></div>
             <div class="product-size mt-2">SIZE:
                 <a href="#" class="badge badge-light ml-2">Extra Large</a>
                 <a href="#" class="badge badge-light ml-2">Large</a>
