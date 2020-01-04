@@ -2,7 +2,7 @@
 @section('content')
 <div class="container list_item">
     <h2 class="heading__title">
-        {{$subCategory['name']}} Category
+        Is it what you want?
     </h2>
     <div class="card-deck">
         <?php

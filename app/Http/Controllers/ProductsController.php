@@ -162,7 +162,8 @@ class ProductsController extends Controller
     public function sortCategory($id) {
         $products  = Product::where('cate_id',$id)->paginate(4);
         $parentCategories = Category::where('parent_id',NULL)->get();
-        return view("category.searchCate", ['products' => $products, 'parentCategories' => $parentCategories]);
+        $subCategory  = Category::find($id);
+        return view("category.searchCate", ['products' => $products, 'parentCategories' => $parentCategories, 'subCategory' => $subCategory]);
     }
 
 }

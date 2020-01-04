@@ -27,7 +27,7 @@ class AdminProductsController extends Controller
     // display edit product form
     public function editProductForm($id)
     {
-        $product          = Product::find($id);
+        $product     = Product::find($id);
         $subCategory = Category::where('parent_id','<>',NULL)->get();
         return view('admin.editProductForm', ['product' => $product, 'subCate' => $subCategory]);
     }
@@ -211,7 +211,7 @@ class AdminProductsController extends Controller
     public function displayRelatedImageForm($id)
     {
         $gallery    =   DB::table('products_photos')->where('product_id', $id)->get();
-        return view('admin.displayRelatedImageForm', ['gallery' => $gallery]);
+        return view('admin.displayRelatedImageForm', ['gallery' => $gallery,'id' => $id]);
     }
     //Delete ralated product
     public function deleteRalatedProduct($id)
@@ -231,7 +231,7 @@ class AdminProductsController extends Controller
     public function updateRelatedImageForm($id)
     {
         $photo    =   ProductsPhoto::find($id);
-        return view('admin.updateRelatedImageForm', ['photo' => $photo]);
+        return view('admin.updateRelatedImageForm', ['photo' => $photo,'id' => $id]);
     }
     // Update related image of product
     public function updateRelatedImage(Request $request, $id)
@@ -265,5 +265,43 @@ class AdminProductsController extends Controller
             $error = "NO Image was Selected";
             return $error;
         }
+    }
+
+    // Display form for adding related image of product
+    public function addRelatedImageForm($id)
+    {
+        $product    = Product::find($id);
+        return view('admin.addRelatedImageForm',['product' => $product]);
+    }
+
+    // Add related image of product
+    public function addRelatedImage(Request $request, $id)
+    {
+        Validator::make($request->all(), [
+            'photos.*'  => "file|image|mimes:jpeg,png,jpg,gif,svg|max:5000"
+        ])->validate();
+        $product    = Product::find($id);
+        $lastID     = DB::table('products_photos')->latest('id')->first()->id;
+
+        // Store related images into Storage/app
+        $arr_img = [];
+        if ($photos = $request->file('photos')) {
+            $i = $lastID + 1;
+            foreach ($photos as $photo) {
+                $photoExt       =   $photo->getClientOriginalExtension();
+                $photoName      =   $product['name'] . "_" . $i . "." . $photoExt;
+                $photo->move(base_path('storage/app/public/product_images'), $photoName);
+                $arr_img[]      =   $photoName;
+                $i++;
+            }
+        }
+        // Insert database
+        foreach ($arr_img as $key => $value) {
+            $insertPhoto = DB::table('products_photos')->insert(
+                ['product_id' => $id, 'photos' => $value]
+            );
+        }
+
+        return redirect()->route("adminAddRelatedImageForm",$id)->withSuccess('Related Images has already inserted');
     }
 }
