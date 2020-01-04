@@ -73,10 +73,9 @@
                 <div class="col-md-6">
                     <label for="Quantity">Quantity</label>
                     <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Quantity"
-                        required>
+                    required>
                 </div>
             </div>
-
         </div>
         
         <div class="form-group row">
