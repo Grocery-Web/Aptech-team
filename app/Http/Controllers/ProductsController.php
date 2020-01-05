@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Cart;
 use App\User;
-use App\Review;
+use App\Invoice;
 use App\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -92,8 +92,9 @@ class ProductsController extends Controller
                 'status' => 'Not approved yet'
             );
             $created = DB::table('invoices')->insert($newInvoiceData);
-
-            $newInvoice = DB::table('invoices')->latest('created_at')->first();
+            
+            $newInvoiceID = Invoice::max('id');
+            $newInvoice = Invoice::find($newInvoiceID);
 
             // update product quantity
             foreach($cart->items as $item) {
