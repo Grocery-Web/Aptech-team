@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('content')
-<div class="container list_item">
-    <h2 class="heading__title">
-        Search by Categories
+<div class="container list_item" style="min-height:800px">
+    <h2 class="heading__title" style="margin-top: 4rem">
+        {{$subCategory['name']}} Category
     </h2>
     <div class="card-deck">
         <?php
@@ -43,8 +43,8 @@
                 ?>
             @endforeach
     </div>
-    {{-- <div class="row justify-content-center">
+    <div class="row justify-content-center" style="margin-top:5rem">
         {{ $products->links() }}
-    </div> --}}
+    </div>
 </div>
 @endsection

@@ -12,7 +12,7 @@
                     @if (count($category->subcategory))
                     <ul class="list-group pl-4">
                         @foreach ($category->subcategory as $subcategory)
-                        <a href="/product/category/{{$subcategory['id']}}"><li class="list-group-item font-italic">
+                        <a href="/product/sortCategory/{{$subcategory['id']}}"><li class="list-group-item font-italic">
                             {{$subcategory->name}}</li></a>
                         @endforeach
                     </ul>

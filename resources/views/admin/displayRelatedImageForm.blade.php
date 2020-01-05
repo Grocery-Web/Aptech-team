@@ -2,7 +2,10 @@
 
 @section('body')
 
-<h1>Related Images</h1>
+<div>
+    <h1>Related Images</h1>
+    <a href="{{ route('adminAddRelatedImageForm',['id' => $id])}}" class="btn btn-primary">Add New</a>
+</div>
 
 @if(Session::has('fail'))
 <div class="alert alert-danger">

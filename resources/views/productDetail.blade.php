@@ -13,24 +13,41 @@
         </div>
         <div class="col-lg-7">
             <h2>{{$product['name']}}</h2>
-            <div class="product-rating">
-                
-            </div>
             <div class="clearfix"></div>
-            <div class="price">
-                <h4>${{$product['price']}}</h4>
-            </div>
-            <div class="product-summary mt-4">
-                {{$product['description']}}
-            </div>
-            <div class="categories mt-2">CATEGORIES: <b><a href="#" class="text-dark">{{$product['type']}}</a></b></div>
-            <div class="product-size mt-2">SIZE:
-                <a href="#" class="badge badge-light ml-2">Extra Large</a>
-                <a href="#" class="badge badge-light ml-2">Large</a>
-                <a href="#" class="badge badge-light ml-2">Medium</a>
-                <a href="#" class="badge badge-light ml-2">Small</a>
-            </div>
-            <hr class="mt-4">
+            <table class="table attributes mt-5">
+                <tbody>
+                    <tr>
+                        <td>Price</td>
+                        <td>:</td>
+                        <td class="price">${{$product['price']}}</h4></td>
+                    </tr>
+                    <tr>
+                        <td>Product ID</td>
+                        <td>:</td>
+                        <td class="text-danger">{{$product['id']}}</td>
+                    </tr>
+                    <tr>
+                        <td>Available Quantity</td>
+                        <td>:</td>
+                        <td>{{$product['quantity']}}</td>
+                    </tr>
+                    <tr>
+                        <td>Category</td>
+                        <td>:</td>
+                        <td><b><?php $cate = DB::table('categories')->where('id', $product['cate_id'])->get();?> {{$cate[0]->name}}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Size</td>
+                        <td>:</td>
+                        <td>
+                            <a href="#" class="badge badge-light">Large</a>
+                            <a href="#" class="badge badge-light ml-2">Medium</a>
+                            <a href="#" class="badge badge-light ml-2">Small</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
             <div class="purchase d-flex flex-row flex-wrap align-items-center py-2">
                 <form method="POST" action="{{route('addProductToCart', [$product['id']] )}}" class="numberInput d-flex align-items-stretch">
                     {{ csrf_field() }}
@@ -111,20 +128,13 @@
 
         <!-- Description Tab -->
         <div id="home" class="tab-pane in active">
-            <p class="mt-5">The Honeywell 12" Oscillating Table Fan can be implemented in a variety of settings to
-                improve the overall quality of airflow. The inclusion of three speed settings and a round 12 in. head
-                afford a wide customizable oscillation. An adjustable tilt fan head will provide owners the luxury of
-                maneuvering the direction of their airflow at a moment's notice. Overall ease of use has been
-                highlighted with the addition of quick touch button controls that simplify the process of selecting
-                preferred settings. This table fan also comes equipped with a removable grille that will simplify the
-                process of cleaning off accumulated dust and debris. The Honeywell 12" Oscillating Table Fan can provide
-                instant relief in a personal setting (i.e. offices or small rooms).</p>
+            <p class="mt-4">{{$product['description']}}</p>
         </div>
         <!-- End: Description Tab -->
 
         <!-- Product Information Tab -->
         <div id="menu1" class="tab-pane">
-            <table class="mt-5" style="width:50%">
+            <table class="mt-4" style="width:50%">
                 <tr>
                     <th>Product Dimensions</th>
                     <td>{{$product['depth']}} x {{$product['width']}} x {{$product['height']}} inches</td>
@@ -140,14 +150,6 @@
                 <tr>
                     <th>Manufacturer</th>
                     <td>{{$product['producer']}}</td>
-                </tr>
-                <tr>
-                    <th>ASIN</th>
-                    <td>B07C5Y1PFH</td>
-                </tr>
-                <tr>
-                    <th>Item model number</th>
-                    <td>HTF1220B</td>
                 </tr>
             </table>
         </div>
@@ -257,7 +259,7 @@
             </div>
         </div>
         <!-- End: Customer Feedback Tab -->
-        
+
     </div>
 </div>
 <!-- End: Product Specification -->

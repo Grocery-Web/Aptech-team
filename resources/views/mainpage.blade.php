@@ -15,7 +15,7 @@
                     <div class="home__carousel--title--text">
                         <p>It's Time To Start Shopping</p>
                     </div>
-                    <button class="btn btn-dark">SHOP NOW</button>
+                    <a href="#popular"> <button class="btn btn-dark">SHOP NOW</button> </a>
                 </div>
             </div>
             <div class="carousel-item embed-responsive-item home__carousel--img2">
@@ -24,7 +24,7 @@
                     <div class="home__carousel--title--text">
                         <p>For CEILING FANS</p>
                     </div>
-                    <button class="btn btn-dark">SHOP NOW</button>
+                    <a href="#popular"> <button class="btn btn-dark">SHOP NOW</button> </a>
                 </div>
             </div>
 
@@ -40,7 +40,7 @@
     </div>
     <!-- End Carousel -->
     <!-- Categories -->
-    <div class="container category">
+    {{-- <div class="container category">
         <h2 class="heading__title">
             Shop By Category
         </h2>
@@ -70,14 +70,14 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End Categories -->
     <!-- List items -->
-    <div class="container list_item">
+    <div class="container list_item" id="popular">
         <h2 class="heading__title">
             Popular Products
         </h2>
-        <div class="card-deck">
+        <div class="card-deck" style="background-color: white; margin-bottom: 3rem; border-radius:5px">
             <?php
                 $count =0;
             ?>
@@ -85,11 +85,11 @@
             <?php
                 $count++;
             ?>
-                    <div class="card list_item__card">
-                        <a href="{{ route('productDetails',['id' => $product->id])}}"> <img class="card-img-top list_item__card--img" src="{{asset ('storage')}}/product_images/{{$product['image']}}" alt="">
+                    <div class="card list_item__card" style="margin-top:2rem">
+                        <a href="{{ route('productDetails',['id' => $product->id])}}"> <img class="card-img-top list_item__card--img d-flex justify-content-center" src="{{asset ('storage')}}/product_images/{{$product['image']}}" alt="">
                             <div class="card-body list_item__card--body">
                                 <h4 class="card-title list_item__card--title">{{$product->name}}</h4>
-                                <p class="card-text list_item__card--text">
+                                <p class="card-text list_item__card--text" style="font-weight:700">
                                     ${{$product->price}}</p>
                             </div>
                         </a>
@@ -116,9 +116,9 @@
                     ?>
                 @endforeach
         </div>
-        {{-- <div class="row justify-content-center">
+        <div class="row justify-content-center">
             {{ $products->links() }}
-        </div> --}}
+        </div>
     </div>
     <!-- End Card List -->
     <!-- Newsletter -->
@@ -163,3 +163,4 @@
 <hr>
 <!-- End Newsletter -->
 @endsection
+
