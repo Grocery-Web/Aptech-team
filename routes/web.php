@@ -28,7 +28,10 @@ Route::post('/passwordUpdate', 'Auth\ChangePasswordController@passwordUpdate')->
 
 // Wishlist
 Route::group(['prefix' => '/wishlist'], function () {
+    // Add favourite item to wishlist
     Route::get('addWishlist/{user_id}/{product_id}', ["uses"=>"Client\WishlistController@addWishlist", "as"=> "clientAddWishlist"]);
+    // Display wishlist by ID
+    Route::get('/{id}', ["uses"=>"Client\WishlistController@displayWishlist", "as"=> "clientDisplayWishlist"]);
 });
 
 

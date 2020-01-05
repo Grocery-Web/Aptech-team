@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Wishlist;
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,16 @@ class WishlistController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+    
+    public function displayWishlist($id)
+    {
+        
+
+        $wishlistbyID = Wishlist::where('user_id',$id)->get();
+        $parentCategories = Category::where('parent_id',NULL)->get();
+        return view("client.wishlist", ['wishlist' => $wishlistbyID, 'parentCategories' => $parentCategories]);
+
     }
 
     public function addWishlist($user_id, $product_id)
