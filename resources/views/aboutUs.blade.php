@@ -2,7 +2,7 @@
 @section('content')
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <div class="bigbanner">
-    <img src="https://www.wingfan.com/fileadmin/user_upload/about_banner_00.jpg">
+    <img src="{{asset('img/about_banner_00.jpg')}}">
     <div class="inner-text">
         <p class="big-text">Specialist for made to measure <br> Axial fan solutions</p>
         <p class="small-text">We strongly believe that we can contribute significantly to our customers’ aim of reducing
@@ -22,7 +22,7 @@
             <p>All FANoFAN locations worldwide are registered to ISO 9001:2015 — ISO Certificate.</p>
         </div>
         <div class="col-md-6">
-            <img src="https://www.wingfan.com/fileadmin/_processed_/e/6/csm__Quality_4set_ba6334fb40.png" width="500"
+            <img src="{{asset('img/csm__Quality_4set_ba6334fb40.png')}}" width="500"
                 height="500">
         </div>
     </div>
@@ -39,7 +39,7 @@
             <p>With operating locations in 20 countries, we provide superior service to a global base of customers.</p>
         </div>
         <div class="col-md-6">
-            <img src="https://www.wingfan.com/fileadmin/_processed_/b/5/csm__Network_4set_57103cc2cf.png" width="500"
+            <img src="{{asset('img/csm__Network_4set_57103cc2cf.png')}}" width="500"
                 height="500">
         </div>
     </div>
@@ -62,7 +62,7 @@
                 continents and distribution in over 20 countries.</p>
         </div>
         <div class="col-md-6">
-            <img src="https://www.wingfan.com/fileadmin/_processed_/e/1/csm__Locations_4set__dfec38b1cd.png" width="500"
+            <img src="{{asset('img/csm__Locations_4set__dfec38b1cd.png')}}" width="500"
                 height="500">
         </div>
     </div>
