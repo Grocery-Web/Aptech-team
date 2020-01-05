@@ -15,17 +15,17 @@
                         <img src="{{asset ('storage')}}/product_images/<?php $product = DB::table('products')->where('id', $invoiceDetail->product_id)->get(); echo $product[0]->image; ?>" alt="" style="width:150px; height:150px">
                         </div>
                         <div class="col-md-5 shoplist__item--detail">
-                            <div class="row shoplist__item--header">
+                            <div class="row shoplist__item--header" style="font-weight:700">
                                 <?php $product = DB::table('products')->where('id', $invoiceDetail->product_id)->get(); echo $product[0]->name; ?>
                             </div>
                             <div class="row shoplist__item--description">
                                 <?php $product = DB::table('products')->where('id', $invoiceDetail->product_id)->get(); echo $product[0]->description; ?>
                             </div>
                         </div>
-                        <div class="col-md-2 shoplist__item--quantity">
+                        <div class="col-md-2 shoplist__item--quantity" style="padding-left:1.5rem; padding-right:0">
                             Quantity:  {{$invoiceDetail->product_quantity}}
                         </div>
-                        <div class="col-md-3 shoplist__item--price">
+                        <div class="col-md-3 shoplist__item--price" style="padding-left: 1.5rem" >
                             Price:  {{$invoiceDetail->total}}
                         </div>
                     </div>
