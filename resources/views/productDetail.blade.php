@@ -17,37 +17,28 @@
             <table class="table attributes mt-5">
                 <tbody>
                     <tr>
-                        <td>Price</td>
-                        <td>:</td>
+                        <td class="label">Price</td>
+                        <td class="colon">:</td>
                         <td class="price">${{$product['price']}}</h4></td>
                     </tr>
                     <tr>
-                        <td>Product ID</td>
-                        <td>:</td>
+                        <td class="label">Product ID</td>
+                        <td class="colon">:</td>
                         <td class="text-danger">{{$product['id']}}</td>
                     </tr>
                     <tr>
-                        <td>Available Quantity</td>
-                        <td>:</td>
+                        <td class="label">Available Quantity</td>
+                        <td class="colon">:</td>
                         <td>{{$product['quantity']}}</td>
                     </tr>
                     <tr>
-                        <td>Category</td>
-                        <td>:</td>
+                        <td class="label">Category</td>
+                        <td class="colon">:</td>
                         <td><b><?php $cate = DB::table('categories')->where('id', $product['cate_id'])->get();?> {{$cate[0]->name}}</b></td>
-                    </tr>
-                    <tr>
-                        <td>Size</td>
-                        <td>:</td>
-                        <td>
-                            <a href="#" class="badge badge-light">Large</a>
-                            <a href="#" class="badge badge-light ml-2">Medium</a>
-                            <a href="#" class="badge badge-light ml-2">Small</a>
-                        </td>
                     </tr>
                 </tbody>
             </table>
-            <hr>
+            <hr id="line1">
             <div class="purchase d-flex flex-row flex-wrap align-items-center py-2">
                 <form method="POST" action="{{route('addProductToCart', [$product['id']] )}}" class="numberInput d-flex align-items-stretch">
                     {{ csrf_field() }}
