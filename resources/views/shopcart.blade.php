@@ -25,10 +25,10 @@
                                 <a href="{{ route('deleteItemFromCart', ['id'=>$item['data']['id']]) }}">Remove</a>
                             </div>
                         </div>
-                        <div class="col-md-2 shoplist__item--quantity">
+                        <div class="col-md-2 shoplist__item--quantity" style="padding-left:1.5rem; padding-right:0">
                             Quantity:  {{$item['totalSingleQuantity']}}
                         </div>
-                        <div class="col-md-3 shoplist__item--price">
+                        <div class="col-md-3 shoplist__item--price" style="padding-left: 1.5rem" >
                             Price:  ${{$item['totalSinglePrice']}}
                         </div>
 
@@ -67,6 +67,19 @@
                 </div>
             </div>
         </div>
+        <h2 class="heading__title">
+            Shipping address
+        </h2>
+        <form action="" method="">
+            <div class="form-group row">
+                <label for="shipaddress" class="col-md-3 col-form-label">Your Shipping Address</label>
+                <input class="form-control col-md-8" type="text" name="shipaddress" id="shipaddress">
+            </div>
+            <div class="form-group row">
+                <label for="shipphone" class="col-md-3 col-form-label">Your Phone</label>
+                <input class="form-control col-md-8" type="number" name="shipphone" id="shipphone">
+            </div>
+        </form>
         @else
         <div class="row">
             Your Card is Empty. Back to &nbsp;<a href="./"> Homepage </a>
