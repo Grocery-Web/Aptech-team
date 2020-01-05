@@ -55,9 +55,15 @@
                     </strong>
                 </div>
                 <div class="buybtnposition">
-                    <a href="{{ route('clearCart', ['id' => $userData['id']]) }}" style="text-decoration: none; width:100%">
-                    <button type="button" class="btn btn-large btn-block btn-danger btn-checkout buybtn">Buy now</button>
-                    </a>
+                    @if ($userData)
+                        <a href="{{ route('clearCart', ['id' => $userData['id']]) }}" style="text-decoration: none; width:100%">
+                        <button type="button" class="btn btn-large btn-block btn-danger btn-checkout buybtn">Buy now</button>
+                        </a>
+                    @else
+                        <a href="{{ route('login') }}" style="text-decoration: none; width:100%">
+                        <button type="button" class="btn btn-large btn-block btn-danger btn-checkout buybtn">Buy now</button>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
