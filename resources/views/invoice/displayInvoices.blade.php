@@ -1,10 +1,13 @@
 @extends('layouts.admin')
 
 @section('body')
-
 <div>
     <h1>Invoices List</h1>
+    @if ($invoices->count() > 0)
     <a href="{{ route('adminClearAllInvoices')}}" class="btn btn-primary">Clear all invoices</a>
+    @else
+    <a href="#" class="btn btn-primary">Clear all invoices</a>
+    @endif
 </div>
 <div class="table-responsive">
     <table class="table table-striped">

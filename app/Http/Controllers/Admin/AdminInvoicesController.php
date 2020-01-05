@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Product;
 use App\Invoice;
 use App\InvoiceDetail;
+use App\User;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -19,7 +20,8 @@ class AdminInvoicesController extends Controller
     public function displayInvoiceDetails($id) {
         $invoice = Invoice::find($id);
         $invoiceDetails = InvoiceDetail::where('invoice_id', $invoice->id)->get();
-        return view("invoice.displayInvoiceDetails", ['invoiceDetails' => $invoiceDetails]);
+        $user = User::find($invoice->user_id);
+        return view("invoice.displayInvoiceDetails", ['invoice' => $invoice, 'invoiceDetails' => $invoiceDetails, 'user' => $user]);
     }
 
     public function editInvoiceForm($id) {
