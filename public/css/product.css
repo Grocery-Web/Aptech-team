@@ -3,7 +3,6 @@
 } */
 
 /* --------------------------------------------------------- */
-
 .product {
   margin-top: 6em;
   background-color: white;
@@ -12,14 +11,14 @@
 /* Carousel Image */
 .product-carousel {
   overflow: hidden;
-  max-height: 90vh;
+  max-height: 80vh;
 }
 
 .product-carousel img {
   max-width: 50vw;
   width: 100%;
   height: auto;
-  max-height: 90vh;
+  max-height: 80vh;
 }
 /* End: Carousel Image */
 /* --------------------------------------------------------- */
@@ -117,7 +116,7 @@ input[type=number]::-webkit-outer-spin-button {
   border-bottom: 4px solid blue;
 }
 /* End: Product Info Tab Navs */
-
+/* --------------------------------------------------------- */
 /* Product Info Table */
 .spec td, .spec th {
   border-top: 1px solid black;
@@ -129,7 +128,7 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: #f3f3f3;
 }
 /* End: Product Info Table */
-
+/* --------------------------------------------------------- */
 .deleteComment {
   border-color: white;
 }
@@ -137,7 +136,24 @@ input[type=number]::-webkit-outer-spin-button {
 .reviewHead {
   font-size: 1.04rem;
 }
-
+/* --------------------------------------------------------- */
+/* Product Attrinute */
 .product .table {
   margin-bottom: 0.5rem!important;
+  width: 88.4%;
 }
+
+.product #line1 {
+  width: 88.4%;
+}
+
+.product .attributes .label {
+  width: 40%;
+  padding-right: 0;
+}
+
+.product .attributes .colon {
+  width: 8%;
+  padding-left: 0;
+}
+/* --------------------------------------------------------- */
