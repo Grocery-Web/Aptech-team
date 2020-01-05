@@ -151,7 +151,11 @@
             @endif
         </div>
         <!-- End Login btn -->
-
+        <div class="nav__wishlist" style="margin-left:20px">
+            <a href="#" style="color: #f5f5f5cc; text-decoration:none"><i class="material-icons">
+                favorite_border
+                </i></a>
+        </div>
     </div>
 </nav>
 <!-- End Navbar -->
