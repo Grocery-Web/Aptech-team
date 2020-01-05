@@ -14,7 +14,8 @@
 // Index Mainpage
 Route::get('', ["uses"=>"ProductsController@index", "as"=> "login"]);
 
-
+//Logout Button in Homepage
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 //User Authentication
 Auth::routes();
@@ -25,7 +26,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/passwordChange', 'Auth\ChangePasswordController@index')->name('passwordChange');
 Route::post('/passwordUpdate', 'Auth\ChangePasswordController@passwordUpdate')->name('passwordUpdate');
 
-// Group Homepage
+// Wishlist
+Route::group(['prefix' => '/wishlist'], function () {
+    Route::get('addWishlist/{user_id}/{product_id}', ["uses"=>"Client\WishlistController@addWishlist", "as"=> "clientAddWishlist"]);
+});
+
+
+// Group Indexpage
 Route::group(['prefix' => '/index'], function () {
     Route::get('aboutUs',  ["uses"=>"IndexController@aboutUs", "as"=> "aboutUs"]);
     Route::get('contactUs',["uses"=>"IndexController@contactUs", "as"=> "contactUs"]);
@@ -33,7 +40,7 @@ Route::group(['prefix' => '/index'], function () {
     Route::get('search',   ["uses"=>"IndexController@search", "as"=> "getSearch"]);
 });
 
-// Group Homepage
+// Group Product
 Route::group(['prefix' => '/product'], function () {
     // Index Mainpage
     Route::get('details/{id}',  ["uses"=>"ProductsController@productDetails", "as"=> "productDetails"]);
@@ -49,10 +56,7 @@ Route::group(['prefix' => '/product'], function () {
     Route::get('sortCategory/{id}', ["uses"=>"ProductsController@sortCategory", "as"=> "sortCategory "]);
 });
 
-//Logout Button in Homepage
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-// Group cart
+// Group Cart
 Route::group(['prefix' => '/cart'], function () {
     // Show cart panel
     Route::get('', ["uses"=>"ProductsController@showCart", "as"=> "cartProducts"]);
