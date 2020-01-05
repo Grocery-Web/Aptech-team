@@ -26,12 +26,11 @@ Route::get('/passwordChange', 'Auth\ChangePasswordController@index')->name('pass
 Route::post('/passwordUpdate', 'Auth\ChangePasswordController@passwordUpdate')->name('passwordUpdate');
 
 // Group Homepage
-Route::group(['prefix' => '/'], function () {
-    Route::get('aboutUs',  ["uses"=>"HomeController@aboutUs", "as"=> "aboutUs"]);
-    Route::get('contactUs',["uses"=>"HomeController@contactUs", "as"=> "contactUs"]);
-    Route::get('sitemap',  ["uses"=>"HomeController@sitemap", "as"=> "sitemap"]);
-    Route::get('test',     ["uses"=>"HomeController@test", "as"=> "test"]);
-    Route::get('search',   ["uses"=>"HomeController@search", "as"=> "getSearch"]);
+Route::group(['prefix' => '/index'], function () {
+    Route::get('aboutUs',  ["uses"=>"IndexController@aboutUs", "as"=> "aboutUs"]);
+    Route::get('contactUs',["uses"=>"IndexController@contactUs", "as"=> "contactUs"]);
+    Route::get('sitemap',  ["uses"=>"IndexController@sitemap", "as"=> "sitemap"]);
+    Route::get('search',   ["uses"=>"IndexController@search", "as"=> "getSearch"]);
 });
 
 // Group Homepage
