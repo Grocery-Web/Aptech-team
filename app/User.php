@@ -42,7 +42,12 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role');
     }
 
+    public function wishlist(){
+        return $this->hasMany('App\Whishlist', 'user_id');
+     }
+
     public function isAdmin(){
         return $this->role_id;
     }
+    
 }

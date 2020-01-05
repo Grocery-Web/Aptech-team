@@ -25,4 +25,8 @@ class Product extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function wishlist(){
+        return $this->hasMany('App\Whishlist', 'product_id');
+     }
 }
