@@ -2,7 +2,7 @@
 @section('content')
 <div class="shopcart-page">
     <div class="container shoplist">
-        <h2>Your favourtire items</h2>
+        <h2>Your favourite items</h2>
         @if ($wishlist->count() > 0)
         <div class="row" style="margin-top: 1rem">
             <div>
