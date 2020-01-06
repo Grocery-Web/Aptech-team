@@ -67,22 +67,9 @@
                 </div>
             </div>
         </div>
-        <h2 class="heading__title">
-            Shipping address
-        </h2>
-        <form action="" method="">
-            <div class="form-group row">
-                <label for="shipaddress" class="col-md-3 col-form-label">Your Shipping Address</label>
-                <input class="form-control col-md-8" type="text" name="shipaddress" id="shipaddress">
-            </div>
-            <div class="form-group row">
-                <label for="shipphone" class="col-md-3 col-form-label">Your Phone</label>
-                <input class="form-control col-md-8" type="number" name="shipphone" id="shipphone">
-            </div>
-        </form>
         @else
         <div class="row">
-            Your Card is Empty. Back to &nbsp;<a href="./"> Homepage </a>
+            Your Cart is Empty. Back to &nbsp;<a href="./">Homepage</a>
         </div>
         @endif
         @if(Session::has('fail'))
