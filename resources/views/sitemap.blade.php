@@ -34,9 +34,11 @@
                 <a href="{{ route('register') }}"><li class="list-group-item">Register</li></a>
             </ul>
         </li>
+        @if(Auth::check())
         <a href="{{ route('clientDisplayWishlist',['id' => $userData['id']]) }}">
             <li class="list-group-item">Wishlist</li>
         </a>
+        @endif
     </ul>
 </div>
 
