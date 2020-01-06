@@ -45,11 +45,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('sitemap') }}">Sitemap</a>
             </li>
-            @if(Auth::check())
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('clientDisplayWishlist',['id' => $userData['id']]) }}">Wishlist</a>
-            </li>
-            @endif
         </ul>
         <form action="/search" method="GET" class="nav__search">
             <i class="material-icons nav__icon ">
@@ -133,7 +128,7 @@
                 <div class="nav__login__form" style="color:black">
                     <p>Email: {!! Auth::user()->email !!}</p>
                     <p>Name: {!! Auth::user()->name !!}</p>
-                    <p><a href="{{ route('checkOrder', ['id' => $userData->id]) }}">Check your order</a></p>
+                    <p><a href="{{ route('showOrderList', ['id' => $userData->id]) }}">Check your order</a></p>
                 </div>
                 <div class="d-flex justify-content-center">
                     <a class="btn btn-primary" href="{{ url('/logout') }}"> Logout </a>
@@ -151,11 +146,13 @@
             @endif
         </div>
         <!-- End Login btn -->
+        @if(Auth::check())
         <div class="nav__wishlist" style="margin-left:20px">
-            <a href="#" style="color: #f5f5f5cc; text-decoration:none"><i class="material-icons">
+            <a href="{{ route('clientDisplayWishlist',['id' => $userData['id']]) }}" style="color: #f5f5f5cc; text-decoration:none"><i class="material-icons">
                 favorite_border
                 </i></a>
         </div>
+        @endif            
     </div>
 </nav>
 <!-- End Navbar -->

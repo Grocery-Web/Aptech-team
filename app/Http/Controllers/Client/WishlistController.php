@@ -22,12 +22,9 @@ class WishlistController extends Controller
     
     public function displayWishlist($id)
     {
-        
-
         $wishlistbyID = Wishlist::where('user_id',$id)->get();
         $parentCategories = Category::where('parent_id',NULL)->get();
         return view("client.wishlist", ['wishlist' => $wishlistbyID, 'parentCategories' => $parentCategories]);
-
     }
 
     public function addWishlist($user_id, $product_id)
@@ -41,5 +38,13 @@ class WishlistController extends Controller
         }else{
             return redirect()->route("productDetails",$product_id)->withFail('Item has not been added into wishlist yet');
         }
+    }
+
+    public function removeItem($user_id, $product_id)
+    {
+        DB::table('wishlists')->where('product_id', $product_id)->delete();
+        $wishlistbyID = Wishlist::where('user_id',$user_id)->get();
+        $parentCategories = Category::where('parent_id',NULL)->get();
+        return view("client.wishlist", ['wishlist' => $wishlistbyID, 'parentCategories' => $parentCategories]);
     }
 }
