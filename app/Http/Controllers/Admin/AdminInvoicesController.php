@@ -57,12 +57,27 @@ class AdminInvoicesController extends Controller
     }
 
     public function removeInvoice($id) {
-        $invoice = Invoice::find($id)->delete();
+        $invoice = Invoice::find($id);
+        $invoiceDetails = InvoiceDetail::where('invoice_id', $invoice->id)->get();
+        foreach ($invoiceDetails as $invoiceDetail) {
+            $product = Product::where('id', $invoiceDetail->product_id)->first();
+            $product->quantity += $invoiceDetail->product_quantity;
+            $product->save();
+        }
+        $invoice->delete();
         return redirect()->back();
     }
 
     public function clearAllInvoices($id) {
-        $invoice = Invoice::all()->delete();
+        $invoices = Invoice::all();
+        foreach ($invoices as $invoice) {
+            $invoiceDetails = InvoiceDetail::where('invoice_id', $invoice->id)->get();
+            foreach ($invoiceDetails as $invoiceDetail) {
+                $product = Product::where('id', $invoiceDetail->product_id)->first();
+                $product->quantity += $invoiceDetail->product_quantity;
+                $product->save();
+            }
+        }
         return redirect()->back();
     }
 }

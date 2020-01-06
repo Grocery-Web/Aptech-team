@@ -37,7 +37,11 @@
 
             <td><a href="{{ route('adminDisplayInvoiceDetails',['id' => $invoice['id'] ])}}" class="btn btn-primary">View detail</a></td>
             <td><a href="{{ route('editInvoiceForm',['id' => $invoice['id'] ])}}" class="btn btn-primary">Edit</a></td>
+            @if ($userData->role_id == 1) 
             <td><a href="{{ route('adminRemoveInvoice',['id' => $invoice['id']])}}"  class="btn btn-warning">Remove</a></td>
+            @else
+            <td><a href="#"  class="btn btn-warning">Remove</a></td>
+            @endif
 
 
         </tr>

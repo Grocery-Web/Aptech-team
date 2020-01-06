@@ -41,7 +41,11 @@
                     <tr>
                         <td class="label">Available Quantity</td>
                         <td class="colon">:</td>
+                        @if ($product->quantity == 0) 
+                        <td class="text-danger">Sold Out</td>
+                        @else
                         <td>{{$product['quantity']}}</td>
+                        @endif
                     </tr>
                     <tr>
                         <td class="label">Category</td>
