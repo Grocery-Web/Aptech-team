@@ -3,9 +3,15 @@
 <div class="shopcart-page">
     <div class="container shoplist">
         <h2 class="heading__title">
-            Order Detail 
+            Order Detail
         </h2>
         @if ($invoice and $invoiceDetails)
+        <div class="row">
+            <strong>Shipping Address: &nbsp </strong> {{$invoice->shipping_address}}
+        </div>
+        <div class="row">
+            <strong>Phone: </strong>&nbsp  {{$userData->phone}}
+        </div>
         <div class="row">
             <div class="col-md-9 shoplist__left">
                 @foreach($invoiceDetails as $invoiceDetail)
@@ -26,7 +32,7 @@
                             Quantity:  {{$invoiceDetail->product_quantity}}
                         </div>
                         <div class="col-md-3 shoplist__item--price" style="padding-left: 1.5rem" >
-                            Price:  {{$invoiceDetail->total}}
+                            Price:  ${{$invoiceDetail->total}}
                         </div>
                     </div>
                 </div>
@@ -48,7 +54,7 @@
                         Price:
                     </span>
                     <strong class="shoplist__right--price">
-                    {{ $invoice->total_price }}
+                    ${{ $invoice->total_price }}
                     </strong>
                 </div>
                 <hr>

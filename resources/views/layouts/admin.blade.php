@@ -9,8 +9,6 @@
     <!-- bootstrap -->
     <link href="{{asset ('css/bootstrap.min.css') }}" rel="stylesheet">
 
-    <!-- scripts -->
-    <script src="{{ asset ('js/jquery.min.js') }}"></script>
 
     <!-- Custom styles for this template -->
     <link href="{{asset ('css/dashboard.css') }}" rel="stylesheet">
@@ -34,26 +32,26 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
                 <li><a href="/admin/products">Dashboard</a></li>
-                <li><a href="/home">Profile</a></li>
+                <li><a href="/home" style="margin-right: 20px">Profile</a></li>
             </ul>
 
         </div>
     </div>
 </nav>
 
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="{{ route('adminDisplayProducts')}}">Product <span class="sr-only">(current)</span></a></li>
-                <li><a href="/caterory/displayCategories">Category</a></li>
+                <li class="check"><a href="{{ route('adminDisplayProducts')}}">Product <span class="sr-only">(current)</span></a></li>
+                <li class="check"><a href="/caterory/displayCategories">Category</a></li>
                 {{-- for superuser only --}}
                 @if($userData['role_id']==1)
-                <li><a href="{{ route('adminDisplayAccount')}}">Users</a></li>
+                <li class="check"><a href="{{ route('adminDisplayAccount')}}">Users</a></li>
                 @endif
                 {{-- ------------------ --}}
-                <li><a href="/invoice/displayInvoices">Invoices</a></li>
-                <li><a href="#">Analytics</a></li>
+                <li class="check"><a href="/invoice/displayInvoices">Invoices</a></li>
             </ul>
             <ul class="nav nav-sidebar">
 
@@ -73,13 +71,22 @@
 </div>
 
 
-
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="{{asset ('js/bootstrap.js') }}" ></script>
 
+<script>
+    let btns=document.getElementsByClassName("check");
+    let array_checking=['product', 'Categories', 'Account', 'Invoices'];
+    for (let i=0; i< 4; i++){
+        btns[i].classList.remove('active');
+    }
+    for (let i=0; i<4; i++){
+        if (window.location.href.search(array_checking[i]) != -1){
+            btns[i].classList.add('active')
+        }
+    }
+</script>
 
 </body>
 </html>

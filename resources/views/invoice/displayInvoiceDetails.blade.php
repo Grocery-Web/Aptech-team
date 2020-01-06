@@ -40,9 +40,9 @@
     </div>
 </div>
 <h4>User Avatar</h4>
-<img src="https://via.placeholder.com/150" alt="" style="width: 150px; height: 150px;">
-
+<img src="{{asset('storage')}}/user_images/<?php echo $user->avatar?>" style="width: 150px; height: 150px;">
 <div class="clearfix"></div>
+
 <div class="table-responsive">
     <h4>Product Detail List</h4>
     <table class="table table-striped">
