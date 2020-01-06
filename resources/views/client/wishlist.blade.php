@@ -4,13 +4,12 @@
     <div class="container shoplist">
         <div>
             <h2>Your favourtire items</h2>
-            <a href="#">Back to HomePage</a>
+            <a href="\">Back to HomePage</a>
         </div>
         @if ($wishlist)
         <div class="row" style="margin-top: 1rem">
             <div class="shoplist__left">
                 @foreach($wishlist as $list)
-                {{-- {{dd($list->product)}} --}}
                 <div class="shoplist__item">
                     <div class="row">
                         <div class="col-md-2 shoplist__item--img">
