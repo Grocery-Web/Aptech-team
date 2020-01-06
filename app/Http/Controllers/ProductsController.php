@@ -35,13 +35,14 @@ class ProductsController extends Controller
         $cart = new Cart($prevCart);
 
         $quantity = $request->quantity;
-
         $product = Product::find($id);
-        $cart->addItem($id, $product, $quantity);
-        $request->session()->put('cart', $cart);
-
-        return redirect()->back();
-
+        if ($product->quantity < $quantity) {
+            return redirect()->back()->withFail('Your required quantity exceeded our available quantity! Please try again.');
+        } else {
+            $cart->addItem($id, $product, $quantity);
+            $request->session()->put('cart', $cart);
+            return redirect()->back()->withSuccess('Add to your cart successfully!');
+        }
     }
 
     public function showCart() {
