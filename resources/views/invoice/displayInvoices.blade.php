@@ -3,11 +3,6 @@
 @section('body')
 <div>
     <h1>Invoices List</h1>
-    @if ($invoices->count() > 0)
-    <a href="{{ route('adminClearAllInvoices')}}" class="btn btn-primary">Clear all invoices</a>
-    @else
-    <a href="#" class="btn btn-primary">Clear all invoices</a>
-    @endif
 </div>
 <div class="table-responsive">
     <table class="table table-striped">
@@ -21,7 +16,9 @@
             <th>Status</th>
             <th>View detail</th>
             <th>Edit</th>
+            @if ($userData->role_id == 1) 
             <th>Remove</th>
+            @endif
         </tr>
         </thead>
         <tbody>
@@ -39,8 +36,6 @@
             <td><a href="{{ route('editInvoiceForm',['id' => $invoice['id'] ])}}" class="btn btn-primary">Edit</a></td>
             @if ($userData->role_id == 1) 
             <td><a href="{{ route('adminRemoveInvoice',['id' => $invoice['id']])}}"  class="btn btn-warning">Remove</a></td>
-            @else
-            <td><a href="#"  class="btn btn-warning">Remove</a></td>
             @endif
 
 
