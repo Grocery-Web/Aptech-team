@@ -21,8 +21,10 @@ class CreateWishlistsTable extends Migration
         });
 
         Schema::table('wishlists', function($table) {
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 

@@ -4,7 +4,7 @@
     <div class="container shoplist">
         <div>
             <h2>Your favourtire items</h2>
-            <a href="#" class="btn btn-primary">Back to HomePage</a>
+            <a href="/" class="btn btn-primary">Back to HomePage</a>
         </div>
         @if ($wishlist)
         <div class="row">
