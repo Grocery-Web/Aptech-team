@@ -68,16 +68,4 @@ class AdminInvoicesController extends Controller
         return redirect()->back();
     }
 
-    public function clearAllInvoices($id) {
-        $invoices = Invoice::all();
-        foreach ($invoices as $invoice) {
-            $invoiceDetails = InvoiceDetail::where('invoice_id', $invoice->id)->get();
-            foreach ($invoiceDetails as $invoiceDetail) {
-                $product = Product::where('id', $invoiceDetail->product_id)->first();
-                $product->quantity += $invoiceDetail->product_quantity;
-                $product->save();
-            }
-        }
-        return redirect()->back();
-    }
 }

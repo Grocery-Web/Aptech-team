@@ -168,8 +168,6 @@ Route::group(['prefix' => '/invoice'], function () {
     Route::post('updateInvoice/{id}', ["uses"=>"Admin\AdminInvoicesController@updateInvoice", "as"=> "adminUpdateInvoice"]);
     //Remove invoice from admin panel
     Route::get('removeInvoice/{id}', ["uses"=>"Admin\AdminInvoicesController@removeInvoice", "as"=> "adminRemoveInvoice"]);
-    //Clear all invoices from admin panel
-    Route::get('clearAllInvoices', ["uses"=>"Admin\AdminInvoicesController@clearAllInvoices", "as"=> "adminClearAllInvoices"]);
 });
 
 // Group review
