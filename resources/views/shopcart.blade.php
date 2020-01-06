@@ -54,7 +54,6 @@
                     ${{ $cartItems->totalPrice }}
                     </strong>
                 </div>
-                <form action="" method="">
                 <div class="buybtnposition">
                     @if ($userData)
                         <a href="{{ route('clearCart', ['id' => $userData['id']]) }}" style="text-decoration: none; width:100%">
@@ -68,22 +67,6 @@
                 </div>
             </div>
         </div>
-        <h2 class="heading__title">
-            Shipping address
-        </h2>
-            <div class="form-group row">
-                <label for="shipName" class="col-md-3 col-form-label">Your Name</label>
-                <input class="form-control col-md-8" type="text" name="shipName" id="shipName" required>
-            </div>
-            <div class="form-group row">
-                <label for="shipAddress" class="col-md-3 col-form-label">Your Shipping Address</label>
-                <input class="form-control col-md-8" type="text" name="shipAddress" id="shipAddress" required>
-            </div>
-            <div class="form-group row">
-                <label for="shipPhone" class="col-md-3 col-form-label">Your Phone</label>
-                <input class="form-control col-md-8" type="number" name="shipPhone" id="shipPhone" required>
-            </div>
-        </form>
         @else
         <div class="row">
             Your Cart is Empty. Back to &nbsp;<a href="./">Homepage</a>
