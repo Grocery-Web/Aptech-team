@@ -2,12 +2,12 @@
 @section('content')
 <div class="shopcart-page">
     <div class="container shoplist">
-        <div>
-            <h2>Your favourtire items</h2>
-            <a href="\">Back to HomePage</a>
-        </div>
-        @if ($wishlist)
+        <h2>Your favourtire items</h2>
+        @if ($wishlist->count() > 0)
         <div class="row" style="margin-top: 1rem">
+            <div>
+                <a href="\">Back to HomePage</a>
+            </div>
             <div class="shoplist__left">
                 @foreach($wishlist as $list)
                 <div class="shoplist__item">
@@ -30,7 +30,7 @@
                             Price:  {{$list->product->price}}
                         </div>
                         <div class="col-md-1 shoplist__item--price" style="padding-left: 1.5rem" >
-                            <a href=""><i class="material-icons">
+                            <a href="{{ route('clientRemoveItem',['product_id' => $list->product->id, 'user_id' => $list->user->id])}}"><i class="material-icons">
                                 delete
                                 </i></a>
                         </div>
@@ -40,8 +40,9 @@
                 @endforeach
             </div>
         @else
+        
             <div class="row">
-                You do not have favourite items. Back to &nbsp;<a href="../"> Homepage </a>
+                You do not have favourite items. Back to &nbsp;<a href="/"> Homepage </a>
             </div>
         @endif
     </div>
