@@ -53,7 +53,6 @@
                 @endif
                 {{-- ------------------ --}}
                 <li><a href="/invoice/displayInvoices">Invoices</a></li>
-                <li><a href="#">Analytics</a></li>
             </ul>
             <ul class="nav nav-sidebar">
 
