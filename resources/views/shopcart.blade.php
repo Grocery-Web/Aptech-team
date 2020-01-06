@@ -82,7 +82,7 @@
         </form>
         @else
         <div class="row">
-            Your Card is Empty. Back to &nbsp;<a href="./"> Homepage </a>
+            Your Cart is Empty. Back to &nbsp;<a href="./"> Homepage </a>
         </div>
         @endif
         @if(Session::has('fail'))

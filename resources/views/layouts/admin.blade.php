@@ -34,7 +34,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
                 <li><a href="/admin/products">Dashboard</a></li>
-                <li><a href="/home">Profile</a></li>
+                <li><a href="/home" style="margin-right: 20px">Profile</a></li>
             </ul>
 
         </div>

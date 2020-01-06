@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let btn = [];
     icon = document.getElementsByClassName("nav__icon");
     btn = document.getElementsByClassName("form__text");
+    console.log(btn)
     let icon_length = icon.length;
     for (let index = 0; index < icon_length; index++) {
         icon[index].addEventListener("mouseover", function () {
