@@ -179,8 +179,10 @@ Route::group(['prefix' => '/review'], function () {
 
 // Group Client's order management
 Route::group(['prefix' => '/order'], function () {
-    // Check order
-    Route::get('{id}', ["uses"=>"Client\ClientOrdersController@checkOrder", "as"=> "checkOrder"]);
+    // Check order list
+    Route::get('{id}', ["uses"=>"Client\ClientOrdersController@showOrderList", "as"=> "showOrderList"]);
+    // Check order detail
+    Route::get('{id}/orderDetail/{order_id}', ["uses"=>"Client\ClientOrdersController@checkOrder", "as"=> "checkOrder"]);
     // Cancel order
-    Route::get('{id}/cancelOrder', ["uses"=>"Client\ClientOrdersController@cancelOrder", "as"=> "cancelOrder"]);
+    Route::get('{id}/orderDetail/{order_id}/cancelOrder', ["uses"=>"Client\ClientOrdersController@cancelOrder", "as"=> "cancelOrder"]);
 });

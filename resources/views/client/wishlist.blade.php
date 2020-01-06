@@ -4,11 +4,11 @@
     <div class="container shoplist">
         <div>
             <h2>Your favourtire items</h2>
-            <a href="/" class="btn btn-primary">Back to HomePage</a>
+            <a href="#">Back to HomePage</a>
         </div>
         @if ($wishlist)
-        <div class="row">
-            <div class="col-md-9 shoplist__left">
+        <div class="row" style="margin-top: 1rem">
+            <div class="shoplist__left">
                 @foreach($wishlist as $list)
                 {{-- {{dd($list->product)}} --}}
                 <div class="shoplist__item">
@@ -20,15 +20,20 @@
                             <div class="row shoplist__item--header" style="font-weight:700">
                                 {{$list->product->name}}
                             </div>
-                            <div class="row shoplist__item--description">
+                            <div class="shoplist__item--description">
                                 {{$list->product->description}}
                             </div>
                         </div>
                         <div class="col-md-2 shoplist__item--quantity" style="padding-left:1.5rem; padding-right:0">
                             Producer:  {{$list->product->producer}}
                         </div>
-                        <div class="col-md-3 shoplist__item--price" style="padding-left: 1.5rem" >
+                        <div class="col-md-2 shoplist__item--price" style="padding-left: 1.5rem" >
                             Price:  {{$list->product->price}}
+                        </div>
+                        <div class="col-md-1 shoplist__item--price" style="padding-left: 1.5rem" >
+                            <a href=""><i class="material-icons">
+                                delete
+                                </i></a>
                         </div>
                     </div>
                 </div>

@@ -13,8 +13,14 @@ use Illuminate\Support\Facades\DB;
 
 class ClientOrdersController extends Controller
 {
-    public function checkOrder($id) {
-        $invoice        = Invoice::where('user_id', $id)->first();
+    public function showOrderList($id) {
+        $invoices = Invoice::where('user_id', $id)->get();
+        return view('client.orderManagement', ['invoices' => $invoices]);
+    }
+
+    public function checkOrder($id, $invoice_id) {
+        $user             = User::find($id);
+        $invoice          = Invoice::find($invoice_id);
         $parentCategories = Category::where('parent_id',NULL)->get();
 
         if ($invoice) {
@@ -25,15 +31,14 @@ class ClientOrdersController extends Controller
                 $products->push($product);
             }
    
-            return view("client.orderManagement", ['invoice' => $invoice, 'invoiceDetails' => $invoiceDetails, 'products' => $products, 'parentCategories' => $parentCategories]);
+            return view("client.orderDetail", ['invoice' => $invoice, 'invoiceDetails' => $invoiceDetails, 'products' => $products, 'parentCategories' => $parentCategories]);
         } else {
-            return view("client.orderManagement", ['invoice' => null, 'invoiceDetails' => null, 'parentCategories' => $parentCategories]);
-        }
-      
+            return view("client.orderDetail", ['invoice' => null, 'invoiceDetails' => null, 'parentCategories' => $parentCategories]);
+        }      
     }
 
-    public function cancelOrder($id) {
-        $invoice = Invoice::where('user_id', $id)->first();
+    public function cancelOrder($id, $order_id) {
+        $invoice = Invoice::find($order_id);
         $parentCategories = Category::where('parent_id',NULL)->get();
         $invoiceDetails = InvoiceDetail::where('invoice_id', $invoice->id)->get();
             foreach ($invoiceDetails as $invoiceDetail) {
@@ -45,9 +50,9 @@ class ClientOrdersController extends Controller
         $cancelled = $invoice->delete();
         // check if payment was successful
         if($cancelled){
-            return redirect()->route("checkOrder", ['id' => $id])->withSuccess('Your order was cancelled!');
+            return redirect()->route("showOrderList", ['id' => $id])->withSuccess('Your order was cancelled!');
         } else{
-            return redirect()->route("checkOrder", ['id' => $id])->withFail('Failed! Please try again.');
+            return redirect()->route("showOrderList", ['id' => $id])->withFail('Failed! Please try again.');
         }
 
     }
