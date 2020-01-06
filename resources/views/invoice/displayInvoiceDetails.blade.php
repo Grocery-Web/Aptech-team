@@ -39,7 +39,7 @@
         </table>
     </div>
 </div>
-<h4>User Avatar</h4>
+<h4>Customer's Image</h4>
 <img src="{{asset('storage')}}/user_images/<?php echo $user->avatar?>" style="width: 150px; height: 150px;">
 <div class="clearfix"></div>
 
