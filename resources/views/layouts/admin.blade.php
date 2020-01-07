@@ -77,12 +77,13 @@
 
 <script>
     let btns=document.getElementsByClassName("check");
-    let array_checking=['product', 'Categories', 'Account', 'Invoices'];
+    let array_checking=['product', 'cate', 'account', 'invoice'];
     for (let i=0; i< 4; i++){
         btns[i].classList.remove('active');
     }
+    let keyurl = window.location.href.toLowerCase();
     for (let i=0; i<4; i++){
-        if (window.location.href.search(array_checking[i]) != -1){
+        if (keyurl.search(array_checking[i]) != -1){
             btns[i].classList.add('active')
         }
     }
