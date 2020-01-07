@@ -1,7 +1,8 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="/"> <img class="favicon" src="{{asset('img/Favicon.ico')}}" alt=""> </a>
-    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#headerNav" aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#headerNav"
+        aria-controls="headerNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="headerNav">
@@ -12,27 +13,31 @@
             <!-- Level one dropdown -->
             <li class="nav-item dropdown">
                 @if (isset($parentCategories))
-                    <a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">CATEGORIES</a>
-                    <ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow">
+                <a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    class="nav-link dropdown-toggle">CATEGORIES</a>
+                <ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow">
 
-                        @foreach ($parentCategories as $category)
-                        <li class="dropdown-submenu">
-                            <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">{{$category['name']}}</a>
-                            @if (count($category->subcategory))
-                            <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
-                                @foreach ($category->subcategory as $subcategory)
-                                <li>
-                                    <a href="/product/sortCategory/{{$subcategory['id']}}" class="dropdown-item">{{$subcategory->name}}</a>
-                                </li>
-                                @endforeach
-                            </ul>
-                            @endif
-                        </li>
-                        @endforeach
-                    </ul>
+                    @foreach ($parentCategories as $category)
+                    <li class="dropdown-submenu">
+                        <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" class="dropdown-item dropdown-toggle">{{$category['name']}}</a>
+                        @if (count($category->subcategory))
+                        <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
+                            @foreach ($category->subcategory as $subcategory)
+                            <li>
+                                <a href="/product/sortCategory/{{$subcategory['id']}}"
+                                    class="dropdown-item">{{$subcategory->name}}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </li>
+                    @endforeach
+                </ul>
                 @else
-                    <a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">CATEGORIES</a>
-                @endif 
+                <a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    class="nav-link dropdown-toggle">CATEGORIES</a>
+                @endif
             </li>
             <!-- End Level one -->
 
@@ -51,7 +56,8 @@
                 search
             </i>
             <div class="form-group form__text">
-                <input type="text" class="form-control nav__search--form" name="search" id="search" value="{{request()->input('search')}}" placeholder="Search...">
+                <input type="text" class="form-control nav__search--form" name="search" id="search"
+                    value="{{request()->input('search')}}" placeholder="Search...">
                 <button type='submit'>
                     <i class="material-icons nav__search--btn">
                         search
@@ -62,7 +68,8 @@
         </form>
         <!-- Shop Cart  -->
         <div class="nav__shopcart">
-            <a href="{{ route('cartProducts') }}" class="material-icons-outlined nav__icon" style="color: #f5f5f5cc; text-decoration:none">shop</a>
+            <a href="{{ route('cartProducts') }}" class="material-icons-outlined nav__icon"
+                style="color: #f5f5f5cc; text-decoration:none">shop</a>
             <div class="form__text nav__shopcart--wrapper">
                 <div class="nav__shopcart--arrow-up"></div>
                 <div class="nav__shopcart--title">
@@ -147,12 +154,23 @@
         </div>
         <!-- End Login btn -->
         @if(Auth::check())
-        <div class="nav__wishlist" style="margin-left:20px">
-            <a href="{{ route('clientDisplayWishlist',['id' => $userData['id']]) }}" style="color: #f5f5f5cc; text-decoration:none"><i class="material-icons">
-                favorite_border
-                </i></a>
+        <div class="nav__wishlist">
+            <a href="{{ route('clientDisplayWishlist',['id' => $userData['id']]) }}"
+                style="color: #f5f5f5cc; text-decoration:none"><i class="material-icons nav__icon">
+                    favorite_border
+                </i>
+            </a>
+            <div class="form__text">
+                <div class="form-group">
+                    <div class="nav__wishlist--arrow-up"></div>
+                    <div class="d-flex justify-content-center" style="padding-top: 3px">
+                        <a href="{{ route('clientDisplayWishlist',['id' => $userData['id']]) }}">Check your Wishlist</a>
+                    </div>
+                    </button>
+                </div>
+            </div>
         </div>
-        @endif            
+        @endif
     </div>
 </nav>
 <!-- End Navbar -->

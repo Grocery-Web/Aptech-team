@@ -39,10 +39,10 @@
         </table>
     </div>
 </div>
-<h4>User Avatar</h4>
-<img src="https://via.placeholder.com/150" alt="" style="width: 150px; height: 150px;">
-
+<h4>Customer's Image</h4>
+<img src="{{asset('storage')}}/user_images/<?php echo $user->avatar?>" style="width: 150px; height: 150px;">
 <div class="clearfix"></div>
+
 <div class="table-responsive">
     <h4>Product Detail List</h4>
     <table class="table table-striped">
@@ -50,10 +50,10 @@
             <tr>
                 <th>#id</th>
                 <th>Product Image</th>
-                <th>Invoice ID</th>
                 <th>User ID</th>
                 <th>Product ID</th>
                 <th>Product Name</th>
+                <th>Producer</th>
                 <th>Quantity</th>
                 <th>Total Price</th>
             </tr>
@@ -65,11 +65,10 @@
                 <td>{{$invoiceDetail['id']}}</td>
                 <td><img src="{{asset ('storage')}}/product_images/<?php $product = DB::table('products')->where('id', $invoiceDetail->product_id)->get(); echo $product[0]->image; ?>"
                         width="100" height="100" style="max-height:220px"></td>
-                <td>{{$invoiceDetail['invoice_id']}}</td>
                 <td>{{$invoiceDetail['user_id']}}</td>
                 <td>{{$invoiceDetail['product_id']}}</td>
-                <td><?php $product = DB::table('products')->where('id', $invoiceDetail->product_id)->get(); echo $product[0]->name; ?>
-                </td>
+                <td><?php $product = DB::table('products')->where('id', $invoiceDetail->product_id)->get(); echo $product[0]->name; ?></td>
+                <td><?php $product = DB::table('products')->where('id', $invoiceDetail->product_id)->get(); echo $product[0]->producer; ?></td>
                 <td>{{$invoiceDetail['product_quantity']}}</td>
                 <td>{{$invoiceDetail['total']}}</td>
             </tr>
