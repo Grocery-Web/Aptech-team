@@ -40,7 +40,6 @@
                 @endforeach
             </div>
         @else
-        
             <div class="row">
                 You do not have favourite items. Back to &nbsp;<a href="/"> Homepage </a>
             </div>
