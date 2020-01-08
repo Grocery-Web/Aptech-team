@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
-<div class="container list_item">
-    <h2 class="heading__title">
+<div class="container list_item" style="min-height: 600px">
+    <h2 class="heading__title" style="margin-bottom: 2rem">
         Is it what you want?
     </h2>
     <div class="card-deck">
