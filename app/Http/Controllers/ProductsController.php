@@ -93,7 +93,7 @@ class ProductsController extends Controller
                 'status' => 'Not approved yet'
             );
             $created = DB::table('invoices')->insert($newInvoiceData);
-            
+
             $newInvoiceID = Invoice::max('id');
             $newInvoice = Invoice::find($newInvoiceID);
 
@@ -162,7 +162,7 @@ class ProductsController extends Controller
 
 
     public function sortCategory($id) {
-        $products  = Product::where('cate_id',$id)->paginate(4);
+        $products  = Product::where('cate_id',$id)->paginate(12);
         $parentCategories = Category::where('parent_id',NULL)->get();
         $subCategory  = Category::find($id);
         return view("category.searchCate", ['products' => $products, 'parentCategories' => $parentCategories, 'subCategory' => $subCategory]);
