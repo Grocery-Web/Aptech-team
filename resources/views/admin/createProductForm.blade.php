@@ -77,7 +77,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="form-group row">
             <label for="cate_id"
                 class="col-md-2 col-form-label text-md-right">{{ __('Category ID') }}</label>
@@ -94,14 +94,14 @@
 
         <div class="form-group">
             <label for="image">Display Image</label>
-            <input type="file" class="" name="image" id="image" required>
+            <input type="file" class="" name="image" id="image" required accept=".gif,.jpg,.jpeg,.png">
         </div>
 
         <div class="form-group">
             <label for="image">Related Images</label>
-            <input multiple="multiple" name="photos[]" type="file">
+            <input multiple="multiple" name="photos[]" type="file" accept=".gif,.jpg,.jpeg,.png">
         </div>
-        
+
         <div class="form-group">
             <label for="type">Price</label>
             <input type="text" class="form-control" name="price" id="price" placeholder="price" required>

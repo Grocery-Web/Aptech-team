@@ -12,24 +12,25 @@
                 <div class="shoplist__item">
                     <div class="row">
                         <div class="col-md-2 shoplist__item--img">
-                        <img src="{{asset ('storage')}}/product_images/{{$item['data']['image']}}" alt="" style="width:150px; height:150px">
+                            <img src="{{asset ('storage')}}/product_images/{{$item['data']['image']}}" alt=""
+                                style="width:150px; height:150px">
                         </div>
                         <div class="col-md-5 shoplist__item--detail">
                             <div class="row shoplist__item--header" style="font-weight:700">
-                            {{ $item['data']['name'] }}
+                                {{ $item['data']['name'] }}
                             </div>
                             <div class="row shoplist__item--description">
-                            {{ $item['data']['description'] }}
+                                {{ $item['data']['description'] }}
                             </div>
                             <div class="row shoplist__item--description">
                                 <a href="{{ route('deleteItemFromCart', ['id'=>$item['data']['id']]) }}">Remove</a>
                             </div>
                         </div>
                         <div class="col-md-2 shoplist__item--quantity" style="padding-left:1.5rem; padding-right:0">
-                            Quantity:  {{$item['totalSingleQuantity']}}
+                            Quantity: {{$item['totalSingleQuantity']}}
                         </div>
-                        <div class="col-md-3 shoplist__item--price" style="padding-left: 1.5rem" >
-                            Price:  ${{$item['totalSinglePrice']}}
+                        <div class="col-md-3 shoplist__item--price" style="padding-left: 1.5rem">
+                            Price: ${{$item['totalSinglePrice']}}
                         </div>
 
                     </div>
@@ -42,7 +43,7 @@
                         Quantity:
                     </span>
                     <strong>
-                    {{ $cartItems->totalQuantity }}
+                        {{ $cartItems->totalQuantity }}
                     </strong>
                 </div>
                 <hr>
@@ -51,22 +52,46 @@
                         Price:
                     </span>
                     <strong class="shoplist__right--price">
-                    ${{ $cartItems->totalPrice }}
+                        ${{ $cartItems->totalPrice }}
                     </strong>
-                </div>
-                <div class="buybtnposition">
-                    @if ($userData)
-                        <a href="{{ route('clearCart', ['id' => $userData['id']]) }}" style="text-decoration: none; width:100%">
-                        <button type="button" class="btn btn-large btn-block btn-danger btn-checkout buybtn">Buy now</button>
-                        </a>
-                    @else
-                        <a href="{{ route('login') }}" style="text-decoration: none; width:100%">
-                        <button type="button" class="btn btn-large btn-block btn-danger btn-checkout buybtn">Buy now</button>
-                        </a>
-                    @endif
                 </div>
             </div>
         </div>
+        <h2 class="heading__title">
+            Shipping Address
+        </h2>
+        <form action="" method="">
+            <div class="form-group row">
+                <label for="shipName" class="col-md-3 col-form-label">Your Name</label>
+                <input class="form-control col-md-8" type="text" name="shipName" id="shipName" required>
+            </div>
+            <div class="form-group row">
+                <label for="shipAddress" class="col-md-3 col-form-label">Your Shipping Address</label>
+                <input class="form-control col-md-8" type="text" name="shipAddress" id="shipAddress" required>
+            </div>
+            <div class="form-group row">
+                <label for="shipPhone" class="col-md-3 col-form-label">Your Phone</label>
+                <input class="form-control col-md-8" type="number" name="shipPhone" id="shipPhone" required>
+            </div>
+            <div class="contaniner">
+                <div class="row">
+                    <div class="buybtnposition">
+                        @if ($userData)
+                        <a href="{{ route('clearCart', ['id' => $userData['id']]) }}"
+                            style="text-decoration: none; width:100%">
+                            <button type="button" class="btn btn-large btn-block btn-danger btn-checkout buybtn">Buy
+                                now</button>
+                        </a>
+                        @else
+                        <a href="{{ route('login') }}" style="text-decoration: none; width:100%">
+                            <button type="button" class="btn btn-large btn-block btn-danger btn-checkout buybtn">Buy
+                                now</button>
+                        </a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </form>
         @else
         <div class="row">
             Your Cart is Empty. Back to &nbsp;<a href="./">Homepage</a>
