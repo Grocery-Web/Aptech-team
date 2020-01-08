@@ -28,7 +28,7 @@
 
         <div class="form-group">
             <label for="description">Update Image</label>
-            <input type="file" class=""  name="image" id="image" placeholder="Image" value="{{$product->image}}" required>
+            <input type="file" accept=".gif,.jpg,.jpeg,.png" class=""  name="image" id="image" placeholder="Image" value="{{$product->image}}" required>
         </div>
 
         <button type="submit" name="submit" class="btn btn-default">Submit</button>

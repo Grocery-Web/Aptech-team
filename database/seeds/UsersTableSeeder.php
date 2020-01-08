@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
             'PHONE'       =>   '0977777606',
             'ADDRESS'     =>   'Hồ Chí Minh',
             'SEX'         =>   'male',
-            'AVATAR'      =>   'default.jpg'
+            'AVATAR'      =>   'superadmin.jpg'
         ]);
 
         DB::table('users')->insert([
@@ -31,7 +31,8 @@ class UsersTableSeeder extends Seeder
             'EMAIL'       =>   'admin@gmail.com',
             'PHONE'       =>   '0912345678',
             'ADDRESS'     =>   'Japan',
-            'SEX'         =>   'male'
+            'SEX'         =>   'male',
+            'AVATAR'      =>   'admin.jpg'
         ]);
 
         DB::table('users')->insert([

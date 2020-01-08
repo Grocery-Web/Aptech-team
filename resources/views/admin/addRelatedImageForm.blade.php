@@ -32,14 +32,14 @@
 
         <div class="form-group">
             <label for="displayImage">Product Name</label>
-            <input type="text" disabled  class="form-control" name="displayImage" id="displayImage" 
+            <input type="text" disabled  class="form-control" name="displayImage" id="displayImage"
             value="{{$product['name']}}">
         </div>
         <div class="form-group">
             <label for="image">Add Related Images</label>
-            <input multiple="multiple" name="photos[]" type="file">
+            <input multiple="multiple" name="photos[]" type="file" accept=".gif,.jpg,.jpeg,.png">
         </div>
-    
+
         <button type="submit" name="submit" class="btn btn-default">Submit</button>
     </form>
 </div>
