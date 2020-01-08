@@ -11,9 +11,6 @@
     </div>
     @endif
 
-
-    <h2>Add New Account</h2>
-
     <form action="{{route('adminAddNewAccount')}}" method="post" enctype="multipart/form-data">
 
         {{csrf_field()}}

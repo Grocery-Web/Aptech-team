@@ -51,7 +51,7 @@
                 <a class="nav-link" href="{{ route('sitemap') }}">Sitemap</a>
             </li>
         </ul>
-        <form action="/search" method="GET" class="nav__search">
+        <form action="{{ route('getSearch') }}" method="GET" class="nav__search">
             <i class="material-icons nav__icon ">
                 search
             </i>
