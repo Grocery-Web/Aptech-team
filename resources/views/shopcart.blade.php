@@ -58,9 +58,11 @@
             </div>
         </div>
         <h2 class="heading__title">
-            Shipping Address
+            Shipping Information
         </h2>
-        <form action="" method="">
+        <form action="{{route('clearCart', [$userData->id] )}}" method="POST">
+            {{ method_field('POST') }}
+            {{ csrf_field() }}
             <div class="form-group row">
                 <label for="shipName" class="col-md-3 col-form-label">Your Name</label>
                 <input class="form-control col-md-8" type="text" name="shipName" id="shipName" required>
@@ -77,11 +79,9 @@
                 <div class="row">
                     <div class="buybtnposition">
                         @if ($userData)
-                        <a href="{{ route('clearCart', ['id' => $userData['id']]) }}"
-                            style="text-decoration: none; width:100%">
-                            <button type="button" class="btn btn-large btn-block btn-danger btn-checkout buybtn">Buy
+                     
+                            <button type="submit" class="btn btn-large btn-block btn-danger btn-checkout buybtn" style="text-decoration: none; width:100%">Buy
                                 now</button>
-                        </a>
                         @else
                         <a href="{{ route('login') }}" style="text-decoration: none; width:100%">
                             <button type="button" class="btn btn-large btn-block btn-danger btn-checkout buybtn">Buy

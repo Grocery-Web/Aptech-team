@@ -79,9 +79,11 @@ class ProductsController extends Controller
         return redirect()->route('cartProducts');
     }
 
-    public function clearCart($id) {
+    public function clearCart(Request $request, $id) {
         $cart = Session::get('cart');
-        $user = User::find($id);
+        $shipName = $request->shipName;
+        $shipAddress = $request->shipAddress;
+        $shipPhone = $request->shipPhone;
 
         if($cart) {
             // add new invoice
@@ -89,7 +91,9 @@ class ProductsController extends Controller
                 'user_id' => $id,
                 'total_quantity' => $cart->totalQuantity,
                 'total_price' => $cart->totalPrice,
-                'shipping_address' => $user->address,
+                'receiver_name' => $shipName,
+                'receiver_phone' => $shipPhone,
+                'shipping_address' => $shipAddress,
                 'status' => 'Not approved yet'
             );
             $created = DB::table('invoices')->insert($newInvoiceData);
