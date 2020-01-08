@@ -20,7 +20,14 @@
     <form action="/invoice/updateInvoice/{{$invoice->id}}" method="post">
 
         {{csrf_field()}}
-
+        <div class="form-group">
+            <label for="receiver_name">Shipping Address</label>
+            <input type="text" class="form-control" name="receiver_name" id="receiver_name" placeholder="Client's Name" value="{{$invoice['receiver_name']}}" required>
+        </div>
+        <div class="form-group">
+            <label for="receiver_phone">Shipping Address</label>
+            <input type="text" class="form-control" name="receiver_phone" id="receiver_phone" placeholder="Client's Phone" value="{{$invoice['receiver_phone']}}" required>
+        </div>
         <div class="form-group">
             <label for="shipping_address">Shipping Address</label>
             <input type="text" class="form-control" name="shipping_address" id="shipping_address" placeholder="Client's Shipping Address" value="{{$invoice['shipping_address']}}" required>
@@ -32,11 +39,11 @@
             <div class="col-md-6">
                 <select class="custom-select custom-select-lg mb-3" name="status" id="status" 
                     style="border-radius:5px">
-                    <option selected="selected">{{ $invoice->status }}</option>
-                    <option value="Not approved yet">Not approved yet</option>
-                    <option value="Approved">Approved</option>
-                    <option value="On delivery">On delivery</option>
-                    <option value="Cancelled">Cancelled</option>
+                    <option value="Not approved yet" <?php echo $invoice->status == "Not approved yet" ? "selected" : "" ?>>Not approved yet</option>
+                    <option value="Approved" <?php echo $invoice->status == "Approved" ? "selected" : "" ?>>Approved</option>
+                    <option value="On delivery" <?php echo $invoice->status == "On delivery" ? "selected" : "" ?>>On delivery</option>
+                    <option value="Successful" <?php echo $invoice->status == "Successful" ? "selected" : "" ?>>Successful</option>
+                    <option value="Cancelled" <?php echo $invoice->status == "Cancelled" ? "selected" : "" ?>>Cancelled</option>
                 </select>
             </div>
         </div>
