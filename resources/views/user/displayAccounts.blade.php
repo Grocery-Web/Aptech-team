@@ -22,7 +22,7 @@
         </thead>
         <tbody>
 
-        @foreach($users as $user)
+        @foreach($users as $key=>$user)
         <tr>
             <td>{{$user['id']}}</td>
             <td><img src="{{asset ('storage')}}/user_images/{{$user['avatar']}}" alt="{{asset ('storage')}}/product_images/{{$user['avatar']}}" width="100" height="100" style="max-height:220px" ></td>
