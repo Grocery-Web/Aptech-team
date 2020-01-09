@@ -69,7 +69,7 @@ class AdminInvoicesController extends Controller
             $product->save();
         }
         $invoice->delete();
-        return redirect()->back();
+        return redirect()->route('adminDisplayInvoices');
     }
 
 

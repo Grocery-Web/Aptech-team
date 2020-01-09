@@ -57,9 +57,10 @@
                 </div>
             </div>
         </div>
+        @if ($userData)
         <h2 class="heading__title">
             Shipping Information
-        </h2>
+        </h2>    
         <form action="{{route('clearCart', [$userData->id] )}}" method="POST">
             {{ method_field('POST') }}
             {{ csrf_field() }}
@@ -78,20 +79,20 @@
             <div class="contaniner">
                 <div class="row">
                     <div class="buybtnposition">
-                        @if ($userData)
+                        
                      
                             <button type="submit" class="btn btn-large btn-block btn-danger btn-checkout buybtn" style="text-decoration: none; width:100%">Buy
                                 now</button>
-                        @else
-                        <a href="{{ route('login') }}" style="text-decoration: none; width:100%">
-                            <button type="button" class="btn btn-large btn-block btn-danger btn-checkout buybtn">Buy
-                                now</button>
-                        </a>
-                        @endif
+                        
                     </div>
                 </div>
             </div>
         </form>
+        @else
+        <a href="{{ route('login') }}" style="text-decoration: none; width:100%">
+            <button type="button" class="btn btn-large btn-block btn-danger btn-checkout buybtn">You need to log in</button>
+        </a>
+        @endif
         @else
         <div class="row">
             Your Cart is Empty. Back to &nbsp;<a href="./">Homepage</a>

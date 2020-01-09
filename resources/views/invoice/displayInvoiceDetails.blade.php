@@ -77,5 +77,9 @@
 
         </tbody>
     </table>
+    <a href="{{ route('editInvoiceForm',['id' => $invoice['id'] ])}}" class="btn btn-primary">Verify</a>
+    @if ($userData->role_id == 1) 
+    <a href="{{ route('adminRemoveInvoice',['id' => $invoice['id']])}}"  class="btn btn-warning">Remove</a>
+    @endif
 </div>
 @endsection
