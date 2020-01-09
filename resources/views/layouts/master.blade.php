@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{asset('css/contactus.css')}}" />
     <link rel="stylesheet" href="{{asset('css/sitemap.css')}}" />
     <link rel="shortcut icon" href="{{ asset('img/Favicon.ico') }}">
+    <!-- Sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <title>FANoFAN</title>
 </head>
 
@@ -34,6 +36,24 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="{{URL::asset('js/main.js')}}"></script>
     <script src="{{URL::asset('js/product.js')}}"></script>
+    <script>
+        $('.delete').click(function() {
+            var productId = $(this).attr('product_id');
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href ="../wishlist/removeItem/"+productId;
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>
