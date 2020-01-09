@@ -39,39 +39,6 @@
         </a>
     </div>
     <!-- End Carousel -->
-    <!-- Categories -->
-    {{-- <div class="container category">
-        <h2 class="heading__title">
-            Shop By Category
-        </h2>
-        <div class="row">
-            <div class="category__item">
-                <div class="category__item--title">
-                    Ceiling Fans
-                </div>
-                <div class="category__item--img">
-                    <img src="{{asset('img/ceiling-fans.png')}}" alt="">
-                </div>
-            </div>
-            <div class="category__item">
-                <div class="category__item--title">
-                    Table Fans
-                </div>
-                <div class="category__item--img">
-                    <img src="{{asset('img/tablefans.jpg')}}" alt="">
-                </div>
-            </div>
-            <div class="category__item">
-                <div class="category__item--title">
-                    Exhaust Fans
-                </div>
-                <div class="category__item--img">
-                    <img src="{{asset('img/exhaust.jpg')}}" alt="">
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- End Categories -->
     <!-- List items -->
     <div class="container list_item" id="popular">
         <h2 class="heading__title">

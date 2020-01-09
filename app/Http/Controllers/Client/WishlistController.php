@@ -47,4 +47,10 @@ class WishlistController extends Controller
         $parentCategories = Category::where('parent_id',NULL)->get();
         return view("client.wishlist", ['wishlist' => $wishlistbyID, 'parentCategories' => $parentCategories]);
     }
+
+    public function removeItemWishlist($product_id)
+    {
+        DB::table('wishlists')->where('product_id', $product_id)->delete();
+        return back();
+    }
 }
