@@ -31,7 +31,8 @@
                     <tr>
                         <td class="label">Price</td>
                         <td class="colon">:</td>
-                        <td class="price">${{$product['price']}}</h4></td>
+                        <td class="price">${{$product['price']}}</h4>
+                        </td>
                     </tr>
                     <tr>
                         <td class="label">Product ID</td>
@@ -41,7 +42,7 @@
                     <tr>
                         <td class="label">Available Quantity</td>
                         <td class="colon">:</td>
-                        @if ($product->quantity == 0) 
+                        @if ($product->quantity == 0)
                         <td class="text-danger">Sold Out</td>
                         @else
                         <td>{{$product['quantity']}}</td>
@@ -50,7 +51,7 @@
                     <tr>
                         <td class="label">Category</td>
                         <td class="colon">:</td>
-                        <td><b><?php $cate = DB::table('categories')->where('id', $product['cate_id'])->get();?> {{$cate[0]->name}}</b></td>
+                        <td><b><?php $cate = DB::table('categories')->where('id', $product['cate_id'])->get(); ?> {{$cate[0]->name}}</b></td>
                     </tr>
                 </tbody>
             </table>
@@ -69,10 +70,22 @@
                 </form>
                 @if(Auth::check())
                 <div class="wishlist">
+                    @php
+                    $matchThese = ['product_id' => $product['id'], 'user_id' => $userData['id']];
+                    $results = App\Wishlist::where($matchThese)->count();
+                    @endphp
+                    @if ($results)
+                    <a href="{{ route('clientRemoveItemWishlist',['product_id' => $product['id']])}}">
+                        <button type="button" class="btn btn-danger"><i class="far fa-heart mr-2"></i>
+                            REMOVE FROM WISHLIST</button>
+                    </a>
+                    @else
                     <a href="{{ route('clientAddWishlist', ['product_id' => $product['id'],'user_id' => $userData['id']] ) }}">
                         <button type="button" class="btn btn-danger"><i class="far fa-heart mr-2"></i>ADD TO
                             WISHLIST</button>
                     </a>
+                    @endif
+
                 </div>
                 @endif
 

@@ -34,6 +34,8 @@ Route::group(['prefix' => '/wishlist'], function () {
     Route::get('/{id}', ["uses"=>"Client\WishlistController@displayWishlist", "as"=> "clientDisplayWishlist"]);
     // remove Item from Wishlist
     Route::get('removeItem/{user_id}/{product_id}', ["uses"=>"Client\WishlistController@removeItem", "as"=> "clientRemoveItem"]);
+    // remove Item from Product Detail
+    Route::get('removeItemWishlist/{product_id}', ["uses"=>"Client\WishlistController@removeItemWishlist", "as"=> "clientRemoveItemWishlist"]);
 });
 
 
