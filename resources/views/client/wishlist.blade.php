@@ -4,8 +4,8 @@
     <div class="container shoplist">
         <h2>Your favourite items</h2>
         @if ($wishlist->count() > 0)
-        <div class="row" style="margin-top: 1rem">
-            <div>
+		<div>
+            <div class="row" style="margin-top: 1rem">
                 <a href="\">Back to HomePage</a>
             </div>
             <div class="shoplist__left">

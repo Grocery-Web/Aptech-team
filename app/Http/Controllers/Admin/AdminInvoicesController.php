@@ -32,8 +32,12 @@ class AdminInvoicesController extends Controller
     public function updateInvoice(Request $request, $id) {
         $shipping_address  =  $request->input('shipping_address');
         $status            =  $request->input('status');
+        $phone             =  $request->input('receiver_phone');
+        $name              =  $request->input('receiver_name');
 
         $arrayToUpdate = array(
+            "receiver_name" => $name,
+            "receiver_phone" => $phone,
             "shipping_address" => $shipping_address, 
             "status" => $status
         );
@@ -65,7 +69,7 @@ class AdminInvoicesController extends Controller
             $product->save();
         }
         $invoice->delete();
-        return redirect()->back();
+        return redirect()->route('adminDisplayInvoices');
     }
 
 

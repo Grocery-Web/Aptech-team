@@ -7,10 +7,13 @@
         </h2>
         @if ($invoice and $invoiceDetails)
         <div class="row">
+            <strong>Name: &nbsp </strong> {{$invoice->receiver_name}}
+        </div>
+        <div class="row">
             <strong>Shipping Address: &nbsp </strong> {{$invoice->shipping_address}}
         </div>
         <div class="row">
-            <strong>Phone: </strong>&nbsp  {{$userData->phone}}
+            <strong>Phone: </strong>&nbsp  {{$invoice->receiver_phone}}
         </div>
         <div class="row">
             <div class="col-md-9 shoplist__left">

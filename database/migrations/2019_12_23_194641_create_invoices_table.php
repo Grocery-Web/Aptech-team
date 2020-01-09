@@ -18,6 +18,8 @@ class CreateInvoicesTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->integer('total_quantity');
             $table->decimal('total_price', 10, 2);
+            $table->string('receiver_name');
+            $table->string('receiver_phone');
             $table->string('shipping_address', 300);
             $table->string('status', 100);
             $table->timestamps();
