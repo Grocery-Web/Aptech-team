@@ -75,7 +75,7 @@
                     $results = App\Wishlist::where($matchThese)->count();
                     @endphp
                     @if ($results)
-                    <a href="{{ route('clientRemoveItemWishlist',['product_id' => $product['id']])}}">
+                    <a href="{{ route('clientRemoveItem',['product_id' => $product['id']])}}">
                         <button type="button" class="btn btn-danger"><i class="far fa-heart mr-2"></i>
                             REMOVE FROM WISHLIST</button>
                     </a>

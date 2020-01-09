@@ -30,9 +30,7 @@
                             Price:  {{$list->product->price}}
                         </div>
                         <div class="col-md-1 shoplist__item--price" style="padding-left: 1.5rem" >
-                            <a href="{{ route('clientRemoveItem',['product_id' => $list->product->id, 'user_id' => $list->user->id])}}"><i class="material-icons">
-                                delete
-                                </i></a>
+                            <a href="#"><i product_id={{$list->product->id}} class="material-icons delete">delete</i></a>
                         </div>
                     </div>
                 </div>
