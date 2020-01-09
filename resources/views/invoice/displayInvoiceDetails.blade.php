@@ -12,13 +12,13 @@
                 <tr>
                     <td>Name</td>
                     <td>:</td>
-                    <td class="price">{{ $user->name }}</h4>
+                    <td class="price">{{ $invoice->receiver_name }}</h4>
                     </td>
                 </tr>
                 <tr>
                     <td>Phone</td>
                     <td>:</td>
-                    <td>{{ $user->phone }}</td>
+                    <td>{{ $invoice->receiver_phone }}</td>
                 </tr>
                 <tr>
                     <td>Address</td>
@@ -77,5 +77,9 @@
 
         </tbody>
     </table>
+    <a href="{{ route('editInvoiceForm',['id' => $invoice['id'] ])}}" class="btn btn-primary">Verify</a>
+    @if ($userData->role_id == 1) 
+    <a href="{{ route('adminRemoveInvoice',['id' => $invoice['id']])}}"  class="btn btn-warning">Remove</a>
+    @endif
 </div>
 @endsection
