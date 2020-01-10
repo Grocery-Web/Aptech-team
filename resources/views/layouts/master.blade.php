@@ -33,6 +33,10 @@
     <script type="text/javascript" src="{{asset('css/slickjs.js')}}"></script>
     <script src="{{URL::asset('js/main.js')}}"></script>
     <script src="{{URL::asset('js/product.js')}}"></script>
+    @include('sweetalert::alert')
+    <script>
+        $('.delete').click(function() {
+            var productId = $(this).attr('product_id');
 </body>
 
 </html>
