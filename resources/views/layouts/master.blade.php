@@ -36,6 +36,7 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="{{URL::asset('js/main.js')}}"></script>
     <script src="{{URL::asset('js/product.js')}}"></script>
+    @include('sweetalert::alert')
     <script>
         $('.delete').click(function() {
             var productId = $(this).attr('product_id');
