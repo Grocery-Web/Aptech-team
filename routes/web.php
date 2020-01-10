@@ -33,7 +33,7 @@ Route::group(['prefix' => '/wishlist'], function () {
     // Display wishlist by ID
     Route::get('/{id}', ["uses"=>"Client\WishlistController@displayWishlist", "as"=> "clientDisplayWishlist"]);
     // remove Item from Wishlist
-    Route::get('removeItem/{user_id}/{product_id}', ["uses"=>"Client\WishlistController@removeItem", "as"=> "clientRemoveItem"]);
+    Route::get('removeItem/{product_id}', ["uses"=>"Client\WishlistController@removeItem", "as"=> "clientRemoveItem"]);
 });
 
 
@@ -66,7 +66,7 @@ Route::group(['prefix' => '/cart'], function () {
     // Show cart panel
     Route::get('', ["uses"=>"ProductsController@showCart", "as"=> "cartProducts"]);
     // Make payment
-    Route::get('payment/{id}', ["uses"=>"ProductsController@clearCart", "as"=> "clearCart"]);
+    Route::post('payment/{id}', ["uses"=>"ProductsController@clearCart", "as"=> "clearCart"]);
     // Delete item from cart
     Route::get('deleteItemFromCart/{id}', ["uses"=>"ProductsController@deleteItemFromCart", "as"=> "deleteItemFromCart"]);
 });
