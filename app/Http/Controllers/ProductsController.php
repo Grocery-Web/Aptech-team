@@ -36,7 +36,7 @@ class ProductsController extends Controller
 
         $quantity = $request->quantity;
         $product = Product::find($id);
-        if ($product->quantity < $quantity) {
+        if ($product->quantity - $cart->items[$id]['totalSingleQuantity'] < $quantity) {
             return redirect()->back()->withFail('Your required quantity exceeded our available quantity! Please try again.');
         } else {
             $cart->addItem($id, $product, $quantity);
