@@ -113,7 +113,7 @@ class ProductsTableSeeder extends Seeder
             'height'     =>   '11',
             'producer'     =>   'Simple Deluxe ',
             'price'     =>   '12',
-            'cate_id'     =>   '5',
+            'cate_id'     =>   '4',
             'quantity'     =>   '41',
             'image'     =>   'Simple Deluxe 2 Pack-6 Inch Clip on Desk Removable Pedestal and Electric Plug.jpg',
         ]);
@@ -128,7 +128,7 @@ class ProductsTableSeeder extends Seeder
             'height'     =>   '11',
             'producer'     =>   'Ornado',
             'price'     =>   '99',
-            'cate_id'     =>   '5',
+            'cate_id'     =>   '4',
             'quantity'     =>   '22',
             'image'     =>   'ornado 660 Large Whole Room Air Circulator Fan with 4 Speeds.jpg',
         ]);
@@ -143,7 +143,7 @@ class ProductsTableSeeder extends Seeder
             'height'     =>   '41',
             'producer'     =>   'HONEYWELL',
             'price'     =>   '54',
-            'cate_id'     =>   '5',
+            'cate_id'     =>   '4',
             'quantity'     =>   '27',
             'image'     =>   'HONEYWELL Dreamweaver Sleep Fan.jpg',
         ]);
@@ -158,7 +158,7 @@ class ProductsTableSeeder extends Seeder
             'height'     =>   '14',
             'producer'     =>   'O2COOL',
             'price'     =>   '48',
-            'cate_id'     =>   '5',
+            'cate_id'     =>   '4',
             'quantity'     =>   '28',
             'image'     =>   'Treva 10-Inch Portable Desktop Air Circulation Battery Fan.jpg',
         ]);
@@ -173,7 +173,7 @@ class ProductsTableSeeder extends Seeder
             'height'     =>   '18',
             'producer'     =>   'Vornado',
             'price'     =>   '34',
-            'cate_id'     =>   '5',
+            'cate_id'     =>   '4',
             'quantity'     =>   '200',
             'image'     =>   'Vornado VFAN Mini Classic Personal Vintage Air Circulator Fan.jpg',
         ]);
@@ -190,7 +190,7 @@ class ProductsTableSeeder extends Seeder
             'height'     =>   '17',
             'producer'     =>   'Vornado',
             'price'     =>   '34',
-            'cate_id'     =>   '5',
+            'cate_id'     =>   '4',
             'quantity'     =>   '201',
             'image'     =>   'Vornado Pivot Personal Air Circulator Fan.jpg',
         ]);
