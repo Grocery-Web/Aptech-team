@@ -29,10 +29,6 @@
     @yield('content')
     <!-- End Content -->
     @include('layouts.footer')
-    <script src="{{asset('css/jquery.js')}}"></script>
-    <script src="{{asset('css/poper.js')}}"></script>
-    <script src="{{asset('css/bootstrap.js')}}"></script>
-    <script type="text/javascript" src="{{asset('css/slickjs.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
