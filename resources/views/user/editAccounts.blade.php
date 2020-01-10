@@ -38,10 +38,8 @@
                 <div class="col-md-2" style="padding-left: 0">
                     <label for="role">Role_id</label>
                     <select class="custom-select custom-select-lg mb-3" name="role" id="role" style="margin-bottom: 2rem; padding: 1rem; border-radius:5px">
-                        <option selected>{{$user['role_id']}}</option>
-                        <option value="1">Superadmin</option>
-                        <option value="2">Admin</option>
-                        <option value="3">Client</option>
+                        <option value="2" <?php echo $user['role_id'] == 2 ? "selected" : "" ?>>Admin</option>
+                        <option value="3" <?php echo $user['role_id'] == 3 ? "selected" : "" ?>>Client</option>
                     </select>
                 </div>
                 <div class="col-md-2">

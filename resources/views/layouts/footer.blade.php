@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-nho">
                         <div class="footer__title">
-                            About US
+                            <a class="nav-link" style="color: #333" href="{{ route('aboutUs') }}">About Us</a>
                         </div>
                         <a href="#" class="footer__text">
                             WORKING DAYS/HOURS: <br>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-nho">
                         <div class="footer__title">
-                            Contact Us
+                            <a class="nav-link" style="color: #333" href="{{ route('contactUs') }}">Contact Us</a>
                         </div>
                         <a href="#" class="footer__text">
                             ADDRESS: <br>

@@ -11,9 +11,6 @@
     </div>
     @endif
 
-
-    <h2>Add New Account</h2>
-
     <form action="{{route('adminAddNewAccount')}}" method="post" enctype="multipart/form-data">
 
         {{csrf_field()}}
@@ -131,7 +128,6 @@
             <div class="col-md-6">
                 <select class="custom-select custom-select-lg mb-3" name="role_id" id="role_id"
                     style="border-radius:5px">
-                    <option value="1">Superadmin</option>
                     <option value="2">Admin</option>
                     <option value="3">Client</option>
                 </select>
