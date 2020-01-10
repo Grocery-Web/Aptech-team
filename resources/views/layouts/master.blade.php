@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('css/slick.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}" />
     <script src="{{asset('css/font.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
     <link rel="stylesheet" href="{{asset('css/product.css')}}" />
