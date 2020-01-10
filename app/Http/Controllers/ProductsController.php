@@ -33,10 +33,15 @@ class ProductsController extends Controller
     public function addProductToCart(Request $request, $id) {
         $prevCart = $request->session()->get('cart');
         $cart = new Cart($prevCart);
+        $cartQty = 0;
+
+        if (isset($cart->items[$id]['totalSingleQuantity'])) {
+            $cartQty += $cart->items[$id]['totalSingleQuantity'];
+        };
 
         $quantity = $request->quantity;
         $product = Product::find($id);
-        if ($product->quantity - $cart->items[$id]['totalSingleQuantity'] < $quantity) {
+        if ($product->quantity - $cartQty < $quantity) {
             return redirect()->back()->withFail('Your required quantity exceeded our available quantity! Please try again.');
         } else {
             $cart->addItem($id, $product, $quantity);
