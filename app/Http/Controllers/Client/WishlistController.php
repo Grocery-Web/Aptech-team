@@ -7,6 +7,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class WishlistController extends Controller
 {
@@ -33,8 +34,9 @@ class WishlistController extends Controller
 
         $created  = DB::table("wishlists")->insert($arrayToInsert);
 
+        // Alert::success('Success Title', 'Success Message');
         if($created){
-            return redirect()->route("productDetails",$product_id)->withSuccess('Item has been added into wishlist');
+            return redirect()->route("productDetails",$product_id)->withSuccessMessage('Item has been added into wishlist');
         }else{
             return redirect()->route("productDetails",$product_id)->withFail('Item has not been added into wishlist yet');
         }
