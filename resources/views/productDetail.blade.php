@@ -263,10 +263,12 @@
                                 echo $user[0]->name; ?></h6>
                             <div class="d-flex justify-content-between">
                                 <p>{{ $reply->content }}</p>
-                                @if ($reply->user_id == $userData->id or $userData->id == 1)
-                                <a href="{{ route('deleteReview', ['id' => $reply->id]) }}"><button type="button" class="btn btn-outline-light btn-sm p-1 deleteComment">
-                                        <img src="https://img.icons8.com/material-rounded/24/000000/delete-forever.png">
-                                    </button></a>
+                                @if ($userData)
+                                    @if ($reply->user_id == $userData->id or $userData->id == 1)
+                                    <a href="{{ route('deleteReview', ['id' => $reply->id]) }}"><button type="button" class="btn btn-outline-light btn-sm p-1 deleteComment">
+                                            <img src="https://img.icons8.com/material-rounded/24/000000/delete-forever.png">
+                                        </button></a>
+                                    @endif
                                 @endif
                             </div>
                         </div>
