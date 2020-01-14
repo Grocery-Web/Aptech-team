@@ -41,35 +41,52 @@ class AdminInvoicesController extends Controller
             "shipping_address" => $shipping_address, 
             "status" => $status
         );
-        
-        $updated = DB::table('invoices')->where('id', $id)->update($arrayToUpdate);
-
-        if($updated){
-            if ($status == "Cancelled") {
-                $invoice = Invoice::find($id);
-                $invoiceDetails = InvoiceDetail::where('invoice_id', $invoice->id)->get();
-                foreach ($invoiceDetails as $invoiceDetail) {
-                    $product = Product::where('id', $invoiceDetail->product_id)->first();
-                    $product->quantity += $invoiceDetail->product_quantity;
-                    $product->save();
-                }
-            }
-            return redirect()->route("editInvoiceForm", ['id' => $id])->withSuccess("Updated invoice's information successfully! ");
-        } else{
-            return redirect()->route("editInvoiceForm", ['id' => $id])->withFail('Failed! Please try again.');
-        }
-    }
-
-    public function removeInvoice($id) {
+            
         $invoice = Invoice::find($id);
         $invoiceDetails = InvoiceDetail::where('invoice_id', $invoice->id)->get();
-        if ($invoice->status != "Successful") {
+        $prevStatus = $invoice->status;  // $prevStatus aka previous status
+        
+
+        // update quantity in stock 
+        if ($status == "Approved") {
+            // check if stock quantity is enough or not
+            foreach ($invoiceDetails as $invoiceDetail) {
+                $product = Product::where('id', $invoiceDetail->product_id)->first();
+                if ($product->quantity < $invoiceDetail->product_quantity) {
+                    $invoice->status = "Not approved yet";
+                    $invoice->save();
+                    return redirect()->route("editInvoiceForm", ['id' => $id])->withFail('Failed! Please try again.');
+                } 
+            }
+            $invoice->update($arrayToUpdate);
+            // in case stock quantity is enough
+            foreach ($invoiceDetails as $invoiceDetail) {
+                $product = Product::where('id', $invoiceDetail->product_id)->first();
+                $product->quantity -= $invoiceDetail->product_quantity;
+                $product->save();
+            }
+            return redirect()->route("editInvoiceForm", ['id' => $id])->withSuccess("Updated invoice's information successfully! ");
+
+        } elseif ($prevStatus != "Not approved yet" and $status == "Cancelled") {
             foreach ($invoiceDetails as $invoiceDetail) {
                 $product = Product::where('id', $invoiceDetail->product_id)->first();
                 $product->quantity += $invoiceDetail->product_quantity;
                 $product->save();
             }
-        }
+            $invoice->update($arrayToUpdate);
+            return redirect()->route("editInvoiceForm", ['id' => $id])->withSuccess("Updated invoice's information successfully! ");
+        } elseif ($prevStatus == "Not approved yet" and $status == "Cancelled" ) {
+            $invoice->update($arrayToUpdate);
+            return redirect()->route("editInvoiceForm", ['id' => $id])->withSuccess("Updated invoice's information successfully! ");
+        } else {
+            $invoice->update($arrayToUpdate);
+            return redirect()->route("editInvoiceForm", ['id' => $id])->withSuccess("Updated invoice's information successfully! ");
+        } 
+
+    }
+
+    public function removeInvoice($id) {
+        $invoice = Invoice::find($id);
         $invoice->delete();
         return redirect()->route('adminDisplayInvoices');
     }

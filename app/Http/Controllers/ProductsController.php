@@ -109,8 +109,6 @@ class ProductsController extends Controller
             // update product quantity
             foreach($cart->items as $item) {
                 $product = Product::where('name', $item['data']['name'])->first();
-                $product->quantity -= $item['totalSingleQuantity'];
-                $product->save();
 
                 // add new invoice detail
                 $newInvoiceDetail = array(

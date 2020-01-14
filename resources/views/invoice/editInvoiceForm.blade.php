@@ -35,7 +35,7 @@
         <div class="form-group row">
             <label for="status"
                 class="col-md-2 col-form-label text-md-right">Status</label>
-
+            @if ($invoice->status == "Not approved yet")
             <div class="col-md-6">
                 <select class="custom-select custom-select-lg mb-3" name="status" id="status" 
                     style="border-radius:5px">
@@ -46,6 +46,28 @@
                     <option value="Cancelled" <?php echo $invoice->status == "Cancelled" ? "selected" : "" ?>>Cancelled</option>
                 </select>
             </div>
+            @elseif ($invoice->status != "Successful" and $invoice->status != "Cancelled")
+            <div class="col-md-6">
+                <select class="custom-select custom-select-lg mb-3" name="status" id="status" 
+                    style="border-radius:5px">
+                    <option value="Approved" <?php echo $invoice->status == "Approved" ? "selected" : "" ?>>Approved</option>
+                    <option value="On delivery" <?php echo $invoice->status == "On delivery" ? "selected" : "" ?>>On delivery</option>
+                    <option value="Successful" <?php echo $invoice->status == "Successful" ? "selected" : "" ?>>Successful</option>
+                    <option value="Cancelled" <?php echo $invoice->status == "Cancelled" ? "selected" : "" ?>>Cancelled</option>
+                </select>
+            </div>
+            @else 
+            <div class="col-md-6">
+                <select class="custom-select custom-select-lg mb-3" name="status" id="status" 
+                    style="border-radius:5px">
+                    @if ($invoice->status == "Successful")
+                    <option value="Successful">Successful</option>
+                    @else
+                    <option value="Cancelled">Cancelled</option>
+                    @endif
+                </select>
+            </div>
+            @endif
         </div>
 </div>
 <button type="submit" name="submit" class="btn btn-default">Submit</button>

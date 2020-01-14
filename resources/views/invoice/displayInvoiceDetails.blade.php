@@ -54,6 +54,7 @@
                 <th>Product ID</th>
                 <th>Product Name</th>
                 <th>Producer</th>
+                <th>Available Quantity</th>
                 <th>Quantity</th>
                 <th>Total Price</th>
             </tr>
@@ -69,6 +70,7 @@
                 <td>{{$invoiceDetail['product_id']}}</td>
                 <td><?php $product = DB::table('products')->where('id', $invoiceDetail->product_id)->get(); echo $product[0]->name; ?></td>
                 <td><?php $product = DB::table('products')->where('id', $invoiceDetail->product_id)->get(); echo $product[0]->producer; ?></td>
+                <td><?php $product = DB::table('products')->where('id', $invoiceDetail->product_id)->get(); echo $product[0]->quantity; ?></td>
                 <td>{{$invoiceDetail['product_quantity']}}</td>
                 <td>{{$invoiceDetail['total']}}</td>
             </tr>
