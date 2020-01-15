@@ -48,7 +48,7 @@ class AdminInvoicesController extends Controller
         
 
         // update quantity in stock 
-        if ($status == "Approved") {
+        if ($status == "Approved" and $prevStatus != "Approved") {
             // check if stock quantity is enough or not
             foreach ($invoiceDetails as $invoiceDetail) {
                 $product = Product::where('id', $invoiceDetail->product_id)->first();
@@ -78,10 +78,13 @@ class AdminInvoicesController extends Controller
         } elseif ($prevStatus == "Not approved yet" and $status == "Cancelled" ) {
             $invoice->update($arrayToUpdate);
             return redirect()->route("editInvoiceForm", ['id' => $id])->withSuccess("Updated invoice's information successfully! ");
+        } elseif ($prevStatus == $status) {
+            $invoice->update($arrayToUpdate);
+            return redirect()->route("editInvoiceForm", ['id' => $id])->withSuccess("Updated invoice's information successfully! ");
         } else {
             $invoice->update($arrayToUpdate);
             return redirect()->route("editInvoiceForm", ['id' => $id])->withSuccess("Updated invoice's information successfully! ");
-        } 
+        }
 
     }
 

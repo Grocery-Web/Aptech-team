@@ -39,21 +39,28 @@
             <div class="col-md-6">
                 <select class="custom-select custom-select-lg mb-3" name="status" id="status" 
                     style="border-radius:5px">
-                    <option value="Not approved yet" <?php echo $invoice->status == "Not approved yet" ? "selected" : "" ?>>Not approved yet</option>
-                    <option value="Approved" <?php echo $invoice->status == "Approved" ? "selected" : "" ?>>Approved</option>
-                    <option value="On delivery" <?php echo $invoice->status == "On delivery" ? "selected" : "" ?>>On delivery</option>
-                    <option value="Successful" <?php echo $invoice->status == "Successful" ? "selected" : "" ?>>Successful</option>
-                    <option value="Cancelled" <?php echo $invoice->status == "Cancelled" ? "selected" : "" ?>>Cancelled</option>
+                    <option value="Not approved yet" selected="selected">Not approved yet</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Cancelled">Cancelled</option>
                 </select>
             </div>
-            @elseif ($invoice->status != "Successful" and $invoice->status != "Cancelled")
+            @elseif ($invoice->status == "Approved")
             <div class="col-md-6">
                 <select class="custom-select custom-select-lg mb-3" name="status" id="status" 
                     style="border-radius:5px">
-                    <option value="Approved" <?php echo $invoice->status == "Approved" ? "selected" : "" ?>>Approved</option>
-                    <option value="On delivery" <?php echo $invoice->status == "On delivery" ? "selected" : "" ?>>On delivery</option>
-                    <option value="Successful" <?php echo $invoice->status == "Successful" ? "selected" : "" ?>>Successful</option>
-                    <option value="Cancelled" <?php echo $invoice->status == "Cancelled" ? "selected" : "" ?>>Cancelled</option>
+                    <option value="Approved" selected="selected">Approved</option>
+                    <option value="On delivery">On delivery</option>
+                    <option value="Successful">Successful</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+            </div>
+            @elseif ($invoice->status == "On delivery")
+            <div class="col-md-6">
+                <select class="custom-select custom-select-lg mb-3" name="status" id="status" 
+                    style="border-radius:5px">
+                    <option value="On delivery" selected="selected">On delivery</option>
+                    <option value="Successful">Successful</option>
+                    <option value="Cancelled">Cancelled</option>
                 </select>
             </div>
             @else 
