@@ -2540,7 +2540,7 @@ EOT;
                             $c = (int)$dtmp['C'];
                             $n = $dtmp['N'];
                             $width = floatval($dtmp['WX']);
-
+                            error_reporting(E_ALL ^ E_DEPRECATED);
                             if ($c >= 0) {
                                 if ($c != hexdec($n)) {
                                     $data['codeToName'][$c] = $n;
